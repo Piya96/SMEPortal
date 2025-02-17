@@ -1,0 +1,37 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using System.Globalization;
+
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FunderSearchSummaryViewModel
+
+@{
+    CultureInfo ci = new CultureInfo("en-ZA");
+
+    var day = Model.Application.LastModificationTime?.Day;
+    var month = Model.Application.LastModificationTime?.Month;
+    var year = Model.Application.LastModificationTime?.Year;
+
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = Model.Application.Id,
+        TenantId = Model.Application.TenantId
+    };
+}
+
+@{
+    if (Model.IncludeHeader)
+    {
+        <div class="table-responsive">
+            <img alt="Logo" src="/TenantCustomization/GetLogo?tenantId=@Model.Application.TenantId" height="50">
+            <br /><br />
+            <h4 class="mb-10 font-weight-bolder text-dark">Finance Application Summary for: <br /><u>@Model.SmeCompany.Name</u></h4>
+            <div>Date: @day-@month-@year </div>
+            <div class="separator separator-dashed my-3"></div>
+        </div>
+    }
+
+    await Html.RenderPartialAsync( "../Application/Sefa/Summary/summary.cshtml", fssVM);
+}

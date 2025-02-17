@@ -1,0 +1,67 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@model CreateEditFunderSearchViewModel
+<!--begin: Wizard Step 6 - Summary-->
+<div class="flex-column-fluid" style="width:100%;" data-wizard-type="step-content">
+    <div class="funder-search-div-class" id="funder-search-div">
+        <div class="d-flex flex-column-fluid">
+            <div class="container">
+                <h4 class="mb-10 font-weight-bolder text-dark">Finance Application Summary for <u>@Model.SmeCompany.SmeCompany.Name</u></h4>
+                @*@{ await Html.RenderPartialAsync("_ApplicationReferenceNo.cshtml", Model); }*@
+            </div>
+        </div>
+
+        @{
+            var fssVM = new FSSViewModel()
+            {
+                StyleWidth = "width:55%;",
+                StyleCol = "",
+                ApplicationId = Model.Application.Application.Id.Value,
+                TenantId = Model.Application.Application.TenantId
+            };
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_FinancialInfoSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_FundingRequirementsSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_FundingEssentialsSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_DocumentationSummaryPartial.cshtml", fssVM);
+        }
+
+    </div>
+
+    <div class="separator separator-dashed my-5"></div>
+
+    <h6 class="font-weight-bolder mb-3">@L("Declaration")</h6>
+    <div class="form-group">
+        <label for="summary-declaration" class="col-form-label" style="width:80%;">
+            <p><b>@L("Sefa")</b> has a number of funding products available specifically to assist SMMEs and Cooperatives needing finance.</p>
+
+            <p>By responding to the questions that follow, you will be taken through steps where your funding needs will be matched to <b>sefa’s</b> financing instruments.</p>
+
+            <p>In cases where <b>@L("Sefa")</b> is unable to match your needs, you will be directed to other options where your requirements could potentially be met.</p>
+
+            <p>Before you begin, you will be required to register to ensure that your information is validated and recorded.</p>
+        </label>
+        
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="checkbox-inline">
+                <label class="checkbox checkbox-outline checkbox-primary">
+                    <input type="checkbox" name="summarydeclaration" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--end::Section-->
+</div>
+<!--end: Wizard Step 6-->

@@ -1,0 +1,216 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.Legal; }
+
+<abp-page-subheader title="@L("PrivacyPolicyHeaderTitle")" description="@L("PrivacyPolicyHeaderInfo")"></abp-page-subheader>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="alert alert-custom alert-primary fade show" role="alert">
+            <div class="alert-icon">
+                <i class="flaticon-information" aria-label="@L("PrivacyPolicyAlertPage_Title")"></i>
+            </div>
+            <div class="alert-text">
+                <h4 class="alert-heading">@L("PrivacyPolicyAlertPage_Title")</h4>
+                <p>@L("PrivacyPolicyAlertPage_Info")</p>
+            </div>
+        </div>
+        <div class="card card-custom gutter-b">
+            <div class="accordion accordion-solid accordion-toggle-plus" id="accordionExample3">
+                <div class="card">
+                    <div class="card-header" id="headingOne3">
+                        <div class="card-title" data-toggle="collapse" data-target="#collapseOne3">
+                            1. Privacy Policy
+                        </div>
+                    </div>
+                    <div id="collapseOne3" class="collapse show" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Finfind (Pty) Ltd is committed to protecting your privacy. This Privacy Policy, which is part of our Terms and Conditions, describes the information we collect through the website we operate at www.finfind.co.za (“Our Site”), how we use it, how we share it, and how you can make choices about our use of the information.</p>
+
+                            <p><b>By using Our Site, you consent to our collection and use of information as described in this Privacy Policy.</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo3">
+                            2. Updates
+                        </div>
+                    </div>
+                    <div id="collapseTwo3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>
+                                We may be required to change the terms of this Privacy Policy and/or our Terms and Conditions, from time to time and will post an updated version on Our Site as appropriate. Your use of Our Site indicates that you agree to the Privacy Policy and Terms and Conditions posted on Our Site. If you do not agree, you may not use Our Site. Your use of Our Site implies that you understand that each time you access Our Site the then-current Privacy Policy will apply. Should we have amended the Privacy Policy, this amended version will supersede and replace all previous versions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree3">
+                            3. Location of Servers and Transfer of Information
+                        </div>
+                    </div>
+                    <div id="collapseThree3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Our servers are located in the Azure Cloud Centres based in West Europe and in South Africa North. Please be aware that the information you provide to us will be transferred to West Europe and to South Africa North. By using Our Site or providing your Personal Information (as defined below) to us, you consent to this transfer and to the collection, storage, processing and use of your Personal Information in these locations. Microsoft Azure may decide to open a data centre in South Africa and, should this happen, we may transfer some, or all, of our data to this centre. We will amend this policy to inform you should this happen.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFour3">
+                            4. Collection and Use of Personal Information
+                        </div>
+                    </div>
+                    <div id="collapseFour3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>We collect personally identifiable information (e.g. name, address, postal code, phone number, and email address i.e. “Personal Information”) only when you voluntarily provide it to us, such as through online registrations, finance matching assessments, contact forms and survey forms.</p>
+
+                            <p>We use your Personal Information for the purposes for which you provide it (e.g. to respond to requests, to match you to appropriate finance products, and to send email communications). We may also send you information from Finfind or third parties that we think may be of interest to you.</p>
+
+                            <p>Should you complete the Finfind funding match assessment and match to one or more of the lenders on our database, you consent to Finfind accessing your personal credit record from one of the authorised and registered credit bureaux in South Africa. You may request a copy of this credit record. This document will be used to help us qualify the leads that we may pass on to lenders in our database.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFive3">
+                            5. Collection of Business Owner and Business Information
+                        </div>
+                    </div>
+                    <div id="collapseFive3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Should you use the Finfind funding match assessment options, we collect the following information so that we can match you to appropriate finance products:</p>
+                            <p><b>Funding Need</b></p>
+                            <p>The amount of funding you require and the reason the business needs the funding.</p>
+                            <p><b>Business Owners</b></p>
+                            <p>Race, gender, age, name, citizenship, ID or passport number, contact details and shareholding details.</p>
+                            <p><b>Business Information</b></p>
+                            <p>Business name, registration number, type of incorporation, the age of the business, type of business, industry sector, location, annual turnover, regularity of income, profitability, jobs created, availability of collateral, type of collateral available and website address. We may also collect information about you from outside sources, such as credit bureaux and other sources, to validate key company details.</p>
+                            <p><b>Other Business Information</b></p>
+                            <p>Depending upon your stated finance need, we may need to collect additional business information to enable us to match you to appropriate funders.</p>
+
+                            <p><b>These are detailed below:</b></p>
+                            <p>Type of property, franchise membership, type of available collateral, business growth possibilities, contract/invoice/tender value, property bond value, type of business expansion you envisage, project location, business accreditations, export destinations, research locations and institutions and job creation opportunities.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseSix3">
+                            6. Use of Business Owner and Business Information
+                        </div>
+                    </div>
+                    <div id="collapseSix3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Finfind uses the data you provide to match you with suitable finance products from its database of funders to enable you to see which finance products match your specific needs. Your information may be sent to matching funders so that they may contact you and assist you to raise the finance you require.</p>
+
+                            <p>By submitting such Personal and Business Information, you consent to our processing of such information, disclosing such information to the funders who you select, and for such funders to further process your Personal Information.</p>
+
+                            <p>Your information will also be used for research purposes. However, only de-identified data (all data that would enable this information to be linked to either an owner or a specific business has been removed) is used for research purposes. The research will be used to provide policy makers with relevant information that can assist them in forming SMME policies and programmes that create an enabling environment for SMMEs in South Africa.</p>
+
+                            <p>Should you have accessed Finfind via a partner website, your information may be shared with this partner. Finfind partners are obliged by contract to maintain the confidentiality and security of your Personal and Business Information in accordance with POPIA.</p>
+
+                            <p>
+                                This means we may use your Personal and Business information in the following ways:<br />
+                                (a) communication with you as requested.<br />
+                                (b) providing requested services to you.<br />
+                                (c) authenticating you if required.<br />
+                                (d) providing you with access to restricted pages on the Website, if applicable.<br />
+                                (e) compiling non-personal statistical information about browsing habits, click patterns and access to the Website.<br />
+                                (f) providing non-personal statistical information about users' financial requirements and state of finance readiness.<br />
+                                (g) providing personal and business information to third parties as set out in this document.<br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseSeven3">
+                            7. Use of Cookies
+                        </div>
+                    </div>
+                    <div id="collapseSeven3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>To improve the operation and usability of Our Site, we also collect other information when you visit Our Site, such as IP address (i.e. the number assigned to a visitor’s computer to identify its location on the Internet), web pages viewed, time and date of visits to Our Site, the first page viewed upon arrival on Our Site, actions taken during a visit to Our Site (e.g. links clicked), the website that referred or linked you to Our Site, the device used to access Our Site and web browser used.</p>
+
+                            <p>Parts of Our Site rely on cookies, which are small data files placed on your computer (or we may rely on other technology methods in the future). We use information collected by cookies to facilitate your use of Our Site. For example, cookies (or other methods) help make certain web-based forms work properly. You are not required to accept cookies from Our Site. You can disable the cookies function (or delete existing cookies) using your web browser’s options, although some functions of Our Site may not work properly if you do so.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseEight3">
+                            8. Sharing Information with Third Parties
+                        </div>
+                    </div>
+                    <div id="collapseEight3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>We may share your Personal Information with our service providers, such as companies that help us operate Our Site, or companies that provide support for SMMEs in South Africa.</p>
+
+                            <p>We reserve the right to disclose and use Personal and Business Information and other information: to enforce this Privacy Policy or our Terms and Conditions; to take action regarding suspected illegal activities; to protect the rights, safety or property of anyone; to comply with legal process (e.g. a search warrant, subpoena, statute, or court order); to carry out a merger or consolidation with another entity or in connection with a sale or transfer of some or all of our assets or a similar transaction; or for other reasons we determine in good faith are necessary, appropriate, or required by law.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseNine3">
+                            9. Review and Correction of Personal and Business Information/Opt-Out
+                        </div>
+                    </div>
+                    <div id="collapseNine3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>We will make reasonable efforts to enable you to review your Personal and Business Information and, upon your instructions, to correct inaccuracies in your Personal and/or Business Information. If you wish to review or correct your Personal and/or Business Information, or if you would like to request how we use your Personal and/or Business Information in certain ways, please email us at info@finfind.co.za. If you no longer wish to receive communications from us, you can follow the opt-out or unsubscribe instructions in the materials you receive or email us at info@finfind.co.za.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTen3">
+                            10. Security
+                        </div>
+                    </div>
+                    <div id="collapseTen3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>We strive to keep your Personal Information secure and to safeguard it from unauthorised access. We take all reasonable steps to protect your Personal and Business Information from loss, misuse or unauthorised alteration. Your Personal and Business Information is stored in databases that have built-in security, backups and firewalls to ensure the privacy and confidentiality of this information.</p>
+
+                            <p>Our Site is automated, and access to confidential information is strictly controlled. No confidential data can be stored on local drives and access to sensitive and confidential data is controlled via the use of user codes and security levels. All Finfind employees sign NDAs that confirm their compliance with our security and confidentiality policies. Our security systems meet industry standards.</p>
+
+                            <p>However, no security measures can be guaranteed to be 100% effective, so you provide your Personal and Business Information at your own risk.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseEleven3">
+                            11. Links to Third-Party Websites, including Social Networks
+                        </div>
+                    </div>
+                    <div id="collapseEleven3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Our Site may contain links to third-party websites and content providers which may interest you. If you follow any link to a third-party site, you leave Our Site. You should review those sites’ privacy policies to find out how they treat your information. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwelve3">
+                            12. Questions
+                        </div>
+                    </div>
+                    <div id="collapseTwelve3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+
+                            <p>
+                                Please email <a href="mailto:info@finfind.co.za?subject=Privacy Policy">Legal</a> if you have any questions about this Privacy Policy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,229 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Modals
+
+<h4 class="mb-10 font-weight-bold text-dark">Mandate Fit</h4>
+
+<div id="id-div-mandate-fit">
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="name-input-mandate-fit-loan-amount">Funding Required</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input id="id-input-mandate-fit-loan-amount" name="name-input-mandate-fit-loan-amount" type="text" class="form-control">
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-forecast-cash-flow-repayable" class="col-form-label">
+                    Your forecast cash flow will show the ability to repay the facility?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-forecast-cash-flow-repayable" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-forecast-cash-flow-repayable" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-conflict-of-interest-at-sefa" class="col-form-label">
+                    Do you or your Business have any conflict of interest at <b>@L("Sefa")</b>?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-conflict-of-interest-at-sefa" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-conflict-of-interest-at-sefa" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-operations-within-boarders-sa" class="col-form-label">
+                    The financed operations are conducted within the borders of South Africa?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-operations-within-boarders-sa" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-operations-within-boarders-sa" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-controlling-interest-greater-than-50" class="col-form-label">
+                    The controlling interest (>50%) of the business enterprise is held by a South African Citizen/s with a valid South African identity document  or permanent residents who hold a valid South Africa identity document?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-controlling-interest-greater-than-50" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-controlling-interest-greater-than-50" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-shareholder-involved" class="col-form-label">
+                    The majority of shareholders are involved in the day to day running of the business on a full-time basis?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-shareholder-involved" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-shareholder-involved" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xl-12">
+                <label for="name-input-mandate-fit-management-team-has-xp-skills" class="col-form-label">
+                    Your management team has the relevant entrepreneurial skills and experience relevant to the type of business?
+                </label>
+                <div class="input-group mb-2 mb-sm-0 float-right">
+                    <div class="radio-inline">
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-management-team-has-xp-skills" value="Yes" />
+                            <span></span>
+                            Yes
+                        </label>
+                        <label class="radio radio-outline radio-primary">
+                            <input type="radio" name="name-input-mandate-fit-management-team-has-xp-skills" value="No" />
+                            <span></span>
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fv-plugins-message-container"></div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+
+    
+
+    <div class="row" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <Label class="mb-8 font-weight-bold text-dark">Click to perform background checks</Label>
+
+                <button
+                        id="id-button-mandate-fit-background-check"
+                        name="name-button-mandate-fit-background-check"
+                        class="btn btn-primary font-weight-bold"
+                        type="button"
+                        style="float:right !important;">
+                    <b class="la la-warning"></b>
+                    <span id="id-user-verify-identity-span">Check</span>
+                </button>
+
+                <div class="form-group fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <div class="form-group fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="id-div-mandate-fit-list" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-warning" role="alert" style="font-weight:bold;">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>Mandate fit check list</p>
+                        <div>
+                            <table id="id-tbody-mandate-fit-list" class="table table-sm table-hover">
+                                <tr>
+                                    <th>Check</th>
+                                    <th>Result</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    -->
+
+</div>

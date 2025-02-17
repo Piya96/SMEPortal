@@ -1,0 +1,40 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "https://localhost:44302/",
+      "sslPort": 44302
+    }
+  },
+
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "Authentication:Google:ClientSecret": "sd",
+        "Payment:PayPal:DemoPassword": "SM7W8^gF",
+        "Payment:PayFast:SecurityPassphrase": "VSXnt9aXJU5rrKZZu9YuVPs3cEr",
+        "Authentication:Facebook:AppSecret": "3ef41fb4a772cf41ea201e7095908331",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Payment:PayFast:MerchantKey": "ocf669h31dg2y",
+        "Payment:PayPal:ClientSecret": "EBH51VE8NCBYWyeEI45dLpeRxKYzrUChv1_aWOWDDRaZN5BggmK1kJEILX3Rg9Z-hfBt_0tzfmIVLmkc"
+      }
+    },
+    "SME.Portal.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:44302"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true
+    }
+  }
+}

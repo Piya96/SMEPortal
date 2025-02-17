@@ -1,0 +1,55 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@model CreateEditFunderSearchViewModel
+<!--begin: Wizard Step 6 - Summary-->
+<div class="flex-column-fluid" style="width:100%;" data-wizard-type="step-content">
+    <div class="funder-search-div-class" id="funder-search-div">
+        <div class="d-flex flex-column-fluid">
+            <div class="container">
+                <h4 class="mb-10 font-weight-bolder text-dark">Funder Search Summary for <u>@Model.SmeCompany.SmeCompany.Name</u></h4>
+            </div>
+        </div>
+
+        @{
+            var fssVM = new FSSViewModel()
+            {
+                StyleWidth = "width:55%;",
+                StyleCol = "",
+                ApplicationId = Model.Application.Application.Id.Value,
+                TenantId = Model.Application.Application.TenantId
+            };
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_FinancialInfoSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_FundingRequirementsSummaryPartial.cshtml", fssVM);
+
+            await Html.RenderPartialAsync("../FunderSearchSummary/_FundingEssentialsSummaryPartial.cshtml", fssVM);
+        }
+
+    </div>
+
+    <div class="separator separator-dashed my-5"></div>
+
+    <h6 class="font-weight-bolder mb-3">@L("Declaration")</h6>
+    <div class="form-group">
+        <label for="summary-declaration" class="col-form-label" style="width:80%;">@L("SummaryDeclaration")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="checkbox-inline">
+                <label class="checkbox checkbox-outline checkbox-primary">
+                    <input type="checkbox" name="summarydeclaration" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--end::Section-->
+</div>
+<!--end: Wizard Step 6-->

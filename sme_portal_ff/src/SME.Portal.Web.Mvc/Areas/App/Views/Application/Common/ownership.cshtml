@@ -1,0 +1,157 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<h5 class="mb-10">Ownership Information</h5>
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "total-number-of-owners",
+        Label = "Total number of owners",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<h5 class="mb-10">Ownership (South Africans only)</h5>
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-ownership-by-south-africans",
+        Label = "Total ownership by South Africans",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-black-coloured-indian-pdi",
+        Label = "Number of Black, Coloured, and Indian (combined total PDI)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-black-south-africans-only",
+        Label = "Total number of black only owners",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-white-only",
+        Label = "Total number of white only owners",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-asian-only",
+        Label = "Total number of Asian only owners",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-disabled-people",
+        Label = "Total number of owners with disability (any race)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-youth-under-35",
+        Label = "Total number of young owners under 35 years of age (any race)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-women-women-any-race",
+        Label = "Total number of female owners (any race)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-women-black-only",
+        Label = "Total number of female owners (black only)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-military-veteran-owners" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "military-veteran-owners",
+            Label = "Total number of military veteran owners (any race)",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+
+<div class="form-group" id="business-owners-dummy" name="business-owners-dummy" style="display:none;">
+    <div id="message-business-owners-dummy" class="fv-plugins-message-container"></div>
+    <br />
+</div>
+
+<h5 class="mb-10">Ownership (Non-South Africans and/or Business)</h5>
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "percent-non-south-african-citizens",
+        Label = "Total number of Non-SA citizen owners",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-total-companies-organisations">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "percent-companies-organisations",
+            Label = "Total number of Business/organisations (non-individuals) owners",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>

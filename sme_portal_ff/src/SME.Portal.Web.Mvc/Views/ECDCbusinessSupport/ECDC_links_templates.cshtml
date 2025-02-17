@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/tenant-styles/ecdc_business_support_main.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/tenant-styles/ecdc_business_support_links_templates.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Google tag (gtag.js) - Google Analytics ECDC App-->
+    <!---<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWL58CF23C"></script>-->
+    <script src="~/Common/Scripts/googletagmanager-G-PWL58CF23C.js" asp-append-version="true"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWL58CF23C');
+    </script>
+
+    <title>ECDC - Links & Templates</title>
+    <link rel="shortcut icon" href="https://static.wixstatic.com/media/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg" type="image/jpeg">
+    <style>
+    </style>
+</head>
+<body>
+    <div id="divLogo" class="pb-13 pt-lg-0 pt-5">
+        <a href="https://www.ecdc.co.za/" class="text-center mb-10">
+            <img src="/Common/Images/ECDC_Logo3_icons.png" alt="" class="max-h-70px">
+        </a>
+    </div>
+    <div class="flex-container divPaddingLeft">
+        <h2>HELPFUL LINKS AND BUSINESS TEMPLATES</h2>
+        <div class="divBackButton">
+            <button class="btnBusSupport" id="btnHeading" onclick="location.href='@Url.Action("RedirectToBusinessSupport", "ECDCbusinessSupport")'">
+                <a href="@Url.Action("RedirectToBusinessSupport", "ECDCbusinessSupport")" aria-label="This is a link">BACK TO THE BUSINESS SUPPORT PAGE</a>
+            </button>
+        </div>
+    </div>
+    <div id="LinksContainer" class="flex-container">
+        <div class="column">
+            <div class="row" id="divBusComRes">
+                <h4 id="aBCR" class="row-heading HeadingText">BUSINESS COMPLIANCE RESOURCES</h4>
+                <ul>
+                    <li>
+                        <a class="row-description" href="https://smesouthafrica.co.za/sme-guides/business-licences-in-south-africa/" target="_blank">
+                            Understanding business licenses in South Africa
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.theworkspace.co.za/blog/useful-tax-calendar-small-businesses-self-employed/" target="_blank">
+                            Tax time table for SMMEs
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.sars.gov.za/businesses-and-employers/small-businesses-taxpayers/" target="_blank">
+                            SARS Small Business tax resources
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/services.aspx" target="_blank">
+                            Register a business
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/bee.aspx" target="_blank">
+                            Obtain a free BEE certificate (annual turnover of less than R1M)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/cf.aspx" target="_blank">
+                            Free registration with the Compensation Fund
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/uif.aspx" target="_blank">
+                            Register for UIF
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/ar.aspx" target="_blank">
+                            Submit your annual CIPC return
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/files/tax_guide.pdf" target="_blank">
+                            Small business Tax guide
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.cipc.co.za/?page_id=4447" target="_blank">
+                            CIPC step by step guides
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" id="divTrainRes">
+                <h4 id="bBCR" class="row-heading HeadingText">TRAINING RESOURCES</h4>
+                <ul>
+                    <li>
+                        <a class="row-description" href="https://admineasy.co.za/" target="_blank">
+                            Free training to help with business administration
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.coursera.org/" target="_blank">
+                            Free and low cost business training courses
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.mtn.co.za/Pages/Free-Business-Education.aspx" target="_blank">
+                            Free business education
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.thestartuptribe.org/pages/PYP" target="_blank">
+                            Free courses to start or build a business
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.cipc.co.za/?page_id=10431" target="_blank">
+                            CIPC's online training for directors of small businesses
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" id="divIndusBodRes">
+                <h4 id="iBR" class="row-heading HeadingText">INDUSTRY BODY RESOURCES</h4>
+                <ul>
+                    <li>
+                        <a class="row-description" href="https://www.cidb.org.za/" target="_blank">
+                            CIBD Construction Industry Development Board
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://digitalservices.psira.co.za/home" target="_blank">
+                            PSIRA (Private Security Industry Regulatory Authority)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://forms.office.com/pages/responsepage.aspx?id=bLe7PupjcESsK_Y3Czt2kLbHY5fPT_9KqqsTRO5Y8AlUQjROOFc1WVJMVThEREUxVDAyVkRSVFo5OC4u" target="_blank">
+                            PSIRA compliance self-assessment form
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.sahpra.org.za/" target="_blank">
+                            SAHPRA (South African Health Products Regulatory Authority)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row" id="infoTempDiv">
+                <h4 id="cBCR" class="row-heading HeadingText">GENERAL INFO AND TEMPLATES</h4>
+                <ul>
+                    <li>
+                        <a class="row-description" href="https://smesouthafrica.co.za/sme-guides/a-guide-to-business-incubators-in-south-africa/" target="_blank">
+                            Guide to SMME incubators in South Africa
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.vertex42.com/" target="_blank">
+                            Business templates
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.template.net/editable/small-business" target="_blank">
+                            Free templates for small businesses
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.dsbd.gov.za/sites/default/files/docu/DSBD%20Business%20Viability%20Programme%20V3.pdf" target="_blank">
+                            Help for small businesses in distress
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.smmesa.gov.za/" target="_blank">
+                            Assistance with exporting
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.gov.za/links/other-government-bodies-institutions" target="_blank">
+                            Links to Government Bodies and Institutions
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.labour.gov.za/unemployment-insurance-fund(uif)" target="_blank">
+                            Understanding UIF
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" id="marketDiv">
+                <h4 id="dBCR" class="row-heading HeadingText">MARKETING RESOURCES</h4>
+                <ul>
+                    <li>
+
+                        <a class="row-description" href="https://academy.hubspot.com/" target="_blank">
+                            Free online marketing short courses
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="http://www.bizportal.gov.za/domain_names.aspx" target="_blank">
+                            Register a domain name for your business
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://support.google.com/google-ads/answer/7337243?hl=en-GB&visit_id=1-636147513626045076-2807203998&rd=2" target="_blank">
+                            Google's Keyword planner for online marketing
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.canva.com/about/" target="_blank">
+                            Free online tool for design
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://www.shopstar.co.za/post/7-cost-effective-marketing-strategies-for-small-businesses" target="_blank">
+                            Information on marketing strategies
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row" id="divFundRes">
+                <h4 id="fundingResources" class="row-heading HeadingText">FUNDING RESOURCES</h4>
+                <ul>
+                    <li>
+                        <a class="row-description" href="https://www.finfind.co.za/get-credit-score" target="_blank">
+                            Free credit score
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://knowledge.finfind.co.za/dictionary" target="_blank">
+                            Dictionary of financial terms - easy explanations
+                        </a>
+                    </li>
+                    <li>
+                        <a class="row-description" href="https://knowledge.finfind.co.za/understanding-funding" target="_blank">
+                            Small business funding explained
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class=d-flex flex-column flex-row-auto">
+        <img src="/Common/Images/_ECDC_lady-in-hard-hat.jpg" />
+    </div>
+    <script type="text/javascript" id="ecdc-hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139540225.js"></script>
+</body>
+</html>

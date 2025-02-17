@@ -1,0 +1,201 @@
+﻿@model SME.Portal.Web.Models.Account.RegisterViewModel
+@using Abp.Extensions
+@using Abp.Json
+@using SME.Portal.Localization
+@using SME.Portal.Web.Security.Recaptcha
+@addTagHelper *, Owl.reCAPTCHA
+
+@* TODO:REFACTOR *@
+
+@section Scripts
+{
+<script>
+    window.passwordComplexitySetting = @Html.Raw(Model.PasswordComplexitySetting.ToJsonString(indented: true));
+</script>
+<script src="~/custom/js/input-mask/jquery.inputmask.js" asp-append-version="true"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#register-submit-btn').prop('disabled', true);
+
+        $('#terms-and-conditions').click(function () {
+            if ($(this).prop("checked") == true) {
+                $('#register-submit-btn').prop('disabled', false);
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#register-submit-btn').prop('disabled', true);
+            }
+        });
+         $('#phonenumber').inputmask({
+                mask: '999 999 9999',
+                placeholder: '--- --- ----'
+            });
+
+    });
+</script>
+
+    @if (ViewBag.UseCaptcha)
+    {
+<recaptcha-script-v3 />
+<recaptcha-script-v3-js action="register" callback="(function(){$('#@RecaptchaValidator.RecaptchaResponseKey').val(token)})" />
+    }
+
+<script abp-src="/view-resources/Areas/App/Views/_Bundles/account-register.min.js" asp-append-version="true"></script>
+}
+
+@section Styles
+{
+    <link href="/metronic/common/css/login-1@(CultureHelper.IsRtl ? ".rtl" : "").css" rel="stylesheet" />
+    @if (AbpSession.TenantId == 10)
+    {
+        <link href="~/tenant-styles/african-bank.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+}
+
+<div class="login-form">
+    <div class="pb-13 pt-lg-0 pt-5">
+        <a href="#" class="text-center mb-10"><vc:account-logo skin="dark"></vc:account-logo></a>
+    </div>
+    <form class="form register-form" asp-action="Register" method="post">
+        <div>
+            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">@L("Register")</h3>
+        </div>
+        @if (@ViewBag.ErrorMessage != null)
+        {
+            <div class="alert">
+                <div class="alert-icon">
+                    <i class="fa fa-exclamation-triangle" style="color:orange"></i>
+                    @ViewBag.ErrorMessage
+                </div>
+                <div class="alert-text"></div>
+            </div>
+        }
+
+        @if (!Model.UserMessage.IsNullOrEmpty())
+        {
+            <div class="alert">
+                <div class="alert-icon">
+                    <i class="fa fa-exclamation-triangle" style="color:orange"></i>
+                    @Model.UserMessage
+                </div>
+                <div class="alert-text"></div>
+            </div>
+        }
+
+        <input tabindex="1" type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+        <input tabindex="2" type="hidden" name="ExternalLoginAuthSchema" value="@Model.ExternalLoginAuthSchema" />
+        <input tabindex="3" type="hidden" name="SingleSignOn" value="@Model.SingleSignIn" />
+        <input tabindex="4" type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+        <input tabindex="5" type="hidden" name="Origin" value="@Model.Origin" />
+        @if (ViewBag.UseCaptcha)
+        {
+            <input tabindex="5" type="hidden" name="@RecaptchaValidator.RecaptchaResponseKey" id="@RecaptchaValidator.RecaptchaResponseKey" />
+        }
+
+        <div class="form-group">
+            <input tabindex="6" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="@L("Name")" name="Name" required value="@Model.Name" maxlength="@SME.Portal.Authorization.Users.User.MaxNameLength" />
+        </div>
+        <div class="form-group ">
+            <input tabindex="7" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="@L("Surname")" name="Surname" required value="@Model.Surname" maxlength="@SME.Portal.Authorization.Users.User.MaxSurnameLength" />
+        </div>
+        <div class="form-group ">
+            <input tabindex="8" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="email" placeholder="@L("EmailAddress")" name="EmailAddress" required value="@Model.EmailAddress" maxlength="@SME.Portal.Authorization.Users.User.MaxEmailAddressLength" />
+        </div>
+        <div class="form-group ">
+            <input id="phonenumber" tabindex="9" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="tel" placeholder="@L("MobileNumber")" name="PhoneNumber" required value="@Model.PhoneNumber" minlength="12" maxlength="12" />
+        </div>
+
+        @if (!Model.IsExternalLogin)
+        {
+            <div class="form-group pwstrength-div">
+                <input tabindex="10" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" autocomplete="new-password" id="RegisterPassword" placeholder="@L("Password")" name="Password" required />
+            </div>
+            <div class="form-group" style="position:relative">
+                <input tabindex="11" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" autocomplete="new-password" placeholder="@L("PasswordRepeat")" id="PasswordRepeat" name="PasswordRepeat" required />
+            </div>
+        }
+        <div class="form-group">
+            <div class="row align-items-center no-gutters">
+                <div class="col-8">
+                    <label class="checkbox checkbox-outline checkbox-outline-2x checkbox-primary">
+                        @if (AbpSession.TenantId == 3)
+                        {
+                            <a href="https://sefa.blob.core.windows.net/termsandconditions/sefa-terms-and-conditions.pdf" target="_blank"><b>I accept the terms and conditions</b> &nbsp;&nbsp; </a>
+                        }
+                        else if (AbpSession.TenantId == 5)
+                        {
+                            <a href="https://ecdcstorage.blob.core.windows.net/termsandconditions/ecdc-terms-and-conditions.pdf" target="_blank"><b>I accept the terms and conditions</b> &nbsp;&nbsp; </a>
+                        }
+                        else if (AbpSession.TenantId == 12)
+                        {
+                            <a href="https://hloolostorage.blob.core.windows.net/termsandconditions/hloolo-terms-and-conditions.pdf" target="_blank"><b>I accept the terms and conditions</b> &nbsp;&nbsp; </a>
+                        }
+                        else
+                        {
+                            <a href="https://www.finfind.co.za/terms-conditions" target="_blank"><b>@L("IAcceptTermsConditions")</b> &nbsp;&nbsp; </a>
+                        }
+                        <input tabindex="12" type="checkbox" id="terms-and-conditions" name="terms-and-conditions" value="true" />
+                        <span> </span>
+                    </label>
+                </div>
+                <div class="col-4">
+                    <button tabindex="13" type="submit" id="register-submit-btn" class="btn btn-primary float-right font-weight-bolder font-size-h6 px-8 py-4">@L("Submit")</button>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="pb-lg-0 pb-5">
+        <a asp-action="Login">
+        <button tabindex="13" type="button" id="register-back-btn" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">@L("Back")</button>
+        </a>
+        <button tabindex="12" type="submit" id="register-submit-btn" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">@L("Submit")</button>
+        </div>*@
+
+        <div>
+            @*
+            <p>If you did not receive a confirmation email link, <b>@Html.ActionLink(@L("ClickHereUpperCase"), "EmailActivation", "Account")</b> to resend.</p>
+            *@
+
+            @if (AbpSession.TenantId == 3)
+            {
+                <p>If you are an existing <b>sefa</b> user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+            else if (AbpSession.TenantId == 2)
+            {
+                <p>If you are an existing <b>Finfind</b> user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+            else if (AbpSession.TenantId == 5)
+            {
+                <p>If you are an existing <b>ECDC</b> user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+            else if (AbpSession.TenantId == 9)
+            {
+                <p>If you are an existing <b>Finfind</b> user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+            else if (AbpSession.TenantId == 10)
+            {
+                <p>If you are an existing <b>African Bank</b> user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+            else if (AbpSession.TenantId == 12)
+            {
+                <p>Already signed up to <b>Hloolo's'</b> finance matching service, <b><a style="color:green !important;" href="@Url.Action("Login", "Account")"> LOGIN</a></b></p>
+                <div class="row">
+                    <div class="col-xl-12" style="font-size:medium;">
+                         Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>If you are an existing user, <b>@Html.ActionLink("LOG IN", "Login", "Account")</b>.</p>
+            }
+
+        </div>
+
+    </form>
+</div>

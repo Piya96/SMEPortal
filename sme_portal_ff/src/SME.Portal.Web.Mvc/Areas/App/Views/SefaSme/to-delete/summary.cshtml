@@ -1,0 +1,155 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SME;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model SMEOnboardingWizardViewModel
+
+<div class="flex-column-fluid" style="width:100%;">
+
+    <div id="id-div-summary-madate-fit-pass" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>You have completed your basic screening. Please continue to complete the information requested in the screens to follow to confirm if one of our funding options fits your needs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .td-label {
+            color: #FFA800 !important;
+        }
+
+        .td-pass {
+            color: green;
+        }
+
+        .td-fail {
+            color: red;
+            cursor: help;
+        }
+
+        .alert.alert-custom.alert-outline-info .alert-text {
+            color: green !important;
+        }
+
+        .alert.alert-custom.alert-outline-info .alert-icon i {
+            color: green !important;
+        }
+
+        .alert.alert-custom.alert-outline-info {
+            border-color: green !important;
+        }
+    </style>
+
+    <div id="id-div-summary-madate-fit-fail" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-warning" role="alert">
+                    <div class="alert-icon"><i class="flaticon2-check-mark"></i></div>
+                    <div class="alert-text">
+                        <p><b>@L("Sefa")</b> is currently unable to assist you with funding.</p>
+                        <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-basic-screening-fail-redirect" href="javascript:void(0)">here</a>.</p>
+                        <p>To understand <b>@L("Sefa")</b>'s qualification criteria, please click <a id="a-basic-screening-fail-info" href="javascript:void(0)">here</a>.</p>
+
+                        <div>
+                            <table id="id-tbody-mandate-fit-list" class="table table-sm table-hover">
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="parent-basic-screening-fail-info" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <h4>The company should not be any of below company types:</h4>
+                        <ul>
+                            <li>Non-governmental organisations (NGOs)</li>
+                            <li>Community-based organisations (CBOs)</li>
+                            <li>Faith-based organisations (FBOs)</li>
+                            <li>Organisations that have registered as Section 21 Companies under the Company Act 61 of 1973</li>
+                            <li>Trusts registered with Master of the High Court under the Trust Property Control Act 57 of 1988</li>
+                            <li>Any other voluntary association that is not for profit.</li>
+                            <li>External company</li>
+                            <li>Political organisation</li>
+                        </ul>
+                        <h4>The company should not be part of below industries:</h4>
+                        <ul>
+                            <li>Tobacco</li>
+                            <li>Liquor</li>
+                            <li>Gambling</li>
+                            <li>Sex trade</li>
+                            <li>Manufacturing and selling of ammunition</li>
+                            <li>Labour broking</li>
+                            <li>Political organisations</li>
+                            <li>Primary agriculture</li>
+                            <li>Speculative property development</li>
+                            <li>No company or individual should be under debt review</li>
+                            <li>No individual(s) should have defaults against their name</li>
+                            <li>No company should be registered as delinquent</li>
+                            <li>No adverse findings should exist</li>
+                            <li>No unrehabilitated insolvents should be found</li>
+                            <li>The company should not be under business rescue or liquidation</li>
+                            <li>The CIPC annual fees should be paid</li>
+                            <li>The company should be a valid SA registered company</li>
+                            <li>No terrorism activities should be found on company or individual(s)</li>
+                            <li>No financial crimes should be found for company or individual(s)</li>
+                            <li>No sanctions should exist against company</li>
+                            <li>The company and individual(s) should be registered for Tax</li>
+                            <li>The Tax status should be in good standing and the Tax PIN should not expire within 3 months.</li>
+                            <li>The loan amount should be within the <b>@L("Sefa")</b> range of R20k to R50mil</li>
+                            <li>You should be able to afford the loan (proof of budget and cashflow forecasts should confirm this)</li>
+                            <li>No conflict of interest should exist in <b>@L("Sefa")</b></li>
+                            <li>The company should operate within SA borders</li>
+                            <li>The majority shareholders must have a SA ID</li>
+                            <li>The majority shareholders should be involved in the business</li>
+                            <li>The managers must have relevant skills and experience that fit the type of business</li>
+                            <li>Owner must actively work in the business</li>
+                            <li>The loan should help create jobs and have a development impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <h4 class="mb-10 font-weight-bolder text-dark">Profile Info Summary</h4>
+        </div>
+    </div>
+
+    @{
+        var fssVM = new FSSViewModel()
+        {
+            StyleWidth = "width:55%;",
+            StyleCol = "",
+            ApplicationId = 0,
+            TenantId = Model.MySettings.TenantId.Value
+        };
+
+        await Html.RenderPartialAsync("../SefaFunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM);
+
+        await Html.RenderPartialAsync("../SefaFunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM);
+
+        await Html.RenderPartialAsync("../SefaFunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+    }
+
+
+
+</div>

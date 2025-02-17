@@ -1,0 +1,40 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Contracts
+@model ContractViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="ContractInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Start") :</h6>
+                @Model.Contract.Start
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Expiry") :</h6>
+                @Model.Contract.Expiry
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Commission") :</h6>
+                @Model.Contract.Commission
+            </div>
+
+            <div class="col-6 mb-3">
+                <h6>(@L("Lender")) @L("Name") :</h6>
+                @Model.LenderName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>(@L("User")) @L("Name") :</h6>
+                @Model.UserName
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

@@ -1,0 +1,17 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+<h4 style="color:@Model.HeaderColor;" class="font-weight-bold mb-3">@L("FS_CompanyProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                @{
+                    await Html.RenderPartialAsync("../../Common/CompanyProfile/summary.cshtml", Model);
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

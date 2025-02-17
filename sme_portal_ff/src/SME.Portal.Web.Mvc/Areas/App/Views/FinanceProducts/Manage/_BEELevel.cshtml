@@ -1,0 +1,40 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepBEELevelForm">
+    <div class="step" id="stepBEELevel">
+        <h3>BEE Level</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Select the specific 'BEE Level' requirements for this financial product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:5px">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    @foreach (var list in Model.BeeLevelLists.OrderBy(p => p.Name))
+                    {
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.BeeLevelListIds) ? !@Model.IsEdit : @Model.FinanceProduct.BeeLevelListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="@(list.Id)" name="@(list.Id)">
+                                <label class="custom-control-label" for="@(list.Id)">@(list.Name)</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

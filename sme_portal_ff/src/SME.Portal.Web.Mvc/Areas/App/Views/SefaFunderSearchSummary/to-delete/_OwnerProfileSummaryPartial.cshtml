@@ -1,0 +1,37 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:green;" class="font-weight-bold mb-3">@L("FS_OwnerProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("OnboardingSummaryOwnerName")</td><td><div id="id-summary-owner-profile-name-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryOwnerEmail")</td><td><div id="id-summary-owner-profile-email-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryOwnerMobile")</td><td><div id="id-summary-owner-profile-mobile-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryOwnerIdentityNumber")</td><td><div id="id-summary-owner-profile-id-@appId"></div></td></tr>
+                <tr><td>@L("OW_Gender")</td><td><div id="id-summary-owner-profile-gender-@appId"></div></td></tr>
+                <tr><td>@L("OW_MaritalStatus")</td><td><div id="id-summary-owner-profile-marital-status-@appId"></div></td></tr>
+
+                <tr id="id-tr-summary-owner-profile-married-cop-@appId" style="display:none;"><td>Are you married in Community of Property?</td><td><div id="id-summary-owner-profile-married-cop-@appId"></div></td></tr>
+                <tr id="id-tr-summary-owner-profile-spouse-id-@appId" style="display:none;"><td>Spouse's identity number</td><td><div id="id-summary-owner-profile-spouse-id-@appId"></div></td></tr>
+
+                <tr><td>@L("OW_Age")</td><td><div id="id-summary-owner-profile-age-@appId"></div></td></tr>
+                <tr><td>@L("OW_Race")</td><td><div id="id-summary-owner-profile-race-@appId"></div></td></tr>
+                <tr><td>Are you disabled?</td><td><div id="id-summary-owner-profile-is-disabled-@appId"></div></td></tr>
+
+                <tr id="id-tr-summary-owner-profile-race-other-@appId" style="display:none;"><td>Race ( Other )</td><td><div id="id-summary-owner-profile-race-other-@appId"></div></td></tr>
+                <tr id="id-tr-summary-owner-profile-physical-address-@appId" style="display:none;"><td>Physical Address of Owner</td><td><div id="id-summary-owner-profile-physical-address-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

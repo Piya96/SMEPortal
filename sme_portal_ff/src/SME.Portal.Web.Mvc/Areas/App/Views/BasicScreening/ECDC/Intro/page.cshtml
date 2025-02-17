@@ -1,0 +1,39 @@
+﻿<div class="pb-5" data-wizard-type="step-content" id="div-disclaimer">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark"></h3>
+
+    @{ await Html.RenderPartialAsync("../../Common/Intro/page.cshtml"); }
+
+    <style>
+        .alert-outline-primary {
+            color : black !important;
+            border-color: black !important;
+        }
+
+        .alert.alert-custom.alert-outline-info {
+            border-color: black !important;
+        }
+
+    </style>
+
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+                <div class="alert-text" style="color:black;">
+                    <p><h3 style="font-weight:bold;">New funding enquiry</h3></p>
+    
+                    <p>ECDC has a number of funding products available specifically to assist SMMEs.</p>
+    
+                    <p>By responding to the questions that follow, you will be taken through steps where your funding needs will be matched to ECDC's financing instruments.</p>
+    
+                    <p>In cases where ECDC is unable to match your needs, you will be directed to other options where your requirements could be potentially met.</p>
+    
+                    <p>Before you begin, you will be required to complete basic screening to ensure that your information is validated and recorded.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

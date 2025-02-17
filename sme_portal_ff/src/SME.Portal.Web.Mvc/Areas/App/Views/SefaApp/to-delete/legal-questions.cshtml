@@ -1,0 +1,19 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+
+</style>
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-legal-questions">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Additional Information</h3>
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Legal and financial questions</h3>
+
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/legal-questions-partial.cshtml"); }
+
+</div>

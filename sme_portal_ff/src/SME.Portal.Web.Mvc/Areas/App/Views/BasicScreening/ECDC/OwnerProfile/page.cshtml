@@ -1,0 +1,13 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-owner-profile">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Owner Profile</h3>
+
+    @{
+        ViewData["string002"] = "ECDC";
+    }
+
+    @{ await Html.RenderPartialAsync("../../Common/OwnerProfile/page.cshtml"); }
+
+</div>

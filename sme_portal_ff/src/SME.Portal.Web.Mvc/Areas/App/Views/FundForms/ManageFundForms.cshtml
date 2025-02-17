@@ -1,0 +1,85 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using Newtonsoft.Json;
+@model ManageFundFormViewModel
+
+@{
+    Model.BaseModelType = "ManageFundFormsViewModel";
+    Layout = "~/Areas/App/Views/Layout/_LayoutFundForms.cshtml";
+}
+
+@section Styles
+{
+    <link href="~/view-resources/Areas/App/Views/FinanceProducts/Manage/ManageStyling.css" rel="stylesheet" />
+    <link href="~/wwwroot/metronic/themes/default/css/style.bundle.css" rel="stylesheet" />
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+    <div class="row" style="text-align:center;margin-block:20px">
+        <div class="col fp-title">
+            <h2><b>@Model.FinanceProduct.LenderName</b> - @Model.FinanceProduct.Name</h2>
+        </div>
+    </div>
+    <div class="@(await GetContainerClass())">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_General.cshtml", @Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_LoanAmount.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_FinanceFor.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_SACitizen.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_CompanyRegType.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_Province.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_MonthsTrading.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_MonthlyIncome.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_Profitability.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_Collateral.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_Ownership.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_BEELevel.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_Country.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_CustomerTypes.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_DocumentType.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_LoanIndex.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_LoanType.cshtml", @Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_WebsiteUrl.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_AvgAnnualTurnover.cshtml",@Model)
+                        @await Html.PartialAsync("../FinanceProducts/Manage/_IndustrySector.cshtml",@Model)
+                        <div class="row btn-row">
+                            <div class="col-md-12">
+                                <button type="button" onclick="submitForm(event,true)" class="btn btn-primary">Back</button>
+                                <button type="button" onclick="submitForm(event,false)" class="btn btn-primary" id="NextFundForm">Next</button>
+                                <button type="button" onclick="submitForm(event,false)" class="btn btn-primary" id="FinishFundForm" style="display:none">Finish</button>
+                                    
+                                @Html.HiddenFor(a => a.FinanceProduct.LastCheckedDate)
+                                <input type="hidden" id="ManageFundFormToken" asp-for="@Model.ManageFundFormToken" />
+                                <input type="hidden" id="EncryptedFundFormToken" asp-for="@Model.EncryptedFundFormToken" />
+                                <input type="hidden" id="FundFormId" asp-for="@Model.FinanceProduct.Id" />
+                                <input type="hidden" asp-for="@Model.FinanceProduct.IsDeleted" />
+                                <input type="hidden" id="IsEdit" asp-for="@Model.IsEdit" />
+                                <input type="hidden" id="MatchCriteriaJson" asp-for="@Model.FinanceProduct.MatchCriteriaJson" />
+                                <input type="hidden" id="LenderId" asp-for="@Model.FinanceProduct.LenderId" />
+                                <input type="hidden" id="FinanceProductName" asp-for="@Model.FinanceProduct.Name" />
+                                <input type="hidden" id="WebsiteUrls" asp-for="@Model.WebsiteUrls.Count" />
+                                <input type="hidden" id="ResearchUrls" asp-for="@Model.ResearchUrls.Count" />
+                                <input type="hidden" id="ProvinceTypeLists" asp-for="@Model.ProvinceTypeStrings" />
+                                <input type="hidden" id="LenderTypeCheck" asp-for="@Model.FinanceProduct.LenderType"/>
+                                <input type="hidden" id="Summary" asp-for="@Model.FinanceProduct.Summary"/>
+                                <input type="hidden" id="Comments" asp-for="@Model.FinanceProductComments.Count" />
+                                <input type="hidden" id="OwnershipListIds" asp-for="@Model.OwnershipStrings" />
+                                <input type="hidden" asp-for="@Model.CurrentStep" />
+                                <input type="hidden" asp-for="@Model.NextStep" />
+                                <input type="hidden" asp-for="@Model.Checked" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="~/view-resources/Areas/App/Views/FinanceProducts/FundForms/ManageFundForms.js"></script>
+}

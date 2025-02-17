@@ -1,0 +1,25 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Input_N_LT_RT;
+@{
+    var name = Model.Scope + "checkbox-" + Model.Name;
+}
+
+<div class="@Model.Col">
+    <div class="form-group fv-plugins-icon-container">
+        <label>@Model.Label</label>
+    </div>
+</div>
+
+<div class="@Model.Col">
+    <div class="form-group fv-plugins-icon-container">
+        <span class="switch switch-icon">
+            <label>
+                <input id="@name" type="checkbox" name="@name" value="false">
+                <span></span>
+            </label>
+        </span>
+</div>
+</div>
+<span class="form-text text-muted"></span>
+<div id="message-@Model.Name" class="fv-plugins-message-container"></div>

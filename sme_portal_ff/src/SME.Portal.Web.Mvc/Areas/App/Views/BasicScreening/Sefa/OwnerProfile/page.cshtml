@@ -1,0 +1,37 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-owner-profile">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Owner Profile</h3>
+
+    @{
+        ViewData["string002"] = "Sefa";
+    }
+
+    @{ await Html.RenderPartialAsync("../../Common/OwnerProfile/page.cshtml"); }
+
+    <div>
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "owner-is-disabled",
+                Label = "Are you disabled?",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-owner-profile-race-other" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "owner-profile-race-other",
+                Label = "Race ( Other )",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+</div>

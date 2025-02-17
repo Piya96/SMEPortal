@@ -1,0 +1,98 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.Lenders
+@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Lenders
+@using SME.Portal
+@model LendersViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Tenant.Lenders;
+}
+@section Scripts
+{
+    <script abp-src="/view-resources/Areas/App/Views/Lenders/Index.js" asp-append-version="true"></script>
+    <script src="/view-resources/Areas/App/Views/Common/handlechecks.js"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+
+    <abp-page-subheader title="@L("Lenders")" description="@L("LendersHeaderInfo")">
+
+        @if (IsGranted(AppPermissions.Pages_Administration_Lenders_Create))
+        {
+            <button id="CreateNewLenderButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewLender")</button>
+        }
+    </abp-page-subheader>
+
+    <div class="@(await GetContainerClass())">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="NameFilterId">@L("Name")</label>
+                            <input type="text" class="form-control" name="nameFilter" id="NameFilterId">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="LenderTypesFilterId">@L("LenderType")</label>
+                        <select class="form-control" name="LenderTypesFilter" id="LenderTypesFilterId" asp-items="Model.SelectLenderTypeLists.OrderBy(p => p.Text)">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="HeadOfficeProvinceFilterId">@L("HeadOfficeProvince")</label>
+                        <select id="HeadOfficeProvinceFilterId" class="form-control" name="HeadOfficeProvinceFilter" asp-items="Model.SelectProvinceTypeLists.OrderBy(p => p.Text)">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                            <div class="m-checkbox-list">
+                            <label for="HasContractFilterId" class="kt-checkbox" style="display: inline-flex;padding-top: 30px;">
+                                <input id="HasContractFilterId" type="checkbox" style="margin-right: 5px;" name="HasContractFilter" value="0" onclick="handleCheckBox(this);" />
+                            @L("HasContract")
+                            <span></span>
+                            </label>
+                            </div>
+                    </div>
+                </div>
+                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="kt-separator kt-separator--border-dashed"></div>
+                    </div> 
+                    <div class="col-md-3">
+                        <div class="m-checkbox-list">
+                            <label for="HasArchivedFilterId" class="kt-checkbox" style="display: inline-flex;">
+                                <input id="HasArchivedFilterId" type="checkbox" style="margin-right: 5px;" name="HasArchivedFilter" value="0" onclick="handleCheckBox(this);" />  
+                                @L("HasArchived")
+                            <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-xl-12">
+                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                    <div class="d-flex align-items-center" style="padding-top: 10px;">
+                        <button id="SearchLendersButton" class="btn btn-primary save-button" type="submit"><span>@L("Search")</span></button>
+                        <button id="FilterLendersButton" class="btn btn-primary save-button" type="submit"><span>@L("ClearFilters")</span></button>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <table id="LendersTable" class="display table table-striped table-bordered table-hover dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>@L("Name")</th>
+                                <th>@L("LenderType")</th>
+                                <th>@L("FinanceProductCount")</th>
+                                <th>@L("HeadOffice")</th>
+                                <th></th>  
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

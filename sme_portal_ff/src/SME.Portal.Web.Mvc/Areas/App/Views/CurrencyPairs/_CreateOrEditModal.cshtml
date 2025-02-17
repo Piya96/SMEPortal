@@ -1,0 +1,56 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.CurrencyPairs
+@model CreateOrEditCurrencyPairModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditCurrencyPair")) : L("CreateNewCurrencyPair")))
+
+<div class="modal-body">
+        <div id="CurrencyPairInformationsTab">
+            <form name="CurrencyPairInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.CurrencyPair.Id" />
+                }
+
+				
+
+				
+								<div class="form-group">
+									<label for="CurrencyPair_Name">@L("Name")</label>
+									<input class="form-control" id="CurrencyPair_Name" value="@Model.CurrencyPair.Name" type="text" name="name"  required  maxlength="@SME.Portal.Currency.CurrencyPairConsts.MaxNameLength"  minlength="@SME.Portal.Currency.CurrencyPairConsts.MinNameLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="CurrencyPair_BaseCurrencyCode">@L("BaseCurrencyCode")</label>
+									<input class="form-control" id="CurrencyPair_BaseCurrencyCode" value="@Model.CurrencyPair.BaseCurrencyCode" type="text" name="baseCurrencyCode"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="CurrencyPair_TargetCurrencyCode">@L("TargetCurrencyCode")</label>
+									<input class="form-control" id="CurrencyPair_TargetCurrencyCode" value="@Model.CurrencyPair.TargetCurrencyCode" type="text" name="targetCurrencyCode"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="CurrencyPair_ExchangeRate">@L("ExchangeRate")</label>
+									<input class="form-control m-input" id="CurrencyPair_ExchangeRate" value="@Model.CurrencyPair.ExchangeRate.ToString(CultureInfo.InvariantCulture)" type="number" name="exchangeRate"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="CurrencyPair_Symbol">@L("Symbol")</label>
+									<input class="form-control" id="CurrencyPair_Symbol" value="@Model.CurrencyPair.Symbol" type="text" name="symbol"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="CurrencyPair_Log">@L("Log")</label>
+									<input class="form-control" id="CurrencyPair_Log" value="@Model.CurrencyPair.Log" type="text" name="log"     />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

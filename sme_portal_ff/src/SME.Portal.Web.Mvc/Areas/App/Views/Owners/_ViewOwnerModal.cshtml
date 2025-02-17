@@ -1,0 +1,60 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Owners
+@model OwnerViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="OwnerInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.Owner.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Surname") :</h6>
+                @Model.Owner.Surname
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("EmailAddress") :</h6>
+                @Model.Owner.EmailAddress
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PhoneNumber") :</h6>
+                @Model.Owner.PhoneNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IsPhoneNumberConfirmed") :</h6>
+                @Model.Owner.IsPhoneNumberConfirmed
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IdentityOrPassport") :</h6>
+                @Model.Owner.IdentityOrPassport
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("IsIdentityOrPassportConfirmed") :</h6>
+                @Model.Owner.IsIdentityOrPassportConfirmed
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Race") :</h6>
+                @Model.Owner.Race
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("VerificationRecordJson") :</h6>
+                @Model.Owner.VerificationRecordJson
+            </div>
+
+            <div class="col-6 mb-3">
+                <h6>(@L("User")) @L("Name") :</h6>
+                @Model.UserName
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

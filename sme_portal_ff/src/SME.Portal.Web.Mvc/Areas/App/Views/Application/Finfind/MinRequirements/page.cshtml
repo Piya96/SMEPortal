@@ -1,0 +1,44 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model CreateEditFunderSearchViewModel
+
+@{
+    var LenderName = "Lender";
+    var lenderName = "lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        LenderName = "Funder";
+        lenderName = "funder";
+    }
+}
+
+<div class="pb-5" data-wizard-type="step-content" id="div-key-things">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Minimum Requirements for @LenderName Matching​</h3>
+    @{ await Html.RenderPartialAsync("page-common-drop-zone.cshtml"); }
+    
+    <p>
+        @LenderName&#115 have three basic requirements to initially assess your request.
+        <br/><br/>
+        Please provide the requirements below in order for us to provide you with the details of the @lenderName&#115 that match with your specific funding application:
+    </p>
+    
+    <br/>
+    
+    <div>
+        <h3>1. Proof of Turnover​</h3>
+        @{ await Html.RenderPartialAsync("page-common-proof-of-turnover.cshtml"); }
+    
+        <br/>
+        <h3>2. Bank Statements​</h3>
+        @{ await Html.RenderPartialAsync("page-common-bank-statements.cshtml"); }
+    
+        <br/>
+        <h3>3. Credit Score​</h3>
+        @{ await Html.RenderPartialAsync("page-common-credit-score.cshtml"); }
+    
+    </div>
+
+</div>

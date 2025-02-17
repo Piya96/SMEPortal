@@ -1,0 +1,15 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+aside {
+    height: 100vh;
+    max-width: 500px;
+    position: fixed;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: 100%;
+}

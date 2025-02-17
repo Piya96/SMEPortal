@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/tenant-styles/ecdc_business_support_main.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/tenant-styles/ecdc_business_support_links_templates.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/tenant-styles/ecdc_business_support_BusinessAdvisor.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Google tag (gtag.js) - Google Analytics ECDC App-->
+    <!---<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWL58CF23C"></script>-->
+    <script src="~/Common/Scripts/googletagmanager-G-PWL58CF23C.js" asp-append-version="true"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWL58CF23C');
+    </script>
+
+    <title>ECDC - Business Consultant</title>
+    <link rel="shortcut icon" href="https://static.wixstatic.com/media/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg" type="image/jpeg">
+</head>
+<body>
+    <div class="pb-13 pt-lg-0 pt-5">
+        <a href="https://www.ecdc.co.za/" class="text-center mb-10">
+            <img src="/Common/Images/ECDC_Logo3_icons.png" alt="" class="max-h-70px">
+        </a>
+    </div>
+    <div class="flex-container divPaddingLeft">
+        <h2>SPEAK TO A BUSINESS CONSULTANT</h2>
+        <div class="divBackButton">   
+            <button class="btnBusSupport" id="btnHeading" onclick="location.href='@Url.Action("RedirectToBusinessSupport", "ECDCbusinessSupport")'">
+                <a href="@Url.Action("RedirectToBusinessSupport", "ECDCbusinessSupport")" aria-label="This is a link">BACK TO THE BUSINESS SUPPORT PAGE</a>
+            </button>
+        </div>
+        <div class="paragraphs">
+            <p>
+                Business Support Services provide integrated non-financial development support for MSMEs operating in the Eastern Cape. <br />
+                The activities include the provision of business consultatory services, marketing support and a range of other development services <br /> 
+                to improve business competitiveness, facilitate access to markets and capacity.
+            </p>
+            
+             <p>
+                Please direct enquiries relating to Business Support Services to consultants in the respective regional offices who are available to assist. 
+            </p>
+            <div class="divider"></div>
+            
+            <div class="contact-info">
+              <span class="icon"></span><p id="para1Buffalo">Buffalo City and Amathole Region – <a class="email-link" href="mailto:eastlondonbusinesssupport@ecdc.co.za">eastlondonbusinesssupport@ecdc.co.za</a></p>
+              <span class="icon"></span><p id="para2Chris">Chris Hani and Joe Gqabi Region – <a class="email-link" href="mailto:komanibusinesssupport@ecdc.co.za">komanibusinesssupport@ecdc.co.za</a></p>
+              <span class="icon"></span><p id="para3OrTambo">OR Tambo and Alfred Nzo Region – <a class="email-link" href="mailto:mthathabusinesssupport@ecdc.co.za">mthathabusinesssupport@ecdc.co.za</a></p>
+              <span class="icon"></span><p id="para4Sara">Sara Baartman and NMBM Region – <a class="email-link" href="mailto:gqeberhabusinesssupport@ecdc.co.za">gqeberhabusinesssupport@ecdc.co.za</a></p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class=d-flex flex-column flex-row-auto">
+        <img src="/Common/Images/_ECDC_lady-in-hard-hat.jpg" />
+    </div>
+    <script type="text/javascript" id="ecdc-hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139540225.js"></script>
+</body>
+</html>

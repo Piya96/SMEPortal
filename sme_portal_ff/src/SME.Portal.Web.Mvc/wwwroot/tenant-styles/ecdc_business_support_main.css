@@ -1,0 +1,392 @@
+﻿body {
+    color: #333333;
+    background-color: #ffffff;
+    margin-top: 1rem;
+    padding: 0;
+    display: grid;
+    justify-items: center;
+    font-family: 'Vectora Light', sans-serif;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    justify-items: center;
+    gap: 3rem;
+    /*max-width: 1120px;*/ /* set a fixed max-width */
+    /*margin: 0 auto;*/ /* center the container horizontally */
+    left: 1.25rem;
+    position: relative;
+}
+
+#_bodyBusinessSupport .pt-5 {
+    padding-left: 4.5rem !important;
+}
+
+button:not(#toggleBtn, #btnHeading) {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    padding: 10px;
+    font-family: 'Vectora Light',sans-serif;
+    width: 25rem;
+    height: 21rem;
+    position: relative;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+#button-one {
+    background-color: #66A93E;
+    border: 2px solid #66A93E;
+}
+
+#button-two {
+    background-color: #C1C630;
+    border: 2px solid #C1C630;
+}
+
+#button-three {
+    background-color: #0F9194;
+    border: 2px solid #0F9194;
+}
+
+#button-four {
+    background-color: #CE8A2A;
+    border: 2px solid #CE8A2A;
+}
+
+#button-five {
+    background-color: #2DA9DF;
+    border: 2px solid #2DA9DF;
+}
+
+#button-six {
+    background-color: #004E98;
+    border: 2px solid #004E98;
+}
+
+#button-seven {
+    background-color: #4B2D7B;
+    border: 2px solid #4B2D7B;
+}
+
+#button-eight {
+    background-color: #984F1B;
+    border: 2px solid #984F1B;
+}
+
+h1 {
+    display: grid;
+    font-family: 'Vectora Roman' !important;
+    font-size: clamp(1.5rem,6vw,2.5rem);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    text-decoration: none;
+    font-family: 'Arial' !important;
+    font-weight: normal;
+}
+
+.divPaddingLeft {
+    font-size: 1.50rem;
+    padding-top: 2.20rem;
+    padding-left: 4rem;
+}
+
+p {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+span a {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.5s ease;
+    position: relative;
+    bottom: 1rem;
+}
+
+.btnContainer {
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 0.11fr 2fr 1.5fr 1fr;
+    align-items: center;
+}
+
+.moreInfo {
+    font-size: 1.25rem;
+    /*padding-left: 15px;
+            padding-right: 15px;*/
+    position: relative;
+    bottom: 2rem;
+}
+
+.learnMore {
+    position: relative;
+    bottom: -2rem;
+}
+
+.descript {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.heading {
+    font-family: 'Vectora Bold', sans-serif;
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 3.5rem;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 50%;
+    height: 100%;
+    width: 10%;
+    font-size: 32px;
+    font-weight: bold;
+    background-color: white;
+    top: -5rem;
+}
+
+
+#button-one .number {
+    color: #66A93E;
+    top: -2rem;
+}
+
+#button-two .number {
+    color: #C1C630;
+    top: -4rem;
+}
+
+#button-three .number {
+    color: #0F9194;
+    top: -4rem;
+}
+
+#button-four .number {
+    color: #CE8A2A;
+    top: -5.2rem;
+}
+
+#button-five .number {
+    color: #2DA9DF;
+    top: -4rem;
+}
+
+#button-six .number {
+    color: #004E98;
+    top: -4rem;
+}
+
+#button-seven .number {
+    color: #4B2D7B;
+    top: -4rem;
+}
+
+#button-eight .number {
+    color: #984F1B;
+    top: -4rem;
+}
+
+#button-one .heading {
+    bottom: 2.0rem;
+}
+
+#button-two .heading {
+    bottom: 3.0rem;
+}
+
+#button-three .heading {
+    bottom: 3.0rem;
+}
+
+#button-four .heading {
+    bottom: 3.0rem;
+}
+
+#button-five .heading {
+    bottom: 3.0rem;
+}
+
+#button-six .heading {
+    bottom: 2.8rem;
+}
+
+#button-seven .heading {
+    bottom: 3.05rem;
+}
+
+#button-eight .heading {
+    bottom: 3.0rem;
+}
+
+#button-one .learnMore {
+    position: relative;
+    bottom: 0rem;
+}
+
+#button-five .learnMore {
+    position: relative;
+    bottom: -3.0rem;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+a:hover {
+    /*color: #33def4;*/
+}
+
+button:active {
+    border-bottom-width: 2px;
+    top: 3px;
+}
+
+.relaTiveContainer {
+    position: relative;
+}
+
+iframe {
+    /*display: none;*/
+    position: relative;
+    height: 100px;
+    width: 500px;
+    bottom: 200px;
+    border: 2px solid #376ddb;
+}
+
+a:active relaTiveContainer iframe {
+    display: grid;
+}
+
+.divTextField {
+    margin-top: 2rem;
+    margin: 1.25rem auto;
+    position: relative;
+    left: 1.25rem;
+    grid-template-columns: none !important;
+}
+
+    .divTextField .container {
+        display: grid;
+        grid-template-columns: none !important;
+        grid-auto-flow: row;
+        justify-items: center;
+    }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 1070px) {
+
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .row {
+        flex-basis: 100% !important;
+    }
+}
+
+
+@media only screen and (max-width: 740px) {
+
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .row {
+        flex-basis: 100% !important;
+    }
+
+    body {
+        justify-items: center !important;
+        width: 90%;
+        margin: 0;
+    }
+
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row {
+        flex-basis: 100%;
+    }
+
+    body .pb-13 {
+        margin-right: 2rem;
+        align-items: flex-end;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    img {
+        width: 78.2%;
+        left: 2rem;
+        position: relative;
+    }
+
+    .divPaddingLeft {
+        /*padding-top: 1rem;*/
+        padding-top: 0.25rem;
+        padding-left: 2rem;
+    }
+
+    button:not(#toggleBtn, #btnHeading) {
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        padding: 10px;
+        font-family: 'Vectora Light',sans-serif;
+        width: 21rem;
+        /*height: 21rem;*/
+        position: relative;
+        color: white;
+        transition: all 0.5s ease;
+    }
+
+    .heading {
+        font-size: 1.25rem;
+        bottom: 4rem;
+    }
+
+    .moreInfo {
+        font-size: 1.15rem;
+        bottom: 3rem;
+    }
+
+    .learnMore {
+        bottom: -1rem;
+    }
+
+    #divLogo {
+        margin-left: 1rem;
+        right: 2rem;
+        position: relative;
+    }
+
+    .max-h-70px {
+        max-height: 7.75rem !important;
+    }
+}

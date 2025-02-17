@@ -1,0 +1,306 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.FunderSearch
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model FunderSearchesViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.FundingApplications;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+    var greyAddButtonDisable = false;
+
+    var TenantNamePascalCase = "";
+    var TenantNameKebabCase = "";
+    // Company Partners.
+    if(AbpSession.TenantId == 9)
+    {
+        TenantNamePascalCase = "CompanyPartners";
+        TenantNameKebabCase = "company-partners";
+    }
+    else
+    // African Bank.
+    if(AbpSession.TenantId == 10)
+    {
+        TenantNamePascalCase = "AfricanBank";
+        TenantNameKebabCase = "african-bank";
+    }
+    else
+    // Hloolo.
+    if(AbpSession.TenantId == 12)
+    {
+        TenantNamePascalCase = "Hloolo";
+        TenantNameKebabCase = "hloolo";
+    }
+    else
+    {
+        TenantNamePascalCase = "Finfind";
+        TenantNameKebabCase = "finfind";
+    }
+    var cssRef = "~/tenant-styles/" + TenantNameKebabCase + ".css";
+}
+
+@section Scripts
+{
+    <style>
+        .sme-label-queued, .sme-label-match, .sme-label-nomatch, .sme-label-locked {
+            border-radius: 5px;
+        }
+
+        .sme-label-queued {
+            background: darkorange;
+            color: mintcream;
+        }
+
+        .sme-label-match {
+            background: green;
+            color: aquamarine;
+        }
+
+        .sme-label-nomatch {
+            background: red;
+            color: blanchedalmond;
+        }
+
+        .sme-label-locked {
+            background: #1BC5BD;
+            color: white;
+        }
+    </style>
+
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/FormValidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+
+    <link href=@cssRef rel="stylesheet" asp-append-version="true" />
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = TenantNameKebabCase
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/match-polling.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/start-funder-search-modal-logic.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/match-polling.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/start-funder-search-modal-logic.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/ecdc/app-common.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/CompanyInfo/dto.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/ecdc/app-common.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/CompanyInfo/dto.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+
+        function actionCallback(action, output) {
+            let appId = output.id;
+            if (action == 'Reload') {
+                if (output.view == 'Index') {
+                    location.href = '@Url.Action("Index", TenantNamePascalCase + "FunderSearch")?reload=' + false;
+                } else {
+                    location.href = '@Url.Action("Detail", TenantNamePascalCase + "FunderSearch")?id=' + appId + '&reload=' + false;
+                }
+            }
+        }
+
+        function onStartFunderSearch(companyId) {
+            location.href = '@Url.Action("Wizard", TenantNamePascalCase + "FunderSearch")?id=' + companyId;
+        }
+
+        $(document).ready(function () {
+
+            let matchPolling = new SMEMatchPolling(actionCallback, '@Model.Reload', '@Model.View');
+
+            app.wizard.isb.init(null, null, null);
+            let helpers = app.onboard.helpers.get();
+            let json = @Html.Raw(Json.Serialize(Model));
+            for(const o in json.applicationProperties) {
+                app.fss.user.render(json.settings, o);
+                app.fss.owner.render(json.owners[o].owner, o);
+                app.fss.company.render(json.companies[o].smeCompany, o);
+                let dto = helpers.nvpArrayToObject(json.applicationProperties[o]);
+                app.wizard.fundingRequirements.summary.render(dto, o);
+                app.wizard.companyInfo.summary.render(dto, o);
+                app.wizard.financialInfo.summary.render(dto, o);
+                app.wizard.lenderDocuments.summary.render(dto, o);
+                app.wizard.keyThings.summary.render(dto, o);
+            }
+
+            app.funderSearch.modal.onStart(onStartFunderSearch);
+
+            $('#download-credit-report-id').on('click', function () {
+                app.consumerCredit.loadDetail();
+                app.consumerCredit.downloadCreditReport(function (status) {
+
+                });
+            });
+
+            $('#redirect-to-consumer-credit-id').on('click', function () {
+                location.href = '@Url.Action("Index", "ConsumerCredit")';
+            });
+
+        });
+
+    </script>
+
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if(!Model.HasOnboarded)
+        {
+            <div class="alert alert-custom alert-notice alert-light-notice fade show mb-5" role="alert">
+                <div class="alert-icon">
+                    <i class="flaticon-warning"></i>
+                </div>
+                <div class="alert-text">
+                    <p>You need to complete your Owner and Business Profile information, before you can do a Funder Search.</p>
+                    <p><a href="@Url.Action("Index", "Sme")" id="forget-password" class="">@L("ClickHereCamel") </a>to go to the Profile Information section.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card card-custom gutter-b">
+                <div class="card card-custom">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4 class="font-weight-bold mb-3">Funder Searches</h4>
+                            </div>
+                            <div class="col-xl-6">
+                                @if(greyAddButtonDisable)
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            disabled
+                                            style="float:right;"
+                                            type="button" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="flaticon-add"></i>New Funder Search
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            style="float:right;"
+                                            type="button" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="flaticon-add"></i>New Funder Search
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        <br />
+                        @{ await Html.RenderPartialAsync("application-view.cshtml"); }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal-->
+<div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Funder Search</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="bank" class="form-group">
+                    <label for="company">Select a Company to do a funder search for.</label>
+                    <select class="form-control" id="company-select" name="company-select">
+                        <option value="" disabled selected hidden>Select an option</option>
+                        @foreach(var company in Model.AllCompanies)
+                        {
+                            <option value="@company.SmeCompany.Id">@company.SmeCompany.Name</option>
+                        }
+
+                    </select>
+                    <span class="form-text text-muted"></span>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button id="id-funder-search-start-btn" type="button" class="btn btn-primary font-weight-bold">Start</button>
+            </div>
+        </div>
+    </div>
+</div>

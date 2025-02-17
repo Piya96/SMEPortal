@@ -1,0 +1,593 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-funding-requirements">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Funding Match</h3>
+
+    <h4 class="mb-10 font-weight-bold text-dark" id="funding-requirements-header"></h4>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- TREP, Revolving loan, Asset finance, Bridging loan, ManufactureVeteranDisability, Term loan, Godisa, Co-op development fund, WL or RFI or EU, Micro finance -->
+    <div id="parent-group-1" style="display:none;">
+        <h4 class="mb-10 font-weight-bold text-dark">Business/Employee Information</h4>
+
+        @{ await Html.RenderPartialAsync(
+            "../SefaApp/partials/input-mn-lt-rt-left.cshtml",
+            new Input_MN_LT_RT_Left()
+            {
+                Name = "business-years-in-operation",
+                Label = "How many months has your business been in operation?",
+                ColLeft = "col-xl-9",
+                ColRight = "col-xl-3"
+            }
+        );}
+
+        @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/employees.cshtml"); }
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- TREP -->
+    <div id="parent-group-2" style="display:none;">
+
+        <div class="row" style="padding-top: -15px; margin-top: -15px;">
+
+            <div class="col-xl-12">
+                <div class="form-group fv-plugins-icon-container">
+                    <label for="input-key-suppliers">List of key suppliers</label>
+                    <div class="input-group">
+                        <textarea id="input-key-suppliers" name="input-key-suppliers" class="form-control" rows="3" style="height: 118px;"></textarea>
+                    </div>
+                    <span class="form-text text-muted"></span>
+                    <div id="message-key-suppliers"></div>
+                </div>
+
+            </div>
+        </div>
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "credit-held-with-suppliers",
+                   Label = "What is your total credit limit with all suppliers (if any)?",
+                   LeftText = "R"
+               }
+           );}
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- TREP, Revolving loan, Asset finance, Bridging loan, ManufactureVeteranDisability, Term loan, Godisa, Co-op development fund, WL or RFI or EU, Micro finance -->
+    <div id="parent-group-3" style="display:none;">
+        <h4 class="mb-10 font-weight-bold text-dark">Ownership Details</h4>
+
+        @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/ownership.cshtml"); }
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- TREP, Revolving loan, Asset finance, Bridging loan, ManufactureVeteranDisability, Term loan, Godisa, Co-op development fund, WL or RFI or EU, Micro finance -->
+    <div id="parent-group-4" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "../SefaApp/partials/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "owners-contribution",
+                Label = "Owners' contribution",
+                LeftText = "R"
+            }
+        );}
+
+        <div id="source-of-funds-root">
+            @{ await Html.RenderPartialAsync(
+                 "../SefaApp/partials/select-n-lt-rt.cshtml",
+                 new Select_N_LT_RT()
+                 {
+                     Name = "source-of-funds",
+                     Label = "Source of funds (owner)"
+                 }
+             );}
+        </div>
+
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "business-premises-property-value-of-directors",
+                   Label = "What is the value of the business premises and/or other property owned by the directors? (Give net value of premises - property value less any finance still owing)?",
+                   LeftText = "R"
+               }
+           );}
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Revolving loan, Asset finance, Bridging loan, ManufactureVeteranDisability, Term loan, Godisa, WL or RFI or EU, Micro finance -->
+    <div id="parent-group-5" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "has-up-to-date-audited-management-accounts",
+                   Label = "Do you have up to date Management Accounts?"
+               }
+           );}
+    </div>
+
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Youth challenge fund -->
+    <div id="parent-group-6" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                  // ??? wording
+                  Name = "not-funding-for-debt-to-other-lending-institute",
+                   Label = "Is this funding to pay a debt owed to another lending institution?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "not-funded-by-other-government-dept-parastal",
+                   Label = "Have other activities already been funded by other government departments or parastatals?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "owner-not-government-or-soe-officials",
+                   Label = "The business is not a government or SOE official?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "not-gaming-pyramid-loan-shark-illegal",
+                   Label = "The business does not fall within the gambling, pyramid sales scheme, loan shark and operates illegal activities etc., as guided by credit policy and grant policies?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "not-fraud-corruption-records",
+                   Label = "There is no record of fraud and corruption?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "owner-not-un-rehabilitated-insolvent",
+                   Label = "The owner/applicant is not an un-rehabilitated insolvent?"
+               }
+           );}
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- TREP -->
+    <div id="parent-group-7" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "business-whole-sa-owned",
+                   Label = "The business is 100% South African owned?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "70-perc-employees-south-african-valid-id-docs",
+                   Label = "70% of the employees are South African with valid South African ID documents?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "min-6-months-trading",
+                   Label = "The business has been trading for a minimum period of 6 months?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "turnover-less-than-r1point5mill-per-annum",
+                   Label = "Turnover does not exceed R1.5 mil (one million and five hundred thousand rand)"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "business-has-valid-bank-acc",
+                   Label = "The business has a valid business bank account (including newly opened)?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "willing-to-participate-in-dsbs-buying-scheme",
+                   Label = "Are you willing to participate in the bulk buying scheme as organised by the DSBD or any of its agencies?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "operating-in-township-or-village",
+                   Label = "Are you operating in a township or village?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "enterprise-is-owner-managed",
+                   Label = "Is the enterprise owner managed?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+            "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "type-of-business",
+                Label = "Please indicate your type of business"
+            }
+        );}
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Asset finance -->
+
+    @*
+    <div id="parent-group-8" style="display:none;">
+        <h4 class="mb-10 font-weight-bold text-dark">Asset Details</h4>
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+               new Select_N_LT_RT()
+               {
+                   Name = "asset-type",
+                   Label = "Asset type"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "description",
+                   Label = "Description"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "model",
+                   Label = "Model"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "new-or-used",
+                   Label = "New or used?",
+                   Radio = new string[,] { { "New", "New" }, { "Used", "Used" } }
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "has-natis-certificate",
+                   Label = "Is there a NATIS certificate?"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/date-n-top.cshtml",
+               new Date_N_Top()
+               {
+                   Name = "registration-date",
+                   Label = "Registration date"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "registered-owner",
+                   Label = "Registered owner"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "title-holder",
+                   Label = "Title holder"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+               new Select_N_LT_RT()
+               {
+                   Name = "year",
+                   Label = "Year"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "serial-vin-chassis-number",
+                   Label = "Serial/VIN/chassis number"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "engine-number",
+                   Label = "Engine number"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "insurer",
+                   Label = "Insurer"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "purchase-value",
+                   Label = "Purchase value",
+                   LeftText = "R"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "vat",
+                   Label = "VAT",
+                   LeftText = "R"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "total",
+                   Label = "Total",
+                   LeftText = "R"
+               }
+           );}
+    </div>
+    *@
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Co-op development fund -->
+    <div id="parent-group-9" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+                new Select_N_LT_RT()
+                {
+                    Name = "min-membership",
+                    Label = "Minimum membership"
+                }
+          );}
+
+        <!-- Has minimum members shares / saving valued at R100000? (financial co-ops) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "has-min-shares-savings-of-100k",
+                    Label = "Has a minimum of members shares/savings valued at R100 000?"
+                }
+            );}
+
+        <!-- Has savings and loan policies? (financial co-ops) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "has-savings-and-loan-policies",
+                    Label = "Has savings and loan policies?"
+                }
+            );}
+
+        <!-- Has a fully functioning board? (both) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "has-full-functioning-board",
+                    Label = "Has a fully functioning board?"
+                }
+            );}
+
+        <!-- Has minimum operation period of 6 months? (both) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "has-min-opp-period-of-6months",
+                    Label = "Has a minimum operation period of 6 months?"
+                }
+            );}
+
+        <!-- Has proof of proper systems and processes in place? (both) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "has-proof-of-proper-systems-processes-in-place",
+                    Label = "Do you have proof of proper systems and processes in place?"
+                }
+            );}
+
+        <!-- Oustanding loan book is at least R100000? (financial co-ops) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "is-outstanding-loan-book-at-least-100K",
+                    Label = "Is the outstanding loan book is at least R100 000?"
+                }
+          );}
+
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+                new Select_N_LT_RT()
+                {
+                    Name = "max-funding-req",
+                    Label = "Maximum funding requirement"
+                }
+          );}
+
+        <!-- Complies to legislation? (financial co-ops) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "is-legislation-complient",
+                    Label = "Complies to legislation"
+                }
+            );}
+
+        <!-- Will provide pipeline of potential clients (CFIs) upon application? (non-financial co-ops) -->
+        @{ await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "provice-pipeline-of-potential-clients-upon-app",
+                    Label = "Will provide pipeline of potential clients (CFIs) upon application?"
+                }
+            );}
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Only for purchase orders -->
+    <div id="parent-group-10" style="display:none;">
+        <h4 class="mb-10 font-weight-bold text-dark">Only Applicable to Purchase Orders</h4>
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "purchase-order-number",
+                   Label = "Purchase Order number"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "contract-provider-contract-details",
+                   Label = "Contract provider contact details"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "contract-deliverables-desc",
+                   Label = "Contract deliverables description"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "contract-value",
+                   Label = "Contract value",
+                   LeftText = "R"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/input-n-lt-rt.cshtml",
+               new Input_N_LT_RT()
+               {
+                   Name = "contract-delivery-period",
+                   Label = "Contract delivery period (in months)"
+               }
+           );}
+
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "are-products-locally-procured",
+                   Label = "Are products locally procured?"
+               }
+           );}
+
+    </div>
+
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- Additional Question -->
+
+    <div id="parent-group-11" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+               "../SefaApp/partials/radio-n-top.cshtml",
+               new Radio_N_Top()
+               {
+                   Name = "do-you-have-a-purchase-order",
+                   Label = "Do you have a solid purchase order directly from an end-client/end-buyer (Government or Corporate)?"
+               }
+           );}
+
+    </div>
+
+
+</div>

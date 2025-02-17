@@ -1,0 +1,109 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.Matches
+@using SME.Portal.Web.Areas.App.Startup
+@model MatchesViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Tenant.Matches;
+}
+@section Scripts
+{
+    <script abp-src="/view-resources/Areas/App/Views/Matches/Index.js" asp-append-version="true"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+
+                <abp-page-subheader title="@L("Matches")" description="@L("MatchesHeaderInfo")">
+                     <button id="ExportToExcelButton" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> @L("ExportToExcel")</button>
+            
+                     @if (IsGranted(AppPermissions.Pages_Administration_Matches_Create))
+                     {
+                         <button id="CreateNewMatchButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewMatch")</button>                
+                     }
+                </abp-page-subheader>
+            
+<div class="@(await GetContainerClass())">   
+    <div class="card card-custom gutter-b">
+        <div class="card-body">
+            <div class="form">
+                <div class="row align-items-center mb-4">
+                    <div class="col-xl-12">
+                        <div class="form-group align-items-center">
+                            <div class="input-group">
+                                <input type="text" id="MatchesTableFilter" class="form-control m-input" placeholder="@L("SearchWithThreeDot")" value="@Model.FilterText">
+                                <span class="input-group-btn">
+                                    <button id="GetMatchesButton" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+                    <div class="col-md-12">
+						<div class="kt-separator kt-separator--border-dashed"></div>
+					</div>
+
+                            <div class="col-md-3">
+                                 <div class="form-group">
+									<label  for="MinApplicationIdFilterId">@L("MinMax") @L("ApplicationId")</label>
+									<div class="input-group">
+										<input type="number" class="form-control m-input" placeholder="@L("MinValue")" name="minApplicationIdFilter" id="MinApplicationIdFilterId"/>
+                                        <input type="number" class="form-control m-input" placeholder="@L("MaxValue")" name="maxApplicationIdFilter"  id="MaxApplicationIdFilterId"/>
+									</div>
+                                </div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="LeadDisplayNameFilterId">@L("LeadDisplayName")</label>
+									<input type="text" class="form-control" name="leadDisplayNameFilter" id="LeadDisplayNameFilterId">
+								</div>
+                            </div>
+							<div class="col-md-3">
+								<label for="MatchSuccessfulFilterId">@L("MatchSuccessful")</label>
+								<select class="form-control" name="MatchSuccessfulFilter" id="MatchSuccessfulFilterId">
+									<option value="-1">@L("All")</option>
+									<option value="0">@L("False")</option>
+									<option value="1">@L("True")</option>
+								</select>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="FinanceProductIdsFilterId">@L("FinanceProductIds")</label>
+									<input type="text" class="form-control" name="financeProductIdsFilter" id="FinanceProductIdsFilterId">
+								</div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="ExclusionIdsFilterId">@L("ExclusionIds")</label>
+									<input type="text" class="form-control" name="exclusionIdsFilter" id="ExclusionIdsFilterId">
+								</div>
+                            </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-xl-12">
+                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                </div>
+            <div class="row align-items-center">
+                <table id="MatchesTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            
+                            <th>@L("Actions")</th>
+								<th>@L("Notes")</th>
+								<th>@L("ApplicationId")</th>
+								<th>@L("LeadDisplayName")</th>
+								<th>@L("MatchSuccessful")</th>
+								<th>@L("FinanceProductIds")</th>
+								<th>@L("ExclusionIds")</th>
+                            
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

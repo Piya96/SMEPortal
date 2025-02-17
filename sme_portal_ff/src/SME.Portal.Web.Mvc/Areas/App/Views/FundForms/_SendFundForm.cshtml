@@ -1,0 +1,29 @@
+﻿@using System.Globalization
+@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model SendFundFormsModalViewModel
+@using SME.Portal.Web.TagHelpers
+@using Abp.Authorization.Users
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("SendLenderCriteriaQuestionnaire")))
+@section Scripts
+{
+    <script abp-src="/view-resources/Areas/App/Views/FinanceProducts/FundForms/SendFundForms.js" asp-append-version="true"></script>
+}
+<div class="modal-body">
+        <form name="SendFundForm" role="form" novalidate class="form-validation">
+            <div class="card-body">
+                <div class="form">
+                    <div id="SendFundFormTab">
+                        <div class="form-group">
+                            <label for="SendFunderForm_EmailAddress">@L("EmailAddress")</label>
+                            <input class="form-control" id="SendFunderForm_EmailAddress" value="@Model.FundForm.EmailAddress" type="email" name="emailAddress"  required maxlength="@AbpUserBase.MaxEmailAddressLength"/>
+                            <input type="hidden" id="financeProductId" name="financeProductId" value=@Model.FundForm.FinanceProductId />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div> 
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

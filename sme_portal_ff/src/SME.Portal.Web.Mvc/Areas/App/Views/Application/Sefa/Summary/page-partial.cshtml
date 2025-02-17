@@ -1,0 +1,35 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+    var color = Model.HeaderColor;
+
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/UserProfile/summary.cshtml", Model);
+
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/OwnerProfile/summary.cshtml", Model);
+
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/CompanyProfile/summary.cshtml", Model);
+
+    await Html.RenderPartialAsync("../MandateFit/summary.cshtml", Model);
+
+    await Html.RenderPartialAsync("../CompanyInfo/summary.cshtml", Model);
+
+    <h4 style="color:@color; font-size:large;" class="font-weight-bold mb-3">Legal and financial questions</h4>
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-sm table-hover">
+                <tbody>
+                    @{
+                        await Html.RenderPartialAsync("../FinancialInfo/summary.cshtml", Model);
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    await Html.RenderPartialAsync("../Documents/summary.cshtml", Model);
+}

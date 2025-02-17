@@ -1,0 +1,51 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h5 style="color:lightskyblue; font-size:large;" class="font-weight-bold mb-3">@L("FS_FinancialInfo")</h5>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr id="id-div-annualturnover-@appId"><td style="@styleWidth">@L("AnnualTurnover")</td><td><div id="id-annualturnover-@appId"></div></td></tr>
+                <tr id="id-div-bank-@appId"><td>@L("WhoDoYouBankWith")</td><td><div id="id-bank-@appId"></div></td></tr>
+                <tr id="id-div-bankaccservices-@appId">
+                    <td>@L("WhatTypeOfBankAccountServices")</td>
+                    <td>
+                        <div id="id-bankaccservices-1-@appId"></div>
+                        <div id="id-bankaccservices-2-@appId"></div>
+                        <div id="id-bankaccservices-3-@appId"></div>
+                        <div id="id-bankaccservices-4-@appId"></div>
+                        <div id="id-bankaccservices-5-@appId"></div>
+                        <div id="id-bankaccservices-6-@appId"></div>
+                        <div id="id-bankaccservices-7-@appId"></div>
+                        <div id="id-bankaccservices-8-@appId"></div>
+                        <div id="id-bankaccservices-9-@appId"></div>
+                        <div id="id-bankaccservices-10-@appId"></div>
+                    </td>
+                </tr>
+                <tr id="id-div-businessloans-@appId"><td>@L("DoYouHaveOtherBusinessLoans")</td><td><div id="id-businessloans-@appId"></div></td></tr>
+                <tr id="id-div-whoistheloanfrom-@appId"><td>@L("WhoIsLoanFrom")</td><td><div id="id-whoistheloanfrom-@appId"></div></td></tr>
+                <tr id="id-div-businesstxpersonalacc-@appId"><td>@L("DoAnyOfYourBusinessTxGoThroughYourPersonalAccounts")</td><td><div id="id-businesstxpersonalacc-@appId"></div></td></tr>
+                <tr id="id-div-personalbank-@appId"><td>@L("WhoDoYouBankWithPersonally")</td><td><div id="id-personalbank-@appId"></div></td></tr>
+                <tr id="id-div-haselecaccsystems-@appId"><td>@L("HaveAccSystem")</td><td><div id="id-haselecaccsystems-@appId"></div></td></tr>
+                <tr id="id-div-elecaccsystems-@appId"><td>@L("WhichElectAccSystem")</td><td><div id="id-elecaccsystems-@appId"></div></td></tr>
+                <tr id="id-div-elecaccsystemother-@appId"><td>@L("WhichOtherAccSystem")</td><td><div id="id-elecaccsystemother-@appId"></div></td></tr>
+                <tr id="id-div-haspayroll-@appId"><td>@L("HavePayrollSystem")</td><td><div id="id-haspayroll-@appId"></div></td></tr>
+                <tr id="id-div-payrollsystems-@appId"><td>@L("WhichElectPayrollSystem")</td><td><div id="id-payrollsystems-@appId"></div></td></tr>
+                <tr id="id-div-payrollsystemother-@appId"><td>@L("WhichOtherPayrollSystem")</td><td><div id="id-payrollsystemother-@appId"></div></td></tr>
+                <tr id="id-div-hasinvestedownmoney-@appId"><td>@L("HaveYouInvestedYourOwnMoney")</td><td><div id="id-hasinvestedownmoney-@appId"></div></td></tr>
+                <tr id="id-div-businessisprofitable-@appId"><td>@L("DidYourBusinessMakeAProfit")</td><td><div id="id-businessisprofitable-@appId"></div></td></tr>
+                <tr id="id-div-businesshascolateral-@appId"><td>@L("DoYouHaveColateral")</td><td><div id="id-businesshascolateral-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

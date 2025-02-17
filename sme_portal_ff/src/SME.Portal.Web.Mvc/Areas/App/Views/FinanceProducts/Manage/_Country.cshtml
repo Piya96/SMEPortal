@@ -1,0 +1,93 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Lenders.Helpers
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<script>
+    function countrySelection(countries, state) {
+    countries.forEach(function (listId) {
+        var control = $('#Country_' + listId);
+        if (control) {
+            control.prop("checked", state);
+        }        
+    });
+}
+</script>
+<form id="stepCountryForm">
+    <div class="step" id="stepCountry">
+        <h3>Country</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Select the specific country requirements for this financial product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:5px">
+           <div class="form-group col-md-4">
+                <label class="col-form-label">Sub-Saharan Africa</label>
+                <div class="mb-3">
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.SubSaharanAfricaAsArray)),true)' class="btn btn-primary">Select </a>
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.SubSaharanAfricaAsArray)), false)' class="btn btn-primary">Unselect</a>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-form-label">Africa</label>
+                <div class="mb-3">
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.AfricaAsArray)),true)' class="btn btn-primary">Select </a>
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.AfricaAsArray)), false)' class="btn btn-primary">Unselect</a>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="col-form-label">SADC</label>
+                <div class="mb-3">
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.SADCAsArray)),true)' class="btn btn-primary">Select </a>
+                    <a href="#" onclick='countrySelection(@Html.Raw(Json.Serialize(CountryHelper.SADCAsArray)), false)' class="btn btn-primary">Unselect</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6">
+                        @if(Model.Countries.Select(c => c.ListId).Contains("5b572f88669f777ecca1fd74")){
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.CountryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.CountryListIds.Contains("5b572f88669f777ecca1fd74")) : true)" value="@("5b572f88669f777ecca1fd74")" id="Country_@("5b572f88669f777ecca1fd74")" name="Country_@("5b572f88669f777ecca1fd74")" >
+                                    <label class="custom-control-label" for="Country_@("5b572f88669f777ecca1fd74")">@Model.Countries.Where(c => c.ListId.Contains("5b572f88669f777ecca1fd74")).Select(c => c.Name).First()</label>
+                                </div>
+                            </div>
+                        } 
+                        @if(Model.Countries.Select(c => c.ListId).Contains("5b572f88669f777ecca1fd74")){
+                            @foreach (var list in Model.Countries.Where(c => !c.ListId.Contains("5b572f88669f777ecca1fd74")).Take(100).OrderBy(p => p.Name))
+                            {
+                                <div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.CountryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.CountryListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="Country_@(list.ListId)" name="Country_@(list.Id)" @* @displaychecked *@>
+                                        <label class="custom-control-label" for="Country_@(list.ListId)">@(list.Name)</label>
+                                    </div>
+                                </div>
+                            }
+                        }
+            </div>
+            <div class="col-md-6">
+                @foreach (var list in Model.Countries.Where(c => !c.ListId.Contains("5b572f88669f777ecca1fd74")).Skip(100).OrderBy(p => p.Name))
+                {
+                    <div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.CountryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.CountryListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="Country_@(list.ListId)" name="Country_@(list.Id)">
+                            <label class="custom-control-label" for="Country_@(list.ListId)">@(list.Name)</label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</form>

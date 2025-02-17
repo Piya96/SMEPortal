@@ -1,0 +1,289 @@
+﻿@* ---------------Working Capital types-----------------*@
+<div id="working-capital-type" class="form-group" style="display:none">
+    @* Working Capital Types *@
+    <label class="font-weight-bold text-dark" for="working-capital-type">For Working Capital Options</label>
+    <select class="form-control" id="working-capital-type" name="workingcapitaltype">
+        <option disabled selected value="">@L("SelectAnOption")</option>
+        <option value="59cc9d26132f4c40c446a4f7">Cash advance for an invoice</option>
+        <option value="59cc9d36132f4c40c446a4f8">Cash flow assistance</option>
+        <option value="5acb467062ba593724e0a78a">Cash for retailers with a card machine</option>
+        <option value="59cca85e30e9df02c82d0793">Money to buy stock</option>
+        <option value="59cca8a430e9df02c82d0795">Money to help with a contract</option>
+        <option value="59cca89030e9df02c82d0794">Money to help with a tender</option>
+        <option value="5b213996b958c008605883e8">Purchase order funding</option>
+    </select>
+    <span class="form-text text-muted"></span>
+</div>
+
+@* Working Capital - Cash for Invoice - subTypes *@
+<div id="working-capital-cash-for-invoice" style="display:none">
+    <div class="form-group">
+        <label for="cash-for-invoice-amount">@L("CashForInvoiceAmount")</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="cashforaninvoiceamount" name="cashforaninvoiceamount" type="text" class="form-control" aria-label="cash-for-invoice-amount">
+        </div>
+        <span class="form-text text-muted">@L("CashForInvoiceAmountSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="cash-for-invoice-who-is-your-customer-type">@L("WhoIsYourCustomer")</label>
+        <select class="form-control" id="cashforinvoicecustomer" name="cashforinvoicecustomer">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59db18698964a744e4ad0aa8">@L("GovernmentNational")</option>
+            <option value="59db187c8964a744e4ad0aa9">@L("GovernmentProvincial")</option>
+            <option value="59db188a8964a744e4ad0aaa">@L("GovernmentMunicipal")</option>
+            <option value="59db18968964a744e4ad0aab">@L("CorporateBlueChipCompany")</option>
+            <option value="59db18a08964a744e4ad0aac">@L("OtherPrivateBusiness")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhoIsYourCustomerSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="cash-for-invoice-customer-agreed" class="col-form-label" style="width:80%;">@L("HasTheCustomerAgreedWorkIsComplete")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="customeragreed" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="customeragreed" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div id="customernotagreed" class="alert alert-warning" role="alert">@L("HasTheCustomerAgreedWorkIsCompleteSubtext")</div>
+    </div>
+
+</div>
+
+@* Working Capital - Cash flow assistance - subTypes *@
+<div id="working-capital-cash-flow-assistance" style="display:none">
+    <div class="form-group">
+        <label for="cash-flow-assistance-pos-device" class="col-form-label" style="width:80%;">@L("DoYouHaveAPOSDevice")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="hasposdevice" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="hasposdevice" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("DoYouHaveAPOSDeviceSubtext")</span>
+    </div>
+</div>
+
+@* Working Capital - Cash for retailers with card machine - subTypes *@
+<div id="working-capital-cash-for-retailers-with-card-machine" style="display:none">
+    <div class="form-group">
+        <label for="cash-for-retailers-with-card-machine" class="col-form-label" style="width:80%;">@L("DoesYourCompanyHaveRegMonthIncome")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="regularmonthlyincome" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="regularmonthlyincome" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("DoesYourCompanyHaveRegMonthIncomeSubtext")</span>
+    </div>
+
+    <div id="retailers-with-card-machine-monthly-income">
+        <div class="form-group">
+            <label for="cash-for-retailers-with-card-machine-monthly-income">@L("MonthlyIncome")</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">R</span>
+                </div>
+                <input autocomplete="off" id="cash-for-retailers-monthly-income" name="monthlyincomeincomevalue" type="text" class="form-control" aria-label="cash-for-invoice-amount">
+            </div>
+            <span class="form-text text-muted">@L("MonthlyIncomeSubtext")</span>
+            <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>@L("SelectPaymentTypes")</label>
+        
+        <div class="checkbox-list">
+            <label class="checkbox checkbox-outline">
+                <input type="checkbox" name="cardmachinepaymenttypes" value="59d370757112ea2ef072eec8" />
+                <span></span>
+                @L("CardMachine")
+            </label>
+            <label class="checkbox checkbox-outline">
+                <input type="checkbox" name="cardmachinepaymenttypes" value="59d3707c7112ea2ef072eec9" />
+                <span></span>
+                @L("EFT")
+            </label>
+            <label class="checkbox checkbox-outline">
+                <input type="checkbox" name="cardmachinepaymenttypes" value="59d370837112ea2ef072eeca" />
+                <span></span>
+                @L("Cash")
+            </label>
+            <label class="checkbox checkbox-outline">
+                <input type="checkbox" name="cardmachinepaymenttypes" value="59d3747454e4d84c44e175bc" />
+                <span></span>
+                @L("Other")
+            </label>
+        </div>
+    </div>
+</div>
+
+@* Working Capital - Money to help with contract - subTypes *@
+<div id="working-capital-money-for-contract" style="display:none">
+    <div class="form-group">
+        <label for="working-capital-money-for-contract-value" class="col-form-label" style="width:80%;">@L("ValueOfContractRequiringFinance")</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="money-for-contract-value" name="moneyforcontractvalue" type="text" class="form-control" aria-label="money-for-contract-value">
+        </div>
+        <span class="form-text text-muted">@L("ValueOfContractRequiringFinanceSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="working-capital-money-for-contract-customer">@L("WhoIsYourCustomer")</label>
+        <select class="form-control" id="money-for-contract-customer" name="moneyforcontractcustomer">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59db18698964a744e4ad0aa8">@L("GovernmentNational")</option>
+            <option value="59db187c8964a744e4ad0aa9">@L("GovernmentProvincial")</option>
+            <option value="59db188a8964a744e4ad0aaa">@L("GovernmentMunicipal")</option>
+            <option value="59db18968964a744e4ad0aab">@L("CorporateBlueChipCompany")</option>
+            <option value="59db18a08964a744e4ad0aac">@L("OtherPrivateBusiness")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhoIsYourCustomerSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="working-capital-money-for-contract-customr" class="col-form-label" style="width:80%;">@L("CompanyHaveExperienceContract")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="moneyforcontractcompanyexperience" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="moneyforcontractcompanyexperience" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("CompanyHaveExperienceContractSubtext")</span>
+    </div>
+</div>
+
+@* Working Capital - Money to help with tender - subTypes *@
+<div id="working-capital-money-for-tender" style="display:none">
+    <div class="form-group">
+        <label for="working-capital-money-for-tender-value" class="col-form-label" style="width:80%;">@L("ValueOfTenderRequiringFinance")</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="money-for-tender-value" name="moneyfortendervalue" type="text" class="form-control" aria-label="money-for-tender-value">
+        </div>
+        <span class="form-text text-muted">@L("ValueOfTenderRequiringFinanceSubtext")</span>
+    </div>
+    <div class="form-group">
+        <label for="working-capital-money-for-contract-customer">@L("WhoIsYourCustomer")</label>
+        <select class="form-control" id="money-for-tender-customer" name="moneyfortendercustomer">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59db18698964a744e4ad0aa8">@L("GovernmentNational")</option>
+            <option value="59db187c8964a744e4ad0aa9">@L("GovernmentProvincial")</option>
+            <option value="59db188a8964a744e4ad0aaa">@L("GovernmentMunicipal")</option>
+            <option value="59db18968964a744e4ad0aab">@L("CorporateBlueChipCompany")</option>
+            <option value="59db18a08964a744e4ad0aac">@L("OtherPrivateBusiness")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhoIsYourCustomerSubtext")</span>
+    </div>
+    <div class="form-group">
+        <label for="working-capital-money-for-contract-customr" class="col-form-label" style="width:80%;">@L("CompanyHaveExperienceTender")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="moneyfortendercompanyexperience" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="moneyfortendercompanyexperience" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("CompanyHaveExperienceTenderSubtext")</span>
+    </div>
+</div>
+
+@* Working Capital - Purchase order funding - subTypes *@
+<div id="working-capital-puchase-order-funding" style="display:none">
+    <div class="form-group">
+        <label for="working-capital-purchase-order-funding-value" class="col-form-label" style="width:80%;">@L("ValueOfPurchaseOrderRequiringFinance")</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="purchase-order-value" name="purchaseordervalue" type="text" class="form-control" aria-label="purchase-order-value">
+        </div>
+        <span class="form-text text-muted">@L("ValueOfPurchaseOrderRequiringFinanceSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="working-capital-purchase-order-customer">@L("WhoIsYourCustomer")</label>
+        <select class="form-control" id="purchase-order-customer" name="purchaseordercustomer">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59db18698964a744e4ad0aa8">@L("GovernmentNational")</option>
+            <option value="59db187c8964a744e4ad0aa9">@L("GovernmentProvincial")</option>
+            <option value="59db188a8964a744e4ad0aaa">@L("GovernmentMunicipal")</option>
+            <option value="59db18968964a744e4ad0aab">@L("CorporateBlueChipCompany")</option>
+            <option value="59db18a08964a744e4ad0aac">@L("OtherPrivateBusiness")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhoIsYourCustomerSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label for="working-capital-purchase-order-customer-experience" class="col-form-label" style="width:80%;">@L("CompanyHaveExperiencePurchaseOrder")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="purchaseordercustomerexperience" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="purchaseordercustomerexperience" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("CompanyHaveExperiencePurchaseOrderSubtext")</span>
+    </div>
+</div>

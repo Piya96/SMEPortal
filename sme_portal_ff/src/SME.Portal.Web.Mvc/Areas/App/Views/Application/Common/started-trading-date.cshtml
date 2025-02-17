@@ -1,0 +1,49 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<style>
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    background: none;
+    color: grey !important;
+    cursor: default;
+}
+
+.datepicker tbody tr > td.day.old {
+    color: black;
+}
+
+.datepicker tbody tr > td.day {
+    color: black;
+}
+
+</style>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/date-n-top-no-row.cshtml",
+        new Date_N_Top()
+        {
+            Name = "started-trading-date",
+            Label = "What date did you start trading?"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "application-trading-years",
+            Label = "Years",
+            Col = "col-xl-3"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "application-trading-months",
+            Label = "Months",
+            Col = "col-xl-3"
+        }
+    );}
+</div>

@@ -1,0 +1,18 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.SubscriptionPaymentCancelled; }
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+        <div>
+            <br />
+        </div>
+        <div class="alert alert-success mb-5 p-5" role="alert">
+            <h6 class="alert-heading">Sorry to see that your payment was unsuccessful</h6>
+            <p>Your payment has not been processed. Please try again, and check that your card details are correct.</p>
+        </div>
+    </div>
+</div>
+
+

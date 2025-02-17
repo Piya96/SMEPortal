@@ -1,0 +1,22 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:#099ba0 !important;" class="font-weight-bold mb-3">Business Info</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody id="tbody-company-info-summary-@appId">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

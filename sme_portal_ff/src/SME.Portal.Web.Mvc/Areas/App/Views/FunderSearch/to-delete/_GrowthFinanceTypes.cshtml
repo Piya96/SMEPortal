@@ -1,0 +1,227 @@
+﻿@* ---------------Growth Finance ------------------------- *@
+<div id="growth-finance-type" class="form-group" style="display:none">
+    <label class="font-weight-bold text-dark" for="asset-finance">Grow My Business Options</label>
+    <select class="form-control" id="growth-finance-type" name="growthfinancetype">
+        <option disabled selected value="">@L("SelectAnOption")</option>
+        <option value="59d269bd20070a604097b04a">Business expansion</option>
+        <option value="59d269c920070a604097b04b">Product/service expansion</option>
+        <option value="59d269d620070a604097b04c">Refinancing existing debt</option>
+    </select>
+    <span class="form-text text-muted"></span>
+</div>
+
+@* Business Expansion - subtypes*@
+<div id="growth-finance-business-expansion" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" style="width:80%;">@L("AreYouWillingToSellShares")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="willingtosellshares" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="willingtosellshares" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="business-expansion-willing-to-sell-shares" style="display:none">
+        <div class="form-group">
+            <label class="col-form-label" style="width:80%;">@L("DoesBusinessHaveLargePotentialMarket")</label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="largepotentialmarket" value="Yes" />
+                        <span></span>
+                        @L("Yes")
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="largepotentialmarket" value="No" />
+                        <span></span>
+                        @L("No")
+                    </label>
+
+                </div>
+            </div>
+            <span class="form-text text-muted">@L("DoesBusinessHaveLargePotentialMarketSubtext")</span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label" style="width:80%;">@L("DoYouCurrentlyHaveCustomerBuying")</label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="customersbuying" value="Yes" />
+                        <span></span>
+                        @L("Yes")
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="customersbuying" value="No" />
+                        <span></span>
+                        @L("No")
+                    </label>
+
+                </div>
+            </div>
+            <span class="form-text text-muted">@L("DoYouCurrentlyHaveCustomerBuyingSubtext")</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark">@L("SelectItemsDescribingCompetitiveAdv")</label>
+        <select class="form-control" id="growth-finance-business-expansion-competitive-adv" name="businessexpansioncompetitiveadv">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59ec85581b37792024771d42">@L("UniqueProductService")</option>
+            <option value="59ec85771b37792024771d43">@L("ImprovementOfExistingProductsServices")</option>
+            <option value="59ec858d1b37792024771d44">@L("MoreAffordableProductsServices")</option>
+        </select>
+        <span class="form-text text-muted">@L("SelectItemsDescribingCompetitiveAdvSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark">@L("WillBusinessExpansionResultIn")</label>
+        <br />
+
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("IncreasedEmployees")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedemployees" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedemployees" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("IncreaseProfitability")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedprofitability" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedprofitability" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("IncreaseExports")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedexports" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinincreasedexports" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("EmpowermentEconomicDevelopment")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultineconomicempowerment" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultineconomicempowerment" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("SustainableRuralPeriDevelopment")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinsustainabledev" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinsustainabledev" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("SolveSocialEnvChallenges")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinsolveenvchallenges" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessexpansionresultinsolveenvchallenges" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Product/Service Expansion  - subtypes*@
+<div id="growth-finance-product-service-expansion" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="">@L("SelectProductServiceExpansionType")</label>
+        <select class="form-control" id="product-service-expansion-type" name="productserviceexpansiontype">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="5a7a7b27646a451744bca3b5">@L("BiodiversityBenefitingBusinesses")</option>
+            <option value="5a7a7b39646a451744bca3b6">@L("BiogasBiofuel")</option>
+            <option value="5a7a7b4b646a451744bca3b7">@L("EnergyEfficiency")</option>
+            <option value="5a7a7b5f646a451744bca3b8">@L("IndustrialCleanerProductionProject")</option>
+            <option value="5a7a7b71646a451744bca3b9">@L("InnovativeSocialSolutions")</option>
+            <option value="5a7a7b82646a451744bca3ba">@L("LandUserManagementModels")</option>
+            <option value="5a7a7b91646a451744bca3bb">@L("PaymentForEcosystemServices")</option>
+            <option value="5a7a7b9d646a451744bca3bc">@L("RenewableEnergy")</option>
+            <option value="5a7a7baa646a451744bca3bd">@L("RuralAdaptationProjects")</option>
+            <option value="5a7a7bb9646a451744bca3be">@L("RuralEnergyOffGrid")</option>
+            <option value="5a7a7bd4646a451744bca3bf">@L("StrengthenAutomotiveValueSupplyChain")</option>
+            <option value="5a7a7be4646a451744bca3c0">@L("SustainableTransport")</option>
+            <option value="5a7a7bf2646a451744bca3c1">@L("Technology")</option>
+            <option value="5a7a7c12646a451744bca3c2">@L("Other")</option>
+        </select>
+        <span class="form-text text-muted">@L("SelectPropertyTypeSubtext")</span>
+    </div>
+</div>

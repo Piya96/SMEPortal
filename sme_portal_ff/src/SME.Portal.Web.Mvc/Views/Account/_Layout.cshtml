@@ -1,0 +1,163 @@
+﻿@using System.Threading.Tasks
+@using Abp.AspNetZeroCore.Timing
+@using Abp.Configuration.Startup
+@using Abp.Timing
+@using Abp.Web.Security.AntiForgery
+@using SME.Portal.Timing
+@using SME.Portal.UiCustomization.Dto
+@using SME.Portal.Url
+@using SME.Portal.Web.Resources
+@using CultureHelper = SME.Portal.Localization.CultureHelper
+@inject ScriptPaths ScriptPaths
+@inject AppTimes AppTimes
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IMultiTenancyConfig MultiTenancyConfig
+@inject IWebResourceManager WebResourceManager
+@inject IWebUrlService WebUrlService
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie(Context);
+    UiCustomizationSettingsDto theme = await GetTheme();
+}
+<!DOCTYPE html>
+<html lang="en" dir=@(CultureHelper.IsRtl ? "rtl" : "")>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    @* Fill these meta tags upon your project specification *@
+    <meta content="Portal" name="description" />
+    <meta content="Portal" name="keywords">
+    <meta content="Portal" name="author" />
+
+    @{ await Html.RenderPartialAsync("../Shared/Favicon/_TenantFavicons.cshtml", AbpSession.TenantId); }
+
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/vendors.bundle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@(ApplicationPath)metronic/themes/default/css/style.bundle@(CultureHelper.IsRtl ? ".rtl" : "").css" asp-append-version="true" />
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/account-layout-libs.css" asp-append-version="true" />
+
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/common-styles.css" asp-append-version="true" />
+
+    @if (CultureHelper.IsRtl)
+    {
+        <link rel="stylesheet" href="/Common/Styles/abp-zero-template-rtl.css" asp-append-version="true" />
+    }
+
+    <link rel="stylesheet" abp-href="/view-resources/Views/Account/_Layout@(CultureHelper.IsRtl ? "-rtl" : "").css" asp-append-version="true" />
+    <link href="~/view-resources/Views/Account/aside-style.css" rel="stylesheet" asp-append-version="true" />
+
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+    {
+        <link href="~/tenant-styles/ecdc.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 3)
+    {
+        <link href="~/tenant-styles/sefa.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId == 10)
+    {
+        <link href="~/tenant-styles/african-bank.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+
+    @await RenderSectionAsync("Styles", false)
+
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 2)
+    {
+        <link href="~/custom/css/finfind-aside.css" rel="stylesheet" asp-append-version="true" />
+    }
+    else
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 9)
+    {
+        <link href="~/custom/css/finfind-aside.css" rel="stylesheet" asp-append-version="true" />
+    }
+    else
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 10)
+    {
+        <link href="~/custom/css/other-tenants-aside.css" rel="stylesheet" asp-append-version="true" />
+    }
+    else
+    // TODO(Hloolo):
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        <link href="~/custom/css/other-tenants-aside.css" rel="stylesheet" asp-append-version="true" />
+    }
+    else
+    {
+        <link href="~/custom/css/other-tenants-aside.css" rel="stylesheet" asp-append-version="true" />
+    }
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Common/google-analytics-scripts.cshtml"); }
+
+    <script type="text/javascript">
+        @* This is used to get the application's root path from javascript.
+        It's useful if you're running application in a virtual directory under IIS. *@
+        var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+
+</head>
+<body class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable">
+    <!-- begin:: Page -->
+    <div class="d-flex flex-column flex-root">
+        <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+
+            @{ await Html.RenderPartialAsync("../Shared/Asides/_TenantAsides.cshtml", AbpSession.TenantId); }
+
+            <!--begin::Content-->
+            <div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+                <div class="d-flex flex-column-fluid flex-center">
+                    <!--begin::Signin-->
+                    <div class="login-form login-signin">
+                        <div class="pb-13 pt-lg-0 pt-5">
+                            @if (!(ViewBag.DisableTenantChange ?? false) && MultiTenancyConfig.IsEnabled && !WebUrlService.SupportsTenancyNameInUrl)
+                            {
+                                <div class="login__signup-label tenant-change-box">
+                                    <vc:tenant-change></vc:tenant-change>
+                                </div>
+                            }
+                        </div>
+                        <!--begin::Form-->
+                        @RenderBody()
+                        <!--end::Form-->
+                    </div>
+                </div>
+                @*<div class="d-flex justify-content-lg-start justify-content-center align-items-end py-7 py-lg-0">
+                        <vc:account-languages></vc:account-languages>
+                    </div>*@
+            </div>
+            <!--end::Content-->
+        </div>
+    </div>
+    <!--begin::Base Scripts -->
+    <script abp-src="/view-resources/Areas/App/Views/_Bundles/account-layout-libs.js" asp-append-version="true"></script>
+
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+
+    <script abp-src="/view-resources/Areas/App/Views/_Bundles/common-scripts.js" asp-append-version="true"></script>
+    <script src="~@ScriptPaths.JQuery_Validation_Localization" asp-append-version="true"></script>
+
+    @WebResourceManager.RenderScripts()
+
+    @await RenderSectionAsync("Scripts", false)
+    <script>
+        app.supportsTenancyNameInUrl = @(WebUrlService.SupportsTenancyNameInUrl.ToString().ToLower());
+
+        jQuery(document).ready(function () {
+            if (window.CurrentPage) {
+                CurrentPage.init();
+            }
+        });
+    </script>
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Common/hubspot-scripts.cshtml"); }
+
+</body>
+</html>

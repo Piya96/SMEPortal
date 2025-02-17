@@ -1,0 +1,224 @@
+﻿@*
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-support-documents">
+
+    <h4 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Supporting Documents for Application</h4>
+
+    <div class="row" id="drop-zone-info-tooltip">
+        <div class="col-xl-12">
+            <span class="td-mouse-hand option-focus text-align:left"
+                  style="text-align:left !important;">
+                <i class="fa fa-question-circle"></i> Click for help
+            </span>
+        </div>
+    </div>
+    <br />
+
+    <div id="drop-zone-info">
+
+        <style>
+            .bold-italic-under {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .td-pass {
+                color: green;
+            }
+
+            .td-fail {
+                color: red;
+            }
+
+            .td-mouse-hand {
+                cursor: pointer;
+            }
+        </style>
+
+    </div>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/select-picker-n-lt-rt.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "document-upload",
+                Label = "Select document to upload",
+                Placeholder = "Select a document"
+            }
+        );
+    }
+
+    <div id="drop-zone-box" class="card-body">
+        <div class="form-group row">
+            <div id="drop-zone-area" class="col-lg-9 col-md-9 col-sm-12">
+                <h4 id="document-upload-heading">Upload document heading</h4>
+                <div class="dropzone dropzone-default dropzone-success dz-clickable" id="dropzone">
+                    <div class="dropzone-msg dz-message needsclick">
+                        <h3 id="drop-zone-title" class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                        <span id="drop-zone-message" class="dropzone-msg-desc">Only pdf files are allowed for upload</span>
+                    </div>
+                </div>
+            </div>
+            <button id="drop-zone-button"
+                    type="submit"
+                    class="btn btn-light-primary mr-2">
+                Click to Upload
+            </button>
+        </div>
+    </div>
+
+    <style>
+        tbody#tbody-document-uploads {
+            pointer-events: auto;
+        }
+
+            tbody#tbody-document-uploads > tr > td:last-child > a > i {
+                color: blue;
+            }
+
+                tbody#tbody-document-uploads > tr > td:last-child > a > i:hover {
+                    color: blue;
+                    cursor: pointer;
+                    text-shadow: 0px 0px 5px blue;
+                }
+
+            tbody#tbody-document-uploads > tr:hover {
+                background-color: white;
+            }
+
+        table#table-document-uploads th:nth-child(n+2) {
+            text-align: center;
+        }
+
+        table#table-document-uploads th:nth-child(n-1) {
+            vertical-align: text-top;
+        }
+    </style>
+
+    <div class="alert alert-custom alert-outline-info" fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+            </div>
+            <div class="col-xl-10">
+                <div class="alert-text">
+                    <p>A reminder that should you upload multiple incorrect or incomplete documents, or a false document, your application will be put on hold and no assessment will take place.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="parent-document-uploads">
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+
+                    <div class="alert-text">
+                        <p><b>Required documents</b></p>
+                        <div>
+
+                            <table id="table-document-uploads" class="table table-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Document</th>
+                                        <th>Required</th>
+                                        <th>Optional</th>
+                                        <th>Uploaded</th>
+                                        <th>Download<br /> template</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tbody-document-uploads">
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="id-alert" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 class="text-center">Uploaded Successfully.</h4>
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button id="id-alert-button-ok" type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="drop-zone-info-modal" class="modal fade position-absolute" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="drop-zone-info-message">
+                    <div class="col-xl-12">
+                        <div class="alert alert-custom alert-outline-info" role="alert">
+                            <div class="alert-icon"><i class="flaticon-information"></i></div>
+                            <div class="alert-text">
+                                <p>Please follow the <b>3-step</b> process below for each of the <b>Required Documents</b> (<b class="td-fail">&#x2689;</b>) in the table below.</p>
+                                <ul>
+                                    <li id="drop-zone-step1">
+                                        <div class="row">
+                                            <div class="col-xl-2">Step 1: </div>
+                                            <div class="col-xl-10">
+                                                <p>From the <b>select list</b> below, please choose the document type you wish to associate with your upload to activate the clickable area.</p>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                    <li id="drop-zone-step2">
+                                        <div class="row">
+                                            <div class="col-xl-2">Step 2: </div>
+                                            <div class="col-xl-10">
+                                                <p>When <b>Step 1</b> is complete, please use the clickable area to activate the document navigation dialog in order to select the relevant document.</p>
+                                                <p><b>Note</b> that once one or more documents have been added, the Upload button will activate.</p>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                    <li id="drop-zone-step3">
+                                        <div class="row">
+                                            <div class="col-xl-2">Step 3: </div>
+                                            <div class="col-xl-10">When <b>Step 2</b> is complete, please click the button marked <b>Upload</b> to upload your selected document(s).</div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <p>Please repeat the above 3-step process until all document types marked <b>Required </b>(<b class="td-fail">&#x2689;</b>) are ticked off (<b>&#x2714;</b><b>)</b> as <b>Uploaded</b>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+*@

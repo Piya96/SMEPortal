@@ -1,0 +1,382 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.SmeDocuments;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+    .td-step-five {
+        width: 20% !important;
+        padding-left: 9% !important;
+    }
+
+    .input-step-five {
+        width: 2%;
+        height: 2%;
+        margin: auto;
+        display: flex;
+    }
+
+    .label-step-five {
+        margin: auto;
+        display: flex;
+    }
+
+    .tr-step-five > label {
+        margin: auto;
+        display: flex;
+    }
+
+    .tr-step-five > input {
+        width: 2%;
+        height: 2%;
+        margin: auto;
+        display: flex;
+    }
+</style>
+
+
+<!--begin: Wizard Step 5 - Documents -->
+<div class="pb-5" data-wizard-type="step-content" style="width:100%;">
+    <h4 class="mb-10 font-weight-bold text-dark">The following documents may be requested by funders. Please indicate whether you have these documents available for uploading.</h4>
+    @* Company Registration Documents *@
+
+    <div id="company-registration-documents" class="form-group">
+
+        <div id="id-step-5-messages"></div>
+
+        <div class"table-responsive">
+            <table class="table">
+                <tr style="text-align:center;width:100%;">
+                    <th style="border-top-width:0px;width:40%;"></th>
+                    <th class="table table-bordered" style="width:20%;">@L("YesIHaveIt")</th>
+                    <th class="table table-bordered" style="width:20%;">@L("NoButICanGetIt")</th>
+                    <th class="table table-bordered" style="width:20%;">@L("IveNeverHadIt")</th>
+                </tr>
+
+                <tbody class="table-bordered">
+
+
+                    @* CompanyRegistrationDocuments *@
+                    <tr class="tr-step-five" style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CompanyRegistrationDocuments")
+                            <div id="id-company-registration-reg-doc-message"></div>
+                            <span class="form-text text-muted"></span>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d123a022727ec3b587a" value="@L("YesIHaveIt")" style="background:red;" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="input-step-five" type="radio" name="5aaf6d123a022727ec3b587a" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="radio-outline radio-primary" type="radio" name="5aaf6d123a022727ec3b587a" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CIPCAnnualReturnDocuments *@
+                    <tr class="tr-step-five" style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CIPCAnnualReturnDocuments")
+                            <div id="id-cipc-annual-return-doc-message"></div>
+                            <span class="form-text text-muted"></span>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549c63a2b3b4fb7c24bb34" value="@L("YesIHaveIt")" style="background:red;" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="input-step-five" type="radio" name="60549c63a2b3b4fb7c24bb34" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="radio-outline radio-primary" type="radio" name="60549c63a2b3b4fb7c24bb34" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CertifiedCopiesOfOwnersIDs *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CertifiedCopiesOfOwnersIDs")
+                            <div id="id-cert-owners-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdb53efed8141436959b" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdb53efed8141436959b" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdb53efed8141436959b" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* ProofOfBusinessAddress *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("ProofOfBusinessAddress")
+                            <div id="id-proof-of-addr-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5b2a54ecb958c008605883ff" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5b2a54ecb958c008605883ff" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5b2a54ecb958c008605883ff" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+
+                    @* BEE Certificate *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("BEECertificate")
+                            <div id="id-bee-certificate-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549db9e3032aa608a98cc1" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549db9e3032aa608a98cc1" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549db9e3032aa608a98cc1" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CompanyBankStatements *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CompanyBankStatements")
+                            <div id="id-bank-statements-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d193a022727ec3b587b" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d193a022727ec3b587b" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d193a022727ec3b587b" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* 12MonthsBudgetingCashflowProjections *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("12MonthsBudgetingCashflowProjections")
+                            <div id="id-months-12-budget-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0ce1d3efed814143695a1" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0ce1d3efed814143695a1" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0ce1d3efed814143695a1" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* StatementOfAssetsAndLiabilitiesAllOwners *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("StatementOfAssetsAndLiabilitiesAllOwners")
+                            <div id="id-assets-liabilities-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdd73efed8141436959d" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdd73efed8141436959d" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdd73efed8141436959d" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* TaxClearanceCertificate *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("TaxClearanceCertificate")
+                            <div id="id-tax-clearance-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdc33efed8141436959c" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdc33efed8141436959c" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdc33efed8141436959c" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* BusinessPlan *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("BusinessPlan")
+                            <div id="id-business-plan-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cde13efed8141436959e" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cde13efed8141436959e" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cde13efed8141436959e" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* ManagementAccounts *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("ManagementAccounts")
+                            <div id="id-management-account-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdfc3efed814143695a0" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdfc3efed814143695a0" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdfc3efed814143695a0" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* AnnualFinancialStatements *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("AnnualFinancialStatements")
+                            <div id="id-annual-fin-atatements-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cded3efed8141436959f" value="@L("YesIHaveIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cded3efed8141436959f" value="@L("NoButICanGetIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cded3efed8141436959f" value="@L("IveNeverHadIt")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<!--end: Wizard Step 5-->

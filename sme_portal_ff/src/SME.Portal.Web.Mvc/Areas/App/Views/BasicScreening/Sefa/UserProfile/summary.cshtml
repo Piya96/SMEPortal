@@ -1,0 +1,36 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+    var color = Model.HeaderColor;
+}
+
+<h4 style="color:@color !important;" class="font-weight-bold mb-3">@L("FS_UserProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                @{ await Html.RenderPartialAsync("../../Common/UserProfile/summary.cshtml", Model); }
+                <tr>
+                    <td>Where did you hear about <b>Sefa</b>?</td>
+                    <td id="td-how-did-you-hear-about-sefa-@appId"></td>
+                </tr>
+                <tr id="tr-user-profile-sefa-origin-other-@appId" style="display:none;">
+                    <td>Other</td>
+                    <td id="td-user-profile-sefa-origin-other-@appId"></td>
+                </tr>
+                <tr id="tr-user-profile-sefa-origin-strategic-partner-@appId" style="display:none;">
+                    <td>Strategic Partners</td>
+                    <td id="td-user-profile-sefa-origin-strategic-partner-@appId"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

@@ -1,0 +1,76 @@
+﻿<environment include="Production, Staging, Development">
+
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 3)
+    {
+        <!-- Google tag (gtag.js) - Google Analytics Sefa App-->
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-KKGR3RY5TL"></script>-->
+        <script src="~/Common/Scripts/google-analytics-G-KKGR3RY5TL.js" asp-append-version="true"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-KKGR3RY5TL');
+        </script>
+    }
+    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+    {
+        <!-- Google tag (gtag.js) - Google Analytics ECDC App-->
+        <!---<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWL58CF23C"></script>-->
+        <script src="~/Common/Scripts/google-analytics-G-PWL58CF23C.js" asp-append-version="true"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-PWL58CF23C');
+        </script>
+    }
+    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 9)
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics Finfind Company Partners-->
+        <!--<script async src=https://www.googletagmanager.com/gtag/js?id=G-PVT9BK16JZ></script>-->
+        <script src="~/Common/Scripts/google-analytics-G-PVT9BK16JZ.js" asp-append-version="true"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PVT9BK16JZ');
+        </script>
+    }
+    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics Hloolo-->
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-0DN49V54YY"></script>-->
+        <script src="~/Common/Scripts/google-analytics-G-0DN49V54YY.js" asp-append-version="true"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0DN49V54YY');
+        </script>
+    }
+    else
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics Finfind App-->
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-5EQF8X2YL8"></script>-->
+        <script src="~/Common/Scripts/google-analytics-G-5EQF8X2YL8.js" asp-append-version="true"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-5EQF8X2YL8');
+        </script>
+    }
+    
+    <!-- Google Tag Manager -->
+    @*
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5H5H26M');</script>*@
+    <!-- End Google Tag Manager -->
+</environment>

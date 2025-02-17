@@ -1,0 +1,310 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using Newtonsoft.Json;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model CreateEditFunderSearchViewModel
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.FundingApplicationWizard;
+    var TenantNamePascalCase = "";
+    var TenantNameKebabCase = "";
+    // Company Partners.
+    if(AbpSession.TenantId == 9)
+    {
+        TenantNamePascalCase = "CompanyPartners";
+        TenantNameKebabCase = "company-partners";
+    }
+    else
+    // African Bank.
+    if(AbpSession.TenantId == 10)
+    {
+        TenantNamePascalCase = "AfricanBank";
+        TenantNameKebabCase = "african-bank";
+    }
+    else
+    // Hloolo.
+    if(AbpSession.TenantId == 12)
+    {
+        TenantNamePascalCase = "Hloolo";
+        TenantNameKebabCase = "hloolo";
+    }
+    else
+    {
+        TenantNamePascalCase = "Finfind";
+        TenantNameKebabCase = "finfind";
+    }
+    var cssRef = "~/tenant-styles/" + TenantNameKebabCase + ".css";
+}
+
+@section Styles
+{
+    <link href="~/custom/plugins/dropzonejs/basic.css" rel="stylesheet" />
+    <link href="~/custom/plugins/dropzonejs/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/metronic/themes/theme11/css/pages/wizard/wizard-4.css" rel="stylesheet" />
+    <link href="~/metronic/themes/default/css/pages/wizard/wizard-2.css" rel="stylesheet" />
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <script src="~/custom/plugins/dropzonejs/dropzone.js"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
+
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/FormValidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+    <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/drop-zone.js"></script>
+
+    <link href=@cssRef rel="stylesheet" asp-append-version="true" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItemsEx,
+                Tenant = TenantNameKebabCase
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/bank-statement-upload.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/bank-statement-upload.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @{
+        await Html.RenderPartialAsync(
+                "../application/finfind/wizard-app-builder.cshtml"
+            );
+
+        if(AbpSession.TenantId != 2)
+        {
+            await Html.RenderPartialAsync(
+                "../Application/" + TenantNamePascalCase + "/wizard-app-builder.cshtml"
+            );
+        }
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        $(document).ready(function () {
+            function WizardCallback(verb, result) {
+                function applicationSubmit() {
+                    KTApp.blockPage({
+                        overlayColor: 'blue',
+                        opacity: 0.1,
+                        state: 'primary',
+                        message: 'Processing your matches...'
+                    });
+
+                    window.setTimeout(() => {
+                        KTApp.unblockPage();
+                        location.href = '@Url.Action("Detail", TenantNamePascalCase + "FunderSearch")?id=' + result.data.id;
+                    }, 10000);
+                }
+
+                function applicationCancel() {
+                    location.href = '@Url.Action("Onboarding", TenantNamePascalCase + "BasicScreening")';
+                }
+
+                function applicationExit() {
+                    location.href = "/Account/Logout";
+                }
+
+                function pdfConvertTest(result) {
+                    location.href = '@Url.Action("PdfExport_Baseline_Test", TenantNamePascalCase + "FunderSearch")?id=' + result.data.id;
+                }
+
+                if(verb == 'application-submit') {
+                    applicationSubmit();
+                } else if(verb == 'application-cancel') {
+                    applicationCancel();
+                } else if(verb == 'application-exit') {
+                    applicationExit();
+                } else if(verb == 'pdf-convert-test') {
+                    pdfConvertTest(result);
+                }
+            };
+            app.wizard.builder2.init(@Html.Raw(Json.Serialize(Model)), WizardCallback);
+        });
+    </script>
+}
+
+<div id="div-funder-search-wizard" style="display:none;">
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div><br /></div>
+        <div class="@(await GetContainerClass())">
+
+            @{ await Html.RenderPartialAsync("../Basicscreening/" + TenantNamePascalCase + "/top-nav.cshtml", 3); }
+            <br />
+
+            <div class="card card-custom gutter-b">
+                <div class="card card-custom">
+                    <div class="card-body">
+
+                        <div class="wizard wizard-2" id="div-wizard" data-wizard-state="first" data-wizard-clickable="false">
+
+                            @{ await Html.RenderPartialAsync("../Application/" + TenantNamePascalCase + "/wizard-nav.cshtml"); }
+
+                            <!--begin: Wizard Body-->
+                            <div id="div-body" class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+                                <!--begin: Wizard Form-->
+                                <div class="row">
+                                    <div class="offset-xl-1 col-xl-11">
+                                        <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form_funding">
+
+                                            @{ await Html.RenderPartialAsync("../Application/" + TenantNamePascalCase + "/wizard-pages.cshtml"); }
+                                            <!--begin: Wizard Actions-->
+                                            <div class="row">
+                                                <div class="col-xl-12 float-right">
+                                                    <a style="font-size:larger;" target="_self" href="/App/Sme/Support">Need Help? Click <b style="text-decoration: underline;">here</b></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                                <div class="mr-2">
+                                                    <button
+                                                        id="button-wizard-prev"
+                                                        type="button"
+                                                        class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        data-wizard-type="action-prev"
+                                                        style="margin-bottom:2px;"
+                                                    >Previous
+                                                    </button>
+                                                </div>
+
+                                                <div>
+                                                    <button
+                                                        id="button-wizard-save"
+                                                        type="button"
+                                                        class="btn btn-outline-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        style="margin-bottom:2px;"
+                                                    >Save
+                                                    </button>
+
+                                                    <button
+                                                        id="button-wizard-cancel"
+                                                        type="button"
+                                                        class="btn btn-outline-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        style="margin-bottom:2px;"
+                                                    >Cancel
+                                                    </button>
+
+                                                    <button
+                                                        id="button-wizard-submit"
+                                                        type="button"
+                                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        data-wizard-type="action-submit"
+                                                        style="margin-bottom:2px;"
+                                                    >GET MATCH
+                                                    </button>
+
+                                                    <button
+                                                        id="button-wizard-next"
+                                                        type="button"
+                                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                        data-wizard-type="action-next"
+                                                        style="margin-bottom:2px;"
+                                                    >Next
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                            <!--end: Wizard Actions-->
+                                            <div></div><div></div><div></div><div></div><div></div>
+                                        </form>
+
+                                        @if(AbpSession.TenantId == 12)
+                                        {
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-xl-12 float-right" style="font-size:medium;">
+                                                     Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                    <!--end: Wizard-->
+                                </div>
+                                <!--end: Wizard Form-->
+                            </div>
+                            <!--end: Wizard Body-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

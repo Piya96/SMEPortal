@@ -1,0 +1,294 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@model CreateEditFunderSearchViewModel
+
+
+
+<!--begin: Wizard Step 4 - Income & Profitability -->
+<div class="pb-5" data-wizard-type="step-content">
+
+    <h4 style="font-size:large;" class="mb-10 font-weight-bold text-dark">@L("FinancialInformation")</h4>
+
+    @* Average Annual Turnover *@
+    <div class="form-group">
+        <label for="annual-turnover">@L("AnnualTurnover")</label>
+        <select class="form-control" id="annual-turnover" name="annualturnover">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "59d359ac7112ea2ef072eec4").OrderBy(x => x.Priority).ToList())
+            {
+                <option value="@listItem.ListId">@listItem.Name</option>
+            }
+        </select>
+    </div>
+
+    @* Financial Year End *@
+    <div class="form-group">
+        <label for="financial-year-end">Financial Year End</label>
+        <select class="form-control" id="financial-year-end" name="financialyearend">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "616d6e53668f1708a649134b").OrderBy(x => x.Priority).ToList())
+            {
+                <option value="@listItem.ListId">@listItem.Name</option>
+            }
+        </select>
+    </div>
+
+
+    @* Who do you bank with *@
+    <div id="bank" class="form-group">
+        <label for="bank">@L("WhoDoYouBankWith") </label>
+        <select class="form-control" id="bank" name="bank">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "5c810d51b069b41688f61c78").OrderBy(x => x.Priority).ToList())
+            {
+                <option value="@listItem.ListId">@listItem.Name</option>
+            }
+
+        </select>
+        <span class="form-text text-muted">@L("WhoDoYouBankWithSubtext")</span>
+    </div>
+
+    <div id="bank-account-services-type" class="form-group">
+        <label for="bank">@L("WhatTypeOfBankAccountServices") </label>
+        <div class="checkbox-list">
+            @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "60a65b5b61d3627f442b31fb").OrderBy(x => x.Priority).ToList())
+            {
+                <label class="checkbox">
+                    <input type="checkbox" value="@listItem.ListId" name="bankaccservices" />
+                    <span>
+                    </span>
+                    @listItem.Name
+                </label>
+            }
+            <label class="checkbox">
+                <input type="checkbox" value="5c86148eb069b41688f61c8f" name="bankaccservices" />
+                <span></span>
+                None of the above
+            </label>
+        </div>
+    </div>
+
+    @* Business Loans *@
+    <div id="business-loans" class="form-group">
+        <label for="business-loans" class="col-form-label" style="width:80%;">@L("DoYouHaveOtherBusinessLoans")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessloans" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessloans" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="whoistheloanfrom" class="form-group">
+        <label for="whoistheloanfrom">@L("WhoIsLoanFrom")</label>
+        <select class="form-control" id="whoistheloanfrom" name="whoistheloanfrom">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var ps in Model.ListItems.Where(x => x.ParentListId == "60d193354e4bf55f7b0b8ff8").ToList())
+            {
+                <option value="@ps.ListId">@ps.Name</option>
+            }
+        </select>
+        <span class="form-text text-muted"></span>
+    </div>
+
+
+    @* Business Txs go through personal bank account *@
+    <div id="personal-bank-tx" class="form-group">
+        <label for="business-tx-personal-acc" class="col-form-label" style="width:80%;">@L("DoAnyOfYourBusinessTxGoThroughYourPersonalAccounts") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesstxpersonalacc" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesstxpersonalacc" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    @* Personal Bank *@
+    <div id="personalbankacc" class="form-group">
+        <label for="bank">@L("WhoDoYouBankWithPersonally") </label>
+        <select class="form-control" id="personalbank" name="personalbank">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "5c810d51b069b41688f61c78").OrderBy(x => x.Priority).ToList())
+            {
+                <option value="@listItem.ListId">@listItem.Name</option>
+            }
+        </select>
+        <span class="form-text text-muted">@L("WhoDoYouBankWithPersonallySubtext")</span>
+    </div>
+
+    @* Electronic accounting systems*@
+    <div id="has-electronic-acc-systems" class="form-group">
+        <label for="has-electronic-acc-systems" class="col-form-label" style="width:80%;">@L("HaveAccSystem")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="haselecaccsystems" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="haselecaccsystems" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="elec-acc-systems" class="form-group">
+        <label for="elec-acc-systems">@L("WhichElectAccSystem")</label>
+        <select class="form-control" id="elec-acc-systems" name="elecaccsystems">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var ps in Model.ListItems.Where(x => x.ParentListId == "60d194ba05955b09d12f35e3").ToList())
+            {
+                <option value="@ps.ListId">@ps.Name</option>
+            }
+        </select>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="elec-acc-systems-other" class="form-group">
+        <label for="elec-acc-systems-other">@L("WhichOtherAccSystem") </label>
+        <div class="input-group mb-3">
+            <input autocomplete="off" id="elecaccsystemother" name="elecaccsystemother" type="text" class="form-control" aria-label="elecaccsystemother">
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    @* Payroll systems*@
+    <div id="has-payroll-systems" class="form-group">
+        <label for="payroll-systems" class="col-form-label" style="width:80%;">@L("HavePayrollSystem")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="haspayroll" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="haspayroll" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="payroll-systems" class="form-group">
+        <label for="elec-acc-systems">@L("WhichElectPayrollSystem")</label>
+        <select class="form-control" id="payroll-systems" name="payrollsystems">
+            <option disabled selected value="">Select an option</option>
+            @foreach (var ps in Model.ListItems.Where(x => x.ParentListId == "60d19618eac92464d407fb62").ToList())
+            {
+                <option value="@ps.ListId">@ps.Name</option>
+            }
+        </select>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="payroll-systems-other" class="form-group">
+        <label for="payroll-systems-other">@L("WhichOtherPayrollSystem") </label>
+        <div class="input-group mb-3">
+            <input autocomplete="off" id="payrollsystemother" name="payrollsystemother" type="text" class="form-control" aria-label="payrollsystemother">
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    @* Invested your own money *@
+    <div id="invested-own-money" class="form-group">
+        <label for="invested-own-money" class="col-form-label" style="width:80%;">@L("HaveYouInvestedYourOwnMoney") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="hasinvestedownmoney" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="hasinvestedownmoney" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+    <style>
+        .tooltip-inner {
+            max-width: 350px;
+        }
+    </style>
+
+
+    @* Business Profitable *@
+    <div id="business-is-profitable" class="form-group">
+        <label for="business-is-profitable" class="col-form-label" style="width:80%;">@L("DidYourBusinessMakeAProfit") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessisprofitable" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businessisprofitable" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+    <style>
+        .tooltip-inner {
+            max-width: 350px;
+        }
+    </style>
+
+    @* Business Colateral *@
+    <div id="business-has-colateral" class="form-group">
+        <label for="business-has-colateral" class="col-form-label" style="width:80%;">
+            @L("DoYouHaveColateral")
+            <span class="option-focus text-align:left" data-toggle="collateral" data-placement="right" title="">
+                <i class="fa fa-info-circle"></i>
+            </span>
+        </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesshascolateral" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesshascolateral" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--end: Wizard Step 4-->

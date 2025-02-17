@@ -1,0 +1,452 @@
+﻿:root {
+    --accent-color: #099ba0;
+    --darker: #00b4ba;
+    --lighter: #B8DEE9;
+    --shadeLighter: #F1F5F8;
+}
+
+
+
+
+body {
+    font-family: 'Vectora Light', sans-serif !important;
+}
+
+h3 {
+    font-family: 'Vectora Roman', sans-serif !important;
+}
+
+h4 {
+    font-family: 'Vectora Roman', sans-serif !important;
+    color: black !important;
+}
+
+.btn.btn-primary {
+    background-color: var(--darker) !important;
+    border-color: var(--darker) !important;
+}
+
+    .btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+        background-color: var(--lighter) !important;
+        border-color: var(--darker) !important;
+        color: var(--darker) !important;
+    }
+
+    /*.btn.btn-primary.disabled, .btn.btn-primary:disabled {
+        background-color: #252525;
+        border-color: #252525;
+    }*/
+    .btn.btn-primary.disabled, .btn.btn-primary:disabled {
+        background-color: var(--lighter);
+        border-color: var(--lighter);
+    }
+
+.btn.btn-light-primary {
+    border-color: var(--darker);
+    background-color: var(--lighter);
+    color: var(--darker);
+}
+
+.btn .btn-sm .btn-light-primary {
+    background-color: transparent;
+    color: white;
+}
+
+.btn.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-light-primary:focus:not(.btn-text), .btn.btn-light-primary.focus:not(.btn-text) {
+    background-color: var(--darker);
+    border-color: var(--darker);
+    color: white !important;
+    transition: all 0.5s ease-in-out;
+}
+
+    .btn.btn-light-primary i {
+        color: black;
+    }
+
+.form-control.form-control-solid {
+    border-color: var(--darker) !important;
+    background-color: var(--shadeLighter) !important;
+}
+
+    /*.form-control.form-control-solid:hover:focus:active {
+        background-color: #00B4BA !important;
+        border-color: #F1F5F8 !important;
+    }*/
+
+    .form-control.form-control-solid::-moz-placeholder {
+        color: black !important;
+        opacity: 1;
+    }
+
+    .form-control.form-control-solid:-ms-input-placeholder {
+        color: black !important;
+    }
+
+    .form-control.form-control-solid::-webkit-input-placeholder {
+        color: black !important;
+    }
+
+    .checkbox.checkbox-outline > input:checked ~ span:after {
+        border-color: var(--darker);
+    }
+
+    .checkbox.checkbox-outline.checkbox-primary > input:checked ~ span:after {
+        border-color: var(--darker);
+    }
+
+.btn.btn-sm.btn-light-primary > i {
+    color: var(--darker);
+}
+a.btn.btn-sm.btn-light-primary {
+    color: var(--darker);
+    background-color: transparent;
+}
+
+
+a.text-primary:focus {
+    color: var(--lighter) !important;
+}
+
+span i {
+    color: var(--darker);
+}
+
+label a {
+    color: var(--darker);
+}
+
+a {
+    color: var(--darker) !important;
+}
+
+    a.btn-light-primary {
+        color: var(--darker) !important;
+        background-color: white;
+    }
+
+    a:hover {
+        color: var(--lighter) !important;
+    }
+
+    a.text-hover-primary, .text-hover-primary {
+        color: var(--darker) !important;
+    }
+
+        a.text-hover-primary:hover, .text-hover-primary:hover {
+            color: var(--lighter) !important;
+        }
+
+
+.btn.btn-outline-primary {
+    color: var(--darker) !important;
+    border-color: var(--darker);
+}
+
+
+
+.checkbox > input:checked ~ span {
+    border-color: var(--darker) !important;
+}
+.checkbox-list .checkbox > input:checked ~ span {
+    background-color: var(--darker) !important;
+    border-color: var(--darker) !important;
+}
+
+.switch input:empty ~ span:before {
+    background-color: var(--shadeLighter) !important;
+}
+
+.switch input:checked ~ span:after {
+    opacity: 1 !important;
+    color: #ffffff !important;
+    background-color: var(--darker) !important;
+}
+
+.btn-outline-primary {
+    background-color: white !important;
+    color: var(--darker) !important;
+    border-color: var(--darker) !important;
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--darker) !important;
+        color: white !important;
+        border-color: white !important;
+    }
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+    color: var(--darker);
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+    color: var(--darker);
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+    color: var(--darker);
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] {
+    background-color: var(--lighter) !important;
+    margin-bottom: 4px !important;
+}
+
+    .wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"]:after {
+        border-left-color: var(--lighter) !important;
+        margin-bottom: 4px !important;
+    }
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="pending"] {
+    border-color: var(--darker) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: 4px !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="done"] {
+    border-color: var(--darker) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: 4px !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: black !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: grey !important;
+}
+
+.form-control:focus {
+    border-color: var(--darker) !important;
+}
+
+.input:hover {
+    border-color: var(--darker) !important;
+}
+
+input.is-valid {
+    border-color: var(--darker) !important;
+}
+
+.btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) .fa-arrow-circle-right:before {
+    color: var(--darker);
+}
+
+.scrolltop {
+    background-color: var(--lighter) !important;
+    color: var(--darker) !important;
+    border-color: var(--darker) !important;
+}
+
+.scrolltop > i {
+    color: var(--darker) !important;
+}
+.scrolltop:hover {
+    background-color: var(--darker) !important;
+}
+
+    .scrolltop:hover .fa-arrow-up:before {
+        color: white !important;
+    }
+
+.card {
+    border: var(--lighter) 1px solid;
+}
+
+.btn.btn-outline-primary i {
+    color: var(--darker);
+}
+
+.table-hover tbody tr:hover {
+    color: var(--darker);
+}
+
+.flaticon-profile {
+    color: var(--darker) !important;
+}
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title:after {
+        color: var(--darker) !important;
+    }
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title {
+    background-color: var(--lighter);
+    color: gray !important;
+}
+    .alert.alert-custom.alert-outline-primary {
+    border-color: var(--darker) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    }
+
+
+    /* heading light Teal*/
+.header-menu .menu-nav > .menu-item.menu-item-rel {
+    background-color: var(--lighter);
+}
+        /*heading color effect when hover*/
+    .header-menu .menu-nav > .menu-item.menu-item-rel:hover:not(.menu-item-active) {
+        background-color: var(--darker) !important;
+        color: white !important;
+    }
+        /*heading text when hover*/
+    .header-menu .menu-nav > .menu-item:hover > .menu-link .menu-text {
+    color: white !important;
+    }
+
+    /*heading button text*/
+.header-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: var(--darker);
+}
+
+        /*Profile button for log off*/
+    .btn.btn-secondary {
+    border-color: var(--darker) !important;
+    background-color: var(--lighter) !important;
+    color: var(--darker);
+}
+
+        /*Profile button Hover effect*/
+    .btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary.focus:not(.btn-text) {
+        color: white;
+        background-color: var(--darker) !important;
+        border-color: var(--darker) !important;
+    }
+
+    /*Profile symbol color*/
+.symbol.symbol-light-dark > .symbol-label {
+    background-color: var(--darker);
+    color: white;
+}
+
+    /*Profile symbol hover effect*/
+.btn.btn-secondary:hover .symbol-label {
+    background-color: var(--lighter) !important;
+    color: var(--darker) !important;
+}
+
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
+    color: white;
+}
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: var(--darker);
+    color: white;
+}
+
+    /*Credit Score Nav buttons*/
+.nav.nav-pills .nav-item {
+    background-color: var(--lighter) !important;
+    color: var(--darker) !important;
+}
+
+    /*Credit Score Nav Active button*/
+.nav.nav-pills.nav-light-primary .nav-link.active {
+    background-color: var(--darker);
+}
+
+    /*Credit Score Nav Active Text*/
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-text {
+    color: white !important;
+}
+
+    /*Credit Score Nav Active button icon*/
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-icon i {
+    color: white !important;
+}
+
+    /*Credit Score Nav button icon*/
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-icon i {
+    color: var(--darker) !important;
+}
+
+    /*Credit Score Nav button nav-text*/
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-text {
+    color: var(--darker) !important;
+}
+
+    /*Credit Score Nav button Hover effect*/
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) {
+    background-color: var(--darker);
+    color: white !important;
+}
+        /*Credit Score Nav button nav-icon Hover effect*/
+    .nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-icon i {
+        color: white !important;
+    }
+        /*Credit Score Nav button nav-text Hover effect*/
+    .nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-text {
+        color: white !important;
+    }
+
+    /*Credit Score Nav button icon*/
+.btn.btn-outline-primary:disabled i {
+    color: var(--darker) !important;
+}
+
+
+    /*Credit Score Nav button icon Hover effect*/
+.btn.btn-outline-primary:disabled:hover i {
+    color: white !important;
+}
+
+
+
+    /*FunderSearch Radio-buttons-outer-ring*/
+.radio.radio-outline.radio-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: var(--darker) !important;
+}
+        /*FunderSearch Radio-buttons-dot in the middle*/
+    .radio.radio-outline.radio-primary > input:checked ~ span:after {
+        background-color: var(--darker);
+        border-color: var(--darker);
+    }
+
+    /*upload documents Radio buttons - Minimum Requirements for Lender Matching(1-Proof of Turnover)*/
+input[type=radio] {
+    accent-color: var(--accent-color);
+}
+
+    /*Login side page text*/
+.navi .navi-item .navi-link .navi-text {
+    color: black;
+}
+
+    /*Login side page text Hover affect*/
+.navi .navi-item .navi-link:hover .navi-text {
+    color: var(--darker) !important;
+}
+
+    /*Login icon background*/
+.symbol.symbol-40 .symbol-label {
+    background-color: var(--lighter);
+}
+    
+/*Login icon color*/
+.svg-icon.svg-icon-primary svg g [fill] {
+    fill: var(--darker) !important;
+}
+
+.alert.alert-custom.alert-outline-primary .alert-text {
+    color: var(--darker);
+}
+
+.alert.alert-custom.alert-outline-primary .alert-icon i {
+    color: var(--darker);
+}
+
+.alert.alert-custom.alert-outline-primary .alert-close i {
+    opacity: 0.8;
+    color: var(--darker);
+}
+
+.flaticon-search {
+    color: var(--darker);
+}
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title .flaticon-search {
+    color: var(--darker);
+}

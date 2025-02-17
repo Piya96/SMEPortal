@@ -1,0 +1,31 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+@{
+    var LenderName = "Lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        LenderName = "Funder";
+    }
+}
+
+<div class="pb-5" data-wizard-type="step-content" id="div-company-info">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Business Info Needed for @LenderName</h3>
+
+    <h5 class="mb-10">Trading History</h5>
+
+    @{ await Html.RenderPartialAsync("../../common/started-trading-date.cshtml"); }
+
+    <br/>
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/ownership.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("../../common/bee-level.cshtml"); }
+
+    <br/>
+
+    @{ await Html.RenderPartialAsync("../../common/employee-info.cshtml"); }
+</div>

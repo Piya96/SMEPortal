@@ -1,0 +1,156 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.FunderSearch
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model FunderSearchesViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.FundingApplications;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+
+}
+
+@section Scripts
+{
+    <style>
+        .sme-label-queued, .sme-label-match, .sme-label-nomatch, .sme-label-locked {
+            border-radius: 5px;
+        }
+
+        .sme-label-queued {
+            background: darkorange;
+            color: mintcream;
+        }
+
+        .sme-label-match {
+            background: green;
+            color: aquamarine;
+        }
+
+        .sme-label-nomatch {
+            background: red;
+            color: blanchedalmond;
+        }
+
+        .sme-label-locked {
+            background: #1BC5BD;
+            color: white;
+        }
+    </style>
+
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <link href="~/metronic/themes/theme11/css/pages/wizard/wizard-4.css" rel="stylesheet" />
+
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/FormValidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = "sefa"
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/match-polling.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Sefa/FinancialInfo/dto.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/match-polling.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/FunderSearch/download-funder-search-summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Sefa/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @{
+        await Html.RenderPartialAsync(
+
+            "../Application/Sefa/Summary/page-partial-js.cshtml"
+        );
+    }
+
+
+    <script>
+        $(document).ready(function () {
+            app.wizard.isb.init(null, null, null);
+            let helpers = app.onboard.helpers.get();
+            let userProfile = @Html.Raw(Json.Serialize(Model.Settings));
+            let ownerProfile = @Html.Raw(Json.Serialize(Model.Owners));
+            let companyProfile = @Html.Raw(Json.Serialize(Model.Companies));
+            let funderSearches = @Html.Raw(Json.Serialize(Model.ApplicationProperties));
+            for (const appId in funderSearches) {
+                app.fss.user.render(userProfile, appId);
+                app.fss.owner.render(ownerProfile[appId].owner, appId);
+                app.fss.company.render(companyProfile[appId].smeCompany, appId);
+                app.fss.mandateFit.render(funderSearches[appId], appId);
+                app.fss.fundingRequirements.render(funderSearches[appId], appId);
+
+                let dto = helpers.nvpArrayToObject(funderSearches[appId]);
+                app.wizard.financialInfo.summary.render(dto, appId);
+
+                app.fss.documents.render(funderSearches[appId], companyProfile[appId].smeCompany, appId);
+            }
+
+            $('#download-credit-report-id').on('click', function () {
+                app.consumerCredit.loadDetail();
+                app.consumerCredit.downloadCreditReport(function (status) {
+
+                });
+            });
+
+            $('#redirect-to-consumer-credit-id').on('click', function () {
+                location.href = '@Url.Action("Index", "ConsumerCredit")';
+            });
+
+            window.setTimeout(function () {
+                $('#id-funder-search-matches-detail-div').fadeIn(500, 'swing', function () {
+                });
+            }, 10);
+        });
+    </script>
+}
+
+<div id="id-funder-search-matches-detail-div" style="display:none;">
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div><br /></div>
+        <div class="@(await GetContainerClass())">
+
+            @{ await Html.RenderPartialAsync("../Common/_TopNav.cshtml", 4); }
+            <br />
+
+            <div class="card card-custom gutter-b">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h4 class="font-weight-bold mb-3">Finance Applications</h4>
+
+                        @{await Html.RenderPartialAsync("_ApplicationView.cshtml");}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

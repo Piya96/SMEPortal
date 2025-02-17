@@ -1,0 +1,67 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using System.Globalization;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FunderSearchSummaryViewModel
+
+@{
+    CultureInfo ci = new CultureInfo("en-ZA");
+    // Day month year hour minute
+    var day = Model.Application.LastModificationTime?.Day;
+    var month = Model.Application.LastModificationTime?.Month;
+    var year = Model.Application.LastModificationTime?.Year;
+}
+
+@{
+    if (Model.IncludeHeader)
+    {
+        <div class="table-responsive">
+            <img alt="Logo" src="/TenantCustomization/GetLogo?tenantId=@Model.Application.TenantId" height="50">
+            <br /><br />
+            <h4 class="mb-10 font-weight-bolder text-dark">Funder Search Summary for: <br /><u>@Model.SmeCompany.Name</u></h4>
+            <div>Date: @day-@month-@year </div>
+            <div class="separator separator-dashed my-3"></div>
+        </div>
+    }
+
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = (int) Model.Application.Id,
+        TenantId = Model.Application.TenantId,
+        HeaderColor = "var(--dark-blue)"
+    };
+
+    await Html.RenderPartialAsync("../BasicScreening/FinFind/UserProfile/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../BasicScreening/FinFind/OwnerProfile/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../BasicScreening/FinFind/CompanyProfile/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../Application/Finfind/FundingRequirements/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../Application/Finfind/CompanyInfo/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../Application/Finfind/FinancialInfo/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../Application/Finfind/LenderDocuments/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../Application/Finfind/MinRequirements/summary.cshtml", fssVM);
+
+    if (!Model.IncludeHeader)
+    {
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <td style="width:50%;"></td>
+                        <td>
+                            <div style="margin-top:5px !important;">
+                                <button id="id-funder-search-save-to-pdf-bottom-@Model.Application.Id"
+                                        onclick="downloadFunderSearchSummary(@Model.SmeCompany.Id, @Model.Application.Id, 'CompanyPartnersFunderSearch')"
+                                        type="button"
+                                        class="btn btn-secondary font-weight-bolder text-uppercase px-6 py-2">
+                                    <i class="far fa-file-pdf"></i>@L("FS_SaveToPDF")
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+}

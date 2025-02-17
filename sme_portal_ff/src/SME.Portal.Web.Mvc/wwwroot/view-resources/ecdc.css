@@ -1,0 +1,163 @@
+﻿.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: #3699FF;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > span {
+    background-color: transparent;
+    border-color: grey;
+}
+
+
+/*
+
+
+
+.checkbox > input:checked ~ span {
+    background-color: orange !important;
+}
+
+.checkbox > span {
+    background-color: purple !important;
+}
+
+.checkbox > input:checked ~ span:after {
+    border: 1px solid red !important;
+}
+
+
+.checkbox > input:checked ~ span:after {
+    border: 1px solid red !important;
+}
+
+
+.checkbox > span {
+    border: 1px solid black !important;
+}
+
+.btn-outline-primary {
+    color: black !important;
+    border-color: black !important;
+}
+
+.btn-outline-primary:hover {
+    color: white !important;
+    background-color: black !important;
+    border-color: black !important;
+}
+
+.flaticon-add, .flaticon-list, .flaticon-edit {
+    color: black !important;
+}
+
+.btn-outline-primary:hover .flaticon-add {
+    color: white !important;
+}
+
+.btn-outline-primary:hover .flaticon-list {
+    color: white !important;
+}
+
+.btn-outline-primary:hover .flaticon-edit {
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: #00B4BA !important;
+    color: white !important;
+}
+
+.btn.btn-primary {
+    background-color: #00B4BA !important;
+    border-color: #AFEEEE !important;
+}
+
+.btn-primary:hover {
+    background-color: #B8DEE9 !important;
+    color: #00B4BA !important;
+    border-color: #00b4ba !important;
+}
+
+.btn-outline-primary {
+    background-color: white !important;
+    color: #00B4BA !important;
+    border-color: #00B4BA !important;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #00B4BA !important;
+        color: white !important;
+        border-color: white !important;
+    }
+
+.btn-light-primary {
+    background-color: grey !important;
+    color: black !important;
+}
+
+    .btn-light-primary:hover {
+        background-color: #00B4BA !important;
+        color: white !important;
+    }
+
+.input:hover {
+    border-color: #00B4BA !important;
+}
+
+input.is-valid {
+    border-color: #00B4BA !important;
+}
+
+.form-control:focus {
+    border-color: #00B4BA !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+    color: #00B4BA;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+    color: #00B4BA;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+    color: #00B4BA;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] {
+    background-color: #B8DEE9 !important;
+    margin-bottom: 4px !important;
+}
+
+    .wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"]:after {
+        border-left-color: #B8DEE9 !important;
+        margin-bottom: 4px !important;
+    }
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="pending"] {
+    border-color: #00B4BA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: 4px !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="done"] {
+    border-color: #00B4BA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: 4px !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: black !important;
+}
+
+.wizard-steps#div-wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: grey !important;
+}
+
+.input[type=radio] {
+    accent-color : red !important;
+}
+
+    */

@@ -1,0 +1,170 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.UiCustomization.Dto
+@using SME.Portal.Common.Dto;
+@using CultureHelper = SME.Portal.Localization.CultureHelper
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model FunderSearchSummaryViewModel
+
+@{
+    Layout = null;
+    UiCustomizationSettingsDto theme = await GetTheme();
+    var applicationProperties = NameValuePairDto.FromJson(Model.Application.MatchCriteriaJson).ToList();
+    var appPropDict = new Dictionary<int, List<NameValuePairDto>>();
+    appPropDict.Add(Model.Application.Id, applicationProperties);
+    var TenantNamePascalCase = "Finfind";
+    var TenantNameKebabCase = "finfind";
+    var cssRef = "~/tenant-styles/" + TenantNameKebabCase + ".css";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir=@(CultureHelper.IsRtl ? "rtl" : "")>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>Finfind - Funder Search Summary</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    @* Fill these meta tags upon your project specification *@
+    <meta content="Portal" name="description" />
+    <meta content="Portal" name="keywords" />
+    <meta content="Portal" name="author" />
+
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/vendors.bundle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@(ApplicationPath)metronic/themes/default/css/style.bundle@(CultureHelper.IsRtl ? ".rtl":"").css" asp-append-version="true" />
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/common-styles.css" asp-append-version="true" />
+
+    <link href=@cssRef rel="stylesheet" asp-append-version="true" />
+
+    @if(CultureHelper.IsRtl)
+    {
+        <link rel="stylesheet" href="/Common/Styles/abp-zero-template-rtl.css" asp-append-version="true" />
+    }
+
+    <script type="text/javascript">
+        @* This is used to get the application's root path from javascript.
+        It's useful if you're running application in a virtual directory under IIS. *@
+        var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = TenantNameKebabCase
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/ecdc/app-common.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/CompanyInfo/dto.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/dto.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.js" asp-append-version="true"></script>
+
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/ecdc/app-common.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/CompanyInfo/dto.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/dto.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FundingRequirements/summary.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/CompanyInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Common/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/FinancialInfo/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/LenderDocuments/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Finfind/MinRequirements/summary.min.js" asp-append-version="true"></script>
+
+    </environment>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            app.wizard.isb.init(null, null, null);
+            let json = @Html.Raw(Json.Serialize(Model));
+            let helpers = app.onboard.helpers.get();
+            let appId = json.application.id;
+            app.fss.user.render(json.settings, appId);
+            app.fss.owner.render(json.ownerProfile, appId);
+            app.fss.company.render(json.smeCompany, appId);
+            let mc = JSON.parse(json.application.matchCriteriaJson);
+            let dto = helpers.nvpArrayToObject(mc);
+            app.wizard.fundingRequirements.summary.render(dto, appId);
+            app.wizard.companyInfo.summary.render(dto, appId);
+            app.wizard.financialInfo.summary.render(dto, appId);
+            app.wizard.lenderDocuments.summary.render(dto, appId);
+            app.wizard.keyThings.summary.render(dto, appId);
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="d-flex flex-column flex-root">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+
+                @{ await Html.RenderPartialAsync("summary.cshtml", Model); }
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Input_N_LS_RS;
+
+<div class="@Model.Col">
+    <div class="form-group fv-plugins-icon-container">
+
+        <label class="" for="name-input-mandate-fit-loan-amount">@Model.Label</label>
+        <div class="input-group">
+            @{
+                var name = Model.Scope + "input-" + Model.Name;
+                if(Model.LeftSelect != null)
+                {
+                    <div class="input-group-prepend">
+                        <select id="select-left-@name"
+                                name="select-left-@name"
+                                class="form-control"
+                                value="">
+                            <option value="" disabled selected hidden>@Model.LeftSelect</option>
+                        </select>
+                    </div>
+                }
+            }
+            <input id="@name"
+                   value=""
+                   name="@name"
+                   type="text"
+                   class="form-control">
+
+            @{
+                if(Model.RightSelect != null)
+                {
+                    <div class="input-group-append">
+                        <select id="select-right-@name"
+                                name="select-right-@name"
+                                class="form-control"
+                                value="">
+                            <option value="" disabled selected hidden>@Model.RightSelect</option>
+                        </select>
+                    </div>
+                }
+            }
+
+        </div>
+        <span class="form-text text-muted">@Model.SubText</span>
+        <div id="message-@Model.Name" class="fv-plugins-message-container"></div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch
+@using SME.Portal.Company.Dtos;
+@using SME.Portal.Common.Dto;
+@using SME.Portal.Editions.Dto;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FunderSearchesViewModel
+
+
+<div class="accordion  accordion-toggle-arrow" id="applicationAccordian">
+
+    <div class="card">
+
+        @{
+
+            var index = 0;
+            var show = "collapse";
+
+            if(Model.View == "Detail")
+                show = "collapse show";
+
+            foreach(var fApp in Model.PagedFunderSearches.OrderBy(x => x.Application.Created))
+            {
+                var fAppSummary = new List<NameValuePairDto>();
+                Model.ApplicationProperties.TryGetValue(fApp.Application.Id, out fAppSummary);
+                var financeForDesc = fAppSummary.FirstOrDefault(x => x.Name == "FinanceForDesc")?.Value;
+                var financeForType = fAppSummary.FirstOrDefault(x => x.Name == "FinanceForTypeDesc")?.Value;
+                var loanAmount = fAppSummary.FirstOrDefault(x => x.Name == "loanamount")?.Value;
+                GetSmeCompanyForViewDto company;
+                Model.Companies.TryGetValue(fApp.Application.Id, out company);
+                GetOwnerForViewDto owner;
+                Model.Owners.TryGetValue(fApp.Application.Id, out owner);
+
+                var funderSearchEditionDisplayName = Model.ApplicationProperties[fApp.Application.Id].FirstOrDefault(x => x.Name == "edition-display-name")?.Value;
+                var companySubscription = Model.CompanySmeSubscriptions[company.SmeCompany.Id];
+                var companyeEditionDisplayName = companySubscription.EditionFk.DisplayName;
+
+                var matchCount = 0;
+
+                foreach(var fProductSet in Model.MatchedFinanceProducts[fApp.Application.Id])
+                    foreach(var fp in fProductSet.Value)
+                        matchCount++;
+
+                var number = "";
+                if(Model.View == "Index")
+                    number = $"{(index + 1)}.";
+
+                <!-- header start-->
+                <div class="card-header" id="headingOne4">
+                    <div class="card-title" data-toggle="collapse" data-target="#app-@fApp.Application.Id">
+                        <i class="flaticon-search"></i>@number @company.SmeCompany.Name (@financeForDesc) - @fApp.Application.Created.Date.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
+                <!-- header end-->
+
+                <!-- target start-->
+                <div class="card-body">
+                    <div id="app-@fApp.Application.Id" class="@show" data-parent="#applicationAccordian">
+                        <div class="card card-custom">
+
+                            <div class="card-header">
+                                <div class="card-toolbar">
+                                    <ul class="nav nav-light-primary nav-pills" role="tablist">
+                                        @* Matches Nav *@
+                                        <li class="nav-item">
+                                            <a id="matches_tab_@fApp.Application.Id" data-toggle="tab" class="nav-link active" href="#kt_tab_pane_5_2_@fApp.Application.Id">
+                                                <span class="nav-text">@L("Matches")</span>
+                                            </a>
+                                        </li>
+
+                                        @* Application Details Nav *@
+                                        <li class="nav-item">
+                                            <a id="application_tab_@fApp.Application.Id" class="nav-link" data-toggle="tab" href="#kt_tab_pane_5_1_@fApp.Application.Id">
+                                                <span class="nav-text">@L("FunderSearchSummary")</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="tab-content">
+
+                                    @* Matches Tab *@
+                                    @if(fApp.Application.Locked != null)
+                                    {
+                                        <div class="tab-pane fade show active" id="kt_tab_pane_5_2_@fApp.Application.Id" role="tabpanel" aria-labelledby="kt_tab_pane_5_2">
+
+                                            @{
+                                                await Html.RenderPartialAsync("_ApplicationMatchesView.cshtml", new FunderSearchMatchesViewModel()
+                                                {
+                                                    ApplicationId = fApp.Application.Id,
+                                                    SmeCompany = company.SmeCompany,
+                                                    FinanceProducts = Model.MatchedFinanceProducts[fApp.Application.Id],
+                                                    CompanyEdition = Model.CompanySmeSubscriptions[fApp.Application.SmeCompanyId].EditionFk,
+                                                    MatchCount = matchCount,
+                                                    CompanyDocuments = Model.CompanyDocuments[fApp.Application.SmeCompanyId],
+                                                    FunderSearchEditionDisplayName = funderSearchEditionDisplayName,
+                                                    View = Model.View,
+                                                    DoesCreditReportExist = Model.DoesCreditReportExist,
+                                                    ShowMatches = Model.ShowMatches[fApp.Application.Id],
+                                                    ShowPricing = Model.ShowPricing[fApp.Application.Id]
+                                                });
+                                            }
+
+
+                                        </div>
+                                    }
+
+                                    @* Funder Search Summary Tab *@
+                                    <div class="tab-pane fade" id="kt_tab_pane_5_1_@fApp.Application.Id" role="tabpanel" aria-labelledby="kt_tab_pane_5_1">
+                                        <div class="card-body">
+
+                                            @{ await Html.RenderPartialAsync("_FunderSearchSummary.cshtml", new FunderSearchSummaryViewModel()
+                                                {
+                                                    Settings = Model.Settings,
+                                                    SmeCompany = company.SmeCompany,
+                                                    Application = fApp.Application,
+                                                    OwnerProfile = owner.Owner,
+                                                    Subscription = companySubscription,
+                                                    ListItems = Model.ListItems,
+                                                    IncludeHeader = false,
+                                                    IsBaseline = Model.IsBaseline
+                                                });
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- target end-->
+
+                index++;
+            }
+        }
+    </div>
+
+</div>
+
+

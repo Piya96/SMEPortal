@@ -1,0 +1,20 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<div class="pb-5" data-wizard-type="step-content" id="div-company-info">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Business Info Needed for ECDC</h3>
+
+    <br/>
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/ownership.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("../../common/bee-level.cshtml"); }
+
+    <br/>
+
+    @{ await Html.RenderPartialAsync("../../common/employee-info.cshtml"); }
+
+</div>

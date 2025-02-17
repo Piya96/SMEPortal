@@ -1,0 +1,414 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.SmeDocuments;
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model CreateEditFunderSearchViewModel
+
+    <style>
+        .td-step-five {
+            width: 20% !important;
+            padding-left: 11% !important;
+        }
+
+        .input-step-five {
+            width: 2%;
+            height: 2%;
+            margin: auto;
+            display: flex;
+        }
+
+        .label-step-five {
+            margin: auto;
+            display: flex;
+        }
+
+        .tr-step-five > label {
+            margin: auto;
+            display: flex;
+        }
+
+        .tr-step-five > input {
+            width: 2%;
+            height: 2%;
+            margin: auto;
+            display: flex;
+        }
+    </style>
+
+<div id="company-registration-documents" class="form-group">
+
+    <div class="pb-5" data-wizard-type="step-content" style="width:100%;">
+        <h4 class="mb-10 font-weight-bold text-dark">The following documents may be required by <b>@L("Sefa")</b> to process the finance application. Please indicate whether you have these documents available for uploading.</h4>
+        @* Company Registration Documents *@
+
+        <div id="id-step-5-messages"></div>
+
+        <div class"table-responsive">
+            <table class="table">
+                <tr style="text-align:center;width:100%;">
+                    <th style="border-top-width:0px;width:40%;"></th>
+                    <th class="table table-bordered" style="width:20%;">@L("Yes")</th>
+                    <th class="table table-bordered" style="width:20%;">@L("No")</th>
+                </tr>
+
+                <tbody class="table-bordered">
+
+
+                    @* CompanyRegistrationDocuments *@
+                    <tr class="tr-step-five" style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CompanyRegistrationDocuments")
+                            <div id="id-company-registration-reg-doc-message"></div>
+                            <span class="form-text text-muted"></span>
+                        </td>
+                        <td class="td-step-five" style="align-content:center;">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d123a022727ec3b587a" value="@L("Yes")" style="background:red;" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="input-step-five" type="radio" name="5aaf6d123a022727ec3b587a" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CIPCAnnualReturnDocuments *@
+                    <tr class="tr-step-five" style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CIPCAnnualReturnDocuments")
+                            <div id="id-cipc-annual-return-doc-message"></div>
+                            <span class="form-text text-muted"></span>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549c63a2b3b4fb7c24bb34" value="@L("Yes")" style="background:red;" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input class="input-step-five" type="radio" name="60549c63a2b3b4fb7c24bb34" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CertifiedCopiesOfOwnersIDs *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CertifiedCopiesOfOwnersIDs")
+                            <div id="id-cert-owners-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdb53efed8141436959b" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdb53efed8141436959b" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* ProofOfBusinessAddress *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("ProofOfBusinessAddress")
+                            <div id="id-proof-of-addr-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5b2a54ecb958c008605883ff" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5b2a54ecb958c008605883ff" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+
+                    @* BEE Certificate *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("BEECertificate")
+                            <div id="id-bee-certificate-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549db9e3032aa608a98cc1" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="60549db9e3032aa608a98cc1" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* CompanyBankStatements *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("CompanyBankStatements")
+                            <div id="id-bank-statements-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d193a022727ec3b587b" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5aaf6d193a022727ec3b587b" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* 12MonthsBudgetingCashflowProjections *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("12MonthsBudgetingCashflowProjections")
+                            <div id="id-months-12-budget-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0ce1d3efed814143695a1" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0ce1d3efed814143695a1" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* StatementOfAssetsAndLiabilitiesAllOwners *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("StatementOfAssetsAndLiabilitiesAllOwners")
+                            <div id="id-assets-liabilities-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdd73efed8141436959d" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdd73efed8141436959d" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* TaxClearanceCertificate *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("TaxClearanceCertificate")
+                            <div id="id-tax-clearance-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdc33efed8141436959c" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdc33efed8141436959c" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* BusinessPlan *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("BusinessPlan")
+                            <div id="id-business-plan-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cde13efed8141436959e" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cde13efed8141436959e" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* ManagementAccounts *@
+                    <tr style="text-align:center;">
+                        <td style="width:40%;text-align:left;">
+                            @L("ManagementAccounts")
+                            <div id="id-management-account-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five" style="text-align:left;">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdfc3efed814143695a0" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five" style="text-align:left;">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cdfc3efed814143695a0" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                    @* AnnualFinancialStatements *@
+                    <tr>
+                        <td style="width:40%;text-align:left;">
+                            @L("AnnualFinancialStatements")
+                            <div id="id-annual-fin-atatements-reg-doc-message"></div>
+                        </td>
+                        <td class="td-step-five" style="text-align:center;">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cded3efed8141436959f" value="@L("Yes")" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td class="td-step-five" style="text-align:center;">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="5ab0cded3efed8141436959f" value="@L("No")" />
+                                <span></span>
+                            </label>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        @* Business Bank Statements *@
+        <br />
+        <h3 class="mb-10 font-weight-bold text-dark" style="font-size:large;">Upload your documents</h3>
+
+        <p> <b>@L("Sefa")</b> require your business documents to assess whether they can assist you with funding.</p>
+
+        <p style="font-style: italic;"><b>Please upload the documents required for <b>@L("Sefa")</b> to process your application.</b></p>
+
+        <div id="want-to-upload-business-bank-statements" class="form-group">
+            <label for="want-to-upload-business-bank-statements" class="col-form-label" style="width:80%;">Do you want to upload your latest business bank statements now? </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="wanttouploadbusbankstatements" value="Yes" />
+                        <span></span>
+                        Yes
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="wanttouploadbusbankstatements" value="No" />
+                        <span></span>
+                        No
+                    </label>
+                </div>
+            </div>
+            <span class="form-text text-muted"></span>
+        </div>
+
+        <div id="upload-business-bank-statements" class="form-group">
+            <div id="id-step-5-messages">
+                <span class="dropzone-msg-desc">You can upload one PDF from your bank that includes the transactions for the last 6 months OR you can upload 6 separate PDFs (1 per month).</span>
+            </div>
+            <br />
+            <div class="card card-custom gutter-b">
+                @* Document Upload *@
+                @* Business Bank Statements *@
+                <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form_documents">
+                    <div id="businss-bank-statements-documents" class="form-group">
+
+                        <div name="business-bank-statements" class="form-group fv-plugins-icon-container">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <div class="col-lg-9 col-md-9 col-sm-12">
+                                        <div class="dropzone dropzone-default dropzone-success dz-clickable" id="business-bank-statements-dropzone">
+                                            @Html.Hidden("DocumentTypeBusinessBankStatements", DocumentTypes.BankStatement)
+                                            <div class="dropzone-msg dz-message needsclick">
+                                                <h3 class="dropzone-msg-title">Click here to browse and once you have found your document, click the UPLOAD button</h3>
+                                                <span class="dropzone-msg-desc"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="business-bank-statements-submit" type="submit" class="btn btn-light-primary mr-2">UPLOAD</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="id-alert" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!--<div class="modal-header text-center">
+                    <h4 class="modal-title text-center">Loading Onboarding Data...</h4>
+                </div>-->
+                    <div class="modal-body text-center">
+                        <h4 class="text-center">Uploaded Successfully.</h4>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<!--
+<div id="specialradio">
+    <div class="pb-5" data-wizard-type="step-content" style="width:100%;">
+        <div class="form-group">
+            <label for="workingradio" class="col-form-label" style="width:80%;">XXXXXXXXXXX</label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="workingradio" value="Yes" />
+                        <span></span>
+                        Yes
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="workingradio" value="No" />
+                        <span></span>
+                        No
+                    </label>
+                </div>
+            </div>
+            <span class="form-text text-muted"></span>
+        </div>
+    </div>
+</div>
+-->

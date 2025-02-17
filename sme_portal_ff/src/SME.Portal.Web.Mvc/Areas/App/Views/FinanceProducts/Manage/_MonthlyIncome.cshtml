@@ -1,0 +1,52 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepMonthlyIncomeForm">
+    <div class="step" id="stepMonthlyIncome">
+        <h3>Income Frequency</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please select the type of income for this finance product. You can choose either 'Monthly' or 'Sporadic'.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:18px">
+            <div class="form-group row">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="monthly" name="MonthlyOrSporadicIncome" id="MonthlyIncome" onchange="EnableOrDisableMonthlyIncome(this.value);" asp-for="@Model.FinanceProduct" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.MonthlyOrSporadicIncome) ? !@Model.IsEdit : @Model.FinanceProduct.MonthlyOrSporadicIncome.Equals("monthly")) : @Model.IsEdit)">
+                    <label class="custom-control-label" for="MonthlyIncome">Regular Monthly Income</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="sporadic" name="MonthlyOrSporadicIncome" id="SporadicIncome" onchange="EnableOrDisableMonthlyIncome(this.value);" asp-for="@Model.FinanceProduct" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.MonthlyOrSporadicIncome) ? !@Model.IsEdit : @Model.FinanceProduct.MonthlyOrSporadicIncome.Equals("sporadic")) : @Model.IsEdit)">
+                    <label class="custom-control-label" for="SporadicIncome">Income Not Regular / Sporadic</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="" name="MonthlyOrSporadicIncome" id="None" onchange="EnableOrDisableMonthlyIncome(this.value);" asp-for="@Model.FinanceProduct" class="custom-control-input" checked="@(@Model.IsEdit ? String.IsNullOrEmpty(@Model.FinanceProduct.MonthlyOrSporadicIncome) : !@Model.IsEdit)">
+                    <label class="custom-control-label" for="None">None</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" style="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.MonthlyOrSporadicIncome) ? "display:none" : (@Model.FinanceProduct.MonthlyOrSporadicIncome.Equals("monthly") ? "" : "display:none")) : "display:none")" id="MinimumMonthlyIncomeContainer">
+            <label class="col-md-4 col-form-label">Minimum Monthly Income</label>
+            <div class="col-md-3 mr-auto">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">R</span>
+                    </div>
+                    <input type="text" id="MinimumMonthlyIncome" class="currency-box form-control" name="MinimumMonthlyIncome" asp-for="FinanceProduct.MinimumMonthlyIncome">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

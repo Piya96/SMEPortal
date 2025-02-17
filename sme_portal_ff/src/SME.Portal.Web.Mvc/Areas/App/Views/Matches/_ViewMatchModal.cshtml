@@ -1,0 +1,48 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Matches
+@model MatchViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="MatchInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Notes") :</h6>
+                @Model.Match.Notes
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ApplicationId") :</h6>
+                @Model.Match.ApplicationId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("LeadDisplayName") :</h6>
+                @Model.Match.LeadDisplayName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MatchSuccessful") :</h6>
+                @Model.Match.MatchSuccessful
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("FinanceProductIds") :</h6>
+                @foreach (var line in Model.Match.FinanceProductNames)
+                {
+                    <br />
+                    @line
+                }
+            </div>
+            @*<div class="col-6 mb-3">
+                <h6>@L("ExclusionIds") :</h6>
+                @Model.Match.ExclusionIds
+            </div>*@
+
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

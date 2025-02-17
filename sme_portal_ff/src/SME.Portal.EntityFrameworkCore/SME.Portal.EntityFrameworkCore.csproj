@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props"></Import>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <RootNamespace>SME.Portal</RootNamespace>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20201102124046_Add_Application_Match_ForeignKey.cs" />
+    <Compile Remove="Migrations\20201102124046_Add_Application_Match_ForeignKey.Designer.cs" />
+    <Compile Remove="Migrations\20201126135652_SubscriptionPayment_added_UserId_ExternalPaymentToken.cs" />
+    <Compile Remove="Migrations\20201126135652_SubscriptionPayment_added_UserId_ExternalPaymentToken.Designer.cs" />
+    <Compile Remove="Migrations\20210115072632_Added_ListItem_Entity.cs" />
+    <Compile Remove="Migrations\20210115072632_Added_ListItem_Entity.Designer.cs" />
+    <Compile Remove="Migrations\20210115074153_Changed_ListItem_Entity_PrimaryKey.cs" />
+    <Compile Remove="Migrations\20210115074153_Changed_ListItem_Entity_PrimaryKey.Designer.cs" />
+    <Compile Remove="Migrations\20210115074937_Alter_Table_ListItems_PK_Added_ListId_Column.cs" />
+    <Compile Remove="Migrations\20210115074937_Alter_Table_ListItems_PK_Added_ListId_Column.Designer.cs" />
+    <Compile Remove="Migrations\20210115101645_Alter_Table_ListItems_PK_Add_ListId_again.cs" />
+    <Compile Remove="Migrations\20210115101645_Alter_Table_ListItems_PK_Add_ListId_again.Designer.cs" />
+    <Compile Remove="Migrations\20210125054058_Added_WebSite_To_SmeCompany.cs" />
+    <Compile Remove="Migrations\20210125054058_Added_WebSite_To_SmeCompany.Designer.cs" />
+    <Compile Remove="Migrations\20210125064912_Added_WebSite_To_SmeCompany.cs" />
+    <Compile Remove="Migrations\20210125064912_Added_WebSite_To_SmeCompany.Designer.cs" />
+    <Compile Remove="Migrations\20210223185412_Removed_Fk_OwnerId_from_SmeCompanies_added_Fk_SmeCompanyId_to_Owners.cs" />
+    <Compile Remove="Migrations\20210223185412_Removed_Fk_OwnerId_from_SmeCompanies_added_Fk_SmeCompanyId_to_Owners.Designer.cs" />
+    <Compile Remove="Migrations\20210602155553_Adding_fields_for_email_confirmation_reminder.cs" />
+    <Compile Remove="Migrations\20210602155553_Adding_fields_for_email_confirmation_reminder.Designer.cs" />
+    <Compile Remove="Migrations\20210614030632_adding_version_label_to_lender_table.cs" />
+    <Compile Remove="Migrations\20210614030632_adding_version_label_to_lender_table.Designer.cs" />
+    <Compile Remove="Migrations\20210614032025_test.cs" />
+    <Compile Remove="Migrations\20210614032025_test.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SME.Portal.Core\SME.Portal.Core.csproj" />
+  </ItemGroup>
+</Project>

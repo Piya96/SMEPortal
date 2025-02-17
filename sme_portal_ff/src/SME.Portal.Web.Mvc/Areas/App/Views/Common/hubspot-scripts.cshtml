@@ -1,0 +1,16 @@
+﻿<environment include="Production, Staging, Development">
+    <!-- Start of HubSpot Embed Code -->
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+    {
+        <script type="text/javascript" id="ecdc-hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139540225.js"></script>
+    }
+    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/144830107.js"></script>
+    }
+    else 
+    {
+        <script type="text/javascript" id="finfind-hs-script-loader" async defer src="//js.hs-scripts.com/6087602.js"></script>
+    }
+    <!-- End of HubSpot Embed Code -->
+</environment>

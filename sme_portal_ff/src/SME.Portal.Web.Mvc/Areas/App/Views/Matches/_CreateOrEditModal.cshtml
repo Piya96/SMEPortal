@@ -1,0 +1,59 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Matches
+@model CreateOrEditMatchModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditMatch")) : L("CreateNewMatch")))
+
+<div class="modal-body">
+        <div id="MatchInformationsTab">
+            <form name="MatchInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.Match.Id" />
+                }
+
+				
+
+				
+								<div class="form-group">
+									<label for="Match_Notes">@L("Notes")</label>
+									<input class="form-control" id="Match_Notes" value="@Model.Match.Notes" type="text" name="notes"     />
+								</div>
+					
+								<div class="form-group">
+									<label for="Match_ApplicationId">@L("ApplicationId")</label>
+									<input class="form-control m-input" id="Match_ApplicationId" value="@Model.Match.ApplicationId.ToString(CultureInfo.InvariantCulture)" type="number" name="applicationId"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Match_LeadDisplayName">@L("LeadDisplayName")</label>
+									<input class="form-control" id="Match_LeadDisplayName" value="@Model.Match.LeadDisplayName" type="text" name="leadDisplayName"  required    />
+								</div>
+					
+								<div class="m-checkbox-list">
+									<label for="Match_MatchSuccessful" class="kt-checkbox">
+										<input id="Match_MatchSuccessful" type="checkbox" name="matchSuccessful" value="true" @Html.Raw(Model.Match.MatchSuccessful ?"checked=\"checked\"":"") />
+										@L("MatchSuccessful")
+										<span></span>
+									</label>
+								</div>
+					
+								<div class="form-group">
+									<label for="Match_FinanceProductIds">@L("FinanceProductIds")</label>
+									<input class="form-control" id="Match_FinanceProductIds" value="@Model.Match.FinanceProductIds" type="text" name="financeProductIds"     />
+								</div>
+					
+								<div class="form-group">
+									<label for="Match_ExclusionIds">@L("ExclusionIds")</label>
+									<input class="form-control" id="Match_ExclusionIds" value="@Model.Match.ExclusionIds" type="text" name="exclusionIds"     />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

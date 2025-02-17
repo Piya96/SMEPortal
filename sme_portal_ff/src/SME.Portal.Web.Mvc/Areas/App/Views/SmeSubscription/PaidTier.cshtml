@@ -1,0 +1,28 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.SubscriptionStandardTier; }
+
+<abp-page-subheader title="@L("PaidTierHeaderTitle")" description="@L("PaidTierHeaderInfo")"></abp-page-subheader>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="alert alert-custom alert-primary fade show" role="alert">
+            <div class="alert-icon">
+                <i class="flaticon-information" aria-label="@L("PaidTierAlertPage_Title")"></i>
+            </div>
+            <div class="alert-text">
+                <h4 class="alert-heading">@L("PaidTierAlertPage_Title")</h4>
+                <p>@L("PaidTierAlertPage_Info")</p>
+            </div>
+        </div>
+        <div class="card card-custom gutter-b">
+
+            <div class="card card-custom">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

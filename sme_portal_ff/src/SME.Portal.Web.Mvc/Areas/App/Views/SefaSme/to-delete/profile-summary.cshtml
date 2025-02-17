@@ -1,0 +1,330 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SME;
+@using System.Globalization
+@using System.Web;
+@using Abp.Runtime.Security;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model SMEOnboardingSummary
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.ProfileOnboarding;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+    var companyIndex = 1;
+    var greyAddCompanyButtonDisable = false;
+
+    if(Model.Companies.Count >= 5)
+        greyAddCompanyButtonDisable = true;
+
+    var show = "show";
+}
+
+@section Scripts
+{
+    @*<link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>*@
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = "sefa"
+            }
+        );
+    }
+
+<environment include="Development">
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/Common/sme-common.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaSme/profile-summary.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_PartialSummaryController.js" asp-append-version="true"></script>
+</environment>
+
+<environment include="Production, Staging">
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/Common/sme-common.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaSme/profile-summary.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_PartialSummaryController.min.js" asp-append-version="true"></script>
+</environment>
+
+
+    <script>
+        app.common.mobile.refresh(true);
+
+    </script>
+
+    <style>
+        .wizard-step[data-wizard-state="current"] {
+            background-color: #BDE0FF !important;
+        }
+
+            .wizard-step[data-wizard-state="current"]:after {
+                border-left-color: #BDE0FF !important;
+            }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            app.fss.controller.renderProfileSummary(
+                @Html.Raw(Json.Serialize(Model.MySettings)),
+                @Html.Raw(Json.Serialize(Model.Owner)),
+                @Html.Raw(Json.Serialize(Model.Companies))
+            );
+
+            app.profileSummary.init(@Html.Raw(Json.Serialize(Model.CompanyInfo)));
+        });
+    </script>
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if(!string.IsNullOrEmpty(Model.UserMessage))
+        {
+            <!--
+            <div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">@Model.UserMessage</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+            -->
+        }
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    @{
+                        var fssVM3 = new FSSViewModel()
+                        {
+                            StyleWidth = "width:40%;",
+                            StyleCol = "",
+                            ApplicationId = 0,
+                            TenantId = 0
+                        };
+
+                        await Html.RenderPartialAsync("../SefaFunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM3);
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    @{
+                        var fssVM2 = new FSSViewModel()
+                        {
+                            StyleWidth = "width:40%;",
+                            StyleCol = "",
+                            ApplicationId = 0,
+                            TenantId = 0
+                        };
+
+                        await Html.RenderPartialAsync("../SefaFunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM2);
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="accordion  accordion-toggle-arrow" id="companies-accordian">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4 class="font-weight-bold mb-3">@L("CompanyProfiles")</h4>
+                            </div>
+                            <div class="col-xl-6">
+                                @if(greyAddCompanyButtonDisable)
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            disabled
+                                            onclick="location.href='@Url.Action("AddCompany", "SefaSme")'"
+                                            data-placement="right"
+                                            data-toggle="tooltip"
+                                            href="#" data-original-title="Company limit reached"
+                                            style="float:right;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            onclick="location.href='@Url.Action("AddCompany", "SefaSme")'"
+                                            style="float:right;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        <br />
+
+
+                        @foreach(var company in Model.Companies.OrderByDescending(x => x.SmeCompany.CreationTime))
+                        {
+                            SMECompanyInfo companyInfo = null;
+                            if(Model.CompanyInfo.ContainsKey(company.SmeCompany.Id) == true)
+                            {
+                                companyInfo = Model.CompanyInfo[company.SmeCompany.Id];
+                            }
+
+                            @if(companyIndex > 1)
+                            {
+                                // only show the first company
+                                show = "";
+                            }
+                            var companyEdition = Model.CompanySmeSubscriptions[company.SmeCompany.Id].EditionFk;
+
+                            <div class="card">
+
+                                <div class="card-header" id="headingOne4">
+                                    <div class="card-title" data-toggle="collapse" data-target="#company-id-@company.SmeCompany.Id">
+                                        <i class="flaticon-profile"></i>@companyIndex. @company.SmeCompany.Name
+                                    </div>
+                                </div>
+
+                                <div id="company-id-@company.SmeCompany.Id" class="collapse @show" data-parent="#companies-accordian">
+                                    <div class="card-body">
+
+                                        @{
+                                            if(companyInfo != null && companyInfo.BackgroundCheck.Pass == false)
+                                            {
+                                                <div class="alert alert-custom alert-outline-2x alert-outline-danger fade show mb-5" role="alert">
+                                                    <div class="alert-icon"><i class="flaticon-alert"></i></div>
+                                                    <div class="alert-text">@companyInfo.BackgroundCheck.Message.Text</div>
+                                                </div>
+                                            }
+                                        }
+
+                                        <!--Company Profile Info-->
+
+                                        @{
+                                            var fssVM = new FSSViewModel()
+                                            {
+                                                StyleWidth = "width:40%;",
+                                                StyleCol = "",
+                                                ApplicationId = company.SmeCompany.Id,
+                                                TenantId = 0
+                                            };
+
+                                            await Html.RenderPartialAsync("../SefaFunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+                                        }
+
+                                        <!--Company Profile Info-->
+                                        <!--Funder Search Actions-->
+                                        @if(company.IsPrimaryOwner == true && companyInfo.CanEdit == true)
+                                        {
+                                            <a id="id-a-profile-summary-edit-@company.SmeCompany.Id"
+                                               class="btn btn-outline-primary btn-sm mr-3"
+                                               onclick="location.href='@Url.Action("EditCompany", "SefaSme", new { cId = SimpleStringCipher.Instance.Encrypt(company.SmeCompany.Id.ToString()) })'">
+                                                <i class="flaticon-edit"></i>@L("Edit")
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a id="id-a-profile-summary-edit-@company.SmeCompany.Id"
+                                               class="btn btn-outline-primary btn-sm mr-3"
+                                               href="javascript:void(0)">
+                                                <i class="flaticon-edit"></i>@L("Edit")
+                                            </a>
+                                        }
+
+                                        @{
+                                            var apps = Model.Applications.Where(x => x.Application.SmeCompanyId == company.SmeCompany.Id).ToList();
+
+                                            if(apps.All(x => x.Application.Status == "Cancelled" || x.Application.Status == "Abandoned" || x.Application.Status == "ExitedToFinfind"))
+                                            {
+
+                                                <a id="id-a-profile-summary-application-@company.SmeCompany.Id"
+                                                   class="btn btn-outline-primary btn-sm mr-3"
+                                                   onclick="location.href='@Url.Action("Wizard", "SefaApplication", new { id = company.SmeCompany.Id })'">
+                                                    <i class="flaticon-list"></i>New Finance Application
+                                                </a>
+                                            }
+                                            else if(apps.Any(x=> x.Application.Status == "Started") )
+                                            {
+                                                <a id="id-a-profile-summary-application-@company.SmeCompany.Id"
+                                                   class="btn btn-outline-primary btn-sm mr-3"
+                                                   onclick="location.href='@Url.Action("Wizard", "SefaApplication", new { id = company.SmeCompany.Id })'">
+                                                    <i class="flaticon-list"></i>Continue with Finance Application
+                                                </a>
+                                            }
+                                            else if(apps.Any(x=> x.Application.Status == "Matched" || x.Application.Status == "QueuedForMatching" || x.Application.Status == "Locked") )
+                                            {
+                                                string aid = SimpleStringCipher.Instance.Encrypt(apps[0].Application.SmeCompanyId.ToString());
+                                                //string aid = apps[0].Application.Id.ToString();
+                                                <a id="id-a-profile-summary-application-@company.SmeCompany.Id"
+                                                   class="btn btn-outline-primary btn-sm mr-3"
+                                                   onclick="location.href='@Url.Action("Index", "SefaApplication", new { reload = true, companyId = apps[0].Application.SmeCompanyId })'">
+                                                    <i class="flaticon-list"></i>View Finance Application
+                                                </a>
+                                            }
+                                        }
+                                        <!--Funder Search Actions-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            companyIndex = companyIndex + 1;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="my-documents" class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+
+
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <h4 class="font-weight-bold mb-3">@L("MyDocumentsHeaderTitle")</h4>
+                        </div>
+                        <div class="col-xl-6">
+
+                            <a href="#" class="btn btn-outline-primary btn-sm mr-3" style="float:right; display:none;">
+                                <i class="flaticon-add"></i> @L("UploadNewDocument")
+                            </a>
+
+                        </div>
+                    </div>
+                    <br />
+
+
+                    <div class="card card-custom">
+                        @{ await Html.RenderPartialAsync("../SMEDocuments/_SmeDocumentsDataTable.cshtml"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

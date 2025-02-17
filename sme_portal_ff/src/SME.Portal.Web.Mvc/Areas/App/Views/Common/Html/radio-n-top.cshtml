@@ -1,0 +1,54 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Radio_N_Top
+
+<div class="row" style="margin-bottom:-10px !important;">
+    <div class="form-group">
+        <div class="@Model.Col">
+            @{
+                var name = Model.Scope + "input-" + Model.Name;
+            }
+            <label id="@name" for="" class="col-form-label">
+                @Model.Label
+            </label>
+            @{
+                if(Model.Info != null)
+                {
+                    <span
+                          class="option-focus text-align:left"
+                          data-toggle="tooltip"
+                          data-placement="right"
+                          data-html="true"
+                          style="text-align:left !important;"
+                          title="@Model.Info">
+                        <i class="fa fa-info-circle"></i>
+                    </span>
+                }
+            }
+
+            <div class="input-group mb-2 mb-sm-0 float-right">
+                <div class="radio-inline">
+                    @{
+                        var rows = Model.Radio.GetUpperBound(0);
+                        for(int i = 0; i <= rows; i++)
+                        {
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="@name" value="@Model.Radio[i, 1]" />
+                                <span></span>
+                                @Model.Radio[i, 0]
+                            </label>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="message-@Model.Name"></div>
+
+<script>
+    (function () {
+        let mo = @Html.Raw(Json.Serialize(Model));
+        document.getElementById('input-' + mo.name).innerHTML = mo.label;
+    })();
+</script>

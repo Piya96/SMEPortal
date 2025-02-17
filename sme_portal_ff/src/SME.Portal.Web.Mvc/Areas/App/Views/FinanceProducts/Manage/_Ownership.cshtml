@@ -1,0 +1,67 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+
+<div class="step" id="stepOwnership">
+    <h3>Ownership Rules</h3>
+    <div class="card card-info mb-10">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-1 card-icon">
+                    <i class="fa fa-info-circle"></i>
+                </div>
+                <div class="col">
+                    Specify the minimum shareholding requirements for this financial product. We will calculate the ownership shareholdings based on the data provided by the SMME.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-12 mb-5">
+            <form id="stepOwnershipForm">
+            <div class="float-left mr-2" v-if="rules.length > 0">
+                <select class="form-control" name="Ownership_Operator"  id="Ownership_Operator">
+                    <option value=""></option>
+                    <option value ="And">And</option>
+                    <option value ="Or">Or</option>
+                </select>
+            </div>
+            <div class="float-left mr-2">
+                <select class="form-control" id="Ownership_Type_Input" style="width:300px" name="Ownership_Type" onclick="validationCheck()" asp-items="@Model.SelectOwnershipList.OrderBy(a => a.Text)">
+                    <option value="">Select Ownership</option>
+                </select>
+                <span id="OwnershipTypeError" style="color:red; display:none;">Please select Ownership Type.</span>
+            </div>
+            <div class="float-left mr-2">
+                <select class="form-control" id="Ownership_Measure" name="Ownership_Measure" onchange="measureChange(value)">
+                    <option value="Num">Num</option>
+                    <option value="Percentage">%</option>
+                </select>
+            </div>
+            <span class="d-flex">
+                <div class="mr-2">
+                    <div class="input-group" id="Ownership_Percentage_Div" style="width:100px;">
+                        <input type="number" name="Ownership_percentage" id="Ownership_Percentage_Input" min="0" max="100" style="-webkit-appearance: none; padding: 8px 5px;" onkeyup="validationCheck()" class="form-control" v-model="currentRule.percentage">
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                    <span id="OwnershipPercentageError" style="color:red; display:none;">Invalid percentage.</span>
+                </div>
+                <div>
+                    <button type="button" style="overflow:hidden" class="btn btn-primary" onclick="addRule()">Add Rule</button>
+                    <input type="hidden" value="@Model.FinanceProduct.Id" ref="fpid" />
+                </div>
+            </span>
+            </form>
+            <hr class="mt-10" />
+            <form asp-controller="FinanceProducts">
+                    <div id="OwnershipTable">
+                        <partial name="../../FinanceProducts/_OwnershipTable.cshtml" model="@Model"></partial>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

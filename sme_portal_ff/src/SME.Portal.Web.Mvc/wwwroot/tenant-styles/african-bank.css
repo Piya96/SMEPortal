@@ -1,0 +1,426 @@
+﻿:root {
+    --lightest-green: #E6EFD8;
+    --light-green: #C0CB50;
+    --medium-green: #AAA13B;
+    --dark-green: #89BC47;
+    --darkest-green: #5A811B;
+
+    --lightest-blue: #E8EEFB;
+    --light-blue: #C6DFFE;
+    --medium-blue: #88ADEA;
+    --dark-blue: #476891;
+    --darkest-blue: #162A5B;
+
+
+    --white-001: #FFFFFF;
+    --white-002: #F3F6FA;
+
+    --radius-1: 5px;
+    --radius-2: 10px;
+    --radius-3: 15px;
+    --radius-3: 20px;
+}
+
+/* Colors for the top 4 steps in the wizard. Outer wizard if you want. */
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-number {
+    color: var(--medium-blue);
+    background-color: var(--lightest-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-number {
+    color: var(--white-001);
+    background-color: var(--darkest-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-number {
+    color: var(--medium-blue);
+    background-color: var(--lightest-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--dark-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] {
+    background-color: var(--white-002);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] {
+    background-color: var(--light-blue);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] {
+    background-color: var(--white-002);
+    border-radius: var(--radius-2);
+}
+
+
+/* Colors for the left-side steps in basic screening and funder search wizards. Inner wizards if you want. */
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+    color: var(--dark-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+    color: var(--light-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+    color: var(--light-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] {
+    background-color: var(--light-blue) !important;
+    border-color: var(--light-blue) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"]:after {
+    border-left-color: var(--light-blue);
+    color: var(--light-blue);
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] {
+    background-color: white !important;
+    border-color: var(--light-blue) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] {
+    background-color: white !important;
+    border-color: var(--light-blue) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: var(--radius-1);
+}
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.radio.radio-outline.radio-primary > input ~ span {
+    background-color: transparent;
+    border-color: var(--dark-green) !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: var(--dark-green) !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span:after {
+    background-color: var(--dark-green) !important;
+}
+
+.radio.radio-outline.radio-primary > input:disabled ~ span {
+    background-color: transparent;
+    border-color: grey !important;
+}
+
+.radio.radio-outline.radio-primary > input[disabled]:checked ~ span:after {
+    background-color: grey;
+}
+
+.radio > input[name='financefor']:checked ~ span {
+    background-color: var(--dark-green) !important;
+    border-color: var(--dark-green) !important;
+    color: var(--dark-green) !important;
+}
+
+/*
+input:disabled {
+    border-color: transparent !important;
+    background-color: lightblue !important;
+}
+
+input {
+    border-color: lightgray !important;
+    background-color: white !important;
+}
+
+input:hover {
+    border-color: var(--blue-8) !important;
+}
+
+input:focus {
+    border-color: var(--blue-8) !important;
+    background-color: var(--blue-1) !important;
+}
+*/
+
+/*
+select {
+    border-color: lightgray !important;
+    background-color: white !important;
+}
+
+select:focus {
+    border-color: var(--blue-8) !important;
+    background-color: var(--blue-1) !important;
+}
+
+select:disabled {
+    border-color: transparent !important;
+    background-color: lightgrey !important;
+}
+
+select:hover:not(:disabled) {
+    border-color: var(--blue-8) !important;
+    background-color: white !important;
+}
+*/
+
+/*
+.radio.radio-outline.radio-primary > span {
+    background-color: transparent;
+    border-color: red !important;
+}
+*/
+
+.checkbox > input:checked ~ span {
+    background-color: var(--dark-green) !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: var(--dark-green) !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > span {
+    background-color: transparent;
+    border-color: grey;
+}
+
+/* Buttons. */
+
+.btn.btn-outline-primary i {
+    color: var(--dark-green) !important;
+}
+
+.btn.btn-primary {
+    background-color: var(--dark-green) !important;
+    border-color: var(--dark-green) !important;
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: var(--dark-green) !important;
+    border-color: var(--dark-green) !important;
+    color: white !important;
+}
+
+.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--light-green) !important;
+    border-color: var(--light-green) !important;
+    color: white !important;
+}
+
+.btn-light-primary {
+    background-color: var(--lightest-green) !important;
+    border-color: var(--lightest-green) !important;
+    color: var(--dark-green) !important;
+}
+
+.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--dark-green) !important;
+    border-color: var(--dark-green) !important;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    background-color: white !important;
+    border-color: var(--dark-green) !important;
+    color: var(--dark-green) !important;
+}
+
+.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--lightest-green) !important;
+    border-color: var(--dark-green) !important;
+    color: var(--dark-green) !important;
+}
+
+.flaticon-profile {
+    color: var(--dark-green) !important;
+}
+
+/*
+.input:hover {
+    border-color: #00B4BA !important;
+}
+
+.btn.btn-light-primary {
+    border-color: #00B4BA !important;
+    background-color: #B8DEE9 !important;
+    color: #00B4BA !important;
+}
+
+.btn.btn-primary {
+    background-color: #00B4BA !important;
+    border-color: #AFEEEE !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: #00B4BA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.btn.btn-secondary {
+    border-color: #00B4BA !important;
+    background-color: #B8DEE9 !important;
+    color: #00B4BA;
+}
+
+.btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary.focus:not(.btn-text) {
+     color: white;
+     background-color: #00B4BA !important;
+     border-color: #00B4BA !important;
+ }
+
+.btn.btn-light {
+    color: white;
+    background-color: #00B4BA;
+    border-color: #00B4BA;
+}
+*/
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title:after {
+    color: var(--lightest-green) !important;
+}
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title {
+    background-color: var(--lightest-green);
+    color: gray !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: var(--dark-green) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+
+/*
+.header-menu .menu-nav > .menu-item.menu-item-rel {
+    background-color: var(--blue-2);
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-rel:hover:not(.menu-item-active) {
+    background-color: var(--blue-4) !important;
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item:hover > .menu-link .menu-text {
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: var(--blue-4);
+}
+*/
+
+/*
+.symbol.symbol-light-dark > .symbol-label {
+    background-color: var(--blue-4);
+    color: white;
+}
+
+.btn.btn-secondary:hover .symbol-label {
+    background-color: var(--blue-2) !important;
+    color: var(--blue-4) !important;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
+    color: white;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: var(--blue-8);
+    color: white;
+}
+*/
+.nav.nav-pills .nav-item {
+    background-color: var(--lightest-green) !important;
+    color: var(--darkest-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active {
+    background-color: var(--lightest-green);
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-text {
+    color: var(--darkest-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-icon i {
+    color: var(--dark-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-text {
+    color: var(--blue-8) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) {
+    background-color: var(--lightest-green);
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-text {
+    color: white !important;
+}
+

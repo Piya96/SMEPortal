@@ -1,0 +1,557 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.List
+@model FundFormDraftViewModel
+
+@{
+    var obj = Model.FinanceProductDraft.MatchCriteriaJson !=null ? JsonConvert.DeserializeObject<Dictionary<string, object>>(Model.FinanceProductDraft.MatchCriteriaJson) : null;
+    var rules = obj != null ? (JArray)obj["OwnershipRules"] : null;
+    var ruleList = rules != null ? rules.ToObject<List<JObject>>() : null;
+}
+@section Scripts{
+        <script src="~/view-resources/Areas/App/Views/FinanceProducts/FundForms/ManageFundForms.js"></script>
+}
+
+@section Styles
+{
+    <link href="~/view-resources/Areas/App/Views/FinanceProducts/FundForms/FundFormStyling.css" rel="stylesheet" />
+}
+<div class="export-bar d-flex">
+    <div class="col text-left d-flex align-items-center">
+        <h2 style="margin-bottom: 0px">Lender Criteria Questionnaire Form</h2>
+    </div>
+    <div class="col text-right">
+        <div class="back-link">
+            <a style="padding-right: 10px;" href="/App/FundForms/FundForms/@(Model.FinanceProductDraft.FinanceProductId)"><i class="fa fa-arrow-left"></i> Back</a>
+            <a id="btnExport" type="button" href="/App/FundForms/DownLoadExportPdf/@(Model.FinanceProductDraft.Id)" class="btn btn-success">Export PDF</a>
+        </div>
+    </div>
+</div>
+<div class="row" style="text-align:center;margin-block:20px">
+    <div class="col fp-title">
+        <h2><b>@Model.FinanceProductDraft.LenderName</b> - @Model.FinanceProductDraft.FinanceProductName</h2>
+    </div>
+</div>
+
+<div class="container">
+    <form id="fundFormView">
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Fund Product General</h3>
+                            <hr />
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.FinanceProductName" class="col-md-4 col-form-label"><b>Product Name</b></label>
+                                <div class="col-md-8">
+                                <label class="col-form-label">@(Model.FinanceProductDraft.FinanceProductName)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.LenderName" class="col-md-4 col-form-label"><b>Lender Name</b></label>
+                                <div class="col-md-8">
+                                <label class="col-form-label">@(Model.FinanceProductDraft.LenderName)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.FundManager" class="col-md-4 col-form-label"><b>Fund Manager Name</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.FundManager)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.FundManagerEmail" class="col-md-4 col-form-label"><b>Fund Manager Email</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.FundManagerEmail)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.ContactNumber" class="col-md-4 col-form-label"><b>Fund Manager Contact Number</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.ContactNumber)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.PhysicalAddressLineOne" class="col-md-4 col-form-label"><b>Physical Address Line 1</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.PhysicalAddressLineOne)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.PhysicalAddressLineTwo" class="col-md-4 col-form-label"><b>Physical Address Line 2</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.PhysicalAddressLineTwo)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.PhysicalAddressLineThree" class="col-md-4 col-form-label"><b>Physical Address Line 3</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.PhysicalAddressLineThree)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.PostalAddressArea" class="col-md-4 col-form-label"><b>Area</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.PostalAddressArea)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.City" class="col-md-4 col-form-label"><b>City</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.City)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.Province" class="col-md-4 col-form-label"><b>Province</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.Province)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.PostalCode" class="col-md-4 col-form-label"><b>Postal Code</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.PostalCode)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Fund Website Url</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.FundWebsiteAddress" class="col-md-4 col-form-label"><b>Fund Website Address</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.FundWebsiteAddress)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Loan Amount</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MinLoanAmount" class="col-md-4 col-form-label"><b>Minimum</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label currency-box">R@(Model.FinanceProductDraft.MinLoanAmount)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MaxLoanAmount" class="col-md-4 col-form-label"><b>Maximum</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label currency-box">R@(Model.FinanceProductDraft.MaxLoanAmount)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Turnover</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MinAverageAnnualTurnover" class="col-md-4 col-form-label"><b>Minimum</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label currency-box">R@(Model.FinanceProductDraft.MinAverageAnnualTurnover)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MaxAverageAnnualTurnover" class="col-md-4 col-form-label"><b>Maximum</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label currency-box">R@(Model.FinanceProductDraft.MaxAverageAnnualTurnover)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Trading</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MinimumMonthsTrading" class="col-md-4 col-form-label"><b>Minimum Months Trading</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.MinimumMonthsTrading)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Finance For</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.FinanceForSubListIds" class="col-md-4 col-form-label"><b>Selected Finance For</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                         @if (!String.IsNullOrEmpty(Model.FinanceProductDraft.FinanceForSubListIds))
+                                        {
+                                            @if (Model.FinanceForResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.FinanceForResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.FinanceForResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Industry Sector</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.IndustrySectorListIds" class="col-md-4 col-form-label"><b>Selected Options</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                        @if (!String.IsNullOrEmpty(Model.FinanceProductDraft.IndustrySectorListIds))
+                                        {
+                                            @if (Model.IndustrySectorResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.IndustrySectorResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.IndustrySectorResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Document Type</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.RequiredDocumentTypeListIds" class="col-md-4 col-form-label"><b>Selected Required Docs</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                        @if (!String.IsNullOrEmpty(Model.FinanceProductDraft.RequiredDocumentTypeListIds))
+                                        {
+                                            @if (Model.RequiredDocResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.RequiredDocResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.RequiredDocResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.NotRequiredDocumentTypeListIds" class="col-md-4 col-form-label"><b>Selected Not Required Docs</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                        @if (!String.IsNullOrEmpty(Model.FinanceProductDraft.NotRequiredDocumentTypeListIds))
+                                        {
+                                            @if (Model.NotRequiredDocResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.NotRequiredDocResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.NotRequiredDocResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Company Registration Type</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.CompanyRegistrationTypeListIds" class="col-md-4 col-form-label"><b>Selected Options</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                        @if (!String.IsNullOrEmpty(Model.FinanceProductDraft.CompanyRegistrationTypeListIds))
+                                        {
+                                            @if (Model.CompanyRegTypeResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.CompanyRegTypeResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.CompanyRegTypeResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Province</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.ProvinceListIds" class="col-md-4 col-form-label"><b>Selected Options</b></label>
+                                <div class="col-md-8">
+                                    @if (!String.IsNullOrEmpty(Model.ProvinceResultList))
+                                    {
+                                        <ul>
+                                            @if (Model.ProvinceResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.ProvinceResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.ProvinceResultList)</li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Income & Profitability</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.MinimumMonthlyIncome" class="col-md-4 col-form-label"><b>Minimum Monthly Income</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label currency-box">R@(Model.FinanceProductDraft.MinimumMonthlyIncome)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.RequiresProfitability" class="col-md-4 col-form-label"><b>Require Profitability</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.RequiresProfitability)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Collateral</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.RequiresCollateral" class="col-md-4 col-form-label"><b>Collateral</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.RequiresCollateral)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>Minimum Shareholding Percentages</h3>
+                            <hr />
+                            <div class="form-group row">
+                                <label  class="col-md-4 col-form-label"><b>Ownership</b></label>
+                                <div class="col-md-8">
+                                    @if(ruleList != null)
+                                    {
+                                        <ul>
+                                            @foreach (var rule in ruleList)
+                                            {
+                                                <li>
+                                                    <span>@rule["demographic"]</span>
+                                                    <span style="font-weight:bold">
+                                                        @rule["percentage"]
+                                                        @if (rule["percentage"]?.ToString() != "")
+                                                        {
+                                                            @:%
+                                                        }
+                                                    </span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.SaCitizensOnly" class="col-md-4 col-form-label"><b>Must be SA Citizen</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.SaCitizensOnly)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.IncludePermanentResidents" class="col-md-4 col-form-label"><b>Include Permanent Residents</b></label>
+                                <div class="col-md-8">
+                                    <label class="col-form-label">@(Model.FinanceProductDraft.IncludePermanentResidents)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row page-content">
+                    <div class="col-md-11 col-sm-12">
+                        <div>
+                            <h3>BEE Level</h3>
+                            <hr />
+
+                            <div class="form-group row">
+                                <label asp-for="@Model.FinanceProductDraft.BeeLevelListIds" class="col-md-4 col-form-label"><b>Selected Options</b></label>
+                                <div class="col-md-8">
+                                    <ul>
+                                        @if (!String.IsNullOrEmpty(Model.BEELevelResultList))
+                                        {
+                                            @if (Model.BEELevelResultList.Length > 1)
+                                            {
+
+                                                @foreach (var name in Model.BEELevelResultList.Split(';'))
+                                                {
+                                                    <li>@(name)</li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>@(Model.BEELevelResultList)</li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 40px;">
+            <div class="col-md-12">
+                <a href="/App/FundForms/FundForms/@Model.FinanceProductDraft.FinanceProductId" class="btn btn-primary">Back</a>
+                <a class="btn btn-primary" id="MergeButton">Merge</a>
+                <input type="hidden" asp-for="@Model.FinanceProductDraft.Token" />
+                <input type="hidden" id="FundFormViewId" asp-for="@Model.FinanceProductDraft.Id" />
+            </div>
+        </div>
+    </form>
+</div>

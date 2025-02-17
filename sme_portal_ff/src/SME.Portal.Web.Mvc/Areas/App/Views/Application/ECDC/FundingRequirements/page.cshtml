@@ -1,0 +1,111 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-funding-requirements">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark"></h3>
+
+    @{ await Html.RenderPartialAsync("../../common/started-trading-date.cshtml"); }
+
+    <br/>
+
+    <div class="row">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "loan-amount",
+                Label = "Loan amount",
+                LeftText = "R"
+            }
+        );}
+    </div>
+
+    <div class="row">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "town-type",
+                Label = "Are you based in a small town, rural area, or township?"
+            }
+        );}
+    </div>
+
+    <div class="row">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "funding-for",
+                Label = "What do you need funding for?"
+            }
+        );}
+    </div>
+
+    <div id="div-has-contract-for-help-money" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "has-contract-for-help-money",
+                Label = "Do you have a signed contract?"
+            }
+        );}
+    </div>
+
+    <div id="div-money-to-help-with-tender" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "money-to-help-with-tender",
+                Label = "Do you have a signed Tender?"
+            }
+        );}
+    </div>
+
+    <div id="div-purchase-order-funding" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "purchase-order-funding",
+                Label = "Do you have a signed Purchase?"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-fund-application-capacity" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "fund-application-capacity",
+                Label = "In what capacity are you applying for this funding?"
+            }
+        );}
+    </div>
+
+    <div id="div-involved-in-daily-activities-of-coop" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "involved-in-daily-activities-of-coop",
+                Label = "Are you involved in the daily running activities of the cooperative?"
+            }
+        );}
+    </div>
+
+    <div id="div-any-other-loan-with-ecdc" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "any-other-loan-with-ecdc",
+                Label = "Do you have any other loan with ECDC?"
+            }
+        );}
+    </div>
+
+</div>

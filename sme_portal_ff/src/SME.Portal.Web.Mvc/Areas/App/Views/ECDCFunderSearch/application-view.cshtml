@@ -1,0 +1,139 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch
+@using SME.Portal.Company.Dtos;
+@using SME.Portal.Common.Dto;
+@using SME.Portal.Editions.Dto;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+@using Newtonsoft.Json;
+
+@model FunderSearchesViewModel
+
+<style>
+
+</style>
+
+<div class="accordion  accordion-toggle-arrow" id="applicationAccordian">
+
+    <script>
+            //let m = @Html.Raw(Json.Serialize(Model));
+            //let companyProfile = m.smeCompany.smeCompany;
+            //let json = JSON.parse(companyProfile['propertiesJson']);
+            //let o = app.listItems.obj.getRegion(json['regional-office']);
+            //if(o != null) {
+                //alert(o.text);
+            //}
+    </script>
+
+    <div class="card">
+
+        @{
+
+            var index = 0;
+            var show = "collapse";
+
+            if(Model.View == "Detail")
+                show = "collapse show";
+
+            foreach(var fApp in Model.PagedFunderSearches.OrderBy(x => x.Application.Created))
+            {
+                var fAppSummary = new List<NameValuePairDto>();
+                Model.ApplicationProperties.TryGetValue(fApp.Application.Id, out fAppSummary);
+                var financeForDesc = fAppSummary.FirstOrDefault(x => x.Name == "FinanceForDesc")?.Value;
+
+                GetSmeCompanyForViewDto company;
+                Model.Companies.TryGetValue(fApp.Application.Id, out company);
+                GetOwnerForViewDto owner;
+                Model.Owners.TryGetValue(fApp.Application.Id, out owner);
+                var number = "";
+                if(Model.View == "Index")
+                    number = $"{(index + 1)}.";
+
+                <!-- header start-->
+                <div class="card-header" id="headingOne4">
+                    <div class="card-title" data-toggle="collapse" data-target="#app-@fApp.Application.Id">
+                        <i class="flaticon-search"></i>@number @company.SmeCompany.Name (@financeForDesc) - @fApp.Application.Created.Date.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
+                <!-- header end-->
+
+                <!-- target start-->
+                <div class="card-body">
+                    <div id="app-@fApp.Application.Id" class="@show" data-parent="#applicationAccordian">
+                        <div class="card card-custom">
+
+                            <div class="card-header">
+                                <div class="card-toolbar">
+                                    <ul class="nav nav-light-primary nav-pills" role="tablist">
+                                        @* Matches Nav *@
+                                        <li class="nav-item">
+                                            <a id="matches_tab_@fApp.Application.Id" data-toggle="tab" class="nav-link active" href="#kt_tab_pane_5_2_@fApp.Application.Id">
+                                                <span class="nav-text">Next Steps</span>
+                                            </a>
+                                        </li>
+
+                                        @* Application Details Nav *@
+                                        <li class="nav-item" style="background-color:#00b4ba;">
+                                            <a id="application_tab_@fApp.Application.Id" class="nav-link" data-toggle="tab" href="#kt_tab_pane_5_1_@fApp.Application.Id">
+                                                <span style="color:white !important;" class="nav-text">@L("FunderSearchSummary")</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="tab-content">
+
+                                    @* Matches Tab *@
+
+                                    @if(fApp.Application.Locked != null)
+                                {
+                                        <div class="tab-pane fade show active" id="kt_tab_pane_5_2_@fApp.Application.Id" role="tabpanel" aria-labelledby="kt_tab_pane_5_2">
+                                            <p style="font-size:larger !important;">
+                                                Thank you for completing an online finance application.<br>
+
+                                            Your ECDC application was submitted to <b><span id="span-regional-office-@fApp.Application.Id"></span> regional office</b> for processing.<br>
+                                                For further information contact us on <b>Tel ((043) 704-5601/46</b> or <b>info@ecdc.co.za</b>
+                                            </p>
+                                        </div>
+                                }
+
+                                    @* Funder Search Summary Tab *@
+                                    <div class="tab-pane fade" id="kt_tab_pane_5_1_@fApp.Application.Id" role="tabpanel" aria-labelledby="kt_tab_pane_5_1">
+                                        <div class="card-body">
+
+                                            @{
+                                                var fssVM = new FSSViewModel()
+                                                {
+                                                    StyleWidth = "width:55%;",
+                                                    StyleCol = "",
+                                                    ApplicationId = fApp.Application.Id,
+                                                    TenantId = 0,
+                                                    HeaderColor = "#099ba0"
+                                                };
+
+                                                await Html.RenderPartialAsync("../BasicScreening/ECDC/UserProfile/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../BasicScreening/ECDC/OwnerProfile/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../BasicScreening/ECDC/CompanyProfile/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../Application/ECDC/FundingRequirements/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../Application/ECDC/ProductMatching/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../Application/ECDC/CompanyInfo/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../Application/ECDC/FinancialInfo/summary.cshtml", fssVM);
+                                                await Html.RenderPartialAsync("../Application/ECDC/MinRequirements/summary.cshtml", fssVM);
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- target end-->
+
+                index++;
+            }
+        }
+    </div>
+
+</div>

@@ -1,0 +1,55 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<div class="table-responsive">
+    <table class="table table-sm table-hover">
+        <tbody>
+            <tr>
+                <td style=@styleWidth>@L("OnboardingSummaryCompanyName")</td>
+                <td>
+                    <div id="id-summary-company-profile-cname-@appId"></div>
+                </td>
+            </tr>
+            <tr><td>@L("OnboardingSummaryCompanyRegNumber")</td><td><div id="id-summary-company-profile-reg-no-@appId"></div></td></tr>
+            <tr><td>@L("OnboardingSummaryCompanyType")</td><td><div id="id-summary-company-profile-company-type-@appId"></div></td></tr>
+            <tr>
+                <td>@L("FS_CompanyProfile_RegistrationDate")</td>
+                <td>
+                    <div id="id-summary-company-profile-registration-date-@appId">
+                    </div>
+                </td>
+            </tr>
+            <tr><td>@L("FS_CompanyProfile_StartedTradingDate")</td><td><div id="id-summary-company-profile-started-trading-date-@appId"></div></td></tr>
+
+            <tr><td>VAT Registration Number</td><td><div id="id-div-summary-company-profile-vat-reg-number-@appId"></div></td></tr>
+            <tr><td>Tax Reference Number</td><td><div id="id-div-summary-company-profile-vat-ref-number-@appId"></div></td></tr>
+            <tr><td>Registered for UIF</td><td id="td-registered-for-uif-@appId"></td></tr>
+            <tr id="tr-uif-number-@appId" style="display:none;"><td>UIF number</td><td id="td-uif-number-@appId"></td></tr>
+
+            <tr>
+                <td>Registered (Contact) Address</td>
+                <td>
+                    <div id="id-summary-company-profile-registered-address-1-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-2-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-3-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-4-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-5-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-6-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-7-@appId"></div>
+                    <div id="id-summary-company-profile-registered-address-8-@appId"></div>
+                </td>
+            </tr>
+            <tr><td>@L("FS_CompanyProfile_IndustrySubSector")</td><td><div id="id-summary-company-profile-industry-sub-sector-@appId"></div></td></tr>
+            <tr><td>SIC Code</td><td><div id="id-summary-company-profile-industry-sic-code-@appId"></div></td></tr>
+            <tr><td>Entity Type</td><td><div id="id-div-summary-company-profile-entity-type-@appId"></div></td></tr>
+        </tbody>
+    </table>
+</div>

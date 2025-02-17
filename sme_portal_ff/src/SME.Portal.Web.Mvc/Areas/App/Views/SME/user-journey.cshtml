@@ -1,0 +1,66 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SME;
+@using System.Globalization
+@using System.Web;
+@using Abp.Runtime.Security;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+@using SME.Portal.Web.Areas.App.Models.Common.UserJourney;
+
+@model UserJourneyReturn;
+@{
+    var Controller = Model.Controller;
+    var Action = Model.Action;
+    //var Id = Model.Id;
+}
+
+@section Scripts
+{
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Sefa/app-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/user-journey.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Application/Sefa/app-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/user-journey.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        $(document).ready(function () {
+            KTApp.blockPage({
+                overlayColor: 'blue',
+                opacity: 0.1,
+                state: 'primary',
+                message: 'Syncing user journey'
+            });
+            app.userJourney.run((result) => {
+                KTApp.unblockPage();
+                location.href='@Url.Action(Action, Controller)';
+            });
+            @*
+            app.userJourney.sync((result) => {
+                KTApp.unblockPage();
+                location.href='@Url.Action(Action, Controller)';
+            });
+            *@
+        });
+    </script>
+
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+</div>

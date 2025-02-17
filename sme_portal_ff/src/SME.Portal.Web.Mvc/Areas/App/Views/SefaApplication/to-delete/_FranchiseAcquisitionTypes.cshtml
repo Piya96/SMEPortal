@@ -1,0 +1,178 @@
+﻿@* ---------------Franchise Acquisition Partner Funding -- *@
+<div id="franchise-acquisition-partner-funding-type" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="asset-finance">Partner Buy-out or Franchise Funding Options</label>
+        <select class="form-control" id="franchise-acquisition-partner-funding-type" name="franchiseacquisitiontype">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59c2c7087c83b736d463c255">Buying a franchise</option>
+            <option value="59d26a3120070a604097b04f">Funding to bring on a BEE Partner</option>
+            <option value="59d26a1620070a604097b04d">Funding to buy an existing business</option>
+            <option value="59d26a2620070a604097b04e">Partner or management buyout</option>
+            <option value="59c2c7197c83b736d463c256">Starting your own franchise</option>
+        </select>
+        <span class="form-text text-muted"></span>
+    </div>
+</div>
+
+@* Buying a franchise  *@
+<div id="franchise-acquisition-buying-a-franchise" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("IsFranchiseAccreditedWithFranchiseAssoc")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="buyingafranchisefranchiseaccredited" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="buyingafranchisefranchiseaccredited" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("IsFranchiseAccreditedWithFranchiseAssocSubtext")</span>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("HaveYouBeenPreapprovedByFranchisor")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="preapprovedbyfranchisor" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="preapprovedbyfranchisor" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("HaveYouBeenPreapprovedByFranchisorSubtext")</span>
+    </div>
+</div>
+
+@* Funding to bring BEE Partner   *@
+<div id="franchise-acquisition-funding-to-bring-on-a-bee-partner" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("WillCompanyHaveMinBEEShareholding")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="beepartnerfranchiseaccredited" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="beepartnerfranchiseaccredited" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("WillCompanyHaveMinBEEShareholdingSubtext")</span>
+    </div>
+</div>
+
+@* Funding to buy an existing business   *@
+<div id="franchise-acquisition-funding-to-buy-an-existing-business" style="display:none">
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="form-group fv-plugins-icon-container">
+                    <div class="col-xl-12">
+                        <h6 class="font-weight-bolder mb-3">@L("OnboardingCompanyProfileIndustrySector")</h6>
+                    </div>
+                    <select id="id-company-profile-category-select"
+                            name="industry-sector"
+                            class="form-control">
+                        <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                    </select>
+                    <span class="form-text text-muted"></span>
+                    <div id="industrySector-message" class="fv-plugins-message-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="id-company-profile-industry-sub-sector-div">
+            <div class="col-xl-12">
+                <div class="form-group fv-plugins-icon-container">
+                    <div class="col-xl-12">
+                        <h6 class="font-weight-bolder mb-3">@L("OnboardingCompanyProfileIndustrySubSector")</h6>
+                    </div>
+                    <select id="id-company-profile-sub-category-select"
+                            name="industry-sub-sector"
+                            class="form-control">
+                        <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                    </select>
+                    <span class="form-text text-muted"></span>
+                    <div id="industrySubSector-message" class="fv-plugins-message-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="">@L("WhatTypeOfBusinessIsIt")</label>
+        <select class="form-control" id="funding-to-buy-an-existing-business-type" name="fundingtobuyanexistingbusinesstype">
+            <option disabled selected value="">@L("SelectAnOption")</option>
+            <option value="59d2edb439b41c2b749a03df">@L("Distributor")</option>
+            <option value="59d2edda39b41c2b749a03e2">@L("Exporter")</option>
+            <option value="59d2edc139b41c2b749a03e0">@L("Manufacturer")</option>
+            <option value="59d2ed9739b41c2b749a03d9">@L("Retailer")</option>
+            <option value="59d2ede939b41c2b749a03e3">@L("ServiceBusiness")</option>
+            <option value="59d2eda439b41c2b749a03de">@L("Wholesaler")</option>
+            <option value="59d2edd139b41c2b749a03e1">@L("Importer")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhatTypeOfBusinessIsItSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("IsBusinessLocatedInRuralArea")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesslocatedinruralarea" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesslocatedinruralarea" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("IsBusinessLocatedInRuralAreaSubtext")</span>
+    </div>
+</div>
+
+@* Funding Partner or Management Buyout  *@
+<div id="franchise-acquisition-funding-partner-or-management-buyout" style="display:none">
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("WillCompanyHaveMinBEEShareholding")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shareholdinggreaterthanperc" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shareholdinggreaterthanperc" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("WillCompanyHaveMinBEEShareholdingSubtext")</span>
+    </div>
+</div>

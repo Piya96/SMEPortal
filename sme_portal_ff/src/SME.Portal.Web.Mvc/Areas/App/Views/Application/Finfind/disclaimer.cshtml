@@ -1,0 +1,51 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+    .td-label {
+        color: #FFA800 !important;
+    }
+
+    .td-pass {
+        color: green;
+    }
+
+    .td-fail {
+        color: red;
+        cursor: help;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-text {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-icon i {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info {
+        border-color: green !important;
+    }
+
+</style>
+
+<div class="pb-5" data-wizard-type="step-content" id="div-disclaimer">
+
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert-text" style="color:black;">
+                    <p><h3 style="font-weight:bold;color:#3699FF;">Your Funding Request:</h3></p>
+    
+                    <p>In this important section you will be asked to provide information about how much finance you need, what it is needed for, your turnover, how long you have been in business, business financial information and proof of income.</p>
+               
+                </div>         
+            </div>
+        </div>
+    </div>
+
+</div>

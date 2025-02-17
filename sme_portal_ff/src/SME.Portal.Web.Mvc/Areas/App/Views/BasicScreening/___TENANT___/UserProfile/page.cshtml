@@ -1,0 +1,14 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-user-profile">
+
+    <h3 class="mb-10 font-weight-bold text-dark">User Profile</h3>
+
+    @* TODO: What the hell is this? *@
+    @{
+        ViewData["string001"] = "Finfind";
+    }
+
+    @{ await Html.RenderPartialAsync("../../Common/UserProfile/page.cshtml"); }
+
+</div>

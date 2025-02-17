@@ -1,0 +1,114 @@
+﻿@* ---------------Asset Finance types-----------------*@
+<div id="div-asset-finance-type" class="form-group" style="display:none">
+    <label class="font-weight-bold text-dark" for="asset-finance">Buy An Asset Options</label>
+    <select class="form-control" id="assetfinancetype" name="assetfinancetype">
+        <option disabled selected hidden value="">@L("SelectAnOption")</option>
+        <option value="59d2694720070a604097b047">Buying business property</option>
+        <option value="59c35d86463361150873b642">Buying equipment</option>
+        <option value="59c3605c463361150873b643">Buying machinery</option>
+        <option value="59d2692520070a604097b045">Buying vehicle or fleet finance</option>
+        <option value="59d2695420070a604097b048">Property development</option>
+        <option value="59d2696020070a604097b049">Property refinancing</option>
+        <option value="59d2693920070a604097b046">Shopfitting/renovations</option>
+    </select>
+    <span class="form-text text-muted"></span>
+</div>
+
+@* --------------- Buying business property -----------------*@
+<div id="asset-finance-buying-business-property" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="buying-business-property-value">@L("WhatIsTheValueOrTheProperty") </label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="buyingbusinesspropertyvalue" name="buyingbusinesspropertyvalue" type="text" class="form-control" aria-label="cash-for-invoice-amount">
+        </div>
+        <span class="form-text text-muted">@L("WhatIsTheValueOrThePropertySubtext")</span>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="buying-business-property-type">@L("SelectPropertyType")</label>
+        <select class="form-control" id="buyingbusinesspropertytype" name="buyingbusinesspropertytype">
+            <option disabled selected hidden value="">@L("SelectAnOption")</option>
+            <option value="59ec82b71b37792024771d3e">@L("AffordableHousing")</option>
+            <option value="59ec82961b37792024771d3c">@L("Agriculture")</option>
+            <option value="59ec82591b37792024771d39">@L("CommercialRetail")</option>
+            <option value="59ec826b1b37792024771d3a">@L("Industrial")</option>
+            <option value="59ec82d31b37792024771d40">@L("OwnOfficeBuilding")</option>
+            <option value="59ec82881b37792024771d3b">@L("Residential")</option>
+            <option value="59ec82c51b37792024771d3f">@L("RuralAndTownship")</option>
+            <option value="59ec82aa1b37792024771d3d">@L("StudentAccommodation")</option>
+        </select>
+        <span class="form-text text-muted">@L("SelectPropertyTypeSubtext")</span>
+    </div>
+</div>
+
+@* Asset Finance - Property Development - subTypes *@
+<div id="asset-finance-property-development" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="property-development-type">@L("SelectDevelopmentType")</label>
+        <select class="form-control" id="propertydevelopmenttype" name="propertydevelopmenttype">
+            <option disabled selected hidden value="">@L("SelectAnOption")</option>
+            <option value="5a8eb97f22b5241bc0384675">@L("AffordableHousing")</option>
+            <option value="5a8eb80a22b5241bc0384673">@L("Agriculture")</option>
+            <option value="5a6f0bc1cb0d114734ecf203">@L("CommercialRetail")</option>
+            <option value="5a6f0bb1cb0d114734ecf202">@L("Industrial")</option>
+            <option value="5a8eb9c422b5241bc0384677">@L("OwnOfficeBuilding")</option>
+            <option value="5a8eb7eb22b5241bc0384672">@L("Residential")</option>
+            <option value="5a8eb99e22b5241bc0384676">@L("RuralAndTownship")</option>
+            <option value="5a8eb96922b5241bc0384674">@L("StudentAccommodation")</option>
+        </select>
+        <span class="form-text text-muted">@L("SelectDevelopmentTypeSubtext")</span>
+    </div>
+</div>
+
+@* Asset Finance - Shopfitting/renovations *@
+<div id="asset-finance-shopfitting-renovations" style="display:none">
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("IsThePropertyBonded")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shopfittingpropbonded" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shopfittingpropbonded" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("IsThePropertyBondedSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="buying-business-property-value">@L("WhatIsTheValueOrTheProperty")</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">R</span>
+            </div>
+            <input autocomplete="off" id="shopfittingpropertyvalue" name="shopfittingpropertyvalue" type="text" class="form-control" aria-label="shopfitting-property-value">
+        </div>
+        <span class="form-text text-muted">@L("WhatIsTheValueOrThePropertySubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="shopfitting-property-type">@L("SelectPropertyType")</label>
+        <select class="form-control" id="shopfittingpropertytype" name="shopfittingpropertytype">
+            <option disabled selected hidden value="">@L("SelectAnOption")</option>
+            <option value="59ec82b71b37792024771d3e">@L("AffordableHousing")</option>
+            <option value="59ec82961b37792024771d3c">@L("Agriculture")</option>
+            <option value="59ec82591b37792024771d39">@L("CommercialRetail")</option>
+            <option value="59ec826b1b37792024771d3a">@L("Industrial")</option>
+            <option value="59ec82d31b37792024771d40">@L("OwnOfficeBuilding")</option>
+            <option value="59ec82881b37792024771d3b">@L("Residential")</option>
+            <option value="59ec82c51b37792024771d3f">@L("RuralAndTownship")</option>
+            <option value="59ec82aa1b37792024771d3d">@L("StudentAccommodation")</option>
+        </select>
+        <span class="form-text text-muted">@L("SelectPropertyTypeSubtext")</span>
+    </div>
+</div>
+
+

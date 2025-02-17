@@ -1,0 +1,41 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model IManageView
+
+<form id="stepAverageAnnualTurnoverForm">
+    <div class="step" id="stepAverageAnnualTurnover">
+        <h3>Annual Turnover</h3>
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        SMMEs will select the turnover range that applies to them. By entering a minimum and maximum turnover range here, a match will be made if both ranges overlap.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.FinanceProduct.MinAverageAnnualTurnoverFormatted" class="col-form-label">Minimum</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@* @Model.FinanceProduct.CurrencySymbol *@R</span>
+                    </div>
+                    <input type="text" class="currency-box form-control" id="FinanceProduct_MinAverageAnnualTurnover" name="MinAverageAnnualTurnover" asp-for="FinanceProduct.MinAverageAnnualTurnoverFormatted" value=@(Model.IsEdit ? Model.FinanceProduct.MinAverageAnnualTurnoverFormatted : 0)>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.FinanceProduct.MaxAverageAnnualTurnoverFormatted" class="col-form-label">Maximum</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@* @Model.FinanceProduct.CurrencySymbol *@R</span>
+                    </div>
+                    <input type="text" class="currency-box form-control" id="FinanceProduct_MaxAverageAnnualTurnover" name="MaxAverageAnnualTurnover" asp-for="FinanceProduct.MaxAverageAnnualTurnoverFormatted">
+                    <span id="maxAverageAnnualTurnoverError" style="color:red; display:none;">Maximum average annual turnover must be greater than the minimum average annual turnover.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

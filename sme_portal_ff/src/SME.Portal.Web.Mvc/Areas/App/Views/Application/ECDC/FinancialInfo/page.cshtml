@@ -1,0 +1,69 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+
+</style>
+
+<div class="pb-5" data-wizard-type="step-content" id="div-financial-info">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Financial Info Needed for ECDC</h3>
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/legal-questions-partial.cshtml"); }
+
+    <div id="div-owner-invested-own-money-ext">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "owner-invested-own-money",
+                Label = "Have you as owner invested any of your own money in your business (since it was started)?"
+            }
+        );}
+    </div>
+
+    <div id="div-business-premises-and-or-property-value-directors-ext">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "business-premises-and-or-property-value-directors",
+                Label = "What is the value of the business property and/or other property owned by the directors (Give net value of premises - property value less any finance still owing)?",
+                LeftText = "R"
+            }
+        );}
+    </div>
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "business-made-profit-over-last-6-months",
+            Label = "Did your business make a profit over the last 6 months?"
+        }
+    );}
+
+    <div id="div-up-to-date-audited-managements-accounts-ext">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "up-to-date-audited-managements-accounts",
+                Label = "Do you have up to date Management Accounts?"
+            }
+        );}
+    </div>
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owners-contribution",
+            Label = "Owner's contribution",
+            LeftText = "R"
+        }
+    );}
+
+</div>

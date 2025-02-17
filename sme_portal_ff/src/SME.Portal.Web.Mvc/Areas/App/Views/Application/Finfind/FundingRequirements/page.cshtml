@@ -1,0 +1,159 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+
+</style>
+
+<div class="pb-5" data-wizard-type="step-content" id="div-funding-requirements">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Funding Requirement</h3>
+
+    <div class="form-group fv-plugins-icon-container">
+
+        <div class="form-group">
+            <label class="font-weight-bold text-dark" for="loan-amount">@L("AmountOfFundingNeeded")</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">R</span>
+                </div>
+                <input autocomplete="off" id="loanamount" name="loanamount" type="text" class="form-control" aria-label="loan-amount">
+            </div>
+            <span class="form-text text-muted"></span>
+            <div id="message-loanamount"></div>
+        </div>
+
+    
+        <label class="font-weight-bold text-dark" for="finance-for">@L("WhatTypeOfFinanceDoYouNeed") </label>
+    
+        <div class="row">
+            <div class="col-lg-6">
+                @* Asset Finance *@
+                <label class="option" id="financeForAssetFinanceLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="financefor" value="59c35d64463361150873b641" data-description="Asset Finance" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">Buy An Asset</span>
+                            <span class="option-focus" data-toggle="asset-finance-tooltip" data-placement="right" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+    
+            <div class="col-lg-6">
+                @* Working Capital *@
+                <label class="option" id="financeForWorkingCapitalLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="working-capital" value="59c2c6b37c83b736d463c251" data-description="Working Capital" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">For Working Capital</span>
+                            <span class="option-focus" data-toggle="working-capital-tooltip" data-placement="left" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @* Growth Finance *@
+                <label class="option" id="financeForGrowthFinanceLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="growth-finance" value="59c5d92b5eac2311202772f5" data-description="Growth Finance" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">Grow My Business</span>
+                            <span class="option-focus" data-toggle="growth-finance-tooltip" data-placement="right" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+    
+            <div class="col-lg-6">
+                @* Franchise Acquisition Partner Funding *@
+                <label class="option" id="financeForFranchiseAquisitionLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="franchise-acquisition-partner-funding" value="59c2c6f77c83b736d463c254" data-description="Franchise Acquisition Partner Funding" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">Partner Buy-out or Franchise Funding</span>
+                            <span class="option-focus" data-toggle="franchise-acq-tooltip" data-placement="left" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @* Other business *@
+                <label class="option" id="financeForOtherBusinessLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="other-finance-for" value="59c5d96b5eac2311202772f7" data-description="Other Business Finance" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">Other Business Finance</span>
+                            <span class="option-focus" data-toggle="other-finance-tooltip" data-placement="right" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+    
+            <div class="col-lg-6">
+                @* Research and Innovation Funding *@
+                <label class="option" id="financeForResearchInnovationLabel">
+                    <span class="option-control">
+                        <span class="radio">
+                            <input type="radio" name="financefor" id="research-innovation-funding" value="59c5d95c5eac2311202772f6" data-description="Research and Innovation Funding" />
+                            <span></span>
+                        </span>
+                    </span>
+                    <span class="option-label">
+                        <span class="option-head">
+                            <span class="option-title">Research and Innovation Funding</span>
+                            <span class="option-focus" data-toggle="research-finance-tooltip" data-placement="left" title="">
+                            </span>
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+    
+        <div id="message-financefor"></div>
+    </div>
+
+    @{ await Html.RenderPartialAsync("asset-finance.cshtml"); }
+    @{ await Html.RenderPartialAsync("growth-finance.cshtml"); }
+    @{ await Html.RenderPartialAsync("other-finance.cshtml"); }
+    @{ await Html.RenderPartialAsync("working-capital.cshtml"); }
+    @{ await Html.RenderPartialAsync("partner-buy-franchise-funding.cshtml"); }
+    @{ await Html.RenderPartialAsync("research-and-innovation.cshtml"); }
+
+</div>

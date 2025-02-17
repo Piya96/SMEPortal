@@ -1,0 +1,108 @@
+﻿<h5 class="mb-8 font-weight-bold text-dark">Industry Sector</h5>
+
+<div class="row" id="industry-sector-info-tooltip">
+    <div class="col-xl-12">
+        <span class="option-focus text-align:left"
+              style="text-align:left !important;cursor:pointer;">
+            <i class="fa fa-question-circle"></i> Click for help
+        </span>
+    </div>
+</div>
+
+<div id="div-industry-sector-info" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <div class="alert alert-custom alert-outline-info" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">
+                    <p>
+                        To find your industry sector, type in a word that describes what you do/what sector you are in:
+                        e.g. type ‘beauty’ and all the beauty industry sector descriptions will appear – then chose the one that is closest to what you do.
+                        e.g. type ‘software’ and all the software development sector descriptions will appear – chose the one that closest fits what you do.
+                    </p>
+                    <p>Note: sefa uses the latest Industry Sector Codes (SIC code version 7) – for a list of the codes click here <a target="_blank" href="https://www.statssa.gov.za/classifications/codelists/Web_SIC7a/SIC_7_Final_Manual_Errata.pdf"><b>HERE</b></a> (look from page 26).</p>
+                    <p>To find your match – find the sub-class your business falls into and the Division and Group will automatically be selected by the system.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="form-group fv-plugins-icon-container">
+
+            <h5 class="mb-8 font-weight-bold text-dark">Search Industry Sub-sectors</h5>
+
+            <div class="input-group">
+                <input id="industry-search"
+                       name="name-input-industry-search"
+                       type="text"
+                       placeholder="Search industry sub-sectors"
+                       class="form-control">
+            </div>
+            <div class="fv-plugins-message-container"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="id-div-industry-sector" name="name-div-industry-sector">
+    <div class="col-xl-12">
+        <div class="form-group fv-plugins-icon-container">
+            <label>Select Industry Sub-sector</label>
+            <div class="input-group">
+                <select name="subsectors"
+                        id="subsectors"
+                        class="form-control"
+                        disabled>
+                </select>
+            </div>
+            <div>
+                <span id="sectorInfo"></span>
+            </div>
+            <div class="fv-plugins-message-container"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="form-group fv-plugins-icon-container">
+            <select style="display:none;"
+                    name="name-select-company-profile-industry-dummy"
+                    class="form-control"
+                    value="">
+                <option value="" disabled selected hidden></option>
+                <option value="X">X</option>
+            </select>
+            <div id="id-div-company-profile-industry-dummy-message" class="fv-plugins-message-container"></div>
+            <div class="fv-plugins-message-container"></div>
+        </div>
+    </div>
+</div>
+
+<div id="id-div-industry-info" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <div class="alert alert-custom alert-outline-info" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">
+                    <p>Industry sector summary</p>
+                    <ul>
+                        <li id="id-li-label"></li>
+                        <li id="id-li-sic-code"></li>
+                        <li id="id-li-section"></li>
+                        <li id="id-li-division"></li>
+                        <li id="id-li-description"></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

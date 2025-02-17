@@ -1,0 +1,62 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using System.Globalization;
+
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FunderSearchSummaryViewModel
+
+@{
+    CultureInfo ci = new CultureInfo("en-ZA");
+
+    // day month year hour minute
+    var day = Model.Application.Locked?.Day;
+    var month = Model.Application.Locked?.Month;
+    var year = Model.Application.Locked?.Year;
+
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = Model.Application.Id,
+        TenantId = Model.Application.TenantId
+    };
+}
+
+@{
+    if (Model.IncludeHeader)
+    {
+        <div class="table-responsive">
+            <img alt="Logo" src="/TenantCustomization/GetLogo?tenantId=@Model.Application.TenantId" height="50">
+            <br /><br />
+            <h4 class="mb-10 font-weight-bolder text-dark">Funder Search Summary for: <br /><u>@Model.SmeCompany.Name</u></h4>
+            <div>Date: @day-@month-@year </div>
+            <div class="separator separator-dashed my-3"></div>
+        </div>
+    }
+
+    await Html.RenderPartialAsync("../SefaApp/summary-partial.cshtml", fssVM);
+
+    if (!Model.IncludeHeader)
+    {
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <tbody>
+                    <tr>
+                        <td style="width:50%;"></td>
+                        <td>
+                            <div style="margin-top:5px !important;">
+                                <button id="id-funder-search-save-to-pdf-bottom-@Model.Application.Id"
+                                        onclick="downloadFunderSearchSummary(@Model.SmeCompany.Id, @Model.Application.Id)"
+                                        type="button"
+                                        class="btn btn-secondary font-weight-bolder text-uppercase px-6 py-2">
+                                    <i class="far fa-file-pdf"></i>@L("FS_SaveToPDF")
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+}
+

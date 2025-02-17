@@ -1,0 +1,235 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<style>
+    b.bullet {
+        margin-bottom:2px;
+        font-size:larger;
+    }
+</style>
+
+<h4 class="mb-10">Employee Information</h4>
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "total-number-of-employees",
+        Label = "Total number of employees (permanent and part-time) - including owners working in the business",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-registered-for-coida">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "registered-for-coida",
+            Label = "Are you registered for <a href='https://cfonline.labour.gov.za/OnlineSubmissions/' target='_blank'>COIDA?</a>"
+        }
+    );}
+    <br/>
+</div>
+
+<h5>Permanent Employees</h5>
+<br/>
+<br/>
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-permanent-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;Total number of permanent employees - including owners working in the business",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-permanent-youth-employees-under35",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are under 35 years of age? (youth)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-permanent-female-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are female?",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-permanent-black-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are Black? (not including Coloured and Indian)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-permanent-non-sa-employees" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-permanent-non-sa-employees",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are not South African?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+
+<div id="div-permanent-disabled-employees" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-permanent-disabled-employees",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are disabled?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+
+<h5>Part-time Employees</h5>
+<br/>
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-part-time-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;Total number of part time employees - including owners working in the business",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-part-time-youth-employees-under35",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are under 35 years of age? (youth)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-part-time-female-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are female?",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-part-time-black-employees",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are Black? (not including Coloured and Indian)",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-part-time-non-sa-employees" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-part-time-non-sa-employees",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are not South African?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+
+<div id="div-part-time-disabled-employees" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-part-time-disabled-employees",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many are disabled?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+
+<h4>Employment creation</h4>
+
+<br/>
+
+@*<h5>Permanent employees</h5>
+<br/>*@
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-new-jobs-created-through-loan",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many new permanent jobs to be created through this loan?",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+    new Input_MN_LT_RT_Left()
+    {
+        Name = "number-of-existing-jobs-sustained",
+        Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many existing permanent jobs that will be retained?",
+        ColLeft = "col-xl-9",
+        ColRight = "col-xl-3"
+    }
+);}
+
+<div id="div-part-time-employees-job-info">
+    @*<h5>Part-time employees</h5>
+    <br/>*@
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-new-part-time-jobs-created-through-loan",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many new part-time jobs to be created through this loan?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+    
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-mn-lt-rt-left.cshtml",
+        new Input_MN_LT_RT_Left()
+        {
+            Name = "number-of-existing-part-time-jobs-sustained",
+            Label = "&nbsp;&nbsp;&nbsp;&nbsp;<b style='margin-top:2px;font-size:larger;'>&#8226;</b>&nbsp;&nbsp;&nbsp;&nbsp;How many existing part-time jobs that will be retained?",
+            ColLeft = "col-xl-9",
+            ColRight = "col-xl-3"
+        }
+    );}
+</div>
+

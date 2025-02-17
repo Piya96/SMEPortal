@@ -1,0 +1,64 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+    .td-label {
+        color: #FFA800 !important;
+    }
+
+    .td-pass {
+        color: green;
+    }
+
+    .td-fail {
+        color: red;
+        cursor: help;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-text {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-icon i {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info {
+        border-color: green !important;
+    }
+
+</style>
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-disclaimer">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Read the information below before continuing with your online funding application.</h3>
+
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon2-contract"></i></div>
+            </div>
+            <div class="col-xl-10">
+                <div class="alert-text">
+                    <p>You have successfully completed our basic screening process and will now be asked to provide further information to assist us to match you with the right funding option.</p>
+
+                    <p>
+                        Please note:
+                        <ul>
+                            <li>You have 20 work days to provide the information in the screens to follow and to upload all the documents requested.</li>
+                            <li>Once you have uploaded the documents required, your enquiry will be converted to a loan application and you will receive an unique application number.</li>
+                            <li>We will then assess your application to determine whether you qualify for funding.</li>
+                            <li>Please note that should you upload multiple incorrect or incomplete documents, or a false document, your application will be put on hold and no assessment will take place.</li>
+                        </ul>
+                    </p>
+                    <p>If you need to exit and return at any time, your information is saved and you can login and continue to complete your application where you last finished.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

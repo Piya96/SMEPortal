@@ -1,0 +1,49 @@
+﻿<!--
+<div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #209fd6;">
+    <img class="flange-right" src="~/custom/images/right-flange.png">
+
+    <div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+
+        <a href="https://finfind.co.za" target="_blank">
+            <h3 class="font-weight-bolder text-center font-size-h4 font-size-h1-lg" style="color: #ffffff;">
+                Do you need <br> business finance?
+            </h3>
+        </a>
+    </div>
+    <a href="https://finfind.co.za" target="_blank">
+        <img class="hero-man" src="~/custom/images/home_man_hero.png">
+    </a>
+</div>
+-->
+
+
+@{
+    var _LoginReg = ViewBag.IsRegImage;
+    string imagePath = "";
+
+    switch (_LoginReg)
+    {
+        case true:
+            imagePath = "/view-resources/Views/Account/images/asides/Hloolo-Register-Aside.jpg";
+            break;
+        case false:
+            imagePath = "/view-resources/Views/Account/images/asides/Hloolo-Login-Aside.jpg";
+            break;
+        default:
+            imagePath = "/view-resources/Views/Account/images/asides/Hloolo-CheckEmail-Aside.jpg";
+            break;
+    }
+}
+
+
+<div class="login-aside d-flex flex-column flex-row-auto">
+    <img src="@imagePath" usemap="#image-map" />
+        <map name="image-map">
+            <area target="_blank"
+                  alt="Eastern Cape Development Corporation"
+                  title="Eastern Cape Development Corporation"
+                  href="https://finfind.co.za"
+                  coords="99,140,441,43"
+                  shape="rect" />
+        </map>
+</div>

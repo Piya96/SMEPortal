@@ -1,0 +1,30 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SME;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model SMEOnboardingWizardViewModel
+
+<div class="flex-column-fluid" style="width:100%;">
+
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <h4 class="mb-10 font-weight-bolder text-dark">Profile Info Summary</h4>
+        </div>
+    </div>
+
+    @{
+        var fssVM = new FSSViewModel()
+        {
+            StyleWidth = "width:55%;",
+            StyleCol = "",
+            ApplicationId = 0,
+            TenantId = Model.MySettings.TenantId.Value
+        };
+
+        await Html.RenderPartialAsync("../FunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM);
+
+        await Html.RenderPartialAsync("../FunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM);
+
+        await Html.RenderPartialAsync("../FunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+    }
+
+</div>

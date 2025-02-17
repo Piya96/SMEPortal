@@ -1,0 +1,46 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model IManageView
+@{
+    var obj = Model.FinanceProduct.MatchCriteriaJson !=null ? JsonConvert.DeserializeObject<Dictionary<string, object>>(Model.FinanceProduct.MatchCriteriaJson) : null;
+    var rules = obj != null ? (JArray)obj["OwnershipRules"] : null;
+    var ruleList = rules != null ? rules.ToObject<List<JObject>>() : null;
+}
+@if (rules != null && ((JArray)rules).Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Operator</th>
+                <th>Ownership</th>
+                <th>Measure</th>
+                <th>At least X %</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ruleList)
+            {
+                <tr>
+                    <td>@item["operator"]</td>
+                    <td>@(Model.OwnershipLists.Any(ol => ol.ListId == (string)item["demographic"]) ? Model.OwnershipLists.FirstOrDefault(ol => ol.ListId == (string)item["demographic"]).Name : item["demographic"])</td>
+                    <td>@item["measure"]</td>
+                    <td>@item["percentage"]
+                        @if (item["percentage"]?.ToString() != "")
+                        { 
+                           @:%
+                        }
+                    </td>
+                    <td>
+                        <button type="button" onclick="deleteRule('@item["demographic"]')" class="btn btn-sm btn-danger">X</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mb-5">No Rules have been added.</div>
+}

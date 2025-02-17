@@ -1,0 +1,15 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+@model FSSViewModel;
+
+<div id="div-ecdc-funder-search-summary">
+    @{
+        await Html.RenderPartialAsync("../../../BasicScreening/ECDC/UserProfile/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../../../BasicScreening/ECDC/OwnerProfile/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../../../BasicScreening/ECDC/CompanyProfile/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../FundingRequirements/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../ProductMatching/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../CompanyInfo/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../FinancialInfo/summary.cshtml", Model);
+        await Html.RenderPartialAsync("../MinRequirements/summary.cshtml", Model);
+    }
+</div>

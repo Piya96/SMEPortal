@@ -1,0 +1,176 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+
+}
+
+<h4 style="color:green; font-size:large;" class="font-weight-bold mb-3">@L("FS_FundingRequirement")S</h4>
+<div class="card">
+    <div id="parent-group-1-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Business / Employee Information</h4>
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style="@styleWidth">How long has your business been in operation?</td><td id="business-years-in-operation-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of employees (permanent and part-time)</td><td id="total-number-of-employees-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of current permanent employees</td><td id="number-of-permanent-employees-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of permanent youth employees under 35</td><td id="number-of-permanent-youth-employees-under35-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of permanent female employees</td><td id="number-of-permanent-female-employees-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of permanent black employees</td><td id="number-of-permanent-black-employees-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of new jobs to be created through this loan</td><td id="number-of-new-jobs-created-through-loan-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of existing jobs sustained</td><td id="number-of-existing-jobs-sustained-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-2-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Key suppliers</h4>
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style="@styleWidth">List of key suppliers</td><td id="key-suppliers-@appId"></td></tr>
+                <tr><td style="@styleWidth">What is your total credit limit with all suppliers (if any)?</td><td id="credit-held-with-suppliers-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-3-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Ownership Detail</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top: none;">
+                <tr><td style="@styleWidth">Total ownership by South Africans</td><td id="percent-ownership-by-south-africans-@appId"></td></tr>
+                <tr><td style="@styleWidth">Number of Black, Coloured, and Indian (combined owners total)</td><td id="percent-black-coloured-indian-pdi-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of black only owners</td><td id="percent-black-south-africans-only-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of white only owners</td><td id="percent-white-only-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of Asian only owners</td><td id="percent-asian-only-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of owners with disability (any race)</td><td id="percent-disabled-people-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of young owners under 35 years of age (any race)</td><td id="percent-youth-under-35-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of female owners (any race)</td><td id="percent-women-women-any-race-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of female owners (black only)</td><td id="percent-women-black-only-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of Non-SA citizen owners</td><td id="percent-non-south-african-citizens-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of Business/organisations (non-individuals) owners</td><td id="percent-companies-organisations-@appId"></td></tr>
+                <tr><td style="@styleWidth">Total number of owners</td><td id="total-number-of-owners-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-4-@appId" class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Owners' contribution</td><td id="owners-contribution-@appId"></td></tr>
+                <tr id="tr-source-of-funds-@appId"><td style="@styleWidth">Source of funds (owner)</td><td id="source-of-funds-@appId"></td></tr>
+                <tr><td style="@styleWidth">What is the value of the business premises and/or other property owned by the directors? (Give net value of premises - property value less any finance still owing)?</td><td id="business-premises-property-value-of-directors-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-5-@appId" class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Do you have up to date Management Accounts?</td><td id="has-up-to-date-audited-management-accounts-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-6-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Please select Yes or No for each of the mandatory declarations below</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Is this funding to pay a debt owed to another lending institution?</td><td id="not-funding-for-debt-to-other-lending-institute-@appId"></td></tr>
+                <tr><td style="@styleWidth">Have other activities already been funded by other government departments or parastatals?</td><td id="not-funded-by-other-government-dept-parastal-@appId"></td></tr>
+                <tr><td style="@styleWidth">The business is not a government or SOE official?</td><td id="owner-not-government-or-soe-officials-@appId"></td></tr>
+                <tr><td style="@styleWidth">The business does not fall within the gambling, pyramid sales scheme, loan shark and operates illegal activities etc., as guided by credit policy and grant policies?</td><td id="not-gaming-pyramid-loan-shark-illegal-@appId"></td></tr>
+                <tr><td style="@styleWidth">There is no record of fraud and corruption?</td><td id="not-fraud-corruption-records-@appId"></td></tr>
+                <tr><td style="@styleWidth">The owner/applicant is not an un-rehabilitated insolvent?</td><td id="owner-not-un-rehabilitated-insolvent-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-7-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Please select Yes or No for each of the mandatory declarations below</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">The business is 100% South African owned?</td><td id="business-whole-sa-owned-@appId"></td></tr>
+                <tr><td style="@styleWidth">70% of the employees are South African with valid South African ID Documents?</td><td id="70-perc-employees-south-african-valid-id-docs-@appId"></td></tr>
+                <tr><td style="@styleWidth">The business has been trading for a minumim period of 6 months?</td><td id="min-6-months-trading-@appId"></td></tr>
+                <tr><td style="@styleWidth">Turnover does not exceed R1.5 mil (one million and five hundred thousand rand)?</td><td id="turnover-less-than-r1point5mill-per-annum-@appId"></td></tr>
+                <tr><td style="@styleWidth">The business has a valid business bank account (including newly opened)?</td><td id="business-has-valid-bank-acc-@appId"></td></tr>
+                <tr><td style="@styleWidth">Are you willing to participate in the bulk buying scheme as organised by the DSBD or any of its agencies?</td><td id="willing-to-participate-in-dsbs-buying-scheme-@appId"></td></tr>
+                <tr><td style="@styleWidth">Are you operating in a township or village?</td><td id="operating-in-township-or-village-@appId"></td></tr>
+                <tr><td style="@styleWidth">Is the enterprise is owner managed?</td><td id="enterprise-is-owner-managed-@appId"></td></tr>
+                <tr><td style="@styleWidth">Type of Business</td><td id="type-of-business-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--
+    <div id="parent-group-8-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Asset Details</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Asset type</td><td id="asset-type-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Description</td><td id="description-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Model</td><td id="model-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">New or used?</td><td id="new-or-used-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Is there a NATIS certificate?</td><td id="has-natis-certificate-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Registration date</td><td id="registration-date-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Registered owner</td><td id="registered-owner-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Title holder</td><td id="title-holder-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Year</td><td id="year-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Serial/VIN/chassis number</td><td id="serial-vin-chassis-number-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Engine number</td><td id="engine-number-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Insurer</td><td id="insurer-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Purchase value</td><td id="purchase-value-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">VAT</td><td id="vat-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Total</td><td id="total-@appId">Value</td></tr>
+            </tbody>
+        </table>
+    </div>
+    -->
+
+    <div id="parent-group-9-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Please select Yes or No for each of the mandatory declarations below</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Minimum membership</td><td id="min-membership-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Has a minimum of members shares/savings valued at R100 000?</td><td id="has-min-shares-savings-of-100k-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Has savings and loan policies?</td><td id="has-savings-and-loan-policies-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Has a fully functioning board?</td><td id="has-full-functioning-board-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Has minimum operation period of 6 months?</td><td id="has-min-opp-period-of-6months-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Do you have proof of proper systems and processes in place?</td><td id="has-proof-of-proper-systems-processes-in-place-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Is the outstanding loan book is at least R100 000?</td><td id="is-outstanding-loan-book-at-least-100K-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Maximum funding requirement</td><td id="max-funding-req-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Complies to legislation?</td><td id="is-legislation-complient-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Will provide pipeline of potential clients (CFIs) upon application?</td><td id="provice-pipeline-of-potential-clients-upon-app-@appId">Value</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-10-@appId" class="table-responsive">
+        <h4 style="color:green; font-size:medium" class="font-weight-bold mb-3">Purchase Orders</h4>
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Purchase Order number</td><td id="purchase-order-number-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Contract provider contract details</td><td id="contract-provider-contract-details-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Contract deliverables description</td><td id="contract-deliverables-desc-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Contract value</td><td id="contract-value-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Contract delivery period (in months)</td><td id="contract-delivery-period-@appId">Value</td></tr>
+                <tr><td style="@styleWidth">Are products locally procured?</td><td id="are-products-locally-procured-@appId">Value</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="parent-group-11-@appId" class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Do you have a solid purchase order directly from an end-client/end-buyer (Government or Corporate)?</td><td id="do-you-have-a-purchase-order-@appId">Value</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />

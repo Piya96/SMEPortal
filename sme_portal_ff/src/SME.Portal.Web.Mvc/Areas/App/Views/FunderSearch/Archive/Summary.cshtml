@@ -1,0 +1,185 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using Abp.Timing
+@using SME.Portal.UiCustomization.Dto
+@using System.Globalization
+@using CultureHelper = SME.Portal.Localization.CultureHelper
+
+@model FunderSearchSummaryViewModel
+
+@{
+    Layout = null;
+    UiCustomizationSettingsDto theme = await GetTheme();
+
+    var race = Model.ListItems.FirstOrDefault(x => x.ListId == Model.OwnerProfile.Race)?.Name;
+    var beeLevel = Model.ListItems.FirstOrDefault(x => x.ListId == Model.SmeCompany.BeeLevel)?.Name;
+    var industrySector = Model.ListItems.FirstOrDefault(x => x.ListId == Model.SmeCompany.Industries)?.Name;
+}
+<!DOCTYPE html>
+<html lang="en" dir=@(CultureHelper.IsRtl ? "rtl" : "")>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Finfind - Funder Search Summary</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    @* Fill these meta tags upon your project specification *@
+    <meta content="Portal" name="description" />
+    <meta content="Portal" name="keywords" />
+    <meta content="Portal" name="author" />
+
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/vendors.bundle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@(ApplicationPath)metronic/themes/default/css/style.bundle@(CultureHelper.IsRtl ? ".rtl":"").css" asp-append-version="true" />
+    <link rel="stylesheet" abp-href="/view-resources/Areas/App/Views/_Bundles/common-styles.css" asp-append-version="true" />
+
+    @if (CultureHelper.IsRtl)
+    {
+        <link rel="stylesheet" href="/Common/Styles/abp-zero-template-rtl.css" asp-append-version="true" />
+    }
+
+    <script type="text/javascript">
+            @* This is used to get the application's root path from javascript.
+            It's useful if you're running application in a virtual directory under IIS. *@
+            var abp = abp || {}; abp.appPath = '@ApplicationPath';
+    </script>
+
+</head>
+
+<body>
+
+
+    <div class="d-flex flex-column flex-root">
+        <div class="card card-custom gutter-b">
+                <div class="card-body">
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <img alt="Logo" src="/TenantCustomization/GetLogo?tenantId=2" height="50">
+                            <br />
+                            <br />
+                            <h4 class="mb-10 font-weight-bolder text-dark">Funder Search Summary for: <br /><u>@Model.SmeCompany.Name</u></h4>
+                            @{
+                                var day = Model.Application.Locked?.Day;
+                                var month = Model.Application.Locked?.Month;
+                                var monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName((int)month);
+                                var year = Model.Application.Locked?.Year;
+                                var hour = Model.Application.Locked?.Hour;
+                                var minute = Model.Application.Locked?.Minute;
+
+                                <p>Date: @day @month @year | Time: @hour : @minute</p>
+                            }
+                            <div class="separator separator-dashed my-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <h4 style="color:lightskyblue;" class="font-weight-bold mb-3">@L("FS_OwnerProfile")</h4>
+                            <div class="text-dark-50 line-height-lg">
+                                <div class="row">
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_FirstName")</div><div class="col-xl-5" id="id-fs-owner-profile-first-name-div">@Model.OwnerProfile.Name</div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_LastName")</div><div class="col-xl-5" id="id-fs-owner-profile-last-name-div">@Model.OwnerProfile.Surname</div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Email")</div><div class="col-xl-5" id="id-fs-owner-profile-email-div">@Model.OwnerProfile.EmailAddress</div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Mobile")</div><div class="col-xl-5" id="id-fs-owner-profile-mobile-div">@Model.OwnerProfile.PhoneNumber</div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Identity")</div><div class="col-xl-5" id="id-fs-owner-profile-identity-div">@Model.OwnerProfile.IdentityOrPassport</div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Gender")</div><div class="col-xl-5" id="id-fs-owner-profile-gender-div"></div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_MaritalStatus")</div><div class="col-xl-5" id="id-fs-owner-profile-marital-status-div"></div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Age")</div><div class="col-xl-5" id="id-fs-owner-profile-age-div"></div>
+                                    <div class="col-xl-5">@L("FS_OwnerProfile_Race")</div><div class="col-xl-5" id="id-fs-owner-profile-race-div">@race</div>
+                                </div>
+                            </div>
+                            <div class="separator separator-dashed my-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <h4 style="color:lightskyblue;" class="font-weight-bold mb-3">@L("FS_CompanyProfile")</h4>
+                            <div class="text-dark-50 line-height-lg">
+                                <div class="row">
+                                    <div class="col-xl-5">@L("FS_CompanyProfile_CompanyName")</div><div class="col-xl-5" id="id-fs-company-profile-company-name-div">@Model.SmeCompany.Name</div>
+
+                                    @{
+                                        var regNo = Model.SmeCompany.RegistrationNumber;
+                                        if (regNo == null || regNo == "")
+                                        {
+                                            regNo = "Not Registered";
+                                        }
+                                        <div class="col-xl-5">@L("FS_CompanyProfile_RegistrationNumber")</div><div class="col-xl-5" id="id-fs-company-profile-reg-number-div">@regNo</div>
+                                    }
+
+                                    <div class="col-xl-5">@L("FS_CompanyProfile_CompanyType")</div><div class="col-xl-5" id="id-fs-company-profile-type-div">@Model.SmeCompany.Type</div>
+
+                                    @{
+                                        var regDate = Model.SmeCompany.RegistrationDate?.ToString("dd/MM/yyy");
+                                        <div class="col-xl-5">@L("FS_CompanyProfile_RegistrationDate")</div><div class="col-xl-5" id="id-fs-company-profile-reg-date-div">@regDate</div>
+                                    }
+
+                                    @{
+                                        var startDate = Model.SmeCompany.StartedTradingDate?.ToString("dd/MM/yyy");
+                                        <div class="col-xl-5">@L("FS_CompanyProfile_StartedTradingDate")</div><div class="col-xl-5" id="id-fs-company-profile-start-date-div">@startDate</div>
+                                    }
+
+                                    <div class="col-xl-5">@L("FS_CompanyProfile_RegisteredAddress")</div><div class="col-xl-5" id="id-fs-company-profile-reg-address-div">@Model.SmeCompany.RegisteredAddress</div>
+                                    <div class="col-xl-5">@L("FS_CompanyProfile_BeeLevel")</div><div class="col-xl-5" id="id-fs-company-profile-bee-level-div">@beeLevel</div>
+                                    <div class="col-xl-5">@L("FS_CompanyProfile_IndustrySector")</div><div class="col-xl-5" id="id-fs-company-profile-industry-sector-div">@industrySector</div>
+
+                                </div>
+                            </div>
+                            <div class="separator separator-dashed my-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <h4 style="color:lightskyblue;" class="font-weight-bold mb-3">FINANCIAL INFO</h4>
+                            <div class="text-dark-50 line-height-lg">
+                                <div class="row">
+                                    <div class="col-xl-5">Annual turnover</div><div class="col-xl-5" id="anual-turnover-summary-div"></div>
+                                    <div class="col-xl-5">Who do you bank with?</div><div class="col-xl-5" id="bank-with-summary-div"></div>
+                                    <div class="col-xl-5">Did your business make a profit?</div><div class="col-xl-5" id="did-business-make-profit-summary-div"></div>
+                                    <div class="col-xl-5">Do you have collateral?</div><div class="col-xl-5" id="did-you-have-collateral-summary-div"></div>
+                                </div>
+                                <div class="separator separator-dashed my-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <h4 style="color:lightskyblue;" class="font-weight-bold mb-3">TYPE OF FINANCE</h4>
+                            <div class="text-dark-50 line-height-lg">
+                                <div class="row">
+                                    <div class="col-xl-5">@L("FinanceForSummary")</div><div class="col-xl-5" id="financeforsummary"></div>
+                                    <div class="col-xl-5">@L("FinanceForTypeSummary")</div><div class="col-xl-5" id="financefortypesummary"></div>
+                                    <div class="col-xl-5">@L("LoanAmountSummary")</div><div class="col-xl-5" id="financeforloanamountsummary"></div>
+                                </div>
+                                <div class="separator separator-dashed my-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column-fluid">
+                        <div class="container">
+                            <h4 style="color:lightskyblue;" class="font-weight-bold mb-3">@L("FS_KeyThingsFundersNeed")</h4>
+                            <div class="text-dark-50 line-height-lg">
+                                <div class="row">
+                                    <div class="col-xl-5">Do you want your latest credit score?</div><div class="col-xl-5" id="id-latest-credit-score-div"></div>
+                                    <div class="col-xl-5">Do you want your latest business bank statements?</div><div class="col-xl-5" id="id-latest-bank-statements-div"></div>
+                                </div>
+                                <div class="separator separator-dashed my-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

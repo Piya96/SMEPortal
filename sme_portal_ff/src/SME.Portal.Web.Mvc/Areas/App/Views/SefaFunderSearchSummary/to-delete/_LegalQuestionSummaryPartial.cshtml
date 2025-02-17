@@ -1,0 +1,52 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+    var color = Model.HeaderColor;
+}
+
+    <tr><td style="@styleWidth">What method will you use to do your loan repayments?</td><td id="method-of-repayment-@appId"></td></tr>
+    <tr><td style="@styleWidth">Do you own or rent your business premises?</td><td id="own-or-rent-business-premises-@appId"></td></tr>
+
+    <tr><td style="@styleWidth">Do you have any existing business insurance policies in place?</td><td id="existing-insurance-policies-in-place-@appId"></td></tr>
+    @*<tr><td style="@styleWidth">Do you have any business insurance?</td><td id="td-has-business-insurance-@appId"></td></tr>*@
+    <tr id="tr-business-insurance-type-@appId" style="display:none;"><td style="@styleWidth">Business insurance</td><td id="td-business-insurance-type-@appId"></td></tr>
+    <tr id="tr-business-insurance-other-@appId" style="display:none;"><td style="@styleWidth">Other business insurance</td><td id="td-business-insurance-other-@appId"></td></tr>
+
+    <tr><td style="@styleWidth">Collateral in the name of the business (owned by the business)</td><td id="type-of-collateral-@appId"></td></tr>
+    <tr id="tr-type-of-collateral-other-@appId" style="display:none;"><td style="@styleWidth">Other</td><td id="type-of-collateral-other-@appId"></td></tr>
+    <tr id="tr-value-of-collateral-@appId" ><td style="@styleWidth">Value of Collateral you can offer</td><td id="value-of-collateral-@appId"></td></tr>
+    
+    <tr><td style="@styleWidth">Collateral in the owner’s name (personally owned by the owner)</td><td id="type-of-security-@appId"></td></tr>
+    <tr id="tr-type-of-security-other-@appId" style="display:none;"><td style="@styleWidth">Other</td><td id="type-of-security-other-@appId"></td></tr>
+    <tr id="tr-value-of-security-@appId" ><td style="@styleWidth">Value of Collateral you can offer</td><td id="value-of-security-@appId"></td></tr>
+    
+    <tr><td style="@styleWidth">How much can the Company contribute towards loan amount requested?"</td><td id="company-contribution-@appId"></td></tr>
+    <tr id="tr-source-of-funds-company-@appId"><td style="@styleWidth">What is the source of these company funds?</td><td id="source-of-funds-company-@appId"></td></tr>
+    <tr id="tr-source-of-funds-company-other-@appId" style="display:none;"><td style="@styleWidth">Other fund source</td><td id="source-of-funds-company-other-@appId"></td></tr>
+    <tr><td style="@styleWidth">What was your annual turnover for the past 12 months?</td><td id="annual-turnover-@appId"></td></tr>
+    <tr><td style="@styleWidth">When is your financial year end?</td><td id="financial-year-end-@appId"></td></tr>
+    <tr><td style="@styleWidth">Which bank do you have your business account with?</td><td id="business-account-bank-@appId"></td></tr>
+    
+    <tr id="tr-bank-account-types-@appId" style="display:none;"><td style="@styleWidth">What type of business bank account/services do you use?</td><td id="bank-account-types-@appId"></td></tr>
+    
+    <tr><td style="@styleWidth">Do you have an electronic accounting system?</td><td id="has-electronic-accounting-system-@appId"></td></tr>
+    <tr id="tr-which-accounting-system-do-you-have-@appId" style="display:none;"><td style="@styleWidth">Which electronic accounting system do you have?</td><td id="which-accounting-system-do-you-have-@appId"></td></tr>
+    <tr id="tr-acounting-system-other-@appId" style="display:none;"><td style="@styleWidth">@L("WhichOtherAccSystem")</td><td id="acounting-system-other-@appId"></td></tr>
+    <tr id="tr-permit-sefa-to-call-data-from-accounting-system-monthly-@appId" style="display:none;"><td style="@styleWidth" id="td-permit-sefa-to-call-data-from-accounting-system-monthly-@appId">Do you give <b>sefa</b> permission to retrieve data from your accounting system on a monthly basis?</td><td id="permit-sefa-to-call-data-from-accounting-system-monthly-@appId"></td></tr>
+    <tr><td style="@styleWidth">Do you have any other business loans?</td><td id="any-other-business-loans-@appId"></td></tr>
+    <tr id="tr-who-is-this-loan-from-@appId" style="display:none;"><td style="@styleWidth">Who are these loan/loans from?</td><td id="who-is-this-loan-from-@appId"></td></tr>
+
+    <tr><td style="@styleWidth">Do you have a owner’s loan account?</td><td id="td-has-owners-loan-account-@appId"></td></tr>
+
+    <tr><td style="@styleWidth">Do any of your business transactions go through your personal account (and vice versa)?</td><td id="any-business-transactions-through-personal-accounts-@appId"></td></tr>
+    <tr id="tr-who-do-you-bank-with-personally-@appId" style="display:none;"><td style="@styleWidth">Who do you bank with personally?</td><td id="who-do-you-bank-with-personally-@appId"></td></tr>
+    <tr><td style="@styleWidth">Do you use a payroll system to provide payslips to your staff?</td><td id="use-payroll-system-for-staff-payslips-@appId"></td></tr>
+    <tr id="tr-which-electronic-payroll-system-@appId" style="display:none;"><td style="@styleWidth">Which electronic payroll system, do you have?</td><td id="which-electronic-payroll-system-@appId"></td></tr>
+    <tr id="tr-payroll-system-other-@appId" style="display:none;"><td style="@styleWidth">@L("WhichOtherPayrollSystem")</td><td id="payroll-system-other-@appId"></td></tr>
+

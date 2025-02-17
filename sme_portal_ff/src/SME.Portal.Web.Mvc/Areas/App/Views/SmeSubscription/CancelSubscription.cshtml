@@ -1,0 +1,24 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SmeSubscription
+
+@model SubscriptionCancelledViewModel
+
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.SubscriptionCancelled; }
+
+<abp-page-subheader title="@L("SubscriptionCancelledHeader")" description="@L("SubscriptionCancelledHeaderInfo")">    </abp-page-subheader>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="alert alert-success mb-5 p-5" role="alert">
+            <h6 class="alert-heading">We're really sorry to see you go!</h6>
+            <div class="border-bottom border-white opacity-20 mb-5"></div>
+            <p>We'd love to know why you're cancelling.</p>
+            <p><a href="https://www.finfind.co.za/feedback" target="_blank" style="color:white;text-decoration:underline;"><b>Click here</b></a> if you're happy to give us some feedback.</p>
+        </div>
+
+    </div>
+</div>
+
+

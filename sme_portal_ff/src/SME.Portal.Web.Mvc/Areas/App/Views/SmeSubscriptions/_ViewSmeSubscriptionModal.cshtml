@@ -1,0 +1,40 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.SmeSubscriptions
+@model SmeSubscriptionViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="SmeSubscriptionInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("StartDate") :</h6>
+                @Model.SmeSubscription.StartDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ExpiryDate") :</h6>
+                @Model.SmeSubscription.ExpiryDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("NextBillingDate") :</h6>
+                @Model.SmeSubscription.NextBillingDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Status") :</h6>
+                @Model.SmeSubscription.Status
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("OwnerCompanyMapId") :</h6>
+                @Model.SmeSubscription.OwnerCompanyMapId
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

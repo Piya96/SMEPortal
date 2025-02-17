@@ -1,0 +1,329 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using Newtonsoft.Json;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model CreateEditFunderSearchViewModel
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.FundingApplicationWizard;
+
+}
+
+@section Styles
+{
+    <link href="~/custom/plugins/dropzonejs/basic.css" rel="stylesheet" />
+    <link href="~/custom/plugins/dropzonejs/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/metronic/themes/theme11/css/pages/wizard/wizard-4.css" rel="stylesheet" />
+
+    <link href="~/metronic/themes/default/css/pages/wizard/wizard-2.css" rel="stylesheet" />
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/plugins/dropzonejs/dropzone.js"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
+
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/FormValidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItemsEx,
+                Tenant = "sefa"
+            }
+        );
+    }
+
+
+<environment include="Development">
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaApplication/funder-search-controls.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaApplication/funding-wizard.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/FunderSearch/bank-statement-upload.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FinancialInfoSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FundingRequirementsSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_DocumentationSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FundingEssentialsSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_PartialSummaryController.js" asp-append-version="true"></script>
+</environment>
+
+<environment include="Production, Staging">
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaApplication/funder-search-controls.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaApplication/funding-wizard.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/FunderSearch/bank-statement-upload.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FinancialInfoSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FundingRequirementsSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_DocumentationSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_FundingEssentialsSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_PartialSummaryController.min.js" asp-append-version="true"></script>
+</environment>
+
+    <script>
+
+        $(document).ready(function () {
+
+            function gotoOnboardingWizard() {
+                Swal.fire({
+                    text: "Onboarding incomplete! Redirecting to Onboarding Wizard",
+                    icon: "info",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    customClass: {
+                        confirmButton: "btn font-weight-bold btn-light"
+                    }
+                }).then(function () {
+                    location.href='@Url.Action("EnableOnboarding", "SefaSme")';
+                });
+            }
+
+            function gotoNewFundingApplicationWizard() {
+                app.consumerCredit.load();
+                app.consumerCredit.initEx(
+                    '@Model.UserProfile.Name',
+                    '@Model.UserProfile.Surname',
+                    '@Model.UserProfile.IdentityOrPassport'
+                );
+                app.consumerCredit.initOwner(function (dto) {
+                }, '@Model.IsOnboarded');
+
+                fundingWizardLoadControls();
+                fundingWizardLoadWizard();
+
+
+                let _propJson = '@Html.Raw(Json.Serialize(Model.SmeCompany.SmeCompany.PropertiesJson))';
+                let _applicationObj = {
+                    id : null,
+                    mc: null,
+                    companyId: null,
+                    userProfile: @Html.Raw(Json.Serialize(Model.UserProfile)),
+                    ownerProfile: @Html.Raw(Json.Serialize(Model.OwnerProfile)),
+                    companyProfile : @Html.Raw(Json.Serialize(Model.SmeCompany.SmeCompany))
+                };
+                _applicationObj.id = '@Model.Application.Application.Id';
+                _applicationObj.mc = '@Html.Raw(Json.Serialize(Model.Application.Application.MatchCriteriaJson))';
+                _applicationObj.companyId = '@Model.SmeCompany.SmeCompany.Id';
+
+                KTWizardFunding.addModel(
+                    '@Model.OwnerProfile.Owner.VerificationRecordJson',
+                    '@Model.SmeCompany.SmeCompany.Customers',
+                    _propJson,
+                    _applicationObj
+                );
+                app.getFunding.wizard.init(_applicationObj, _propJson, function (status) {
+                });
+                app.getFunding.controls.init(_applicationObj, function (status) {
+                });
+
+                window.setTimeout(function () {
+                    $('#id-funder-search-wizard-div').fadeIn(500, 'swing', function () {
+                    });
+                }, 10);
+
+            function blocker(timeMs, id) {
+                KTApp.blockPage({
+                    overlayColor: 'blue',
+                    opacity: 0.1,
+                    state: 'primary',
+                    message: 'Processing your matches...'
+                });
+
+                window.setTimeout(function () {
+                    KTApp.unblockPage();
+
+                    location.href = '@Url.Action("Detail", "SefaApplication")?id=' + id;
+                }, timeMs);
+            };
+
+                function submitCompleteFn(success, data) {
+                    blocker(7000, data.result.id);
+                }
+
+                KTWizardFunding.init(submitCompleteFn);
+
+                var smeCompanyId = '@Html.Raw(Json.Serialize(Model.SmeCompany.SmeCompany.Id))';
+                bankStatementUpload.init(smeCompanyId)
+
+
+                $('[data-toggle="collateral"]').tooltip({
+                    title: "<div class='text-justify'> \
+                        Collateral refers to property or goods that can be sold or ceded to pay back a loan in the event that you can’t.<br/> Examples of collateral may include:<br/>\
+                        - Business assets (equipment/machinery)<br/>\
+                        - Business bonded property<br/>\
+                        - Business unbonded property (property paid off)<br/>\
+                        - Debtors<br/>\
+                        - Financial investments<br/>\
+                        - Residential bonded property<br/>\
+                        - Residential unbonded property (property paid off)<br/>\
+                        - Shares owned in another business<br/>\
+                        - Surrender value of insurance policies<br/>\
+                        </div> ",
+                    html: true,
+                    placement:"left"
+                });
+
+
+            }
+
+            function gotoOnboardedSummary() {
+                Swal.fire({
+                    text: "There are currently no Applications. Proceeding to Onboarded Summary",
+                    icon: "info",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    customClass: {
+                        confirmButton: "btn font-weight-bold btn-light"
+                    }
+                }).then(function () {
+                    location.href='@Url.Action("Profiling", "SefaSme")';
+                });
+            }
+
+            let isOnboarded = '@Model.IsOnboarded' == 'False' ? false : true;
+            if (isOnboarded == false) {
+                gotoOnboardingWizard();
+            } else {
+                let companyCount = '1';
+                if (companyCount == 0) {
+                    gotoOnboardedSummary()
+                } else {
+                    gotoNewFundingApplicationWizard()
+                }
+            }
+
+        });
+    </script>
+
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+}
+
+<div id="id-funder-search-wizard-div" style="display:none;">
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div><br /></div>
+        <div class="@(await GetContainerClass())">
+
+            @{ await Html.RenderPartialAsync("../Common/_TopNav.cshtml", 3); }
+            <br />
+
+            <div class="card card-custom gutter-b">
+                <div class="card card-custom">
+                    <div class="card-body">
+
+                        <div class="wizard wizard-2" id="kt_wizard_funding" data-wizard-state="first" data-wizard-clickable="false">
+
+                            @{ await Html.RenderPartialAsync("_WizardNav.cshtml"); }
+
+                            <!--begin: Wizard Body-->
+                            <div id="funding-application-wizard" class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+                                <!--begin: Wizard Form-->
+                                <div class="row">
+                                    <div class="offset-xxl-2 col-xxl-8">
+                                        <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form_funding">
+                                            <input type="hidden" name="edition-display-name" value="@Model.Subscription.EditionFk.DisplayName" />
+
+                                            @{ await Html.RenderPartialAsync("_StepIncomeProfitability.cshtml"); }
+
+                                            @{ await Html.RenderPartialAsync("_StepFinanceFor.cshtml"); }
+
+                                            @{ await Html.RenderPartialAsync("_StepFundingEssentials.cshtml"); }
+
+                                            @{ await Html.RenderPartialAsync("_StepDocSefa.cshtml"); }
+
+                                            @{ await Html.RenderPartialAsync("_StepSummary.cshtml"); }
+
+                                            <!--begin: Wizard Actions-->
+                                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                                <div class="mr-2">
+                                                    <button type="button"
+                                                            class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                            data-wizard-type="action-prev">
+                                                        Previous
+                                                    </button>
+                                                </div>
+                                                <div>
+
+                                                    <button id="id-funding-application-submit"
+                                                            type="button"
+                                                            class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                            data-wizard-type="action-submit">
+                                                        Submit Application
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
+                                                </div>
+                                            </div>
+                                            <!--end: Wizard Actions-->
+                                            <div></div><div></div><div></div><div></div><div></div><div></div>
+                                        </form>
+                                    </div>
+                                    <!--end: Wizard-->
+                                </div>
+                                <!--end: Wizard Form-->
+                            </div>
+                            <!--end: Wizard Body-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

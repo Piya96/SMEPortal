@@ -1,0 +1,154 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.SmeDocuments;
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model CreateEditFunderSearchViewModel
+<!--begin: Wizard Step 5 - Personal Credit Score -->
+<div class="pb-5" data-wizard-type="step-content" style="width:100%;">
+    <h4 style="font-size:large;" class="mb-10 font-weight-bold text-dark">@L("KeyThingsFundersNeed")</h4>
+    <br />
+    <p>There are two key things needed by funders to initially assess your funding request:</p>
+    <br />
+    <h4 class="mb-10 font-weight-bold text-dark" style="font-size:large;">1. Credit Score</h4>
+
+    <p>Funders look at the owner’s personal credit score when deciding whether to give your business funding or not.</p>
+
+    <p style="font-style: italic;"><b>Having your latest personal credit score available greatly increases your chances of a quick assessment and the best funder match. Note: Accessing your credit score via Finfind’s credit bureau partner (CPB) is free of charge and WILL NOT negatively affect your score.</b></p>
+
+    @* Do you know what your personal credit score is *@
+    <div id="whats-your-personal-credit-score" class="form-group">
+        <label for="whats-your-personal-credit-score" class="col-form-label" style="width:80%;">Do you want to retrieve your latest credit score now? </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="doyouknowyourpersonalcreditscore" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="doyouknowyourpersonalcreditscore" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="personal-credit-report-link" class="alert alert-secondary form-group" role="alert">
+
+        <div class="card" id="myTabContent3">
+            @{ await Html.RenderPartialAsync("../ConsumerCredit/_ConsumerCreditPartial.cshtml", new ConsumerCreditPartialModel() { InputWidth = "col-xl-12" } ); }
+        </div>
+
+    </div>
+
+    <div class="separator separator-dashed my-5"></div>
+
+    @* Business Bank Statements *@
+    <br />
+    <h3 class="mb-10 font-weight-bold text-dark" style="font-size:large;">2. Business Bank Statements</h3>
+
+    <p> Funders require your business bank statements to assess whether they can assist you with funding.</p>
+
+    <p style="font-style: italic;"><b>Providing these will speed up your funding assessment.</b></p>
+
+    <div id="want-to-upload-business-bank-statements" class="form-group">
+        <label for="want-to-upload-business-bank-statements" class="col-form-label" style="width:80%;">Do you want to upload your latest business bank statements now? </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="wanttouploadbusbankstatements" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="wanttouploadbusbankstatements" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+    <div id="upload-business-bank-statements" class="form-group">
+        <div id="id-step-5-messages">
+            <span class="dropzone-msg-desc">You can upload one PDF from your bank that includes the transactions for the last 6 months OR you can upload 6 separate PDFs (1 per month).</span>
+        </div>
+        <br />
+        <div class="card card-custom gutter-b">
+            @* Document Upload *@
+            @* Business Bank Statements *@
+            <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form_documents">
+                <div id="businss-bank-statements-documents" class="form-group">
+
+                    <div name="business-bank-statements" class="form-group fv-plugins-icon-container">
+                        <div class="card-body">
+
+                            <div class="form-group row">
+                                <div class="col-lg-9 col-md-9 col-sm-12">
+                                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="business-bank-statements-dropzone">
+                                        @Html.Hidden("DocumentTypeBusinessBankStatements", DocumentTypes.BankStatement)
+                                        <div class="dropzone-msg dz-message needsclick">
+                                            <h3 class="dropzone-msg-title">Click here to browse and once you have found your document, click the UPLOAD button</h3>
+                                            <span class="dropzone-msg-desc"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="business-bank-statements-submit" type="submit" class="btn btn-light-primary mr-2">UPLOAD</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div id="id-div-seeks-funding-advice" class="form-group" style="display:none;">
+        <div class="alert alert-custom alert-notice alert-light-warning fade show mb-5" role="alert">
+            <div class="alert-icon">
+                <i class="flaticon-warning"></i>
+            </div>
+            <div class="alert-text">You have chosen not to retrieve your <b>credit score</b> OR attach your <b>business bank statements</b>. <br />That is OK, but credit providers use your credit score and bank statements to validate your business turnover and turnover stability. By not having these statements available, your application will be delayed and can affect your chances of obtaining finance (fundability).</div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="whats-your-personal-credit-score" class="col-form-label" style="width:80%;">Do you want to understand how these factors impact your fundability?</label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="name-input-seeks-funding-advice" value="Yes" />
+                        <span></span>
+                        Yes
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="name-input-seeks-funding-advice" value="No" />
+                        <span></span>
+                        No
+                    </label>
+                </div>
+            </div>
+            <span class="form-text text-muted"></span>
+        </div>
+        <div class="fv-plugins-message-container"></div>
+    </div>
+
+    <div id="id-alert" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!--<div class="modal-header text-center">
+                    <h4 class="modal-title text-center">Loading Onboarding Data...</h4>
+                </div>-->
+                <div class="modal-body text-center">
+                    <h4 class="text-center">Uploaded Successfully.</h4>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end: Wizard Step 5-->

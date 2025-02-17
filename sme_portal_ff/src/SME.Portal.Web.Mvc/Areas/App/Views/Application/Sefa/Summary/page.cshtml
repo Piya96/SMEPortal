@@ -1,0 +1,40 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model CreateEditFunderSearchViewModel
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-summary">
+
+    <h4 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Summary</h4>
+
+    @{
+        var fssVM = new FSSViewModel()
+        {
+            StyleWidth = "width:55%;",
+            StyleCol = "",
+            ApplicationId = Model.Application.Application.Id.Value,
+            TenantId = Model.Application.Application.TenantId
+        };
+        await Html.RenderPartialAsync("summary.cshtml", fssVM);
+    }
+
+    <div id="parent-summary-declaration">
+        <h6 class="font-weight-bolder mb-3">@L("Declaration")</h6>
+        <div class="form-group">
+            <label for="summary-declaration" class="col-form-label" style="width:80%;">
+                <p>I have read and reviewed the above summary for my associated funding application.</p>
+            </label>
+
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="checkbox-inline">
+                    <label class="checkbox checkbox-outline checkbox-primary">
+                        <input type="checkbox" name="input-summary-declaration" value="Yes" />
+                        <span></span>
+                        @L("Yes")
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,173 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div id="id-owner-basic-screening-fail-alert" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <div class="alert alert-custom alert-light-danger" role="alert">
+                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                <div class="alert-text">
+                    <p>Due to the following reasons <b>@ViewData["string002"]</b> will not allow you to continue with your enquiry.</p>
+                    <ul>
+                        <li>The user is not a South African citizen</li>
+                    </ul>
+                    <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-owner-verify-fail-redirect" href="javascript:void(0)">here</a>.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-right-icon-button.cshtml",
+    new InputWithRightIconButton()
+    {
+        Name = "owner-profile-identity",
+        Label = L("OW_IdentityNumber"),
+        ButtonIcon = "la la-warning",
+        ButtonText = "Mr GEL",
+        PlaceholderText = "Enter a South African identity number and click Verify",
+        Info = "<div class='text-justify'> The provided identity number will be verified with the Department Of Home Affairs for the following information:<br/>- South African citizen<br/>- Given names <br/>- Marital Status<br/>- Telephone numbers<br/></div>"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-right-icon-button.cshtml",
+    new InputWithRightIconButton()
+    {
+        Name = "owner-profile-mobile",
+        Label = L("OW_Mobile"),
+        ButtonIcon = "la la-warning",
+        ButtonText = "Mr GEL",
+        PlaceholderText = "Enter your mobile number and click Verify",
+        Info = "Verification required via OTP sent by SMS"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+    new Input_N_LT_RT()
+    {
+        Name = "owner-profile-email",
+        Label = L("OW_EmailAddr")
+    }
+);}
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-ls-rs-no-row.cshtml",
+        new Input_N_LS_RS()
+        {
+            Name = "owner-profile-first-name",
+            Label = L("OW_FirstName"),
+            Col = "col-xl-6",
+            LeftSelect = "Title"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-last-name",
+            Label = L("OW_LastName"),
+            Col = "col-xl-6"
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-gender",
+            Label = L("OW_Gender"),
+            Col = "col-xl-6",
+            SubText = L("OW_SourceFromDHA")
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-age",
+            Label = L("OW_Age"),
+            Col = "col-xl-6",
+            SubText = L("OW_SourceFromDHA")
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-marital-status",
+            Label = L("OW_MaritalStatus"),
+            Col = "col-xl-6",
+            SubText = L("OW_SourceFromDHA")
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "owner-profile-marital-status2",
+            Label = L("OW_MaritalStatus"),
+            Col = "col-xl-6",
+            SubText = L("OW_SourceFromDHA"),
+            Show = false
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "owner-profile-race",
+            Label = L("OW_Race"),
+            Col = "col-xl-6",
+            SubText = L("OW_SelectOwnerRace")
+        }
+    );}
+</div>
+
+<div id="div-owner-profile-married-in-cop" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "owner-profile-married-in-cop",
+            Label = "Are you married in Community of Property?"
+        }
+    );}
+</div>
+
+<div class="row" id="div-owner-profile-spouse-identity" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-spouse-identity",
+            Label = "Spouse's' Identity Number",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div id="div-profile-registered-address" class="row" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "owner-profile-registered-address",
+            Label = "Physical Address of Owner",
+            Col = "col-xl-12"
+        }
+    );}
+</div>

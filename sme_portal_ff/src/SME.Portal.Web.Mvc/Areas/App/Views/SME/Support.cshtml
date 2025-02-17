@@ -1,0 +1,138 @@
+﻿
+@{
+    var helpWindowUrl = "";
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+{
+    <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 10)
+{
+    
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 9)
+{
+    
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+{
+    <link href="~/tenant-styles/ecdc.css" rel="stylesheet" asp-append-version="true" />
+    helpWindowUrl = "https://www.youtube.com/embed/g8hNU1beplE?si=xl330LIBQpAysSwr%22";
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 3)
+{
+    <link href="~/tenant-styles/sefa.css" rel="stylesheet" asp-append-version="true" />
+    helpWindowUrl = "https://www.youtube.com/embed/HoFEVxM2KPc";
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 2)
+{
+    helpWindowUrl = "https://www.youtube.com/embed/qJvhDpoWw2c?si=11uDumRfftQq3WEd%22";
+}
+
+@section Scripts
+{
+    <environment include="Development">
+        <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        function openVideoWindow(url) {
+            //var url = "https://www.youtube.com/embed/HoFEVxM2KPc";
+            var windowFeatures = "width=640,height=360,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no";
+            window.open(url, "_blank", windowFeatures);
+        }
+
+        $(document).ready(function () {
+        });
+
+    </script>
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div><br /></div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card">
+                <div>
+                    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 3)
+                    {
+                        <div class="card-body">
+                            <h2>
+                                Welcome to <b>sefa</b> support
+                            </h2>
+                            <br />
+                            <p>For help using the online system, any <b>sefa</b> product or general related queries:</p>
+                            <p><i class="flaticon-support fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="tel:+0127489600" style="font-size:16px; padding-left:5px;">012 748 9600</a> </p>
+                            <p><i class="flaticon-email fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="mailto:helpline@sefa.org.za " style="font-size: 16px; padding-left: 5px; text-align:center;">helpline@sefa.org.za</a> </p>
+                            <p class="sefaIconVideo"><img id="[" src="~/tenant-styles/sefaVideoPlayer.svg" style="height: 4rem; width: 4rem; position: relative; left: -0.5rem;" /> <a href="javascript:void(0);" style="font-size: 16px; padding-left: 5px; position:relative; left:-1.25rem;" onclick="openVideoWindow('@helpWindowUrl');">Online loan application system help video</a> </p>
+                        </div>
+                    }
+                    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+                    {
+                        <div class="card-body">
+                            <h2>
+                                Welcome to <b>ECDC</b> Online Funding Support
+                            </h2>
+                            <br />
+                            <p>For help using the online system please use the details below.</p>
+                            <p><i class="flaticon-support fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="tel:+0875009950" style="font-size:16px; padding-left:5px;">087 500 9950</a> </p>
+                            <p><i class="flaticon-email fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="mailto:ecdcsupport@finfind.co.za " style="font-size: 16px; padding-left: 5px; text-align:center;">ecdcsupport@finfind.co.za</a> </p>
+                            <p class="sefaIconVideo"><img id="[" src="~/tenant-styles/sefaVideoPlayer.svg" style="height: 4rem; width: 4rem; position: relative; left: -0.5rem;" /> <a href="javascript:void(0);" style="font-size: 16px; padding-left: 5px; position:relative; left:-1.25rem;" onclick="openVideoWindow('@helpWindowUrl');">Online loan application system help video</a> </p>
+                        </div>
+                    }
+                    else if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+                    {
+                        <div class="card-body">
+                            <h2>
+                                Welcome to <b>Hloolo</b> Online Funding Support
+                            </h2>
+                            <br />
+                            <p>For help using the online system please use the details below.</p>
+                            <p><i class="flaticon-support fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="tel:+0875009950" style="font-size:16px; padding-left:5px;">087 500 9950</a> </p>
+                            <p><i class="flaticon-email fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="mailto:hloolosupport@finfind.co.za" style="font-size: 16px; padding-left: 5px; text-align:center;">hloolosupport@finfind.co.za</a> </p>
+                            @*<p class="sefaIconVideo"><img id="[" src="~/tenant-styles/sefaVideoPlayer.svg" style="height: 4rem; width: 4rem; position: relative; left: -0.5rem;" /> <a href="javascript:void(0);" style="font-size: 16px; padding-left: 5px; position:relative; left:-1.25rem;" onclick="openVideoWindow('@helpWindowUrl');">Online loan application system help video</a> </p>*@
+                            <div class="row">
+                                <div class="col-xl-12" style="font-size:medium;">
+                                     Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h2>
+                                Welcome to <b>Finfind</b> Online Funding Support
+                            </h2>
+                            <br />
+                            <p>For help using the online system please use the details below.</p>
+                            <p><i class="flaticon-support fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="tel:+0875009950" style="font-size:16px; padding-left:5px;">087 500 9950</a></p>
+                            <p><i class="flaticon-email fa-3x" style="color:orangered; vertical-align:middle;"></i> <a href="mailto:info@finfind.co.za " style="font-size: 16px; padding-left: 5px; text-align:center;">info@finfind.co.za</a> </p>
+                            @*<p class="sefaIconVideo"><img id="[" src="~/tenant-styles/sefaVideoPlayer.svg" style="height: 4rem; width: 4rem; position: relative; left: -0.5rem;" /> <a href="javascript:void(0);" style="font-size: 16px; padding-left: 5px; position:relative; left:-1.25rem;" onclick="openVideoWindow('@helpWindowUrl');">Online loan application system help video</a> </p>*@
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{ await Html.RenderPartialAsync("/Areas/App/Views/Common/hubspot-scripts.cshtml"); }

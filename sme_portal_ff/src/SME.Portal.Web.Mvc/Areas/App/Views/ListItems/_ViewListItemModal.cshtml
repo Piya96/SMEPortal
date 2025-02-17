@@ -1,0 +1,54 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.ListItems
+@model ListItemViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="ListItemInformationsTab">
+        
+        <div class="row">
+
+            <div class="col-6 mb-3">
+                <h6>@L("ListId") :</h6>
+                @Model.ListItem.ListId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ParentListId") :</h6>
+                @Model.ListItem.ParentListId
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.ListItem.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Details") :</h6>
+                @Model.ListItem.Details
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Priority") :</h6>
+                @Model.ListItem.Priority
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaOne") :</h6>
+                @Model.ListItem.MetaOne
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaTwo") :</h6>
+                @Model.ListItem.MetaTwo
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("MetaThree") :</h6>
+                @Model.ListItem.MetaThree
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Slug") :</h6>
+                @Model.ListItem.Slug
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

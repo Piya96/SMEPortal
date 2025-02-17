@@ -1,0 +1,28 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SME;
+@model SMELandingMessageModel;
+
+@{
+    var name = Model.Name;
+    var message = Model.Message;
+}
+
+<div id="id-@name-info-message-div">
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+            </div>
+            <div class="col-xl-7">
+                <div class="alert-text"><p>Welcome to Onboarding.<br /> Click <b>Proceed to Onboarding</b> to continue and fill out the required fields.</p></div>
+            </div>
+            <div class="col-xl-4">
+                <button id="id-@name-info-message-button"
+                        class="btn btn-outline-primary btn-sm mr-6"
+                        type="button">
+                    <i class="flaticon-edit"></i>
+                    Proceed to Onboarding
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

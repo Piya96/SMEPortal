@@ -1,0 +1,29 @@
+﻿.radio.radio-outline.radio-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: #3699FF;
+}
+
+.radio.radio-outline.radio-primary > input:disabled ~ span {
+    background-color: transparent;
+    border-color: grey;
+}
+
+.radio.radio-outline.radio-primary > input[disabled]:checked ~ span:after {
+    background-color: grey;
+    border-color: grey;
+}
+
+.radio.radio-outline.radio-primary > span {
+    background-color: transparent;
+    border-color: grey;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: #3699FF;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > span {
+    background-color: transparent;
+    border-color: grey;
+}

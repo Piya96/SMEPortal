@@ -1,0 +1,21 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-company-profile">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Business Profile</h3>
+
+    @{ await Html.RenderPartialAsync("../../Common/CompanyProfile/page.cshtml"); }
+
+    <div class="row">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "entity-type",
+                Label = "Entity Type",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model IManageView
+
+<form id="stepLoanAmountForm">
+    <div class="step" id="stepLoanAmount">
+        <h3>Loan Amount</h3>
+        <div class="card card-info">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        The requested loan amount by the SMME will be verified to ensure it falls within the specified minimum and maximum limits.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.FinanceProduct.MinLoanAmountFormatted" class="col-form-label">Minimum</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@* @Model.FinanceProduct.CurrencySymbol *@R</span>
+                    </div>
+                    <input type="text" class="currency-box form-control" id="FinanceProduct_MinLoanAmount" name="MinLoanAmount" asp-for="FinanceProduct.MinLoanAmountFormatted" value=@(Model.IsEdit ? Model.FinanceProduct.MinLoanAmountFormatted : 0)>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="@Model.FinanceProduct.MaxLoanAmountFormatted" class="col-form-label">Maximum</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@* @Model.FinanceProduct.CurrencySymbol *@R</span>
+                    </div>
+                    <input type="text" class="currency-box form-control" id="FinanceProduct_MaxLoanAmount" name="MaxLoanAmount" asp-for="FinanceProduct.MaxLoanAmountFormatted">
+                    <span id="maxLoanAmountError" style="color:red; display:none;">Maximum loan amount must be greater than the minimum loan amount.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

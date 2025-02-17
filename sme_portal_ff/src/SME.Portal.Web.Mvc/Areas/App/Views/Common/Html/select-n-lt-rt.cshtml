@@ -1,0 +1,40 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Select_N_LT_RT;
+<!-- font-weight-bold text-dark -->
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="form-group fv-plugins-icon-container">
+            <label class="">@Model.Label</label>
+            <div class="input-group">
+                @{
+                    if(Model.LeftText != null)
+                    {
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@Model.LeftText</span>
+                        </div>
+                    }
+                    var name = Model.Scope + "select-" + Model.Name;
+                }
+                <select id="@name"
+                        name="@name"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+
+                @{
+                    if(Model.RightText != null)
+                    {
+                        <div class="input-group-append">
+                            <span class="input-group-text">@Model.RightText</span>
+                        </div>
+                    }
+                }
+            </div>
+            <span class="form-text text-muted"></span>
+            <div id="message-@Model.Name" class="fv-plugins-message-container"></div>
+        </div>
+    </div>
+</div>

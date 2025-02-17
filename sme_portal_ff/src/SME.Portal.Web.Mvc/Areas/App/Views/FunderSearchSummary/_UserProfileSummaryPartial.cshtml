@@ -1,0 +1,28 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:lightskyblue;" class="font-weight-bold mb-3">@L("FS_UserProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("OnboardingSummaryUserName")</td><td><div id="id-summary-user-profile-name-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryUserEmail")</td><td><div id="id-summary-user-profile-email-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryUserMobile")</td><td><div id="id-summary-user-profile-mobile-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryUserIdentityNumber")</td><td><div id="id-summary-user-profile-id-@appId"></div></td></tr>
+                <tr><td>Are you the business owner?</td><td><div id="id-summary-user-profile-is-owner-@appId"></div></td></tr>
+                <tr id="id-summary-user-profile-owner-capacity-div-show-@appId" style="display:none;"><td>In what capacity?</td><td><div id="id-summary-user-profile-owner-capacity-@appId"></div></td></tr>
+                <tr id="id-summary-user-profile-capacity-other-div-show-@appId" style="display:none;"><td>Other</td><td><div id="id-summary-user-profile-capacity-other-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

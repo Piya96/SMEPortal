@@ -1,0 +1,59 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+
+}
+
+<h4 style="color:green; font-size:large;" class="font-weight-bold mb-3">Mandate Fit</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Loan amount</td><td id="mandate-fit-loan-amount-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Reason for Finance</td><td id="mandate-fit-reason-for-finance-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Forecast cash flow will show the ability to repay the facility?</td><td id="mandate-fit-forecast-cash-flow-repayable-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Do you or your Business have any conflict of interest at <b>@L("Sefa")</b>?</td><td id="mandate-fit-conflict-of-interest-at-sefa-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Are financial transactions conducted within the borders of South Africa?</td><td id="mandate-fit-operations-within-boarders-sa-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Controlling interest (>50%) of the business enterprise is held by a South African Citizen/s with a valid South African identity document  or permanent residents who hold a valid South Africa identity document?</td><td id="mandate-fit-controlling-interest-greater-than-50-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Majority of shareholders are involved in the day to day running of the business on a full-time basis?</td><td id="mandate-fit-shareholder-involved-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Management team has the relevant entrepreneurial skills and experience relevant to the type of business?</td><td id="mandate-fit-management-team-has-xp-skills-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Are your CIPC Annual fees paid up to date?</td><td id="mandate-fit-cipc-annual-fees-paid-@appId"></td></tr>
+            </tbody>
+
+            <tbody style="border-top:none;">
+                <tr><td style="@styleWidth">Is your Tax in good standing and has your PIN not expired?</td><td id="mandate-fit-tax-in-good-standing-pin-not-expired-@appId"></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

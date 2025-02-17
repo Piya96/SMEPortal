@@ -1,0 +1,81 @@
+﻿<!-- No longer in use. Common/_TopNav.cshtml now common file in use. -->
+@model int;
+
+    <style>
+        @@media (max-width: 767px) {
+            .sme-hide {
+                display: none !important;
+            }
+        }
+    </style>
+
+    @{
+
+        var tab1 = "pending";
+        var tab2 = "pending";
+        var tab3 = "pending";
+        var tab4 = "pending";
+
+        if(Model == 1)
+            tab1 = "current";
+        if(Model == 2)
+            tab2 = "current";
+        if(Model == 3)
+            tab3 = "current";
+        if(Model == 4)
+            tab4 = "current";
+    }
+
+    <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first" data-wizard-clickable="false">
+        <!--begin: Wizard Nav-->
+        <div class="wizard-nav">
+            <div id="id-wizard-nav-div" class="wizard-steps">
+                <!--begin::Wizard Step 1 Nav-->
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab1">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">1</div>
+                        <div class="wizard-label">
+                            <div class="wizard-title">Register</div>
+                            <div class="wizard-desc">Create User Account</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Wizard Step 1 Nav-->
+                <!--begin::Wizard Step 2 Nav-->
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab2">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">2</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">Onboarding</div>
+                        <div class="wizard-desc">Owner and business profile info</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Wizard Step 2 Nav-->
+                <!--begin::Wizard Step 3 Nav-->
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab3">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">3</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">Funding Request</div>
+                        <div class="wizard-desc">Provide info lender needs</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Wizard Step 3 Nav-->
+                <!--begin::Wizard Step 4 Nav-->
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab4">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">4</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">Lender Matching</div>
+                        <div class="wizard-desc">Get matched with the right lenders</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Wizard Step 4 Nav-->
+            </div>
+        </div>
+        <!--end: Wizard Nav-->
+
+    </div>

@@ -1,0 +1,26 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@{
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = (int) Model.Application.Application.Id,
+        TenantId = 0,
+        HeaderColor = "var(--dark-blue)"
+    };
+}
+
+@{ await Html.RenderPartialAsync("Intro/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/FundingRequirements/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/CompanyInfo/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/FinancialInfo/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/LenderDocuments/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/MinRequirements/page.cshtml"); }
+
+@{ await Html.RenderPartialAsync("../Finfind/Summary/page.cshtml", fssVM); }

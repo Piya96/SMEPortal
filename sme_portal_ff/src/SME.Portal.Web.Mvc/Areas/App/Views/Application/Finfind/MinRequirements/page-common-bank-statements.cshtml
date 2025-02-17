@@ -1,0 +1,37 @@
+﻿@{
+    var LenderName = "Lender";
+    var buttonWidth = "150px";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        LenderName = "Funder";
+    }
+}
+
+<p>@LenderName&#115 require your bank statements to confirm your trading activity:</p>
+<div class="row">
+    <div class="col-xl-10">
+        <label class="radio radio-outline radio-primary">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+            type="radio"
+            name="input-bank-statement-doc"
+            value="636cef617a5499b12c0193c2"
+        />
+        <span></span>
+            Upload last 3 months’ bank statements​
+        </label>
+        <br/>
+    </div>
+    <div class="col-xl-2">
+        <button
+            id="button-doc-b"
+            name="button-doc-b"
+            data-guid=""
+            type="button"
+            style="width:@buttonWidth;"
+            class="btn btn-sm btn-outline-primary">
+                <b class="fa fa-upload"></b>
+                <span id="span-doc-b">Choose a file</span>
+        </button>
+    </div>
+</div>

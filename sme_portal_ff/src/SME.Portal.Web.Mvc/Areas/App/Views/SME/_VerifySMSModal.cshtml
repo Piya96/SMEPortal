@@ -1,0 +1,63 @@
+﻿@*<div class="form-group fv-plugins-icon-container">
+    <div id="sms-otp">
+
+        <input id="verify-sms-input"
+               class="form-control"
+               type="text"
+               name="verifyotpsms"
+               value=""
+               placeholder="">
+
+
+    </div>
+</div>*@
+
+<div class="form-group fv-plugins-icon-container">
+    <div id="VerifySmsModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">@L("OW_SmsModalHeader")</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <div id="verify-sms-input-div">
+                        <label>@L("OW_SmsModalInput")</label>
+                        <input style="z-index:inherit;"
+                               id="VerifySmsInput"
+                               class="form-control"
+                               type="text"
+                               name="verifyotpsms"
+                               value=""
+                               placeholder=""
+                               autocomplete="off">
+                    </div>
+                    <div id="verify-sms-input-message"></div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button id="id-verify-mobile-resend-button"
+                            type="button"
+                            class="btn btn-primary font-weight-bold px-9 py-4 mr-auto">
+                        @L("OW_ResendSmsModalButton")
+                    </button>
+
+                    <button id="VerifySmsBtnCancel"
+                            type="button"
+                            class="btn btn-secondary font-weight-bold px-9 py-4" data-dismiss="modal">
+                        @L("OW_SmsModalCancel")
+                    </button>
+
+                    <button id="VerifySmsBtnApply"
+                            type="button"
+                            class="btn btn-primary font-weight-bold px-9 py-4" data-dismiss="modal">
+                        @L("OW_SmsModalButton")
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

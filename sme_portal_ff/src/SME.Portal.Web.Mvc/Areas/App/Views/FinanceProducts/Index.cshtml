@@ -1,0 +1,312 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model FinanceProductsViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Tenant.FinanceProducts;
+    <input type="hidden" id="FinanceProductsLenderIdFilter" asp-for="@Model.LenderId" />
+}
+  <link href="~/view-resources/Areas/App/Views/FinanceProducts/Index.css" rel="stylesheet" />
+  <style>
+    .select2-container--default .select2-selection--multiple {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto; 
+      overflow-y: hidden;
+      height: auto;
+      min-height: 40px;
+      border: 1px solid #aaa;
+      padding: 2px;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+      margin: 2px 4px;
+      white-space: nowrap;
+    }
+        
+    .select2-container--default .select2-selection--multiple::-webkit-scrollbar {
+            height: 6px;
+    }
+
+    .select2-container--default .select2-selection--multiple::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+    }
+
+    .select2-container--default .select2-selection--multiple::-webkit-scrollbar-thumb:hover {
+                background-color: #555;
+    }
+</style>
+@section Scripts
+{
+    <script src="~/view-resources/Areas/App/Views/FinanceProducts/Index.js" asp-append-version="true"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+
+    <abp-page-subheader title="@L("FinanceProducts")" description="@L("FinanceProductsHeaderInfo")">
+        @if (IsGranted(AppPermissions.Pages_Administration_FinanceProducts_Create))
+        {
+            <button id="CreateNewFinanceProductButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewFinanceProduct")</button>
+        }
+    </abp-page-subheader>
+
+    <div class="@(await GetContainerClass())">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="kt-separator kt-separator--border-dashed"></div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">@L("FinanceProduct_Search_BusinessCollateral")</label>
+                        <div class="input-group">
+                            <div class="radio-inline align-content-center">
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="CollateralBusinessFilterId" value="True" />
+                                    <span></span>
+                                    @L("Yes")
+                                </label>
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="CollateralBusinessFilterId" value="False" />
+                                    <span></span>
+                                    @L("No")
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">@L("FinanceProduct_Search_OwnerCollateral")</label>
+                        <div class="input-group">
+                            <div class="radio-inline align-content-center">
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="CollateralOwnerFilterId" value="True" />
+                                    <span></span>
+                                    @L("Yes")
+                                </label>
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="CollateralOwnerFilterId" value="False" />
+                                    <span></span>
+                                    @L("No")
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>@L("FinanceProduct_Search_CompanyRegistrationType")</label>
+                        @Html.DropDownList("CompanyRegistrationTypeIdFilter", Model.SelectCompanyRegistrationTypeLists.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>@L("FinanceProduct_Search_FinanceFor")</label>
+                        @Html.DropDownList("FinanceForIdFilterId",Model.SelectFinanceForLists.OrderBy(p => p.Text),new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>@L("FinanceProduct_Search_IndustrySector")</label>
+                        @Html.DropDownList("IndustrySectorIdFilterId", Model.SelectIndustrySectorLists.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="MinVersionFilterId">@L("FinanceProduct_Search_LoanAmount")</label>
+                        <div class="input-group">
+                                <input type="text" class="hide-arrows form-control m-input" placeholder="@L("MinValue")" id="MinLoanAmountFilterId" style="-moz-appearance: textfield; -webkit-appearance: none !important; appearance: none; outline: none;" pattern="[0-9]"/>
+                                <input type="text" class="hide-arrows form-control m-input" placeholder="@L("MaxValue")" id="MaxLoanAmountFilterId" style="-moz-appearance: textfield; -webkit-appearance: none !important; appearance: none; outline: none;" pattern="[0-9]"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>@L("FinanceProduct_Search_MinMonthsTrading")</label>
+                        <input type="number" class="form-control hide-arrows" id="MinMonthsTradingFilterId">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">@L("FinanceProduct_Search_RequiresProfitability")</label>
+                        <div class="input-group">
+                            <div class="radio-inline align-content-center">
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="RequiresProfitabilityFilterId" value="True" />
+                                    <span></span>
+                                    @L("Yes")
+                                </label>
+                                <label class="radio radio-outline radio-primary">
+                                    <input type="radio" name="RequiresProfitabilityFilterId" value="False" />
+                                    <span></span>
+                                    @L("No")
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="MinVersionFilterId"> @L("FinanceProduct_Search_AverageAnnualTurnover")</label>
+                        <div class="input-group">
+                            <input type="text" class="hide-arrows form-control m-input" placeholder="@L("MinValue")" id="MinAverageAnnualTurnoverFilterId" />
+                            <input type="text" class="hide-arrows form-control m-input" placeholder="@L("MaxValue")" id="MaxAverageAnnualTurnoverFilterId" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("BeeLevel")</label>
+                            @Html.DropDownList("BeeLevelFilterId", Model.SelectBeeLevelLists.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_Country")</label>
+                            <select id="CountryIdFilterId" class="form-control" asp-items="Model.SelectCountries.OrderBy(p => p.Text)">
+                                <option value="">All Countries</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_DocumentType")</label>
+                            @Html.DropDownList("DocumentIdFilter", Model.SelectDocumentTypeLists.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("Duetobechecked")</label>
+                            <select id="CheckedOutToFilterId" class="form-control" asp-items="Model.SelectUsersList.OrderBy(p => p.Text)">
+                                <option value="">Select staff member</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_Lenders")</label>
+                            <select id="LenderIdFilterId" class="form-control" asp-items="Model.SelecLenders.OrderBy(p => p.Text)">
+                                <option value="">All Lenders</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="NameFilterId">@L("FinanceProductName")</label>
+                            <input type="text" class="form-control" name="nameFilter" id="NameFilterId">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="SaCitizensOnlyFilterId">@L("FinanceProduct_Search_SaCitizensOnly")</label>
+                        <div style="display:flex;flex-direction:row">
+                            <input type="checkbox" id="SaCitizensOnlyFilterId" style="margin-right: 5px;"  name="SaCitizensOnlyFilterId" value=false >
+                            <span>@L("Yes")</span>
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_Province")</label>
+                            @Html.DropDownList("ProvinceIdFilter", Model.SelectProvinceTypeLists.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_MinMonthlyIncome")</label>
+                            <input type="text" class="form-control hide-arrows" id="MinMonthlyIncomeFilterId">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("Ownership")</label>
+                            @Html.DropDownList("OwnershipFilterId", Model.SelectOwnershipList.OrderBy(p => p.Text), new { @class = "form-control select2 col-12", multiple = "multiple", style = "width: 100%;" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("FinanceProduct_Search_LoanType")</label>
+                            <select id="LoanIdFilter" class="form-control" asp-items="Model.SelectLoanTypeLists.OrderBy(p => p.Text)">
+                                <option value="">All Loan Types</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("AssignedTo")</label>
+                            <select id="AssignedToFilterId" class="form-control" asp-items="Model.SelectUsersList.OrderBy(p => p.Text)">
+                                <option value="">Select staff member</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("Inactive")</label>
+                            <div >
+                                <label  for="IsInactiveFilterId" style="display:flex;flex-direction:row">
+                                    <input type="checkbox" id="IsInactiveFilterId" style="margin-right: 5px;"  name="IsInactiveFilter" value="false" >
+                                    <span>@L("Yes")</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>@L("HasArchived")</label>
+                            <div>
+                                <label for="HasArchivedFilterId" style="display:flex;flex-direction:row">
+                                    <input type="checkbox" id="HasArchivedFilterId" style="margin-right: 5px;" name="HasArchivedFilter" value="false">
+                                    <span>@L("Yes")</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-xl-12">
+                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                    <div class="d-flex align-items-center" style="padding-top: 10px;">
+                        <button id="GetFinanceProductsButton" class="btn btn-primary save-button" type="submit"><span>@L("Search")</span></button>
+                        <button id="ClearFiltersButton" class="btn btn-primary save-button" type="submit"><span>@L("ClearFilters")</span></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="pull-right">
+                            <i class="fa fa-square" style="color: green"></i>
+                            @(Model.LastUpdatedLegend.GreenCount)
+                            <i class="fa fa-square" style="color: orange"></i>
+                            @(Model.LastUpdatedLegend.OrangeCount)
+                            <i class="fa fa-square" style="color: purple"></i>
+                            @(Model.LastUpdatedLegend.PurpleCount)
+                            <i class="fa fa-square" style="color: red"></i>
+                            @(Model.LastUpdatedLegend.RedCount)
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <table id="FinanceProductsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>@L("LenderName")</th>
+                                <th>@L("Name")</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

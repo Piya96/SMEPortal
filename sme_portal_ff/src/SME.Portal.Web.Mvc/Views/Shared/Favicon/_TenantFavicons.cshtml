@@ -1,0 +1,39 @@
+﻿@{
+    var tenantId = AbpSession.TenantId;
+
+    if (tenantId == 3)
+    {
+        <title>@L("Sefa") - Finance Application</title>
+        <link rel="icon" type="image/png" href="~/custom/images/favicon-sefa.png">
+    }
+    else if(tenantId == 4)
+    {
+        <title>Wesgro - Funder Search</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="https://wesgro.co.za/dist/favicons/favicon-16x16.png">
+    }
+    else if(tenantId == 5)
+    {
+        <title>ECDC - Funder Search</title>
+        <link rel="shortcut icon" href="https://static.wixstatic.com/media/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg" type="image/jpeg">
+    }
+    else if(tenantId == 6)
+    {
+        <title>NMBBC - Funder Search</title>
+        <link rel="icon" href="https://www.nmbbusinesschamber.co.za/favicon.png" type="image/x-icon">
+    }
+    else if(tenantId == 7)
+    {
+        <title>uMhlathuze - Funder Search</title>
+        <link href="https://www.umhlathuze.gov.za/templates/ja_company/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    }
+    else if(tenantId == 12)
+    {
+        <title>Hloolo - Funder Search</title>
+        <link rel="icon" type="image/png" href="~/custom/images/hloolo-logo.png">
+    }
+    else
+    {
+        <title>Finfind - Funder Search</title>
+        <link rel="shortcut icon" href="https://6087602.fs1.hubspotusercontent-na1.net/hubfs/6087602/favicon.png">
+    }
+}

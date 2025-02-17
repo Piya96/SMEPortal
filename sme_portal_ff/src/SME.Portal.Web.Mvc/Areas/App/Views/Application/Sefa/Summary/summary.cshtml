@@ -1,0 +1,12 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+@model FSSViewModel;
+
+@{
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/UserProfile/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/OwnerProfile/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../../../BasicScreening/Sefa/CompanyProfile/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../MandateFit/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../CompanyInfo/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../FinancialInfo/summary.cshtml", Model);
+    await Html.RenderPartialAsync("../Documents/summary.cshtml", Model);
+}

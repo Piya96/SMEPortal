@@ -1,0 +1,63 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SME;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model SMEOnboardingWizardViewModel
+
+<div class="pb-5" data-wizard-type="step-content" id="div-summary">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Summary</h3>
+
+    <div id="div-summary-basic-screening-pass">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>You have completed your onboarding. Please continue to complete the information requested in the screens to follow to confirm if one of our funding options fits your needs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="div-summary-basic-screening-fail" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-danger" role="alert">
+                    <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                    <div class="alert-text">
+                        <p><b>Hloolo</b> is currently unable to assist you with funding.</p>
+                        <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-basic-screening-fail-redirect" href="javascript:void(0)">here</a>.</p>
+                        <p>To understand <b>Tenant Name</b>'s qualification criteria, please click <a id="a-basic-screening-fail-info" href="javascript:void(0)">here</a>.</p>
+
+                        <div>
+                            <table id="id-tbody-mandate-fit-list" class="table table-sm table-hover">
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+@{
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = 0,
+        TenantId = Model.MySettings.TenantId.Value,
+        HeaderColor = "var(--dark-blue)"
+    };
+
+    await Html.RenderPartialAsync("../UserProfile/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../OwnerProfile/summary.cshtml", fssVM);
+    await Html.RenderPartialAsync("../CompanyProfile/summary.cshtml", fssVM);
+}
+
+</div>

@@ -1,0 +1,275 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model ConsumerCreditViewModel
+
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.ConsumerCreditScore; }
+
+
+@section Scripts
+{
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/FormValidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/FunderSearchSummary/_ListItems.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/FunderSearchSummary/_ListItems.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/ConsumerCredit/index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 5)
+    {
+        <link href="~/tenant-styles/ecdc.css" rel="stylesheet" asp-append-version="true" />
+    }
+
+    @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+
+
+    <script>
+        $(document).ready(function () {
+            app.consumerCredit.load();
+            app.consumerCredit.init(@Html.Raw(Json.Serialize(Model)));
+            app.consumerCredit.initOwner(function (result) {
+                if (result == true) {
+                    app.consumerCredit.autoValidateId();
+                } else {
+                }
+            }, '@Model.HasOnboarded');
+            $('#myTabContent3').show();
+        });
+    </script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+
+                    <div class="example-preview">
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <ul class="nav nav-light-primary nav-pills" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" id="score-tab" data-toggle="tab" href="#score" aria-selected="true">
+                                            <span class="nav-icon">
+                                                <i class="flaticon2-chat-1"></i>
+                                            </span>
+                                            <span class="nav-text">My Score</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link show" id="about-tab" data-toggle="tab" href="#about" aria-selected="false">
+                                            <span class="nav-icon">
+                                                <i class="flaticon2-rocket-1"></i>
+                                            </span>
+                                            <span class="nav-text">About My Score</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link show" id="improve-tab" data-toggle="tab" href="#improve" aria-selected="false">
+                                            <span class="nav-icon">
+                                                <i class="flaticon2-pen"></i>
+                                            </span>
+                                            <span class="nav-text">Improve My Score</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-4">
+                                <button id="cc-retrieve-btn-id"
+                                        style="float:right !important;"
+                                        class="btn btn-outline-primary btn-sm mr-3"
+                                        type="button">
+                                    <i class="flaticon-download"></i>
+                                    Download credit report
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content mt-5" id="myTabContent3" style="display:none;">
+                            <div class="tab-pane fade active show" id="score" role="tabpanel" aria-labelledby="score-tab">
+                                <div class="card">
+                                    @{ await Html.RenderPartialAsync(
+                                           "_ConsumerCreditPartial.cshtml", new ConsumerCreditPartialModel() { InputWidth= "col-xl-6" }
+                                           );
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                                <div id="accordion2">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>
+                                                The info below is about your personal credit score (also known as your consumer credit score). Funders providing business finance will refer to the business owner’s personal credit score to determine whether they will grant funding to the business.
+                                                It is important for you to understand how your consumer credit score works, and to ensure that, prior to applying to a funder, you know what your credit score is and how to improve it if it is not good.
+                                                If you have not been paying your monthly instalments on time or in full, then this is recorded as ‘defaulting’, and you could be considered a high credit risk. However, if you have never been in arrears, you would be considered a low credit risk and therefore would likely be approved for funding. It is necessary to build up a credit history (i.e. to open accounts with retailers, and pay on time) so that you start to develop a good credit score, in case you ever want to get access to funding.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="card-link" data-toggle="collapse" href="#collapseEight">
+                                                <span class="nav-text">What is a credit score? </span>
+                                            </a>
+                                        </div>
+                                        <div id="collapseEight" class="collapse" data-parent="#accordion2">
+                                            <div class="card-body">
+                                                <p>Your credit score is a number that is calculated by the credit bureaux to indicate whether you are a good re-payer of credit or not.  Your credit score is calculated based on the information found in your credit report.  </p>
+                                                <p>The information used to calculate your credit score may include:</p>
+                                                <ul>
+                                                    <li>Whether you pay according to your credit agreement.</li>
+                                                    <li>Whether your accounts are in arrears or have made payments late.</li>
+                                                    <li>The total amount owing on your accounts.</li>
+                                                    <li>Any negative information such as court judgements.</li>
+                                                </ul>
+                                                <br />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="card-link" data-toggle="collapse" href="#collapseSeven">
+                                                <span class="nav-text">What is a credit report?</span>
+                                            </a>
+                                        </div>
+                                        <div id="collapseSeven" class="collapse" data-parent="#accordion2">
+                                            <div class="card-body">
+                                                <p>
+                                                    Your credit report is a detailed history of all of your credit activity and payment behaviour that is compiled by a credit bureau. It includes a list of all of your accounts (e.g. clothing, mobile phone, etc.) and all loan agreements you have signed (e.g. car, personal loans, bond etc.), and details whether you have made the agreed payments or not.
+                                                </p>
+                                                <p>The information on your credit report may include:</p>
+                                                <p>Personal information</p>
+                                                <ul>
+                                                    <li>Names</li>
+                                                    <li>ID Number and if it could be verified by DHA (Department of Home Affairs)</li>
+                                                    <li>Address/es</li>
+                                                    <li>Telephone number/s</li>
+                                                    <li>Employment information</li>
+                                                </ul>
+                                                <p>Payment and credit history</p>
+                                                <ul>
+                                                    <li>Payment Profile</li>
+                                                    <li>Judgments</li>
+                                                    <li>Debt Review flag/indicator</li>
+                                                    <li>Credit Score</li>
+                                                    <li>Fraud</li>
+                                                    <li>Possible Fraudulent information</li>
+                                                </ul>
+                                                <p>Enquiries</p>
+                                                <ul>
+                                                    <li>Who has enquired or viewed your Credit Report</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="improve" role="tabpanel" aria-labelledby="improve-tab">
+                                <div id="accordion3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>Regularly check your credit report to ensure that all information related to your credit payments is correct. Contrary to what most people believe, if YOU regularly check your credit score, it does not have a negative effect on your score. It will only be affected if third parties (e.g. credit providers) are frequently requesting your credit score, as this indicates that you may be applying for credit too often.</p>
+                                            <br />
+                                            <div>
+                                                <ul>
+                                                    <li>If your credit report shows that you have outstanding payments, you must ensure that you settle the amounts due, or alternatively call your credit provider and make a payment arrangement. Ignoring the issues highlighted on your credit report will continue to negatively affect your score, until you address them. Credit providers look more favourably on someone who has made an arrangement to replay overdue debt, rather than those who ignore it.</li>
+                                                    <li>Should you find a mistake on your credit report, you have the right to contact a credit bureau to dispute it. Finfind recommends contacting CPB and provide them with the information they request, and you will be notified that your dispute has been received.</li>
+                                                    <li>An investigation will then take place. The credit or data provider is given the opportunity to respond to your dispute by providing evidence that the information on your credit profile is correct.</li>
+                                                    <li>If the information is found to be valid, the information will be kept on your profile. However, if the information is not denied by the credit provider or the credit provider agrees that the information is incorrect, the incorrect information will be removed from your credit profile within 20 business days.</li>
+                                                    <li>If you are not satisfied with the process at the credit bureau you are welcome to seek the assistance of the Credit Ombud or the National Credit Regulator in the resolution of your dispute.</li>
+                                                </ul>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="id-credit-score-loading-div" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 id="id-credit-score-loading-header" class="text-center"></h4>
+                    <div id="id-credit-score-loading-anim-div"
+                         class="spinner-border text-primary"
+                         role="status" style="visibility:hidden;width:64px;height:64px;">
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="id-credit-report-loading-div" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 id="id-credit-report-loading-header" class="text-center"></h4>
+                    <div id="id-credit-report-loading-anim-div"
+                         class="spinner-border text-primary"
+                         role="status" style="visibility:hidden;width:64px;height:64px;">
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    await Html.RenderPartialAsync(
+        "/Areas/App/Views/SME/_VerifySMSModal.cshtml"
+    );
+}

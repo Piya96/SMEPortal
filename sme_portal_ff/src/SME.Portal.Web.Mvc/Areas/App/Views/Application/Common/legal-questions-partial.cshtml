@@ -1,0 +1,438 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@{
+    var SponsorName = "Lender";
+}
+
+@model CreateEditFunderSearchViewModel
+
+<div id="div-method-of-repayment-ext">
+<br/>
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "method-of-repayment",
+            Label = "What method will you use to do your repayments?"
+        }
+    );}
+</div>
+
+<div id="div-own-or-rent-business-premises-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "own-or-rent-business-premises",
+            Label = "Do you own or rent your business premises?"
+        }
+    );}
+</div>
+
+<div id="div-existing-insurance-policies-in-place-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "existing-insurance-policies-in-place",
+            Label = "Do you have any existing business insurance policies in place?"
+        }
+    );}
+
+    <div id="div-business-insurance-type"  class="form-group" style="display:none;">
+        <label for="">Please select the business insurance you have</label>
+        <br />
+        <br />
+        <div class="checkbox-list">
+    
+            @foreach(var listItem in Model.ListItems.Where(x => x.ParentListId == "64a52a3196d8da823f62da3a").OrderBy(x => x.Priority).ToList())
+            {
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        value="@listItem.ListId"
+                        name="check-business-insurance-type" />
+                    <span>
+                    </span>
+                    @listItem.Name
+                </label>
+            }
+    
+            <span class="form-text text-muted"></span>
+            <div id="message-business-insurance-type" class="fv-plugins-message-container"></div>
+        </div>
+    
+        <div id="div-business-insurance-other" class="form-group" style="display:none;">
+            @{ await Html.RenderPartialAsync(
+                 "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+                 new Input_N_LT_RT()
+                 {
+                     Name = "business-insurance-other",
+                     Label = "Please list the business insurance you have"
+                 }
+            );}
+        </div>
+    
+    </div>
+<br/>
+</div>
+
+<h3 id="h3-collateral" style="font-size:large;" class="mb-10 font-weight-bold text-dark">Collateral / security you can offer</h3>
+<br/>
+
+<div id="div-type-of-collateral-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "type-of-collateral",
+            Label = "Collateral in the name of the business (owned by the business)"
+        }
+    );}
+    
+    <div id="div-type-of-collateral-other" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "type-of-collateral-other",
+                Label = "Other"
+            }
+        );}
+    
+    </div>
+    
+    <div id="div-value-of-collateral" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "value-of-collateral",
+                Label = "Value of Collateral you can offer",
+                LeftText = "R"
+            }
+        );}
+    </div>
+</div>
+
+<div id="div-type-of-security-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "type-of-security",
+            Label = "Collateral in the owner’s name (personally owned by the owner)"
+        }
+    );}
+    
+    <div id="div-type-of-security-other" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "type-of-security-other",
+                Label = "Other"
+            }
+        );}
+    
+    </div>
+    
+    <div id="div-value-of-security" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+              "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+              new Input_N_LT_RT()
+              {
+                  Name = "value-of-security",
+                  Label = "Value of Collateral you can offer",
+                  LeftText = "R"
+              }
+        );}
+    </div>
+</div>
+
+<div id="div-company-contribution-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-contribution",
+            Label = "How much can the Business contribute towards loan amount requested?",
+            LeftText = "R"
+        }
+    );}
+    
+    <div id="div-source-of-funds-company">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "source-of-funds-company",
+                Label = "What is the source of these business funds?"
+            }
+        );}
+    </div>
+    
+    <div id="div-source-of-funds-company-other" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "source-of-funds-company-other",
+                Label = "Other fund source"
+            }
+        );}
+    </div>
+</div>
+
+<br/>
+<h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Financial Information</h3>
+@*<br/>*@
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+    new Select_N_LT_RT()
+    {
+        Name = "annual-turnover",
+        Label = "What was your annual turnover for the past 12 months?"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+    new Select_N_LT_RT()
+    {
+        Name = "financial-year-end",
+        Label = "When is your financial year end?"
+    }
+);}
+
+@{ await Html.RenderPartialAsync(
+    "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+    new Select_N_LT_RT()
+    {
+        Name = "business-account-bank",
+        Label = "Which bank do you have your business account with?"
+    }
+);}
+
+<div id="div-bank-account-services" class="form-group" style="display:none;">
+    <label for="bank">@L("WhatTypeOfBankAccountServices") </label>
+    <br />
+    <br />
+    <div class="checkbox-list">
+        @foreach(var listItem in Model.ListItems.Where(x => x.ParentListId == "60a65b5b61d3627f442b31fb").OrderBy(x => x.Priority).ToList())
+        {
+            <label class="checkbox">
+                <input type="checkbox" value="@listItem.ListId" name="bankaccservices" />
+                <span>
+                </span>
+                @listItem.Name
+            </label>
+        }
+    </div>
+    <span class="form-text text-muted"></span>
+    <div id="message-bankaccservices" class="fv-plugins-message-container"></div>
+</div>
+
+<div id="div-has-electronic-accounting-system-ext">
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "has-electronic-accounting-system",
+            Label = "Do you have an electronic accounting system?"
+        }
+    );}
+    
+    <div id="div-has-electronic-accounting-system" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+             "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+             new Select_N_LT_RT()
+             {
+                 Name = "which-accounting-system-do-you-have",
+                 Label = "Which electronic accounting system do you have?"
+             }
+        );}
+    
+        <div id="div-electronic-accounting-system-other" style="display:none;">
+            @{ await Html.RenderPartialAsync(
+                 "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+                 new Input_N_LT_RT()
+                 {
+                     Name = "acounting-system-other",
+                     Label = L("WhichOtherAccSystem")
+                 }
+             );}
+        </div>
+    
+        @{ await Html.RenderPartialAsync(
+             "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+             new Radio_N_Top()
+             {
+                 Name = "permit-sefa-to-call-data-from-accounting-system-monthly",
+                 Label = "Would you give <b>sefa</b> permission to retrieve data from your accounting system on a monthly basis?"
+             }
+        );}
+    
+    </div>
+</div>
+
+<div id="div-any-other-business-loans-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "any-other-business-loans",
+            Label = "Do you have any other business loans?"
+        }
+    );}
+
+    <div id="div-any-other-business-loans"  class="form-group" style="display:none;">
+        <label for="">Who are these loan/loans from?</label>
+        <br />
+        <br />
+        <div class="checkbox-list">
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        value="60d193a0eac92464d407fb61"
+                        name="control-who-is-this-loan-from"
+                    />
+                    <span>
+                    </span>
+                    Another Bank
+                </label>
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        value="60d193c0515f0832be68aa51"
+                        name="control-who-is-this-loan-from"
+                    />
+                    <span>
+                    </span>
+                    Family or Friends
+                </label>
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        value="60d193dd3b54b27d872cdebb"
+                        name="control-who-is-this-loan-from"
+                    />
+                    <span>
+                    </span>
+                    Private @SponsorName
+                </label>
+                <label class="checkbox">
+                    <input
+                        type="checkbox"
+                        value="60d193f5af8fd847db00f956"
+                        name="control-who-is-this-loan-from"
+                    />
+                    <span>
+                    </span>
+                    Government
+                </label>
+        </div>
+    </div>
+    
+    <span class="form-text text-muted"></span>
+    <div id="message-who-is-this-loan-from" class="fv-plugins-message-container"></div>
+
+</div>
+
+@{ await Html.RenderPartialAsync(
+     "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+     new Select_N_LT_RT()
+     {
+         Name = "has-owners-loan-account",
+         Label = "Do you have an owner’s loan account (Money the business owes you as the owner, or that you owe the business)?"
+     }
+);}
+
+<div id="div-any-business-transactions-through-personal-accounts-ext">
+    @{ await Html.RenderPartialAsync(
+         "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+         new Radio_N_Top()
+         {
+             Name = "any-business-transactions-through-personal-accounts",
+             Label = "Do any of your business transactions go through your personal account (and vice versa)?"
+         }
+     );}
+    
+    <div id="div-any-business-transactions-through-personal-accounts" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+             "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+             new Select_N_LT_RT()
+             {
+                 Name = "who-do-you-bank-with-personally",
+                 Label = "Who do you bank with personally?"
+             }
+        );}
+    </div>
+</div>
+
+<div id="div-has-invested-own-money-finfind" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "has-invested-own-money",
+            Label = "Have you invested any of your own money in your business?"
+        }
+    );}
+    
+    <div class="row" id="div-has-invested-own-money" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "invested-own-money-value",
+                Label = "How much money have you invested in your business (since it was started)?",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+</div>
+
+<div id="div-use-payroll-system-for-staff-payslips-ext">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "use-payroll-system-for-staff-payslips",
+            Label = "Do you use a payroll system to provide payslips to your staff?"
+        }
+    );}
+    
+    <div id="div-use-payroll-system-for-staff-payslips" style="display:none;">
+    
+        @{ await Html.RenderPartialAsync(
+             "/Areas/App/Views/Common/Html/select-picker-n-lt-rt.cshtml",
+             new Select_N_LT_RT()
+             {
+                 Name = "which-electronic-payroll-system",
+                 Label = "Which electronic payroll system, do you have?"
+             }
+        );}
+    
+        <div id="div-payroll-system-other" style="display:none;">
+            @{ await Html.RenderPartialAsync(
+                 "/Areas/App/Views/Common/Html/input-n-lt-rt.cshtml",
+                 new Input_N_LT_RT()
+                 {
+                     Name = "payroll-system-other",
+                     Label = L("WhichOtherPayrollSystem")
+                 }
+            );}
+        </div>
+    
+    </div>
+</div>
+

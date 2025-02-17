@@ -1,0 +1,83 @@
+﻿<!-- Used as a partial in funder-search ( Wizard.cshtml ) and onboarding ( _Onboarding.cshtml ) -->
+
+@model int;
+
+<style>
+    @@media (max-width: 767px) {
+        .sme-hide {
+            display: none !important;
+        }
+    }
+</style>
+
+@{
+    var tab1 = "pending";
+    var tab2 = "pending";
+    var tab3 = "pending";
+    var tab4 = "pending";
+
+    if(Model == 1) {
+        tab1 = "current";
+    }
+    if(Model == 2)
+    {
+        tab1 = "done";
+        tab2 = "current";
+    }
+    if(Model == 3)
+    {
+        tab1 = "done";
+        tab2 = "done";
+        tab3 = "current";
+    }
+    if(Model == 4)
+    {
+        tab1 = "done";
+        tab2 = "done";
+        tab3 = "done";
+        tab4 = "current";
+    }
+}
+
+<div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first" data-wizard-clickable="false">
+    <div class="wizard-nav">
+        <div id="id-wizard-nav-div" class="wizard-steps">
+            <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab1">
+                <div class="wizard-wrapper">
+                    <div class="wizard-number">1</div>
+                    <div class="wizard-label">
+                        <div class="wizard-title">Register</div>
+                        <div class="wizard-desc">Create User Account</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab2">
+                <div class="wizard-wrapper">
+                    <div class="wizard-number">2</div>
+                    <div class="wizard-label">
+                        <div class="wizard-title">Onboarding</div>
+                        <div class="wizard-desc">Owner and business profile info</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab3">
+                <div class="wizard-wrapper">
+                    <div class="wizard-number">3</div>
+                    <div class="wizard-label">
+                        <div class="wizard-title">Funding Request</div>
+                        <div class="wizard-desc">Provide info funder needs</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab4">
+                <div class="wizard-wrapper">
+                    <div class="wizard-number">4</div>
+                    <div class="wizard-label">
+                        <div class="wizard-title">Funder Matching</div>
+                        <div class="wizard-desc">Get matched with the right funders</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

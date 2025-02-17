@@ -1,0 +1,72 @@
+﻿<div class="card-body">
+
+    <div class="form">
+        <div class="row align-items-center mb-4">
+            <div class="col-xl-12">
+                <div class="form-group align-items-center">
+                    <div class="input-group">
+                        <input type="text" id="DocumentsTableFilter" class="form-control m-input" placeholder="@L("SearchWithThreeDot")" value="">
+                        <span class="input-group-btn">
+                            <button id="GetDocumentsButton" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+        <div class="col-md-12">
+            <div class="kt-separator kt-separator--border-dashed"></div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="TypeFilterId">@L("Type")</label>
+                <input type="text" class="form-control" name="typeFilter" id="TypeFilterId">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="FileNameFilterId">@L("FileName")</label>
+                <input type="text" class="form-control" name="fileNameFilter" id="FileNameFilterId">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="FileTypeFilterId">@L("FileType")</label>
+                <input type="text" class="form-control" name="fileTypeFilter" id="FileTypeFilterId">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="SmeCompanyNameFilterId">@L("SmeCompany") @L("Name")</label>
+                <input type="text" class="form-control" name="smeCompanyNameFilter" id="SmeCompanyNameFilterId">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-xl-12">
+            <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+            <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+
+        <table id="DocumentsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th></th>
+
+                    <th>@L("Actions")</th>
+                    <th>@L("SmeCompanyName")</th>
+                    <th>@L("FileName")</th>
+                    <th>@L("DocumentType")</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

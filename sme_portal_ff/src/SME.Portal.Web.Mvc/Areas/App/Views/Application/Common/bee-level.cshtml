@@ -1,0 +1,14 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="row" id="div-bee-level">
+    <h5 class="mb-10">BEE Level</h5>
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "company-profile-bee-level",
+            Label = L("OnboardingCompanyProfileBeeLevelStr"),
+            Col = "col-xl-12"
+        }
+    );}
+</div>

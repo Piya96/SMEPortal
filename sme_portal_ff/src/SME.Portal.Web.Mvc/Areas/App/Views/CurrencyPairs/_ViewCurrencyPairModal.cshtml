@@ -1,0 +1,44 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.CurrencyPairs
+@model CurrencyPairViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="CurrencyPairInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.CurrencyPair.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("BaseCurrencyCode") :</h6>
+                @Model.CurrencyPair.BaseCurrencyCode
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("TargetCurrencyCode") :</h6>
+                @Model.CurrencyPair.TargetCurrencyCode
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("ExchangeRate") :</h6>
+                @Model.CurrencyPair.ExchangeRate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Symbol") :</h6>
+                @Model.CurrencyPair.Symbol
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Log") :</h6>
+                @Model.CurrencyPair.Log
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

@@ -1,0 +1,183 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+
+}
+
+<h4 style="color:lightskyblue; font-size:large;" class="font-weight-bold mb-3">@L("FS_FundingRequirement")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr id="id-div-financefor-@appId"><td style="@styleWidth">@L("WhatTypeOfFinanceDoYouNeed")</td><td><div class="@colXL" id="id-financefor-@appId"></div></td></tr>
+                <tr id="id-div-loanamount-@appId"><td>@L("AmountOfFundingNeeded")</td><td><div class="@colXL" id="id-loanamount-@appId"></div></td></tr>
+                <tr id="id-div-assetfinancetype-@appId"><td>Buy An Asset Option</td><td><div class="@colXL" id="id-assetfinancetype-@appId"></div></td></tr>
+                <tr id="id-div-buyingbusinesspropertyvalue-@appId"><td>@L("WhatIsTheValueOrTheProperty")</td><td><div class="@colXL" id="id-buyingbusinesspropertyvalue-@appId"></div></td></tr>
+                <tr id="id-div-buyingbusinesspropertytype-@appId"><td>@L("SelectPropertyType")</td><td><div class="@colXL" id="id-buyingbusinesspropertytype-@appId"></div></td></tr>
+                <tr id="id-div-propertydevelopmenttype-@appId"><td>@L("SelectDevelopmentType")</td><td><div class="@colXL" id="id-propertydevelopmenttype-@appId"></div></td></tr>
+                <tr id="id-div-shopfittingpropbonded-@appId"><td>@L("IsThePropertyBonded")</td><td><div class="@colXL" id="id-shopfittingpropbonded-@appId"></div></td></tr>
+                <tr id="id-div-shopfittingpropertyvalue-@appId"><td>@L("WhatIsTheValueOrTheProperty")</td><td><div class="@colXL" id="id-shopfittingpropertyvalue-@appId"></div></td></tr>
+                <tr id="id-div-shopfittingpropertytype-@appId"><td>@L("SelectPropertyType")</td><td><div class="@colXL" id="id-shopfittingpropertytype-@appId"></div></td></tr>
+
+                <tr id="id-div-growthfinancetype-@appId"><td>Grow My Business Options</td><td><div class="@colXL" id="id-growthfinancetype-@appId"></div></td></tr>
+                <tr id="id-div-willingtosellshares-@appId"><td>@L("AreYouWillingToSellShares")</td><td><div class="@colXL" id="id-willingtosellshares-@appId"></div></td></tr>
+                <tr id="id-div-largepotentialmarket-@appId"><td>@L("DoesBusinessHaveLargePotentialMarket")</td><td><div class="@colXL" id="id-largepotentialmarket-@appId"></div></td></tr>
+                <tr id="id-div-customersbuying-@appId"><td>@L("DoYouCurrentlyHaveCustomerBuying")</td><td><div class="@colXL" id="id-customersbuying-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansioncompetitiveadv-@appId"><td>@L("SelectItemsDescribingCompetitiveAdv")</td><td><div class="@colXL" id="id-businessexpansioncompetitiveadv-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultinincreasedemployees-@appId"><td>@L("IncreasedEmployees")</td><td><div class="@colXL" id="id-businessexpansionresultinincreasedemployees-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultinincreasedprofitability-@appId"><td>@L("IncreaseProfitability")</td><td><div class="@colXL" id="id-businessexpansionresultinincreasedprofitability-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultinincreasedexports-@appId"><td>@L("IncreaseExports")</td><td><div class="@colXL" id="id-businessexpansionresultinincreasedexports-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultineconomicempowerment-@appId"><td>@L("EmpowermentEconomicDevelopment")</td><td><div class="@colXL" id="id-businessexpansionresultineconomicempowerment-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultinsustainabledev-@appId"><td>@L("SustainableRuralPeriDevelopment")</td><td><div class="@colXL" id="id-businessexpansionresultinsustainabledev-@appId"></div></td></tr>
+                <tr id="id-div-businessexpansionresultinsolveenvchallenges-@appId"><td>@L("SolveSocialEnvChallenges")</td><td><div class="@colXL" id="id-businessexpansionresultinsolveenvchallenges-@appId"></div></td></tr>
+                <tr id="id-div-productserviceexpansiontype-@appId"><td>@L("SelectProductServiceExpansionType")</td><td><div class="@colXL" id="id-productserviceexpansiontype-@appId"></div></td></tr>
+
+                <tr id="id-div-workingcapitaltype-@appId"><td>For Working Capital Options</td><td><div class="@colXL" id="id-workingcapitaltype-@appId"></div></td></tr>
+                <tr id="id-div-cashforaninvoiceamount-@appId"><td>@L("CashForInvoiceAmount")</td><td><div class="@colXL" id="id-cashforaninvoiceamount-@appId"></div></td></tr>
+                <tr id="id-div-cashforinvoicecustomer-@appId"><td>@L("WhoIsYourCustomer")</td><td><div class="@colXL" id="id-cashforinvoicecustomer-@appId"></div></td></tr>
+                <tr id="id-div-customeragreed-@appId"><td>@L("HasTheCustomerAgreedWorkIsComplete")</td><td><div class="@colXL" id="id-customeragreed-@appId"></div></td></tr>
+                <tr id="id-div-hasposdevice-@appId"><td>@L("DoYouHaveAPOSDevice")</td><td><div class="@colXL" id="id-hasposdevice-@appId"></div></td></tr>
+                <tr id="id-div-regularmonthlyincome-@appId"><td>@L("DoesYourCompanyHaveRegMonthIncome")</td><td><div class="@colXL" id="id-regularmonthlyincome-@appId"></div></td></tr>
+                <tr id="id-div-monthlyincomeincomevalue-@appId"><td>@L("MonthlyIncome")</td><td><div class="@colXL" id="id-monthlyincomeincomevalue-@appId"></div></td></tr>
+                <tr id="id-div-cardmachinepaymenttypes-@appId">
+                    <td>@L("SelectPaymentTypes")</td>
+                    <td>
+                        <div class="@colXL" id="id-cardmachinepaymenttypes-1-@appId"></div>
+                        <div class="@colXL" id="id-cardmachinepaymenttypes-2-@appId"></div>
+                        <div class="@colXL" id="id-cardmachinepaymenttypes-3-@appId"></div>
+                        <div class="@colXL" id="id-cardmachinepaymenttypes-4-@appId"></div>
+                    </td>
+                </tr>
+                <tr id="id-div-moneyforcontractvalue-@appId"><td>@L("ValueOfContractRequiringFinance")</td><td><div class="@colXL" id="id-moneyforcontractvalue-@appId"></div></td></tr>
+                <tr id="id-div-moneyforcontractcustomer-@appId"><td>@L("WhoIsYourCustomer")</td><td><div class="@colXL" id="id-moneyforcontractcustomer-@appId"></div></td></tr>
+                <tr id="id-div-moneyforcontractcompanyexperience-@appId"><td>@L("CompanyHaveExperienceContract")</td><td><div class="@colXL" id="id-moneyforcontractcompanyexperience-@appId"></div></td></tr>
+                <tr id="id-div-moneyfortendervalue-@appId"><td>@L("ValueOfTenderRequiringFinance")</td><td><div class="@colXL" id="id-moneyfortendervalue-@appId"></div></td></tr>
+                <tr id="id-div-moneyfortendercustomer-@appId"><td>@L("WhoIsYourCustomer")</td><td><div class="@colXL" id="id-moneyfortendercustomer-@appId"></div></td></tr>
+                <tr id="id-div-moneyfortendercompanyexperience-@appId"><td>@L("CompanyHaveExperienceTender")</td><td><div class="@colXL" id="id-moneyfortendercompanyexperience-@appId"></div></td></tr>
+                <tr id="id-div-purchaseordervalue-@appId"><td>@L("ValueOfPurchaseOrderRequiringFinance")</td><td><div class="@colXL" id="id-purchaseordervalue-@appId"></div></td></tr>
+                <tr id="id-div-purchaseordercustomer-@appId"><td>@L("WhoIsYourCustomer")</td><td><div class="@colXL" id="id-purchaseordercustomer-@appId"></div></td></tr>
+                <tr id="id-div-purchaseordercustomerexperience-@appId"><td>@L("CompanyHaveExperiencePurchaseOrder")</td><td><div class="@colXL" id="id-purchaseordercustomerexperience-@appId"></div></td></tr>
+
+                <tr id="id-div-franchiseacquisitiontype-@appId"><td>Partner Buy-out or Franchise Funding Options</td><td><div class="@colXL" id="id-franchiseacquisitiontype-@appId"></div></td></tr>
+                <tr id="id-div-buyingafranchisefranchiseaccredited-@appId"><td>@L("IsFranchiseAccreditedWithFranchiseAssoc")</td><td><div class="@colXL" id="id-buyingafranchisefranchiseaccredited-@appId"></div></td></tr>
+                <tr id="id-div-preapprovedbyfranchisor-@appId"><td>@L("HaveYouBeenPreapprovedByFranchisor")</td><td><div class="@colXL" id="id-preapprovedbyfranchisor-@appId"></div></td></tr>
+                <tr id="id-div-beepartnerfranchiseaccredited-@appId"><td>@L("WillCompanyHaveMinBEEShareholding")</td><td><div class="@colXL" id="id-beepartnerfranchiseaccredited-@appId"></div></td></tr>
+                <tr id="id-div-industry-sector-@appId"><td>@L("OnboardingCompanyProfileIndustrySector")</td><td><div class="@colXL" id="id-industry-sector-@appId"></div></td></tr>
+                <tr id="id-div-industry-sub-sector-@appId"><td>@L("OnboardingCompanyProfileIndustrySubSector")</td><td><div class="@colXL" id="id-industry-sub-sector-@appId"></div></td></tr>
+                <tr id="id-div-fundingtobuyanexistingbusinesstype-@appId"><td>@L("WhatTypeOfBusinessIsIt")</td><td><div class="@colXL" id="id-fundingtobuyanexistingbusinesstype-@appId"></div></td></tr>
+                <tr id="id-div-businesslocatedinruralarea-@appId"><td>@L("IsBusinessLocatedInRuralArea")</td><td><div class="@colXL" id="id-businesslocatedinruralarea-@appId"></div></td></tr>
+                <tr id="id-div-shareholdinggreaterthanperc-@appId"><td>@L("WillCompanyHaveMinBEEShareholding")</td><td><div class="@colXL" id="id-shareholdinggreaterthanperc"></div></td></tr>
+
+                <tr id="id-div-researchinnovationfundingtype-@appId"><td>@L("ResearchInnovationFundingOptions")</td><td><div class="@colXL" id="id-researchinnovationfundingtype-@appId"></div></td></tr>
+                <tr id="id-div-commresstudentstatus-@appId"><td>@L("AreYouCurrentlyAMemberOfAUniversity")</td><td><div class="@colXL" id="id-commresstudentstatus-@appId"></div></td></tr>
+                <tr id="id-div-commreswillincexports-@appId"><td>@L("WillNewProductIncreaseExports")</td><td><div class="@colXL" id="id-commreswillincexports-@appId"></div></td></tr>
+                <tr id="id-div-commresresultinjobcreation-@appId"><td>@L("WillThisResultInJobCreation")</td><td><div class="@colXL" id="id-commresresultinjobcreation-@appId"></div></td></tr>
+                <tr id="id-div-commresintroinnov-@appId"><td>@L("WillThisResultInIntroInnovativeProductService")</td><td><div class="@colXL" id="id-commresintroinnov-@appId"></div></td></tr>
+                <tr id="id-div-commresindustries-@appId">
+                    <td>@L("SelectAnyItemsThatMatchNewProductService")</td>
+                    <td>
+                        <div class="@colXL" id="id-commresindustries-1-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-2-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-3-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-4-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-5-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-6-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-7-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-8-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-9-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-10-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-11-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-12-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-13-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-14-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-15-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-16-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-17-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-18-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-19-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-20-@appId"></div>
+                        <div class="@colXL" id="id-commresindustries-21-@appId"></div>
+                    </td>
+                </tr>
+                <tr id="id-div-researchtakingplaceinuniversity-@appId"><td>@L("IsTheResearchAndDevelopmentInUniOrScienceEng")</td><td><div class="@colXL" id="id-researchtakingplaceinuniversity-@appId"></div></td></tr>
+                <tr id="id-div-researchfieldofresearchtype-@appId"><td>@L("WhichOfFollowingMatchFieldOfResearch")</td><td><div class="@colXL" id="id-researchfieldofresearchtype-@appId"></div></td></tr>
+
+                <tr id="id-div-otherfinancetype-@appId"><td>@L("OtherBusinessFinanceOptions")</td><td><div class="@colXL" id="id-otherfinancetype-@appId"></div></td></tr>
+                <tr id="id-div-willworkgenerate50newjobs-@appId"><td>@L("WillWorkGenerateAtLeast50NewJobs")</td><td><div class="@colXL" id="id-willworkgenerate50newjobs-@appId"></div></td></tr>
+                <tr id="id-div-doyouhavecontractsforbps-@appId"><td>@L("DoYouHaveContractsToProvideBPSIntClients")</td><td><div class="@colXL" id="id-doyouhavecontractsforbps-@appId"></div></td></tr>
+                <tr id="id-div-will80percofjobsbeforyouth-@appId"><td>@L("Will80percOfJobsBeForYouth")</td><td><div class="@colXL" id="id-will80percofjobsbeforyouth-@appId"></div></td></tr>
+                <tr id="id-div-otherfinanceexportindustry-@appId">
+                    <td>@L("PleaseIndicateIndustryExportedProductRepresents")</td>
+                    <td>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-1-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-2-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-3-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-4-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-5-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-6-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-7-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-8-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-9-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-10-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-11-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-12-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-13-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-14-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-15-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-16-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-17-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-18-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-19-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-20-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceexportindustry-21-@appId"></div>
+                    </td>
+                </tr>
+                <tr id="id-div-exportcountry-@appId"><td>@L("WhatCountriesAreYouExportingTo")</td><td><div class="@colXL" id="id-exportcountry-@appId"></div></td></tr>
+                <tr id="id-div-needingtoconductintmarketresearch-@appId"><td>@L("AreYouNeedingToConductIntMarketResearch")</td><td><div class="@colXL" id="id-needingtoconductintmarketresearch-@appId"></div></td></tr>
+                <tr id="id-div-haveconfirmedorders-@appId"><td>@L("DoYouHaveConfirmedOrders")</td><td><div class="@colXL" id="id-haveconfirmedorders-@appId"></div></td></tr>
+                <tr id="id-div-otherfinanceimportindustry-@appId">
+                    <td>@L("PleaseIndicateIndustryImportedProductRepresents")</td>
+                    <td>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-1-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-2-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-3-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-4-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-5-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-6-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-7-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-8-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-9-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-10-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-11-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-12-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-13-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-14-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-15-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-16-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-17-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-18-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-19-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-20-@appId"></div>
+                        <div class="@colXL" id="id-otherfinanceimportindustry-21-@appId"></div>
+                    </td>
+                </tr>
+                <tr id="id-div-importcountry-@appId"><td>@L("WhatCountriesAreYouImportingFrom")</td><td><div class="@colXL" id="id-importcountry-@appId"></div></td></tr>
+                <tr id="id-div-havesignedcontracts-@appId"><td>@L("DoYouHaveSignedContracts")</td><td><div class="@colXL" id="id-havesignedcontracts-@appId"></div></td></tr>
+                <tr id="id-div-workinruralareas-@appId"><td>@L("DoYouWorkInRuralAreas")</td><td><div class="@colXL" id="id-workinruralareas-@appId"></div></td></tr>
+                <tr id="id-div-resultinemploymentsavejobs-@appId"><td>@L("WillProjectResultInIncEmploymentOrSaveExistingJobs")</td><td><div class="@colXL" id="id-resultinemploymentsavejobs-@appId"></div></td></tr>
+                <tr id="id-div-workwithpeoplewithdisabilities-@appId"><td>@L("DoYouWorkWithPeopleWithDisabilities")</td><td><div class="@colXL" id="id-workwithpeoplewithdisabilities-@appId"></div></td></tr>
+                <tr id="id-div-willprojectimprovehealthcare-@appId"><td>@L("WillProjectImproveHealthCare")</td><td><div class="@colXL" id="id-willprojectimprovehealthcare-@appId"></div></td></tr>
+                <tr id="id-div-willgenerateincomeinimpoverishedareas-@appId"><td>@L("WillProjectGenerateIncomeInImpoverished")</td><td><div class="@colXL" id="id-willgenerateincomeinimpoverishedareas-@appId"></div></td></tr>
+                <tr id="id-div-willgenerateincreasedexportvalue-@appId"><td>@L("WillGenerateIncExportValue")</td><td><div class="@colXL" id="id-willgenerateincreasedexportvalue-@appId"></div></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

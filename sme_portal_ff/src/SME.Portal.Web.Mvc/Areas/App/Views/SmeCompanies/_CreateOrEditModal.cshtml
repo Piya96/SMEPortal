@@ -1,0 +1,109 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.SmeCompanies
+@model CreateOrEditSmeCompanyModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditSmeCompany")) : L("CreateNewSmeCompany")))
+
+<div class="modal-body">
+        <div id="SmeCompanyInformationsTab">
+            <form name="SmeCompanyInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.SmeCompany.Id" />
+                }
+
+				            
+								<div class="form-group m-form__group">
+										<label for="UserName">@L("User")</label>
+									    <div class="input-group">
+											<input class="form-control" id="UserName" name="userName" value="@Model.UserName" type="text" disabled>
+										<div class="input-group-append">
+											<button class="btn btn-primary blue" id="OpenUserLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+										</div> 
+										<div class="input-group-prepend">
+											<button class="btn btn-danger btn-icon" type="button" id="ClearUserNameButton"><i class="fa fa-times"></i></button>
+										</div>
+									</div>
+								</div>
+
+								@if (Model.IsEditMode)
+								{
+									<input class="form-control" id="SmeCompany_UserId" value="@Model.SmeCompany.UserId" type="text" name="userId" required hidden/>
+								}
+								 else
+								{ 
+									<input class="form-control" id="SmeCompany_UserId" value="" type="text" name="userId" required hidden/>
+								}
+
+
+
+				
+								<div class="form-group">
+									<label for="SmeCompany_Name">@L("Name")</label>
+									<input class="form-control" id="SmeCompany_Name" value="@Model.SmeCompany.Name" type="text" name="name"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_RegistrationNumber">@L("RegistrationNumber")</label>
+									<input class="form-control" id="SmeCompany_RegistrationNumber" value="@Model.SmeCompany.RegistrationNumber" type="text" name="registrationNumber"     />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_Type">@L("Type")</label>
+									<input class="form-control" id="SmeCompany_Type" value="@Model.SmeCompany.Type" type="text" name="type"     />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_RegistrationDate">@L("RegistrationDate")</label>
+									<input class="form-control m-input date-picker" id="SmeCompany_RegistrationDate" type="text" name="registrationDate" value="@Model.SmeCompany.RegistrationDate"/>
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_StartedTradingDate">@L("StartedTradingDate")</label>
+									<input class="form-control m-input date-picker" id="SmeCompany_StartedTradingDate" type="text" name="startedTradingDate" value="@Model.SmeCompany.StartedTradingDate"/>
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_RegisteredAddress">@L("RegisteredAddress")</label>
+									<input class="form-control" id="SmeCompany_RegisteredAddress" value="@Model.SmeCompany.RegisteredAddress" type="text" name="registeredAddress"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_VerificationRecordJson">@L("VerificationRecordJson")</label>
+									<input class="form-control" id="SmeCompany_VerificationRecordJson" value="@Model.SmeCompany.VerificationRecordJson" type="text" name="verificationRecordJson"     />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_Customers">@L("Customers")</label>
+									<input class="form-control" id="SmeCompany_Customers" value="@Model.SmeCompany.Customers" type="text" name="customers"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_BeeLevel">@L("BeeLevel")</label>
+									<input class="form-control" id="SmeCompany_BeeLevel" value="@Model.SmeCompany.BeeLevel" type="text" name="beeLevel"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_Industries">@L("Industries")</label>
+									<input class="form-control" id="SmeCompany_Industries" value="@Model.SmeCompany.Industries" type="text" name="industries"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_PropertiesJson">@L("PropertiesJson")</label>
+									<input class="form-control" id="SmeCompany_PropertiesJson" value="@Model.SmeCompany.PropertiesJson" type="text" name="propertiesJson"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeCompany_WebSite">@L("WebSite")</label>
+									<input class="form-control" id="SmeCompany_WebSite" value="@Model.SmeCompany.WebSite" type="text" name="webSite"     />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

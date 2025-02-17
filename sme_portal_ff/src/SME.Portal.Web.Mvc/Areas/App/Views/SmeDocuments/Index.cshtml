@@ -1,0 +1,71 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SmeDocuments
+@using System.Globalization
+
+@model SmeDocumentsIndexVm
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.MyDocuments;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+}
+
+@section Scripts
+{
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if(!Model.HasOnboarded)
+        {
+            <div class="alert alert-custom alert-notice alert-light-warning fade show mb-5" role="alert">
+                <div class="alert-icon">
+                    <i class="flaticon-warning"></i>
+                </div>
+                <div class="alert-text">You need to complete your Funder Search before you can have access to your document storage facility.</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="ki ki-close"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        }
+        else if(!Model.HasApplications)
+        {
+            <div class="alert alert-custom alert-notice alert-light-primary fade show mb-5" role="alert">
+                <div class="alert-icon">
+                    <i class="flaticon-warning"></i>
+                </div>
+                <div class="alert-text">Navigate to <h5>@Html.ActionLink("My Searches", "Index", "FundingApplication")</h5> and create a Funder Search to activate this feature.</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="ki ki-close"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">@L("DocumentsInfoAlertInfo")</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card card-custom gutter-b">
+                <div class="card card-custom">
+                    @{ await Html.RenderPartialAsync("_SmeDocumentsDataTable.cshtml"); }
+                </div>
+            </div>
+        }
+    </div>
+</div>

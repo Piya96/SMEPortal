@@ -1,0 +1,20 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model ManageFinanceProductViewModel
+
+    @if(Model.FinanceProductComments?.Any() ?? false)
+    {
+        foreach (var comment in Model.FinanceProductComments)
+        {
+            <div class="card mt-5" style="margin-bottom: 10px;" id="CommentDiv">
+                <div class="card-body">
+                    <h4 class="card-title" style="background-color: #f8f9fa; padding: 10px; margin-left: -10px;">
+                    From: <b>@(comment.UserName)</b> at <span class="small-text">@comment.CreationTime.ToString("dd MMMM yyyy HH:mm")</span>
+                    </h4>
+                    <p class="card-text">@Html.Raw(comment.Text)</p>
+                    <a onclick="deleteFinanceProductComment('@(comment.Id)')" href="#" class="card-link pull-right">Delete</a>
+                </div>
+            </div>
+        }
+    } else {
+    <div class="alert alert-info mt-5">No comments yet.</div>
+    }

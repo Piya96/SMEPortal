@@ -1,0 +1,199 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<div class="pb-5" data-wizard-type="step-content" id="id-div-mandate-fit">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Funding Requirement</h3>
+
+    <div id="parent-madate-fit-pass" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>You have completed your basic screening. Please continue to complete the information requested in the screens to follow to confirm if one of our funding options fits your needs</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="parent-madate-fit-fail" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="alert alert-custom alert-outline-warning" role="alert">
+                    <div class="alert-icon"><i class="flaticon2-check-mark"></i></div>
+                    <div class="alert-text">
+                        <p><b>@L("Sefa")</b> is currently unable to assist you with funding.</p>
+                        <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-mandatefit-fail-redirect" href="javascript:void(0)">here</a>.</p>
+                        <p>To understand <b>@L("Sefa")</b>'s qualification criteria, please click <a id="a-mandatefit-fail-info" href="javascript:void(0)">here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="div-program-not-active" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="alert alert-custom alert-outline-warning" role="alert">
+                    <div class="alert-icon"><i class="flaticon2-check-mark"></i></div>
+                    <div class="alert-text">
+                        <p><b>@L("Sefa")</b> does not currently have a finance option that matches your particular funding needs.</p>
+                        <p>If you would like to be linked with other funders who may have funding options for you, please click <a id="a-program-not-active-redirect" href="javascript:void(0)">here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="parent-mandatefit-fail-info" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <h4></h4>
+                        <ul>
+                            <li>The loan amount should be within the <b>@L("Sefa")</b> range of R20k to R50mil</li>
+                            <li>The Tax status should be in good standing and the Tax PIN should not expire within 3 months.</li>
+                            <li>CIPC Annual fees are paid up to date</li>
+                            <li>You should be able to afford the loan (proof of budget and cashflow forecasts should confirm this)</li>
+                            <li>No conflict of interest should exist in <b>@L("Sefa")</b></li>
+                            <li>The business should operate within SA borders</li>
+                            <li>The majority shareholders must have a SA ID</li>
+                            <li>The majority shareholders should be involved in the business</li>
+                            <li>The managers must have relevant skills and experience that fit the type of business</li>
+                            <li>Owner must actively work in the business</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @{ await
+             Html.RenderPartialAsync(
+                 "../SefaApp/partials/input-n-lt-rt.cshtml",
+                 new Input_N_LT_RT()
+                 {
+                     Name = "mandate-fit-loan-amount",
+                     Label = "Loan amount",
+                     LeftText = "R"
+                 }
+             );
+    }
+
+    @{ await
+             Html.RenderPartialAsync(
+                 "../SefaApp/partials/select-n-lt-rt.cshtml",
+                 new Select_N_LT_RT()
+                 {
+                     Name = "mandate-fit-reason-for-finance",
+                     Label = "Reason for finance"
+                 }
+             );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-forecast-cash-flow-repayable",
+                Label = "Will you be able to afford to repay the loan you are applying for?"
+            }
+        );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-conflict-of-interest-at-sefa",
+                Label = "Do you or your Business have any conflict of interest at <b>sefa</b>?",
+                Info = "<p>e.g. A conflict of interest would exist if any of the directors or shareholders of the business, or their spouses or family members, are presently employed by <b>sefa</b> or a state organisation.</p>"
+            }
+        );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-operations-within-boarders-sa",
+                Label = "Are financial transactions conducted within the borders of South Africa?"
+            }
+        );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-controlling-interest-greater-than-50",
+                Label = "Is controlling interest (>50%) of the business enterprise held by a South African Citizen(s) with a valid South African identity document  or permanent residents who hold a valid South Africa identity document?"
+            }
+        );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-shareholder-involved",
+                Label = "Are the majority of shareholders involved in the day to day running of the business on a full-time basis?"
+            }
+        );
+    }
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-management-team-has-xp-skills",
+                Label = "Does your management team have the relevant entrepreneurial skills and experience relevant to the type of business?"
+            }
+        );
+    }
+
+    <div id="div-mandate-fit-cipc-annual-fees-paid">
+        @{
+            await Html.RenderPartialAsync(
+                "../SefaApp/partials/radio-n-top.cshtml",
+                new Radio_N_Top()
+                {
+                    Name = "mandate-fit-cipc-annual-fees-paid",
+                    Label = "Are your CIPC annual fees paid up to date?"
+                }
+            );
+        }
+    </div>
+
+
+    @{
+        await Html.RenderPartialAsync(
+            "../SefaApp/partials/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "mandate-fit-tax-in-good-standing-pin-not-expired",
+                Label = "Is your tax in good standing and is your PIN still valid?"
+            }
+        );
+    }
+
+    <input type="text" id="product-fit-guid" name="product-fit-guid" style="display:none;">
+
+</div>

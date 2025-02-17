@@ -1,0 +1,595 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+@{
+    var LenderName = "Lender";
+    var lenderName = "lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        LenderName = "Funder";
+        lenderName = "funder";
+    }
+}
+
+<div class="pb-5" data-wizard-type="step-content" id="div-lender-documents">
+
+    <style>
+        #div-lender-documents > .radio {
+            display: inline-block;
+            margin: 0 auto;
+            text-align:center !important;
+        }
+    
+        .sample {
+            margin: auto;
+            width:8% !important;
+        }
+
+        .sample2 {
+            margin: auto;
+            width:16% !important;
+        }
+    </style>
+
+    <h3 class="mb-10 font-weight-bold text-dark">Documents for @LenderName</h3>
+
+    @{
+        var w1 = "60%";
+    }
+
+    <div class="card form-group">
+        <div class="table-responsive">
+            <table class="table table-sm table-hover" style="overflow:hidden !important;">
+                <thead>
+                    <tr id="">
+                        <th style="width:@w1;">Do you have the following documents available (if the @lenderName requests them):</th>
+                        <th style="text-align:center;">Yes</th>
+                        <th style="text-align:center;">No</th>
+                   </tr>
+                </thead>
+                <tbody id="">
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Business registration documents (CIPC) e.g. Cor14.3 or CK documents</div>
+                            <div id="message-one1"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one1" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one1" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Certified ID copy of owners and directors</div>
+                            <div id="message-one2"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one2" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one2" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Proof of business address (lease agreement, title deed or permit)</div>
+                            <div id="message-one3"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one3" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one3" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Bank statements for business account (last 6 months) electronically stamped and on bank letterhead</div>
+                            <div id="message-one4"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one4" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one4" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Proof of bank account electronically stamped and on bank letterhead</div>
+                            <div id="message-one5"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one5" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one5" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Signed contracts and/or purchase orders</div>
+                            <div id="message-one6"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one6" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one6" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>List of outstanding debtors (unpaid invoices for more than 30 days)</div>
+                            <div id="message-one7"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one7" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one7" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Cashflow projections (income and expense budget for 12 months)</div>
+                            <div id="message-one8"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one8" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one8" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Business plan e.g. PDF of the final business plan</div>
+                            <div id="message-one9"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one9" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one9" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Statement of assets and liabilities (for all owners)</div>
+                            <div id="message-one10"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one10" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one10" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Tax clearance certificate / Tax PIN on official SARS letterhead</div>
+                            <div id="message-one11"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one11" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one11" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Management accounts (Income statement, Balance Sheet)</div>
+                            <div id="message-one12"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one12" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one12" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Annual financial statements (signed by Accountant)</div>
+                            <div id="message-one13"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one13" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one13" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Share register and/or share certificates e.g. PDF of the signed certificates and share register document</div>
+                            <div id="message-one14"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one14" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one14" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Shareholder agreement e.g. PDF of the final signed agreement</div>
+                            <div id="message-one15"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one15" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one15" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>BEE certificate or affidavit</div>
+                            <div id="message-one16"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one16" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one16" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Business Organogram e.g. PDF of the final business structure showcasing the different positions and reporting structure</div>
+                            <div id="message-one17"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one17" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one17" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Beneficial ownership register/compliance - New laws</div>
+                            <div id="message-one18"></div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one18" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one18" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="card form-group">
+        <div class="table-responsive">
+            <table class="table table-sm table-hover" style="overflow:hidden !important;">
+                <thead>
+                    <tr id="">
+                        <th style="width:@w1;">Do you have the following documents available:</th>
+                        <th style="text-align:center;">Yes</th>
+                        <th style="text-align:center;">No</th>
+                        <th style="text-align:center;">Not Applicable</th>
+                   </tr>
+                </thead>
+                <tbody id="">
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>COIDA letter of good standing. Requires CF number and completed return of earnings at COIDA</div>
+                            <div id="message-one19"></div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one19" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one19" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one19" value="No App" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Industry certifications if applicable (e.g. CIBD)</div>
+                            <div id="message-one20"></div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one20" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one20" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one20" value="No App" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Certified copies of spouse ID (if married in Community of property)</div>
+                            <div id="message-one21"></div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one21" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one21" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one21" value="No App" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                    <tr id="">
+                        <td style="width:@w1;">
+                            <div>Certified copies of marriage certificate (if married in Community of property)</div>
+                            <div id="message-one22"></div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one22" value="Yes" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one22" value="No" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="sample2">
+                            <label class="radio radio-outline radio-primary">
+                                <input type="radio" name="one22" value="No App" />
+                                <span></span>
+                            </label>
+                            </div>
+                        </td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<br />
+
+</div>

@@ -1,0 +1,135 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.ListItems
+@using SME.Portal.Web.Areas.App.Startup
+@model ListItemsViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.ListItems;
+}
+@section Scripts
+{
+    <script src="/view-resources/Areas/App/Views/ListItems/Index.js" asp-append-version="true"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+
+                <abp-page-subheader title="@L("ListItems")" description="@L("ListItemsHeaderInfo")">
+                     <button id="ExportToExcelButton" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> @L("ExportToExcel")</button>
+            
+                     @if (IsGranted(AppPermissions.Pages_Administration_ListItems_Create))
+                     {
+                         <button id="CreateNewListItemButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewListItem")</button>                
+                     }
+                </abp-page-subheader>
+            
+<div class="@(await GetContainerClass())">   
+    <div class="card card-custom gutter-b">
+        <div class="card-body">
+            <div class="form">
+                <div class="row align-items-center mb-4">
+                    <div class="col-xl-12">
+                        <div class="form-group align-items-center">
+                            <div class="input-group">
+                                <input type="text" id="ListItemsTableFilter" class="form-control m-input" placeholder="@L("SearchWithThreeDot")" value="@Model.FilterText">
+                                <span class="input-group-btn">
+                                    <button id="GetListItemsButton" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+            <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+                <div class="col-md-12">
+                    <div class="kt-separator kt-separator--border-dashed"></div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="ListIdFilterId">@L("ListId")</label>
+                        <input type="text" class="form-control" name="listIdFilter" id="ListIdFilterId">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="ParentListIdFilterId">@L("ParentListId")</label>
+                        <input type="text" class="form-control" name="parentListIdFilter" id="ParentListIdFilterId">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="NameFilterId">@L("Name")</label>
+                        <input type="text" class="form-control" name="nameFilter" id="NameFilterId">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="DetailsFilterId">@L("Details")</label>
+                        <input type="text" class="form-control" name="detailsFilter" id="DetailsFilterId">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="MinPriorityFilterId">@L("MinMax") @L("Priority")</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control m-input" placeholder="@L("MinValue")" name="minPriorityFilter" id="MinPriorityFilterId" />
+                            <input type="number" class="form-control m-input" placeholder="@L("MaxValue")" name="maxPriorityFilter" id="MaxPriorityFilterId" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="MetaOneFilterId">@L("MetaOne")</label>
+                        <input type="text" class="form-control" name="metaOneFilter" id="MetaOneFilterId">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="MetaTwoFilterId">@L("MetaTwo")</label>
+                        <input type="text" class="form-control" name="metaTwoFilter" id="MetaTwoFilterId">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="MetaThreeFilterId">@L("MetaThree")</label>
+                        <input type="text" class="form-control" name="metaThreeFilter" id="MetaThreeFilterId">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="SlugFilterId">@L("Slug")</label>
+                        <input type="text" class="form-control" name="slugFilter" id="SlugFilterId">
+                    </div>
+                </div>
+
+
+            </div>
+                <div class="row mb-4">
+                    <div class="col-xl-12">
+                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                </div>
+            <div class="row align-items-center">
+                <table id="ListItemsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>@L("Actions")</th>
+                            <th>@L("ListId")</th>
+                            <th>@L("ParentListId")</th>
+                            <th>@L("Name")</th>
+                            <th>@L("Details")</th>
+                            <th>@L("Priority")</th>
+                            <th>@L("MetaOne")</th>
+                            <th>@L("MetaTwo")</th>
+                            <th>@L("MetaThree")</th>
+                            <th>@L("Slug")</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

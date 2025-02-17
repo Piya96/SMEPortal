@@ -1,0 +1,594 @@
+﻿:root {
+    --lightest-green: #ECF9EF;
+    --lighter-green: #CFEBD4;
+    --medium-green: #59BB6F;
+    --darker-green: #79B674;
+    --darkest-green: #799674;
+    /* */
+    --lightest-orange: #F8D8CF;
+    --light-orange: #F0D0C7;
+    --medium-orange: #EF7A51;
+    --dark-orange: #F75D39;
+    --darkest-orange: #CF5A31;
+    /* */
+    --lighter-blue: #E7EFFA;
+    --dark-blue: #060046;
+    --darkest-blue: #000025;
+    /* */
+    --white: #FFFFFF;
+    --black: #000000;
+    --grey: #808080;
+    --light-grey: #B0B0B0;
+    /* */
+    --radius-1: 5px;
+    --radius-2: 10px;
+    --radius-3: 15px;
+    --radius-3: 20px;
+}
+
+/* Colors for the top 4 steps in the wizard. Outer wizard if you want. */
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] {
+    background-color: var(--lightest-green);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] {
+    background-color: var(--lighter-green);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] {
+    background-color: var(--lightest-green);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-number {
+    color: var(--medium-green);
+    background-color: var(--lighter-green);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-number {
+    color: var(--lightest-green);
+    background-color: var(--medium-green);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-number {
+    color: var(--medium-green);
+    background-color: var(--lighter-green);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--dark-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--dark-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--dark-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+/* Colors for the left-side steps in basic screening and funder search wizards. Inner wizards if you want. */
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+    color: var(--medium-green);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+    color: var(--lighter-green);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+    color: var(--lighter-green);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] {
+    background-color: var(--lighter-green) !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    border-color: var(--lighter-green) !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"]:after {
+    border-left-color: var(--lighter-green);
+    margin-bottom: var(--radius-1);
+    color: var(--lighter-green);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] {
+    background-color: white !important;
+    border-color: var(--lighter-green);
+    border-style: solid !important;
+    border-width: 2px !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] {
+    background-color: white !important;
+    border-color: var(--lighter-green);
+    border-style: solid !important;
+    border-width: 2px !important;
+    margin-bottom: var(--radius-1);
+}
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.radio.radio-outline.radio-primary > input ~ span {
+    background-color: transparent;
+    border-color: var(--dark-blue) !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: var(--dark-blue) !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span:after {
+    background-color: var(--dark-blue) !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.radio.radio-outline.radio-primary > input:disabled ~ span {
+    background-color: transparent;
+    border-color: grey !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.radio.radio-outline.radio-primary > input[disabled]:checked ~ span:after {
+    background-color: grey;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.radio > input[name='financefor']:checked ~ span {
+    background-color: var(--dark-blue) !important;
+    border-color: var(--dark-blue) !important;
+    color: var(--dark-blue) !important;
+}
+
+/*
+input:disabled {
+    border-color: transparent !important;
+    background-color: #DDDDDD !important;
+}
+*/
+
+input:enabled {
+    border-color: var(--lighter-green) !important;
+    background-color: white !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+input:hover:enabled {
+    border-color: var(--darker-green) !important;
+    background-color: white !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+input:focus:enabled {
+    border-color: var(--lighter-green) !important;
+    background-color: white !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+
+select {
+    border-color: var(--lighter-green) !important;
+    background-color: white !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+    /*
+select:focus {
+    border-color: var(--blue-8) !important;
+    background-color: var(--blue-1) !important;
+}
+*/
+
+
+select:disabled {
+    border-color: transparent !important;
+    background-color: #F3F6F9 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+select:hover:not(:disabled) {
+    border-color: var(--darker-green) !important;
+    background-color: white !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+
+.checkbox > input#input-credit-score-declaration:checked ~ span, #input-summary-declaration:checked ~ span {
+    background-color: var(--white) !important;
+    border-color: var(--dark-blue) !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > span {
+    border-color: var(--dark-blue) !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > input#input-credit-score-declaration:checked ~ span:after, input#input-summary-declaration:checked ~ span:after {
+    border-color: var(--dark-blue) !important;
+}
+
+
+.checkbox > input:checked ~ span {
+    background-color: var(--dark-blue) !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span:after {
+    border-color: var(--white) !important;
+}
+
+
+/* , #button-wizard-next, #button-wizard-submit Login, Next, submit buttons normal */
+.btn-primary#kt_login_signin_submit, #button-wizard-next, #button-wizard-submit, #register-submit-btn {
+    background-color: var(--dark-orange) !important;
+    border-color: var(--dark-orange) !important;
+    color: white !important;
+}
+
+/* , #button-wizard-next, #button-wizard-submit Next button hover */
+.btn-primary#kt_login_signin_submit:hover, #button-wizard-next:hover, #button-wizard-submit:hover, #register-submit-btn:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--darkest-orange) !important;
+    border-color: var(--darkest-orange) !important;
+    color: white !important;
+}
+
+/* Prev button normal */
+.btn-light-primary {
+    background-color: var(--light-orange) !important;
+    border-color: var(--light-orange) !important;
+    color: var(--dark-orange) !important;
+}
+
+/* Prev button hover */
+.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--dark-orange) !important;
+    border-color: var(--dark-orange) !important;
+    color: white !important;
+}
+
+/* Save, cancel button normal */
+.btn-outline-primary#button-wizard-save, #button-wizard-cancel {
+    background-color: var(--white) !important;
+    border-color: var(--dark-orange) !important;
+    color: var(--dark-orange) !important;
+}
+
+/* Save cancel button hover */
+.btn-outline-primary#button-wizard-save:hover, #button-wizard-cancel:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--light-orange) !important;
+    border-color: var(--dark-orange) !important;
+    color: var(--dark-orange) !important;
+}
+
+/* Verify ID, Verify Mobile ( user and owner ) normal */
+/*
+.btn-primary#button-user-profile-identity, #button-user-profile-mobile, #button-owner-profile-identity, #button-owner-profile-mobile {
+    background-color: var(--dark-blue) !important;
+    border-color: var(--dark-blue) !important;
+    color: white !important;
+}
+*/
+
+/* Verify ID, Verify Mobile ( user and owner ) hover */
+/*
+.btn-primary#button-user-profile-identity:hover, #button-user-profile-mobile:hover, #button-owner-profile-identity:hover, #button-owner-profile-mobile:hover, #button-doc-a:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--dark-blue) !important;
+    border-color: var(--dark-blue) !important;
+    color: white !important;
+}
+*/
+
+/* Outline buttons. */
+.btn.btn-outline-primary i {
+     color: var(--dark-orange) !important;
+}
+
+/*
+.btn-outline-primary#button-doc-a, #button-doc-b {
+    background-color: var(--white) !important;
+    border-color: var(--dark-blue) !important;
+    color: var(--dark-blue) !important;
+}
+
+.btn-outline-primary#button-doc-a:hover, #button-doc-b:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--lighter-blue) !important;
+    border-color: var(--dark-blue) !important;
+    color: var(--dark-blue) !important;
+}
+*/
+
+.btn.btn-outline-primary i {
+     color: var(--dark-orange) !important;
+}
+
+.btn-outline-primary {
+    background-color: var(--white) !important;
+    border-color: var(--dark-orange) !important;
+    color: var(--dark-orange) !important;
+}
+
+.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--lightest-orange) !important;
+    border-color: var(--dark-orange) !important;
+    color: var(--dark-orange) !important;
+}
+
+.btn.btn-primary {
+    background-color: var(--dark-orange) !important;
+    border-color: var(--dark-orange) !important;
+    color: var(--white) !important;
+}
+
+.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--darkest-orange) !important;
+    border-color: var(--darkets-orange) !important;
+    color: white !important;
+}
+
+
+.btn-light-primary#a-google {
+    background-color: var(--lighter-green) !important;
+    border-color: var(--lighter-green) !important;
+    color: var(--darker-green) !important;
+}
+
+.btn-light-primary#a-google:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: var(--lighter-green) !important;
+    border-color: var(--lighter-green) !important;
+    color: white !important;
+}
+
+
+.flaticon-profile {
+    color: var(--dark-blue) !important;
+}
+
+
+/*Login icon background*/
+.symbol.symbol-40 .symbol-label {
+    background-color: var(--lighest-green);
+}
+
+.svg-icon.svg-icon-primary svg g [fill] {
+    fill: var(--darker-green) !important;
+}
+
+a.text-primary:focus {
+    color: var(--dark-blue) !important;
+}
+
+span i {
+    color: var(--dark-blue);
+}
+
+label a {
+    color: var(--dark-blue);
+}
+
+a {
+    color: var(--dark-blue) !important;
+}
+
+.fa-info-circle {
+    color: var(--light-grey);
+}
+
+.fa-question-circle {
+    color: var(--light-grey);
+}
+
+/* Google G icon color on login button. */
+i.fab.fa-google {
+    color: var(--darker-green);
+}
+
+a.btn-light-primary {
+    color: var(--darker-green) !important;
+    background-color: white;
+}
+
+a:hover {
+    color: var(--light-blue) !important;
+}
+
+a.text-hover-primary, .text-hover-primary {
+    color: var(--dark-blue) !important;
+}
+
+a.text-hover-primary:hover, .text-hover-primary:hover {
+    color: var(--dark-blue) !important;
+}
+
+
+/*
+.input:hover {
+    border-color: #00B4BA !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: #00B4BA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.btn.btn-secondary {
+    border-color: #00B4BA !important;
+    background-color: #B8DEE9 !important;
+    color: #00B4BA;
+}
+
+.btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary.focus:not(.btn-text) {
+     color: white;
+     background-color: #00B4BA !important;
+     border-color: #00B4BA !important;
+ }
+
+.btn.btn-light {
+    color: white;
+    background-color: #00B4BA;
+    border-color: #00B4BA;
+}
+*/
+
+span#span-match-count.label.label-xl.font-weight-bolder.label-rounded.label-light-primary {
+    color: var(--medium-green) !important;
+    background-color: var(--lighter-green) !important;
+}
+
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title:after {
+    color: var(--lightest-green) !important;
+}
+
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title {
+    background-color: var(--lightest-green);
+    color: gray !important;
+}
+
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: var(--dark-blue) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+/*
+.header-menu .menu-nav > .menu-item.menu-item-rel {
+    background-color: var(--blue-2);
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-rel:hover:not(.menu-item-active) {
+    background-color: var(--blue-4) !important;
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item:hover > .menu-link .menu-text {
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: var(--blue-4);
+}
+*/
+
+/*
+.symbol.symbol-light-dark > .symbol-label {
+    background-color: var(--blue-4);
+    color: white;
+}
+
+.btn.btn-secondary:hover .symbol-label {
+    background-color: var(--blue-2) !important;
+    color: var(--blue-4) !important;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
+    color: white;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: var(--blue-8);
+    color: white;
+}
+
+*/
+.nav.nav-pills .nav-item {
+    background-color: var(--lightest-green) !important;
+    color: var(--medium-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active {
+    background-color: var(--medium-green);
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-text {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-icon i {
+    color: var(--medium-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-text {
+    color: var(--medium-green) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) {
+    background-color: var(--lighter-green);
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-text {
+    color: white !important;
+}
+
+.alert.alert-custom.alert-outline-info {
+    border-color: var(--dark-orange) !important;
+}
+
+.alert.alert-custom.alert-outline-info .alert-icon .flaticon-information {
+    color: var(--dark-orange) !important;
+}
+
+.alert.alert-custom.alert-outline-info .alert-text {
+    color: var(--dark-orange) !important;
+}

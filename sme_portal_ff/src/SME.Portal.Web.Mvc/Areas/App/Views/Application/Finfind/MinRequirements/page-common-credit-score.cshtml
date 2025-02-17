@@ -1,0 +1,44 @@
+﻿@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@{
+    var TenantName = "Finfind";
+    var LenderName = "Lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        TenantName = "Hloolo";
+        LenderName = "Funder";
+    }
+}
+
+<p>@LenderName&#115 require your personal credit report when they assess your request for business funding.<br/>
+Note: obtaining your credit report via @TenantName does not negatively impact your credit score.​</p>
+
+<ul>
+    <li>
+        <div class="checkbox-inline form-group">
+            Consent to provide credit report&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <div class="checkbox-inline float-right">
+                    <label class="checkbox checkbox-outline checkbox-primary">
+                        <input
+                            type="checkbox"
+                            id="input-credit-score-declaration"
+                            name="input-credit-score-declaration"
+                            value="Yes" />
+                        <span></span>
+                        
+                    </label>
+                </div>
+        </div>
+        <div id="message-credit-score-declaration" style="margin-top:-10px;"></div>
+    </li>
+</ul>
+<br/>
+
+<div id="personal-credit-report-link" class="alert alert-secondary form-group" role="alert" style="display:none;">
+
+    <div class="card" id="myTabContent3">
+        @{ await Html.RenderPartialAsync("../../../ConsumerCredit/_ConsumerCreditPartial.cshtml", new ConsumerCreditPartialModel() { InputWidth = "col-xl-12" } ); }
+    </div>
+
+</div>

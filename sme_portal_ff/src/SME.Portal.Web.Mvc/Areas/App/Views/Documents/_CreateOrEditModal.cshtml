@@ -1,0 +1,64 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Documents
+@model CreateOrEditDocumentModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditDocument")) : L("CreateNewDocument")))
+
+<div class="modal-body">
+        <div id="DocumentInformationsTab">
+            <form name="DocumentInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.Document.Id" />
+                }
+
+				            
+								<div class="form-group m-form__group">
+										<label for="SmeCompanyName">@L("SmeCompany")</label>
+									    <div class="input-group">
+											<input class="form-control" id="SmeCompanyName" name="smeCompanyName" value="@Model.SmeCompanyName" type="text" disabled>
+										<div class="input-group-append">
+											<button class="btn btn-primary blue" id="OpenSmeCompanyLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+										</div> 
+										<div class="input-group-prepend">
+											<button class="btn btn-danger btn-icon" type="button" id="ClearSmeCompanyNameButton"><i class="fa fa-times"></i></button>
+										</div>
+									</div>
+								</div>
+
+								@if (Model.IsEditMode)
+								{
+									<input class="form-control" id="Document_SmeCompanyId" value="@Model.Document.SmeCompanyId" type="text" name="smeCompanyId" required hidden/>
+								}
+								 else
+								{ 
+									<input class="form-control" id="Document_SmeCompanyId" value="" type="text" name="smeCompanyId" required hidden/>
+								}
+
+
+
+				
+								<div class="form-group">
+									<label for="Document_Type">@L("Type")</label>
+									<input class="form-control" id="Document_Type" value="@Model.Document.Type" type="text" name="type"  required  maxlength="@SME.Portal.Documents.DocumentConsts.MaxTypeLength"  minlength="@SME.Portal.Documents.DocumentConsts.MinTypeLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Document_FileName">@L("FileName")</label>
+									<input class="form-control" id="Document_FileName" value="@Model.Document.FileName" type="text" name="fileName"  required  maxlength="@SME.Portal.Documents.DocumentConsts.MaxFileNameLength"  minlength="@SME.Portal.Documents.DocumentConsts.MinFileNameLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Document_FileType">@L("FileType")</label>
+									<input class="form-control" id="Document_FileType" value="@Model.Document.FileType" type="text" name="fileType"  required  maxlength="@SME.Portal.Documents.DocumentConsts.MaxFileTypeLength"  minlength="@SME.Portal.Documents.DocumentConsts.MinFileTypeLength"  />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

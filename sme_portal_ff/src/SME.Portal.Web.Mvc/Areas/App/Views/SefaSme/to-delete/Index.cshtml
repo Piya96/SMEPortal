@@ -1,0 +1,200 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SME;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+@using Abp.Runtime.Security;
+
+@model SMEOnboardingWizardViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.ProfileCompanies;
+    var onboarded = false;
+}
+
+@section Scripts
+{
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+    <link href="~/metronic/themes/theme11/css/pages/wizard/wizard-4.css" rel="stylesheet" />
+
+    <link href="~/metronic/themes/default/css/pages/wizard/wizard-2.css" rel="stylesheet" />
+
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+    <script src="~/custom/js/sweetalert2/sweetalert2.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/sme/formvalidation.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js" asp-append-version="true"></script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!--<script src="~/custom/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>-->
+    <script src="~/custom/js/input-mask/jquery.inputmask.js" asp-append-version="true"></script>
+
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = "sefa"
+            }
+        );
+    }
+
+<environment include="Development">
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+    <script src="~/view-resources//Areas//App/Views/SefaSme/_IndustrySectors.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SME/landing.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/html-control.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/SefaSme/onboarding-service.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/SefaSme/onboarding-common.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/modal-message.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/validate-identity.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SME/address-lookup.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaSme/wizard-menu.js" asp-append-version="true"></script>
+    <!--<script src="~/view-resources/Areas/App/Views/SefaSme/mandate-fit.js" asp-append-version="true"></script>-->
+    <script src="~/view-resources/Areas/App/Views/SefaSme/user-profile.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/owner-profile.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/company-profile.js" asp-append-version="true"></script>
+    <!--<script src="~/view-resources/Areas/App/Views/SefaSme/business-owners.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/employees.js" asp-append-version="true"></script>-->
+    <script src="~/view-resources/Areas/App/Views/SefaSme/summary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/onboarding-wizard.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/FunderSearchSummary/_PartialSummaryController.js" asp-append-version="true"></script>
+</environment>
+
+<environment include="Production, Staging">
+    <script src="~/view-resources/Areas/App/Views/SME/landing.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources//Areas//App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources//Areas//App/Views/SefaSme/_IndustrySectors.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/html-control.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/sme-common.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_VerifySMSModal.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/_BusyAnimModal.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/SefaSme/onboarding-service.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/SefaSme/onboarding-common.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SME/modal-message.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/validate-identity.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SME/address-lookup.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/wizard-menu.min.js" asp-append-version="true"></script>
+    <!--<script src="~/view-resources/Areas/App/Views/SefaSme/mandate-fit.min.js" asp-append-version="true"></script>-->
+    <script src="~/view-resources/Areas/App/Views/SefaSme/user-profile.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/owner-profile.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/company-profile.min.js" asp-append-version="true"></script>
+    <!--<script src="~/view-resources/Areas/App/Views/SefaSme/business-owners.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/employees.min.js" asp-append-version="true"></script>-->
+    <script src="~/view-resources/Areas/App/Views/SefaSme/summary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaSme/onboarding-wizard.min.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_UserProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_OwnerProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/SefaFunderSearchSummary/_CompanyProfileSummary.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/FunderSearchSummary/_PartialSummaryController.min.js" asp-append-version="true"></script>
+</environment>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCai5TL1Efvs-8Ovj6FfzHVjiIGSMxoyXs&amp;libraries=places&amp;callback=initAutocomplete" async defer></script>
+
+    <script>
+        $(document).ready(function () {
+
+            function cb(action, data, companyId) {
+
+                function cb_NoAvailableCompanies() {
+                    location.href='@Url.Action("Profiling", "SefaSme")';
+                }
+
+                function cb_BasicScreeningFail() {
+                    location.href = '@Url.Action("SignoutRedirectToTenantView", "SefaSme")';
+                }
+
+                if (action == 'SubmitDone') {
+                    if (data == app.onboard.wizard.MODE.Add || data == app.onboard.wizard.MODE.Edit) {
+                        location.href='@Url.Action("Profiling", "SefaSme")';
+                    } else {
+                        location.href='@Url.Action("Wizard", "SefaApplication")?id=' + companyId;
+                    }
+                } else if (action == 'basic-scrceening-fail') {
+                    cb_BasicScreeningFail();
+                } else if (action == 'no-available-companies') {
+                    cb_NoAvailableCompanies();
+                }
+            }
+
+            let _model = '@Html.Raw(Json.Serialize(Model))';
+
+            app.onboard.wizard.init(
+                '@Model.Mode',
+                '@Model.CompanyId',
+                '@Model.MySettings.IsEmailConfirmed',
+                cb
+            );
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+        });
+    </script>
+}
+
+
+
+<div id="onboarding-wizard" style="display:none;">
+    <!--<div id="onboarding-wizard">-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div><br /></div>
+        <div class="@(await GetContainerClass())">
+
+            @if(!onboarded)
+            {
+                await Html.RenderPartialAsync("_Onboarding.cshtml", Model);
+            }
+            else
+            {
+                <div class="alert alert-custom alert-primary fade show" role="alert">
+                    <div class="alert-icon">
+                        <i class="flaticon-information" aria-label="@L("WelcomeSME")"></i>
+                    </div>
+                    <div class="alert-text">
+                        <h4 class="alert-heading">@L("WelcomeSMEPage_Title")</h4>
+                        <p>@L("WelcomeSMEPage_Info")</p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

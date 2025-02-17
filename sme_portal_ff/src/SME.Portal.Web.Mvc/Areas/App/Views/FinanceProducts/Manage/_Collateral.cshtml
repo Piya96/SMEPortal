@@ -1,0 +1,49 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepCollateralForm">
+    <div class="step" id="stepCollateral">
+        <h3>Collateral</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Select if this finance product requires collateral.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label class="pr-4">Require Business collateral</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="RequireBusinessCollateral" id="RequireBusinessCollateral" value="true" checked="@(@Model.IsEdit ? (!(@Model.FinanceProduct.RequireBusinessCollateral).HasValue ? !Model.IsEdit : @Model.FinanceProduct.RequireBusinessCollateral) : @Model.IsEdit)">
+                        <label class="custom-control-label" for="RequireBusinessCollateral">Yes</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label class="pr-4">Require owner collateral</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="RequireOwnerCollateral" id="RequireOwnerCollateral" value="true" checked="@(@Model.IsEdit ? (!(@Model.FinanceProduct.RequireOwnerCollateral).HasValue ? !Model.IsEdit : @Model.FinanceProduct.RequireOwnerCollateral) : @Model.IsEdit)">
+                        <label class="custom-control-label" for="RequireOwnerCollateral">Yes</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,109 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="..\..\common.props"></Import>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>SME.Portal.Web.Mvc</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>SME.Portal.Web.Mvc</PackageId>
+    <UserSecretsId>SME-Portal-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
+    <RootNamespace>SME.Portal.Web</RootNamespace>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="App_Data\**" />
+    <Content Remove="App_Data\**" />
+    <EmbeddedResource Remove="App_Data\**" />
+    <None Remove="App_Data\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Areas\App\Views\SefaApp\sefa-wizard.cshtml" />
+    <Content Remove="wwwroot\swagger\ui\index.html" />
+    <Content Remove="wwwroot\view-resources\Areas\App\Views\FinanceProducts\Manage\General.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\view-resources\Areas\App\Views\FinanceProducts\Manage\General.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\swagger\ui\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Areas\App\Views\SefaApplication\SefaWizard.cshtml" />
+    <None Include="wwwroot\custom\plugins\dropzonejs\min\dropzone-amd-module.min.js" />
+    <None Include="wwwroot\custom\plugins\dropzonejs\min\dropzone.min.js" />
+    <None Include="wwwroot\Plugins\.gitkeep" />
+    <None Include="wwwroot\view-resources\Areas\App\Views\FinanceProducts\Manage\General.js" />
+    <None Include="wwwroot\view-resources\Areas\App\Views\FunderSearchSummary\_PartialSummaryController.js" />
+    <None Include="wwwroot\view-resources\Areas\App\Views\SefaSme\helpers.js" />
+    <None Include="wwwroot\view-resources\ecdc.css" />
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+    <None Update="wwwroot\**\*;Areas\**\*;Views\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SME.Portal.Web.Core\SME.Portal.Web.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.Castle.Log4Net" Version="5.13.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.1.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="3.1.1" />
+    <PackageReference Include="itext7" Version="7.1.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.5" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="PayFast.AspNetCore" Version="1.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\App\Views\Application\AfricanBank\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\Intro\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\FundingRequirements\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\CompanyInfo\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\FinancialInfo\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\LenderDocuments\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\MinRequirements\" />
+    <Folder Include="Areas\App\Views\Application\Hloolo\Summary\" />
+    <Folder Include="Areas\App\Views\BasicScreening\CompanyPartners\" />
+    <Folder Include="Areas\App\Views\BasicScreening\AfricanBank\" />
+    <Folder Include="Areas\App\Views\BasicScreening\Hloolo\" />
+    <Folder Include="Areas\App\Views\Common\Html\" />
+    <Folder Include="Areas\App\Views\BasicScreeningCommon\" />
+    <Folder Include="Areas\App\Views\___TENANT___BasicScreening\" />
+    <Folder Include="Areas\App\Views\___TENANT___FunderSearch\" />
+    <Folder Include="Areas\App\Views\SefaApp\to-delete\MinRequirements\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\custom\plugins\html2canvas\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\Application\Common\Summary\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\Application\CompanyPartners\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\Application\Hloolo\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\Application\___TENANT___\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\CompanyPartners\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\AfricanBank\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\Hloolo\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\___TENANT___\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\Sefa\CompanyProfile\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\Sefa\Summary\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\BasicScreening\Sefa\OwnerProfile\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\SefaApplication\" />
+    <Folder Include="wwwroot\view-resources\Areas\App\Views\SefaApp\MinRequirements\" />
+  </ItemGroup>
+</Project>

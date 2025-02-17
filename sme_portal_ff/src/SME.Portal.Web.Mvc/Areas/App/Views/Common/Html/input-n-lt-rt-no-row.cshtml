@@ -1,0 +1,43 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Input_N_LT_RT;
+@{
+    var id = Model.Scope + "div-" + Model.Name;
+    var show = Model.Show == true ? "" : "none;";
+}
+
+<div class="@Model.Col" id="@id" style="display:@show">
+    <div class="form-group fv-plugins-icon-container">
+
+        <label class="" for="name-input-mandate-fit-loan-amount">@Model.Label</label>
+
+        <div class="input-group">
+            @{
+                if(Model.LeftText != null)
+                {
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@Model.LeftText</span>
+                    </div>
+                }
+                var name = Model.Scope + "input-" + Model.Name;
+            }
+            <input id="@name"
+                   value=""
+                   name="@name"
+                   type="text"
+                   class="form-control">
+
+            @{
+                if(Model.RightText != null)
+                {
+                    <div class="input-group-append">
+                        <span class="input-group-text">@Model.RightText</span>
+                    </div>
+                }
+            }
+
+        </div>
+        <span class="form-text text-muted">@Model.SubText</span>
+        <div id="message-@Model.Name" class="fv-plugins-message-container"></div>
+    </div>
+</div>

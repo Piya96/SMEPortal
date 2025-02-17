@@ -1,0 +1,17 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:green;" class="font-weight-bold mb-3">@L("FS_CompanyProfile")</h4>
+<div class="card">
+    @{ await Html.RenderPartialAsync("../SefaFunderSearchSummary/_CompanyProfileSummaryPartialTable.cshtml", Model); } 
+
+</div>
+<br />

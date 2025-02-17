@@ -1,0 +1,36 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Date_N_Top;
+
+<div class="@Model.Col">
+    <div class="form-group fv-plugins-icon-container">
+        <label>@Model.Label</label>
+        <div class="input-group">
+            @{
+                var name = Model.Scope + "date-" + Model.Name;
+            }
+            <input id="@name"
+                   name="@name"
+                   type="text"
+                   class="form-control">
+            <div class="input-group-append">
+                <span id="icon-@Model.Name" class="input-group-text">
+                    <i class="la la-calendar"></i>
+                </span>
+            </div>
+        </div>
+        <span class="form-text text-muted">@Model.SubText</span>
+        <div id="message-@Model.Name" class="fv-plugins-message-container"></div>
+    </div>
+</div>
+
+<script>
+    (function(){
+        let json = @Html.Raw(Json.Serialize(Model));
+        let id = 'icon-' + json.name;
+        let e = document.getElementById(id);
+        e.addEventListener('click', (ev) => {
+            $('#' + 'date-' + json.name).datepicker('show');
+        });
+    })();
+</script>

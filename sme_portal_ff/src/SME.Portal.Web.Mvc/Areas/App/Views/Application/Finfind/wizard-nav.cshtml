@@ -1,0 +1,194 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+    .div-header {
+        width: 100%;
+        height: 200px;
+        background-color: white;
+    }
+
+    .div-image {
+        max-width: 100%;
+        max-height: 100%;
+        opacity: 1.0;
+        margin: auto;
+        display: block;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+        color : blue;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+        color : #BDE0FF;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+        color : #BDE0FF;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state="current"] {
+        background-color: #BDE0FF !important;
+        margin-bottom: 4px !important;
+
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state="current"]:after {
+        border-left-color: #BDE0FF !important;
+        margin-bottom: 4px !important;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state="pending"] {
+        border-color:#BDE0FF !important;
+        border-style:solid !important;
+        border-width: 1px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .wizard-steps#div-funder-search-steps .wizard-step[data-wizard-state="done"] {
+        border-color:#BDE0FF !important;
+        border-style:solid !important;
+        border-width: 1px !important;
+        margin-bottom: 4px !important;
+    }
+</style>
+
+<div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+
+    <div class="wizard-steps" id="div-funder-search-steps">
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">New Finance Request</h3>
+                    <div class="wizard-desc">Explain how it works</div>
+                </div>
+            </div>
+        </div>
+                    @*<span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3" />
+                                <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                    </span>*@
+
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Funding Requirement</h3>
+                    <div class="wizard-desc">How much & what for</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                    @*<span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3" />
+                                <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                    </span>*@
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Business Info Needed by Lender</h3>
+                    <div class="wizard-desc">Ownership and trading history etc.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                    @*<span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3" />
+                                <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                    </span>*@
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Financial Info Needed by Lender</h3>
+                    <div class="wizard-desc">Business financial info</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Documents for lenders</h3>
+                    <div class="wizard-desc">Do you have these documents?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                    @*<span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <polygon points="0 0 24 0 24 24 0 24" />
+                                <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z M10.875,15.75 C11.1145833,15.75 11.3541667,15.6541667 11.5458333,15.4625 L15.3791667,11.6291667 C15.7625,11.2458333 15.7625,10.6708333 15.3791667,10.2875 C14.9958333,9.90416667 14.4208333,9.90416667 14.0375,10.2875 L10.875,13.45 L9.62916667,12.2041667 C9.29375,11.8208333 8.67083333,11.8208333 8.2875,12.2041667 C7.90416667,12.5875 7.90416667,13.1625 8.2875,13.5458333 L10.2041667,15.4625 C10.3958333,15.6541667 10.6354167,15.75 10.875,15.75 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                    </span>*@
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Minimum Requirements for Lenders</h3>
+                    <div class="wizard-desc">Documents and credit score</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                    @*<span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"></rect>
+                                <path d="M9,10 L9,19 L10.1525987,19.3841996 C11.3761964,19.7920655 12.6575468,20 13.9473319,20 L17.5405883,20 C18.9706314,20 20.2018758,18.990621 20.4823303,17.5883484 L21.231529,13.8423552 C21.5564648,12.217676 20.5028146,10.6372006 18.8781353,10.3122648 C18.6189212,10.260422 18.353992,10.2430672 18.0902299,10.2606513 L14.5,10.5 L14.8641964,6.49383981 C14.9326895,5.74041495 14.3774427,5.07411874 13.6240179,5.00562558 C13.5827848,5.00187712 13.5414031,5 13.5,5 L13.5,5 C12.5694044,5 11.7070439,5.48826024 11.2282564,6.28623939 L9,10 Z" fill="#000000"></path>
+                                <rect fill="#000000" opacity="0.3" x="2" y="9" width="5" height="11" rx="1"></rect>
+                            </g>
+                        </svg>
+                    </span>*@
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Summary</h3>
+                    <div class="wizard-desc">Review prior to submission</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

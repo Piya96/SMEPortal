@@ -1,0 +1,305 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.Legal; }
+
+<abp-page-subheader title="@L("TermsAndConditionsHeaderTitle")" description="@L("TermsAndConditionsHeaderInfo")"></abp-page-subheader>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="alert alert-custom alert-primary fade show" role="alert">
+            <div class="alert-icon">
+                <i class="flaticon-information" aria-label="@L("TermsAndConditionsAlertPage_Title")"></i>
+            </div>
+            <div class="alert-text">
+                <h4 class="alert-heading">@L("TermsAndConditionsAlertPage_Title")</h4>
+                <p>@L("TermsAndConditionsAlertPage_Info")</p>
+            </div>
+        </div>
+        <div class="card card-custom gutter-b">
+            <div class="accordion accordion-solid accordion-toggle-plus" id="accordionExample3">
+                <div class="card">
+                    <div class="card-header" id="headingOne3">
+                        <div class="card-title" data-toggle="collapse" data-target="#collapseOne3">
+                            1. Introduction
+                        </div>
+                    </div>
+                    <div id="collapseOne3" class="collapse show" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>1.1 Welcome to our website, www.finfind.co.za (“the Website”). The Website is owned by Finfind (Pty) Ltd [Registration Number 2015/059052/07] (“Finfind”) and is hosted in the secure Microsoft Azure cloud. The Website is located in the Republic of South Africa.</p>
+
+                            <p>1.2 This document sets out the terms and conditions (“Terms and Conditions”) applicable to your access and use of the Website. Please read these Terms and Conditions carefully. In terms of Section 11 of the Electronic Communications and Transactions Act 25 of 2002 and the common law of contract, these Terms and Conditions are valid, binding and enforceable against all persons who access the Website, web pages or any part thereof. If you do not agree to be bound by these Terms and Conditions, then you must cease your use of, or access to, the Website in any manner whatsoever.</p>
+
+                            <p>1.3 We reserve the right to revise and amend the Terms and Conditions at any time. All amendments to the Terms and Conditions will be uploaded to the Website. You are advised to review the Terms and Conditions from time to time to ensure that you are up to date with any amendments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwo3">
+                            2.  Interpretation and Definitions
+                        </div>
+                    </div>
+                    <div id="collapseTwo3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>2.1 Clause headings shall not be used in the interpretation of these Terms and Conditions.</p>
+
+                            <p>2.2 Unless the context clearly indicates the contrary intention, words importing the singular number shall include the plural and vice versa, and words importing any gender shall include the other genders, and words importing persons shall include corporate bodies and vice versa.</p>
+
+                            <p>2.3 Time periods expressed in terms of days shall be reckoned exclusively of the first, and inclusively of the last, day unless the last day falls on a Saturday, Sunday or public holiday, in which case the last day shall be the next succeeding day which is not a Saturday, Sunday or public holiday.</p>
+
+                            <p>2.4 If any definition contains a provision having substantive effect, it shall be given effect to as such.</p>
+
+                            <p>2.5 The following expressions shall have the meanings set out against them:</p>
+
+                            <p>
+                                (a) “Data Message” shall mean a data message as defined in the Electronic Communications Act 25 of 2002.<br />
+                                (b) “Personal Information” means personal information as defined in the Promotion of Access to Information Act 2 of 2000.<br />
+                                (c) “Finfind” means Finfind (Pty) Ltd [Registration Number 2015/059052/07] and any division and/or subsidiary of Finfind.<br />
+                                (d) “Terms and Conditions” means these terms and conditions that apply to your access and/or use of the Website.<br />
+                                (e) “User” means all individuals, whether natural or juristic accessing the website for any reason whatsoever.<br />
+                                (f) “Website” means the mobile web-based portal, www.finfind.co.za, including any subdomain of such website.<br />
+                                (g) “You/Your” means all individuals, whether natural or juristic accessing the website for any reason whatsoever.<br />
+                                (h) “Credit Record” refers to the credit reports provided by one of the authorised registered credit bureaux in South Africa. This report contains details of your personal credit history and lenders use credit records as one of the means to assess credit worthiness.<br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree3">
+                            3.  Use of the Website
+                        </div>
+                    </div>
+                    <div id="collapseThree3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>3.1 Whilst Finfind makes every effort to ensure that the information provided on the Website is up-to-date and accurate, you may not assume that the information is up-to-date and accurate and your use of, or reliance on, information provided on the Website, whether by Finfind or other third parties, is at your own risk.</p>
+
+                            <p>3.2 You agree that your use of the Website is for lawful purposes only and that you will not, without limiting the generality of the foregoing statement, use the Website:</p>
+
+                            <p>
+                                (a) for any unlawful purpose.<br />
+                                (b) to transmit, distribute, store or destroy material in violation of any applicable law or regulation.<br />
+                                (c) in a manner that will infringe the copyright, trademark, trade secret or other intellectual property rights of others.<br />
+                                (d) in a manner that will violate the privacy or other personal rights of others.<br />
+                                (e) for the transmission of unlawful material.<br />
+                                (f) to gain unauthorised access to other computer systems.<br />
+                            </p>
+
+                            <p>3.3 In addition to the foregoing, the following conduct is prohibited in respect of the Website:</p>
+
+                            <p>
+                                (a) use any robot, spider, other automatic device and/or manual process to:<br />
+                                (1) monitor or copy any part of the Website.<br />
+                                (2) generate automated postings and/or spam.<br />
+                                (3) interfere or attempt to interfere with the proper working of the Website.<br />
+                                (b) take any action that imposes an unreasonable or disproportionately large load on the Website infrastructure.<br />
+                                (c) access the Website by any means other than through the interface that is provided by Finfind or attempting to access the Website without first logging in through the Website log in page (if applicable).<br />
+                                (d) reverse assemble or otherwise attempt to discover any source code relating to the Website or any tool therein, except to the extent that such activity is expressly permitted by applicable law, notwithstanding this limitation.<br />
+                                (e) attempt to access any area of the Website to which access is not authorised.<br />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFour3">
+                            4.  Electronic Communications
+                        </div>
+                    </div>
+                    <div id="collapseFour3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>4.1 By using this Website or communicating with Finfind by electronic means you consent and acknowledge that any and all agreements, notices, disclosures, or any other communications satisfy any legal requirement, including but not limited to the requirement that such communications shall be “in writing”.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFive3">
+                            5.  Agreement in Terms of Section 21 of the Electronic Communications and Transactions Act 25 of 2002
+                        </div>
+                    </div>
+                    <div id="collapseFive3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>5.1 The User agrees to be bound by these Terms and Conditions and the parties agree that such agreement is concluded in Durban (South Africa) at the time the User enters the Website for the first time.</p>
+
+                            <p>5.2 No information or data on the Website shall constitute an offer to do business but is an invitation to do business.</p>
+
+                            <p>5.3 No e-mail communication shall be deemed to have been received by Finfind until a response has been issued by Finfind acknowledging receipt thereof. An automatically generated response from Finfind shall not fulfil this requirement.</p>
+
+                            <p>5.4 Electronic signatures, encryption and/or authentication is not required for valid electronic communications between the User and Finfind.</p>
+
+                            <p>5.5 The User agrees and warrants to Finfind that any data messages that are sent to Finfind from a computer, IP address or mobile device ordinarily used, or owned, by the User, was sent and/or authorised to be sent by the User.</p>
+
+                            <p>5.6 Finfind uses all reasonable endeavours to ensure that the Service provided through the Site is accurate and complete. However, much of the information contained on the Site is provided by financial institutions and we are unable to check it for completeness or accuracy. The information provided to us is based on the most recent information provided to us by the financial institutions. We provide the Service “as is”, without any warranties whatsoever. We shall not be responsible, in any way whatsoever, for any liabilities, claims, demands, actions, costs, damages and/or loss arising from the reliance, or use, of the Service, provided on the Site, or from the non-availability of the Site for any reason whatsoever.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseSix3">
+                            6.  Links
+                        </div>
+                    </div>
+                    <div id="collapseSix3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>6.1 The Website may provide links to other websites for your convenience. Such links must not be construed to constitute any relationship or endorsement of the linked third party. Use of the linked third party website and information or content set out therein is done at your own risk, and Finfind shall not be held responsible, whether directly or indirectly, in any way for the content, use or inability to use, or access, any linked websites or any links contained in a linked website.</p>
+
+                            <p>6.2 Finfind may provide links to other websites for your convenience or contact details of lenders. You acknowledge that any use of this information is done at your own risk and Finfind is not responsible, whether directly or indirectly, in any way for the outcomes of any interactions you may have as a result of your use of this information.</p>
+
+                            <p>6.3  Any third party that would like to link their website to the Website must obtain prior written permission from Finfind by sending such request to info@finfind.co.za, who shall have the sole discretion to determine whether or not to approve the link and if so, with what terms and conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseSeven3">
+                            7.  Data Protection and Privacy Policy
+                        </div>
+                    </div>
+                    <div id="collapseSeven3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>Please read our Privacy Policy.</p>
+
+                            <p>7.1 Finfind may collect (whether electronically or submitted to us by you), store and use any information supplied by you during the course of your use of the Website. Such information may be personal information as set out above or relating to your business, company or other legal entity. Finfind may collect, store, use and process (including sharing with third parties if applicable) such information in accordance with the provisions of the Protection of Personal Information Act 4 of 2013 and any other applicable legislation in the Republic of South Africa. You warrant that you are authorised to provide us with any information you may supply to us, and hereby consent to Finfind’s processing and any further processing of such personal information.</p>
+
+                            <p>7.2 In the event that your business matches to one of our lender products, you give Finfind permission to access your latest credit record from one of the authorised and registered credit bureaux in South Africa. This document is used to help us qualify leads that can be passed on to lenders in our database.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseEight3">
+                            8.  Copyright and Intellectual Property Rights
+                        </div>
+                    </div>
+                    <div id="collapseEight3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>8.1 All intellectual property on the Website, including but not limited to content, trademarks (or any confusingly similar trademarks), logos, pictures, videos, downloads, domain names, patents, design elements, software, source code, meta tags, databases, text, graphics, icons and hyperlinks are the property of, or are licensed to, Finfind, and are protected from infringement by domestic and international legislation and treaties. All rights in, and/or to, the content of the Website are reserved and retained by the owners of such rights.</p>
+
+                            <p>8.2 Users of this Website are granted a limited licence for general use, granting the User, subject to these Terms and Conditions, a non-exclusive, non-transferable, limited and revocable right to access, use, download and otherwise copy the current and future content of the Website for personal, non-commercial and informational purposes only.</p>
+
+                            <p>8.3 Should you not accept these Terms and Conditions you should immediately desist from using the Finfind website.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseNine3">
+                            9.  Security
+                        </div>
+                    </div>
+                    <div id="collapseNine3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>9.1 If access to any portion of the Website requires a log in and your details, all reasonable steps will be taken to secure your personal information. You undertake not to divulge your username and password to any other person.</p>
+
+                            <p>9.2 Users are prohibited from violating, or attempting to violate, the security of the Website, including, but without limitation:</p>
+                            <p>
+                                (a) accessing data not intended for such User or logging into a server or account which the User is not authorised to access.<br />
+                                (b) attempting to probe, scan or test the vulnerability of a system or network or to breach security or authentication measures without proper authorisation.<br />
+                                (c) attempting to interfere with the service to any user, host or network, including, without limitation, via means of submitting a virus to the website, overloading, "flooding", "spamming", "mailbombing" or "crashing".<br />
+                                (d) sending and/or posting unsolicited e-mail, including promotions; advertising content and/or advertising of products or services.<br />
+                                (e) forging any TCP/IP packet header or any part of the header information in any email or newsgroup posting.<br />
+                                (f) deleting or revising any material posted by any other person or entity.<br />
+                                (g) using any device, software or routine to interfere, or attempt to interfere, with the proper working of this website or any activity being conducted on this site.<br />
+                            </p>
+
+                            <p>9.3 Violations of system or network security may result in civil and/or criminal liability.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTen3">
+                            10.  Exclusion of Liability
+                        </div>
+                    </div>
+                    <div id="collapseTen3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>10.1 It is a Term and Condition of the use of the Website that you expressly agree that use of the Website is entirely at your own risk. The Website contents are provided on an "as is" basis without any warranties of any kind, whether express or implied, to the accuracy of the contents of the Website. Without limiting the generality of this clause, the following warranties are expressly excluded:</p>
+
+                            <p>
+                                (a) compatibility of the Website with your technology, equipment or software.<br />
+                                (b) uninterrupted or error-free functionality of the Website.<br />
+                                (c) non-infringement of any rights.<br />
+                            </p>
+                            <p>10.2 Finfind makes no representations or warranties about the accuracy, reliability, completeness or timeliness of the information, material, services, software, text, and graphics set out on the Website. Insofar as the Website contains links to any other internet websites, you acknowledge and agree that Finfind does not have control over any such websites, and shall therefore not be liable in any way for the contents of any such linked website, nor for any costs, expenses, losses or damages of any nature whatsoever arising from your access and/or use of any such website.</p>
+
+                            <p>10.3 Whilst Finfind has taken reasonable measures to ensure the integrity of the Website and its contents, no warranty, whether express or implied, is given that the Website will operate error-free, or that any files, downloads or applications available via the Website are free of viruses, trojans, bombs, time-locks or any other data, code or harmful mechanisms which has the ability to corrupt or affect the operation of your system.</p>
+
+                            <p>10.4 In no event shall Finfind, its employees and/or any third party contributors of material to the Website be liable for any costs, expenses, losses and damages of any nature arising out of, or in any way connected with, your use of the Website, your inability to use the Website and/or the operational failure of the Website.</p>
+
+                            <p>10.5  You indemnify Finfind, its owners, directors, employees, officials, agents, suppliers or representatives, and keep them fully indemnified from, and against, any loss or damage suffered or liability incurred by you, or in respect of any third party, which arises from your use of the Website.</p>
+
+                            <p>10.6 In no event shall Finfind, its employees and/or any third-party contributors of material to the Website be liable for the outcomes of any loan application you may make, nor are they liable for any misrepresentation by, or of, the lender and/or the lenders' products.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseEleven3">
+                            11.  Costs
+                        </div>
+                    </div>
+                    <div id="collapseEleven3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>11.1 Any costs incurred by Users in respect of any advice sought in relation to these Terms and Conditions shall be for their own account.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseTwelve3">
+                            12.  Severability
+                        </div>
+                    </div>
+                    <div id="collapseTwelve3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>12.1 Each and every term of the Terms and Conditions must be read as separable from the other Terms and Conditions. Should any court or qualified authority find that any of the terms are invalid or unenforceable, the other Terms and Conditions will remain valid and enforceable, despite any invalidity or unenforceability of an individual term.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThirteen3">
+                            13.  Non-Waiver
+                        </div>
+                    </div>
+                    <div id="collapseThirteen3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>13.1 The failure of either party to require performance of any provision of the Terms and Conditions at any time, shall not affect the right of such party to require performance of that provision, or of any other provision in the future. No waiver by either party with respect to a breach of any provision of the Terms and Conditions shall be construed as a waiver with respect to any continuing or subsequent breach of that provision, or as a waiver of any other right in the Terms and Conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFourteen3">
+                            14.  Law
+                        </div>
+                    </div>
+                    <div id="collapseFourteen3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>14.1 The Website is owned and operated from the Republic of South Africa. These Terms and Conditions and the use of, or inability to use, the Website are accordingly governed by the laws of the Republic of South Africa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree3">
+                        <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseFifteen3">
+                            15.  Contact Details
+                        </div>
+                    </div>
+                    <div id="collapseFifteen3" class="collapse" data-parent="#accordionExample3">
+                        <div class="card-body">
+                            <p>
+                                If you would like to contact Finfind please use the contact details set out below:
+                                <a href="mailto:info@finfind.co.za?subject=Terms and Conditions">The Webmaster</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

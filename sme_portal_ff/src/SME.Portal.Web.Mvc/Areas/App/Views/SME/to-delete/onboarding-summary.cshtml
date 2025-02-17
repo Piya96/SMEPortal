@@ -1,0 +1,311 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SME;
+@using System.Globalization
+@using System.Web;
+@using Abp.Runtime.Security;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+
+@model SMEOnboardingSummary
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.ProfileOnboarding;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+    var companyIndex = 1;
+    var greyAddCompanyButtonDisable = false;
+
+    if(Model.Companies.Count >= 5)
+        greyAddCompanyButtonDisable = true;
+
+    var show = "show";
+}
+
+@section Scripts
+{
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = "finfind"
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js" asp-append-version="true"></script>
+    </environment>
+
+
+    <script>
+        app.common.mobile.refresh(true);
+    </script>
+
+    <style>
+        .wizard-step[data-wizard-state="current"] {
+            background-color: #BDE0FF !important;
+        }
+
+            .wizard-step[data-wizard-state="current"]:after {
+                border-left-color: #BDE0FF !important;
+            }
+    </style>
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if(!string.IsNullOrEmpty(Model.UserMessage))
+        {
+            <div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                <div class="alert-text">@Model.UserMessage</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+        }
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <h4 @*style="color:lightskyblue;"*@ class="font-weight-bold mb-3">@L("OwnerProfile")</h4>
+                    <div class="card">
+
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:40%;">@L("OnboardedSummaryOwnerName")</td>
+                                        <td>@Model.Owner.Owner.Name @Model.Owner.Owner.Surname</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@L("OnboardedSummaryOwnerEmail")</td>
+                                        <td>@Model.Owner.Owner.EmailAddress</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@L("OnboardedSummaryOwnerMobile")</td>
+                                        <td>@Model.Owner.Owner.PhoneNumber</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@L("OnboardedSummaryOwnerIdentityNumber")</td>
+                                        <td>@Model.Owner.Owner.IdentityOrPassport</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="accordion  accordion-toggle-arrow" id="companies-accordian">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4 class="font-weight-bold mb-3">@L("CompanyProfiles")</h4>
+                            </div>
+                            <div class="col-xl-6">
+                                @if(greyAddCompanyButtonDisable)
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            disabled
+                                            onclick="location.href='@Url.Action("AddCompany", "SME")'"
+                                            data-placement="right"
+                                            data-toggle="tooltip"
+                                            href="#" data-original-title="Company limit reached"
+                                            style="float:right;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            onclick="location.href='@Url.Action("AddCompany", "SME")'"
+                                            style="float:right;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        <br />
+
+
+                        @foreach(var company in Model.Companies.OrderByDescending(x => x.SmeCompany.CreationTime))
+                        {
+                            @if(companyIndex > 1)
+                            {
+                                // only show the first company
+                                show = "";
+                            }
+
+                            var companyEdition = Model.CompanySmeSubscriptions[company.SmeCompany.Id].EditionFk;
+
+                            <div class="card">
+
+                                <div class="card-header" id="headingOne4">
+                                    <div class="card-title" data-toggle="collapse" data-target="#company-id-@company.SmeCompany.Id">
+                                        <i class="flaticon-profile"></i>@companyIndex. @company.SmeCompany.Name
+                                    </div>
+                                </div>
+
+                                <div id="company-id-@company.SmeCompany.Id" class="collapse @show" data-parent="#companies-accordian">
+                                    <div class="card-body">
+                                        <!--Company Profile Info-->
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width:40%;">@L("OnboardedSummaryCompanyName")</td>
+                                                        <td>@company.SmeCompany.Name</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardedSummaryCompanyRegNumber")</td>
+                                                        <td>@company.SmeCompany.RegistrationNumber</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardedSummaryCompanyType")</td>
+                                                        <td>@company.SmeCompany.Type</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardedSummaryCompanyRegistrationDate")</td>
+                                                        <td>
+                                                            @if(company.SmeCompany.RegistrationDate.HasValue)
+                                                            {
+                                                                @company.SmeCompany.RegistrationDate?.ToString("dd/MM/yyyy")
+                                                                <span data-toggle="tooltip" data-placement="right" title="[DD/MM/YYY]"><i class="fa fa-info-circle"></i></span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>Business not yet registered</div>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardedSummaryCompanyStartedTradingDate")</td>
+                                                        <td>
+                                                            @company.SmeCompany.StartedTradingDate?.ToString("dd/MM/yyyy")
+                                                            <span data-toggle="tooltip" data-placement="right" title="[DD/MM/YYY]"><i class="fa fa-info-circle"></i></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardedSummaryCompanyAddress")</td>
+                                                        <td>
+                                                            @foreach(var item in @company.SmeCompany.RegisteredAddress.Split(",").ToList())
+                                                            {
+                                                                <div>@item</div>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardingSummaryCompanyBeeLevelStr")</td>
+                                                        <td>@company.SmeCompany.BeeLevel</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardingSummaryCompanyIndustrySector")</td>
+                                                        <td>@company.SmeCompany.Industries</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("OnboardingSummaryCompanyIndustrySubSector")</td>
+                                                        <td>@company.SmeCompany.IndustrySubSector</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>@L("Subscription")</td>
+                                                        <td>
+                                                            <span class="label label-light-primary label-inline mr-2"><b>@companyEdition.DisplayName</b></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--Company Profile Info-->
+                                        <!--Funder Search Actions-->
+                                        @if(company.IsPrimaryOwner == true)
+                                        {
+                                            <a id="id-onboarding-summary-edit-a" class="btn btn-outline-primary btn-sm mr-3"
+                                               onclick="location.href='@Url.Action("EditCompany", "SME", new { cId = SimpleStringCipher.Instance.Encrypt(company.SmeCompany.Id.ToString()) })'">
+                                                <i class="flaticon-edit"></i>@L("Edit")
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-outline-primary btn-sm mr-3" href="javascript:void(0)" style="pointer-events:none;">
+                                                <i class="flaticon-edit"></i>@L("Edit")
+                                            </a>
+                                        }
+
+                                        @if(companyEdition.DisplayName == "Free" && Model.Applications.Any(x => x.Application.SmeCompanyId == company.SmeCompany.Id))
+                                        {
+                                            <a class="btn btn-outline-primary btn-sm mr-3"
+                                               onclick="location.href='@Url.Action("Index", "FunderSearch")'">
+                                                <i class="flaticon-list"></i>@L("ViewFunderSearches")
+                                            </a>
+                                        }
+                                        else if(Model.Applications.Where(x => x.Application.SmeCompanyId == company.SmeCompany.Id).ToList().Count < 3)
+                                        {
+                                            <a class="btn btn-outline-primary btn-sm mr-3"
+                                               onclick="location.href='@Url.Action("Wizard", "FunderSearch", new { id = company.SmeCompany.Id })'">
+                                                <i class="flaticon-list"></i>@L("StartANewFunderSearch")
+                                            </a>
+                                        }
+                                        <!--Funder Search Actions-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            companyIndex = companyIndex + 1;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+
+
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <h4 class="font-weight-bold mb-3">@L("MyDocumentsHeaderTitle")</h4>
+                        </div>
+                        <div class="col-xl-6">
+
+                            <a href="/App/SmeDocuments/Manage" class="btn btn-outline-primary btn-sm mr-3" style="float:right;">
+                                <i class="flaticon-add"></i> @L("UploadNewDocument")
+                            </a>
+
+                        </div>
+                    </div>
+                    <br />
+
+
+                    <div class="card card-custom">
+                        @{ await Html.RenderPartialAsync("../SMEDocuments/_SmeDocumentsDataTable.cshtml"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

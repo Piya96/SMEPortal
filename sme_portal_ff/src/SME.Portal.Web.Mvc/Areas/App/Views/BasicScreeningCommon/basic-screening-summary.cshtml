@@ -1,0 +1,315 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SME;
+@using System.Globalization
+@using System.Web;
+@using Abp.Runtime.Security;
+@using SME.Portal.Web.Areas.App.Models.Common.ListItems;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model SMEOnboardingSummary
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.ProfileOnboarding;
+    TextInfo textInfo = new CultureInfo("en-ZA", false).TextInfo;
+    var companyIndex = 1;
+    var greyAddCompanyButtonDisable = false;
+
+    if(Model.Companies.Count >= 5)
+        greyAddCompanyButtonDisable = true;
+
+    var show = "show";
+
+    var TenantNamePascalCase = "";
+    var TenantNameKebabCase = "";
+    var HeaderColor = "";
+    // Company Partners.
+    if(AbpSession.TenantId == 9)
+    {
+        TenantNamePascalCase = "CompanyPartners";
+        TenantNameKebabCase = "company-partners";
+        HeaderColor = "var(--dark-blue)";
+    }
+    else
+    // African Bank.
+    if(AbpSession.TenantId == 10)
+    {
+        TenantNamePascalCase = "AfricanBank";
+        TenantNameKebabCase = "african-bank";
+        HeaderColor = "var(--dark-green)";
+    }
+    else
+    // Hloolo.
+    if(AbpSession.TenantId == 12)
+    {
+        TenantNamePascalCase = "Hloolo";
+        TenantNameKebabCase = "hloolo";
+        HeaderColor = "var(--dark-blue)";
+    }
+    else
+    {
+        TenantNamePascalCase = "Finfind";
+        TenantNameKebabCase = "finfind";
+        HeaderColor = "skyblue";
+    }
+    var cssRef = "~/tenant-styles/" + TenantNameKebabCase + ".css";
+}
+
+@section Scripts
+{
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+    <script src="~/custom/js/sweetalert2/sweetalert2.js"></script>
+
+    @{
+        await Html.RenderPartialAsync(
+            "../Common/_ListItemsPartial.cshtml",
+            new ListItemsViewModel()
+            {
+                ListItems = Model.ListItems,
+                Tenant = TenantNameKebabCase
+            }
+        );
+    }
+
+    <environment include="Development">
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.js" asp-append-version="true"></script>
+        </environment>
+
+    <environment include="Production, Staging">
+        <script src="~/view-resources/Areas/App/Views/Common/industry-sector-buddy.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Common/_MobileChecks.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/areas/app/views/Common/sme-common.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SmeDocuments/Index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/SefaSme/helpers.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/UserProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/OwnerProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/BasicScreening/Finfind/CompanyProfile/summary.min.js" asp-append-version="true"></script>
+    </environment>
+
+
+    <script>
+        app.common.mobile.refresh(true);
+    </script>
+
+    <link href=@cssRef rel="stylesheet" asp-append-version="true" />
+
+    <script>
+        $(document).ready(function () {
+            app.wizard.isb.init(null, null, null);
+            app.fss.user.render(@Html.Raw(Json.Serialize(Model.MySettings)), "0");
+            app.fss.owner.render(@Html.Raw(Json.Serialize(Model.Owner.Owner)), "0");
+            let companies = @Html.Raw(Json.Serialize(Model.Companies));
+            companies.forEach((item, index) => {
+                app.fss.company.render(item.smeCompany, item.smeCompany.id.toString());
+            });
+        });
+    </script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if(!string.IsNullOrEmpty(Model.UserMessage))
+        {
+            <div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                <div class="alert-text">@Model.UserMessage</div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+        }
+        @{
+            var fssVM = new FSSViewModel()
+            {
+                StyleWidth = "width:55%;",
+                StyleCol = "",
+                ApplicationId = 0,
+                TenantId = 0,
+                HeaderColor = HeaderColor
+            };
+        }
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    @{
+                        await Html.RenderPartialAsync("../BasicScreening/" + TenantNamePascalCase + "/UserProfile/summary.cshtml", fssVM);
+                        await Html.RenderPartialAsync("../BasicScreening/" + TenantNamePascalCase + "/OwnerProfile/summary.cshtml", fssVM);
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="accordion  accordion-toggle-arrow" id="companies-accordian">
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <h4 style="color:@HeaderColor;" class="font-weight-bold mb-3">@L("CompanyProfiles")</h4>
+                            </div>
+                            <div class="col-xl-6">
+                                @if(greyAddCompanyButtonDisable)
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            disabled
+                                            onclick="location.href='@Url.Action("AddCompany", TenantNamePascalCase + "BasicScreening")'"
+                                            data-placement="right"
+                                            data-toggle="tooltip"
+                                            href="#" data-original-title="Company limit reached"
+                                            style="float:right;margin-bottom:2px;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button id="id-onboard-summary-add-company-btn"
+                                            class="btn btn-outline-primary btn-sm mr-3"
+                                            onclick="location.href='@Url.Action("AddCompany", TenantNamePascalCase + "BasicScreening")'"
+                                            style="float:right;margin-bottom:2px;">
+                                        <i class="flaticon-add"></i>@L("CompanyProfileAddNewCompany")
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        <br />
+
+
+                        @foreach(var company in Model.Companies.OrderByDescending(x => x.SmeCompany.CreationTime))
+                        {
+                            @if(companyIndex > 1)
+                            {
+                                // only show the first company
+                                show = "";
+                            }
+
+                            var companyEdition = Model.CompanySmeSubscriptions[company.SmeCompany.Id].EditionFk;
+
+                            <div class="card">
+
+                                <div class="card-header" id="headingOne4">
+                                    <div class="card-title" data-toggle="collapse" data-target="#company-id-@company.SmeCompany.Id">
+                                        <i class="flaticon-profile"></i>@companyIndex. @company.SmeCompany.Name
+                                    </div>
+                                </div>
+
+                                <div id="company-id-@company.SmeCompany.Id" class="collapse @show" data-parent="#companies-accordian">
+                                    <div class="card-body">
+                                        @{
+                                            fssVM.ApplicationId = (int) company.SmeCompany.Id;
+                                            await Html.RenderPartialAsync("../Basicscreening/" + TenantNamePascalCase + "/CompanyProfile/summary.cshtml", fssVM);
+                                        }
+                                        @* Only editable on first application. *@
+                                        @if( company.IsEditable == true )
+                                        {
+                                            @if(company.IsPrimaryOwner == true)
+                                            {
+                                                <a
+                                                    style="margin-bottom:2px;"
+                                                    id="id-onboarding-summary-edit-a"
+                                                    class="btn btn-outline-primary btn-sm mr-3"
+                                                    onclick="location.href='@Url.Action("EditCompany", TenantNamePascalCase + "BasicScreening", new { cId = SimpleStringCipher.Instance.Encrypt(company.SmeCompany.Id.ToString()) })'">
+                                                ><i class="flaticon-edit"></i>@L("Edit")
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a
+                                                    class="btn btn-outline-primary btn-sm mr-3"
+                                                    href="javascript:void(0)"
+                                                    style="pointer-events:none;margin-bottom:2px;"
+                                                >
+                                                    <i class="flaticon-edit"></i>@L("Edit")
+                                                </a>
+                                            }
+                                        }
+                                        @if(companyEdition.DisplayName == "Free" && Model.Applications.Any(x => x.Application.SmeCompanyId == company.SmeCompany.Id))
+                                        {
+                                            <a
+                                                class="btn btn-outline-primary btn-sm mr-3"
+                                                onclick="location.href='@Url.Action("Index", TenantNamePascalCase + "FunderSearch")'">
+                                                <i class="flaticon-list"></i>@L("ViewFunderSearches")
+                                            </a>
+                                        }
+                                        else if(Model.Applications.Where(x => x.Application.SmeCompanyId == company.SmeCompany.Id).ToList().Count < 3)
+                                        @*@if(Model.Applications.Where(x => x.Application.SmeCompanyId == company.SmeCompany.Id).ToList().Count < 3)*@
+                                        {
+                                            var app = Model.Apps.Where(x => x.Application.SmeCompanyId == company.SmeCompany.Id).ToList();
+                                            if(app.Count == 0)
+                                                                                            {
+                                                <a
+                                                    class="btn btn-outline-primary btn-sm mr-3"
+                                                    onclick="location.href='@Url.Action("Wizard", TenantNamePascalCase + "FunderSearch", new { id = company.SmeCompany.Id })'">
+                                                    <i class="flaticon-list"></i>@L("StartANewFunderSearch")
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a
+                                                    class="btn btn-outline-primary btn-sm mr-3"
+                                                    onclick="location.href='@Url.Action("Wizard", TenantNamePascalCase + "FunderSearch", new { id = company.SmeCompany.Id })'">
+                                                    <i class="flaticon-list"></i>Continue with Funder Search
+                                                </a>
+                                            }
+                                        }
+                                        <!--Funder Search Actions-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            companyIndex = companyIndex + 1;
+                        }
+                    </div>
+                    @if(AbpSession.TenantId == 12)
+                    {
+                        <br />
+                        <div class="col-xl-12" style="font-size:medium;">
+                             Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden until further notice for finfind -->
+        <div class="card card-custom gutter-b" style="display:none;">
+            <div class="card card-custom">
+                <div class="card-body">
+
+
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <h4 class="font-weight-bold mb-3">@L("MyDocumentsHeaderTitle")</h4>
+                        </div>
+                        <div class="col-xl-6">
+
+                            <a href="/App/SmeDocuments/Manage" class="btn btn-outline-primary btn-sm mr-3" style="float:right;">
+                                <i class="flaticon-add"></i> @L("UploadNewDocument")
+                            </a>
+
+                        </div>
+                    </div>
+                    <br />
+
+
+                    <div class="card card-custom">
+                        @{ await Html.RenderPartialAsync("../SMEDocuments/_SmeDocumentsDataTable.cshtml"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,329 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model ManageFinanceProductViewModel
+
+<script>var items = steps</script>
+<h4>Navigate Data</h4>
+<div class="card">
+    <div class="card-body">
+        <div id="menuAccordion">
+            <!-- Table Header -->
+            <table class="table" style="border-bottom-color:transparent">
+                <thead>
+                    <tr>
+                        <th>Sections</th>
+                        <th class="text-center" style="padding-right: 2px;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding-left:0;">
+                            <span id="stepGeneralPencil" class="edit-pencil">
+                                <i class="fa fa-pencil-alt"></i>
+                            </span>
+                            <a href="#" onclick="showStep(event, 'stepGeneral')">Contact Information</a>
+                        </td>
+                        <td class="text-right">
+                            <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepGeneralStatus"></partial>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:0;">
+                            <span id="stepGeneralPencil" class="edit-pencil">
+                                <i class="fa fa-pencil-alt"></i>
+                            </span>
+                            <a href="#" onclick="showStep(event, 'stepGeneral')">Matches</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Group 1:  MATCHING CRITERIA  -->
+            <div>
+                <h2 id="headingGroup1">
+                    <button class="accordion-button" type="button" data-toggle="collapse" data-target="#collapseGroup1" aria-expanded="false" aria-controls="collapseGroup1">
+                        <span>Matching Criteria</span>
+                        <i class="collapse-icon fas fa-chevron-down"></i>
+                    </button>
+                </h2>
+                <div id="collapseGroup1" class="collapse">
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepLoanAmountPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepLoanAmount')">Loan Amount</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepLoanAmountStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepFinanceForPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepFinanceFor')">Finance For</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepFinanceForStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepSACitizenPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepSACitizen')">SA Citizen</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepSACitizenStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepCompanyRegTypePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepCompanyRegType')">Company Reg. Type</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepCompanyRegTypeStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepProvincePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepProvince')">Province</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepProvinceStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepMonthsTradingPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepMonthsTrading')">Months Trading</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepMonthsTradingStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepAverageAnnualTurnoverPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepAverageAnnualTurnover')">Annual Turnover</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepAverageAnnualTurnoverStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepIndustrySectorsPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepIndustrySectors')">Industry sectors</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepIndustrySectorsStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepProfitabilityPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepProfitability')">Profitability</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepProfitabilityStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepCollateralPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepCollateral')">Collateral</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepCollateralStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepOwnershipPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepOwnership')">Ownership (Includes Citizenship)</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepOwnershipStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepBEELevelPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepBEELevel')">BEE Level </a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepBEELevelStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepCountryPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepCountry')">Country</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepCountryStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepMonthlyIncomePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepMonthlyIncome')">Income Frequency</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepMonthlyIncomeStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepDocumentTypePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepDocumentType')">Document Type</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepDocumentTypeStatus"></partial>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <!-- Group 2:  GENERAL CRITERIA  -->
+            <div>
+                <h2 id="headingGroup2">
+                    <button class="accordion-button" type="button" data-toggle="collapse" data-target="#collapseGroup2" aria-expanded="false" aria-controls="collapseGroup2">
+                        <span>General Criteria</span>
+                        <i class="collapse-icon fas fa-chevron-down"></i>
+                    </button>
+                </h2>
+                <div id="collapseGroup2" class="collapse">
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepCustomerTypesPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepCustomerTypes')">Customer Types</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepCustomerTypesStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepLoanIndexPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepLoanIndex')">Loan Index (Internal use only)</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepLoanIndexStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepLoanTypePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepLoanType')">Loan Type</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepLoanTypeStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepSummaryPagePencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepSummaryPage')">Summary Page</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepSummaryPageStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepCommentPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepComment')">Comment (Internal use only)</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepCommentStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepWebsitesURLsPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepWebsitesURLs')">Websites URLs</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepWebsitesURLsStatus"></partial>
+                                    </td>
+                                </tr>
+                                <tr class="menuStatus">
+                                    <td>
+                                        <span id="stepResearchURLsPencil" class="edit-pencil">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </span>
+                                        <a href="#" onclick="showStep(event, 'stepResearchURLs')">Research URLs</a>
+                                    </td>
+                                    <td class="text-right">
+                                        <partial name="../Partials/_FinanceProductStep.cshtml" model="@Model.StepResearchURLsStatus"></partial>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.collapse').on('show.bs.collapse', function () {
+            $(this).prev().find('.collapse-icon').addClass('rotate');
+        }).on('hide.bs.collapse', function () {
+            $(this).prev().find('.collapse-icon').removeClass('rotate');
+        });
+    });
+</script>

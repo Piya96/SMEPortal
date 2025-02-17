@@ -1,0 +1,85 @@
+﻿@using Abp.Authorization.Users
+@using SME.Portal.Localization
+
+@section Scripts
+{
+    <script abp-src="/view-resources/Views/Account/EmailActivation.js" asp-append-version="true"></script>
+}
+
+@section Styles{
+    <link href="/metronic/common/css/login-1@(CultureHelper.IsRtl ? ".rtl" : "").css" rel="stylesheet" />
+    @if (AbpSession.TenantId == 10)
+    {
+        <link href="~/tenant-styles/african-bank.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+}
+
+<style>
+    .alert.alert-custom.alert-outline-info .alert-text {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-icon i {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info {
+        border-color: green !important;
+    }
+</style>
+
+
+
+<div class="login-form">
+    <div class="pb-13 pt-lg-0 pt-5">
+        <a href="#" class="text-center mb-10"><vc:account-logo skin="dark"></vc:account-logo></a>
+    </div>
+    <form class="form email-activation-form" asp-action="SendEmailActivationLink" method="post">
+        <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">@L("EmailConfirmation")</h3>
+        <p>
+            @L("SendEmailActivationLink_Information")
+        </p>
+
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div style="color:green;" class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>
+                            If you do not receive your confirmation email in your inbox within 2 minutes,
+                            please check your junkmail/spam box before requesting it to be resent.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <input class="form-control placeholder-no-fix form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="email" autocomplete="new-password" placeholder="@L("EmailAddress")" name="EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength" />
+        </div>
+
+        <div class="pb-lg-0 pb-5">
+            <a asp-action="Login">
+                <button type="button" id="back-btn" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">@L("Back")</button>
+            </a>
+            <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">@L("Submit")</button>
+        </div>
+    </form>
+    <br/>
+
+    @if (AbpSession.TenantId == 12)
+    {
+        <div class="row">
+            <div class="col-xl-12" style="font-size:medium;">
+                 Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+            </div>
+        </div>
+    }
+</div>

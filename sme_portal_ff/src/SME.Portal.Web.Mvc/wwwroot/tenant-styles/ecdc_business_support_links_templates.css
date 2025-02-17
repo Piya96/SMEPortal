@@ -1,0 +1,744 @@
+﻿body {
+    gap: 1rem;
+    margin-right: 50px;
+    display: grid;
+    font-family: 'Vectora Light', sans-serif;
+    justify-items: start;
+}
+
+h4 {
+    border-bottom: none !important;
+    font-weight: 100;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-bottom: -35px;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+li {
+    margin-bottom: 10px;
+    text-indent: -15px;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /*background-color: #eee;*/
+    margin: 5px;
+    /*padding: 10px;*/
+    flex-basis: calc(33.33% - 10px);
+    align-content: space-between;
+}
+
+.row-heading {
+    /*font-size: 18px;
+            font-weight: bold;*/
+    margin-bottom: 5px;
+    color: white !important;
+    width: 100%;
+    padding: 1rem;
+    /*padding-left: 35px;*/
+    font-family: 'Arial' !important;
+    height: 1.25rem;
+}
+
+.row-description {
+    margin: 0;
+    color: black !important;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+a:hover {
+    text-decoration: 2px underline;
+}
+
+/*.row-description::before {
+                content: "\2022";*/ /* ASCII bullet character */
+/*margin-right: 5px;
+                color: #7CFC00;
+            }*/
+
+ul {
+    list-style-type: none;
+}
+
+#infoTempDiv ul li::before {
+    content: "\2022"; /* add a custom bullet */
+    color: #C4D82D; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+#divBusComRes ul li::before {
+    content: "•"; /* add a custom bullet */
+    font-weight: bold; /* making the content bold */
+    color: #71BF44; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+#divTrainRes ul li::before {
+    content: "•"; /* add a custom bullet */
+    color: #00A99D; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+#divIndusBodRes ul li::before {
+    content: "•"; /* add a custom bullet */
+    color: #3CB9E2; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+#marketDiv ul li::before {
+    content: "•"; /* add a custom bullet */
+    color: #005BA1; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+#divFundRes ul li::before {
+    content: "•"; /* add a custom bullet */
+    color: #542785; /* apply color to the bullet */
+    margin-right: 5px; /* add some spacing between the bullet and the text */
+}
+
+
+#aBCR {
+    background-color: #71BF44;
+    /*padding-top: 10px;*/
+}
+
+#bBCR {
+    background-color: #00A99D;
+    /*padding-top: 10px;*/
+}
+
+#cBCR {
+    background-color: #C4D82D;
+    /*padding-top: 10px;*/
+}
+
+#dBCR {
+    background-color: #005BA1;
+    /*padding-top: 10px;*/
+}
+
+#iBR {
+    background-color: #3CB9E2;
+    /*padding-top: 10px;*/
+}
+
+#fundingResources {
+    background-color: #542785;
+    /*padding-top: 10px;
+    padding-top: 10px;*/
+}
+
+#infoTempDiv {
+    height: 24.4rem;
+}
+
+#marketDiv {
+    height: 15.69rem;
+}
+
+.btnBusSupport {
+    background-color: transparent !important;
+    font-size: 1rem;
+    outline-color: transparent;
+    border: 1px solid #000000;
+    /*margin-right: 2rem;*/
+    /*padding-bottom: 1rem;*/
+    padding: 1rem;
+    position: relative;
+    top: 1.5rem;
+}
+
+    .btnBusSupport:hover {
+        /*box-shadow: 0 0 1px 1px #000000;*/
+        /*border: none;*/
+    }
+
+    .btnBusSupport a {
+        font-family: 'Arial' !important;
+        color: black !important;
+        text-decoration: none !important;
+        font-weight: normal !important;
+        padding: initial;
+    }
+
+    .btnBusSupport:hover a {
+        /*color: gray !important;*/
+        text-decoration: none !important;
+        font-weight: normal !important;
+    }
+
+.divPaddingLeft {
+    padding-left: 2rem;
+    padding-top: 0rem;
+}
+
+body .pb-13 {
+    /*padding-bottom: 3.25rem !important;*/
+    /*justify-items: start !important;
+    padding-right: 900px;*/
+}
+
+.pt-5 {
+    padding-top: 1.25rem !important;
+    padding-left: 2.25rem;
+}
+
+.max-h-70px {
+    max-height: 5.75rem !important;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 100%;
+}
+
+#LinksContainer {
+    padding-bottom: 0rem;
+}
+
+@media only screen and (max-width: 750px) {
+    .flex-container {
+        flex-direction: column;
+        padding-bottom: 2rem;
+    }
+
+    .row {
+        flex-basis: 100%;
+    }
+
+    #divBusComRes {
+        height: 26rem;
+    }
+
+    #divTrainRes {
+        height: 17.75rem;
+    }
+
+    #infoTempDiv {
+        height: 18rem;
+    }
+
+    #cBCR {
+        height: 18rem;
+    }
+
+    #infoTempDiv {
+        height: 19.25rem !important;
+        /*padding-bottom: 1.25rem;*/
+    }
+
+    #divIndusBodRes {
+        height: 12.5rem !important;
+    }
+
+    #marketDiv {
+        height: 16rem !important;
+    }
+
+    #divFundRes {
+        height: 13.5rem !important;
+    }
+
+    .d-flex {
+        margin-left: -2rem !important;
+        margin-right: 1rem !important;
+        padding-left: 1rem;
+    }
+
+    body .pb-13 {
+        margin-right: 2rem;
+    }
+
+    h2 {
+        margin: inherit;
+    }
+
+    .HeadingText {
+        text-align: center;
+    }
+}
+
+.d-flex {
+    margin-left: 1.5rem;
+    margin-right: -2rem;
+    width: 100%; 
+    /*Width set to 100%, was the new code added to fix footer imager*/
+}
+
+
+
+@media (width: 981px) {
+    #marketDiv {
+        height: 27.25rem;
+    }
+}
+
+@media (width: 1174px) {
+    #infoTempDiv {
+        height: 24.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media (width: 1124px) {
+    #infoTempDiv {
+        height: 24.4rem;
+    }
+
+    #marketDiv {
+        height: 15.5rem;
+    }
+}
+
+@media only screen and (min-width: 1063px) and (max-width: 1135px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media only screen and (min-width: 1044px) and (max-width: 1062px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+
+@media only screen and (min-width: 1050px) and (max-width: 1056px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media only screen and (min-width: 981px) and (max-width: 1050px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media only screen and (min-width: 1004px) and (max-width: 1013px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media only screen and (min-width: 1002px) and (max-width: 1003px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 15.75rem;
+    }
+}
+
+@media only screen and (min-width: 971px) and (max-width: 1001px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 16.75rem;
+    }
+}
+
+
+/* Styles for screens with a width between 927px and 935px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 954px) and (max-width: 970px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 16.75rem;
+    }
+}
+
+
+/* Styles for screens with a width between 927px and 935px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 937px) and (max-width: 961px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 16.75rem;
+    }
+}
+
+/* Styles for screens with a width between 927px and 935px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 927px) and (max-width: 936px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 16.75rem;
+    }
+}
+
+/* Styles for screens with a width between 927px and 935px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 923px) and (max-width: 934px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 16.75rem;
+    }
+}
+
+/* Styles for screens with a width between 893px and 926px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 917px) and (max-width: 923px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 893px and 926px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 913px) and (max-width: 916px) {
+    #infoTempDiv {
+        height: 25.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 893px and 926px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 893px) and (max-width: 913px) {
+    #infoTempDiv {
+        height: 26.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 891px and 892px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 891px) and (max-width: 892px) {
+    #infoTempDiv {
+        height: 26.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 866px and 890px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 881px) and (max-width: 890px) {
+    #infoTempDiv {
+        height: 26.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 880px) and (max-width: 881px) {
+    #infoTempDiv {
+        height: 26.5rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 875px) and (max-width: 879px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 866px) and (max-width: 874px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 813px and 865px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 856px) and (max-width: 866px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 813px and 865px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 854px) and (max-width: 856px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 852px) and (max-width: 853px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 18rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 813px and 865px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 842px) and (max-width: 852px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 19rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 759px and 812px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 812px) and (max-width: 842px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 19rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 759px and 812px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 803px) and (max-width: 812px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 19rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 759px and 812px (e.g. large tablets and small desktops) */
+@media only screen and (max-width: 788px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 20.25rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Styles for screens with a width between 759px and 812px (e.g. large tablets and small desktops) */
+@media only screen and (min-width: 780px) and (max-width: 802px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 20.2rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 802px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 19.2rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 763px) and (max-width: 770px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 20.2rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media only screen and (min-width: 758px) and (max-width: 763px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 20.2rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+
+@media only screen and (min-width: 751px) and (max-width: 758px) {
+    #infoTempDiv {
+        height: 27.75rem;
+    }
+
+    #marketDiv {
+        height: 20.2rem;
+    }
+
+    .divPaddingLeft {
+        padding-bottom: 1rem;
+    }
+}
+
+@media (width: 800px) {
+    /*#infoTempDiv {
+        height: 29.5rem;
+    }*/
+}
+
+/*@media (width: 768px) {
+    #infoTempDiv {
+        height: 30.5rem;
+    }
+}*/
+
+@media (width: 786px) {
+    /*#infoTempDiv {
+        height: 29.5rem;
+    }*/
+}

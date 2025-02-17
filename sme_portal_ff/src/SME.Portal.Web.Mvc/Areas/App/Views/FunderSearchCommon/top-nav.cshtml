@@ -1,0 +1,98 @@
+﻿<!-- No longer in use. Common/_TopNav.cshtml now common file in use. -->
+@model int;
+
+    <style>
+        @@media (max-width: 767px) {
+            .sme-hide {
+                display: none !important;
+            }
+        }
+    </style>
+
+@{
+    // TODO: Put if statement here.
+    var tab1 = "pending";
+    var tab2 = "pending";
+    var tab3 = "pending";
+    var tab4 = "pending";
+
+    if(Model == 1)
+        tab1 = "current";
+    if(Model == 2)
+        tab2 = "current";
+    if(Model == 3)
+        tab3 = "current";
+    if(Model == 4)
+        tab4 = "current";
+
+    var Tab1Title = "Register";
+    var Tab2Title = "Onboarding";
+    var Tab3Title = "Funding Request";
+    var Tab4Title = "Lender Matching";
+
+    var Tab1Desc = "Create User Account";
+    var Tab2Desc = "Owner and business profile info";
+    var Tab3Desc = "Provide info lender needs";
+    var Tab4Desc = "Get matched with the right lenders";
+    // Company Partners.
+    if(AbpSession.TenantId == 9)
+    {
+    }
+    else
+    // African Bank.
+    if(AbpSession.TenantId == 10)
+    {
+    }
+    else
+    // Hloolo.
+    if(AbpSession.TenantId == 12)
+    {
+        Tab3Desc = "Provide info funder needs";
+        Tab4Desc = "Get matched with the right funders";
+    }
+    else
+    {
+    }
+}
+    <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first" data-wizard-clickable="false">
+            <div class="wizard-nav">
+            <div id="id-wizard-nav-div" class="wizard-steps">
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab1">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">1</div>
+                        <div class="wizard-label">
+                            <div class="wizard-title">@Tab1Title</div>
+                            <div class="wizard-desc">@Tab1Desc</div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab2">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">2</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">@Tab2Title</div>
+                        <div class="wizard-desc">@Tab2Desc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab3">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">3</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">@Tab3Title</div>
+                        <div class="wizard-desc">@Tab3Desc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wizard-step" data-wizard-type="step" data-wizard-state="@tab4">
+                    <div class="wizard-wrapper">
+                        <div class="wizard-number">4</div>
+                        <div class="wizard-label">
+                        <div class="wizard-title">@Tab4Title</div>
+                        <div class="wizard-desc">@Tab4Desc</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

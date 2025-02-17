@@ -1,0 +1,105 @@
+﻿<style>
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+        color : blue;
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+        color : #BDE0FF;
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+        color : #BDE0FF;
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state="current"] {
+        background-color: #BDE0FF !important;
+        margin-bottom: 4px !important;
+
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state="current"]:after {
+        border-left-color: #BDE0FF !important;
+        margin-bottom: 4px !important;
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state="pending"] {
+        border-color:#BDE0FF !important;
+        border-style:solid !important;
+        border-width: 1px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .wizard-steps#div-basic-screening-steps .wizard-step[data-wizard-state="done"] {
+        border-color:#BDE0FF !important;
+        border-style:solid !important;
+        border-width: 1px !important;
+        margin-bottom: 4px !important;
+    }
+</style>
+
+<div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+
+    <div class="wizard-steps" id="div-basic-screening-steps">
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+           <div class="wizard-wrapper">
+               <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+               </div>
+               <div class="wizard-label">
+                   <h3 class="wizard-title">Welcome</h3>
+                   <div class="wizard-desc">Introduction</div>
+               </div>
+           </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">User Profile</h3>
+                    <div class="wizard-desc">Person completing request</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Owner Profile</h3>
+                    <div class="wizard-desc">ID and mobile verification</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Business Profile</h3>
+                    <div class="wizard-desc">Registration verification</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+            <div class="wizard-wrapper">
+                <div class="wizard-icon">
+                    <b class="la la-hand-o-right"></b>
+                </div>
+                <div class="wizard-label">
+                    <h3 class="wizard-title">Summary</h3>
+                    <div class="wizard-desc">Review before continuing</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

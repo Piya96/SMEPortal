@@ -1,0 +1,113 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.CurrencyPairs
+@using SME.Portal.Web.Areas.App.Startup
+@model CurrencyPairsViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Host.CurrencyPairs;
+}
+@section Scripts
+{
+    <script abp-src="/view-resources/Areas/App/Views/CurrencyPairs/Index.js" asp-append-version="true"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+
+                <abp-page-subheader title="@L("CurrencyPairs")" description="@L("CurrencyPairsHeaderInfo")">
+                     <button id="ExportToExcelButton" class="btn btn-outline-success"><i class="fa fa-file-excel"></i> @L("ExportToExcel")</button>
+            
+                     @if (IsGranted(AppPermissions.Pages_Administration_CurrencyPairs_Create))
+                     {
+                         <button id="CreateNewCurrencyPairButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewCurrencyPair")</button>                
+                     }
+                </abp-page-subheader>
+            
+<div class="@(await GetContainerClass())">   
+    <div class="card card-custom gutter-b">
+        <div class="card-body">
+            <div class="form">
+                <div class="row align-items-center mb-4">
+                    <div class="col-xl-12">
+                        <div class="form-group align-items-center">
+                            <div class="input-group">
+                                <input type="text" id="CurrencyPairsTableFilter" class="form-control m-input" placeholder="@L("SearchWithThreeDot")" value="@Model.FilterText">
+                                <span class="input-group-btn">
+                                    <button id="GetCurrencyPairsButton" class="btn btn-primary" type="submit"><i class="flaticon-search-1"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+                <div id="AdvacedAuditFiltersArea" style="display: none" class="row mb-4">
+                    <div class="col-md-12">
+						<div class="kt-separator kt-separator--border-dashed"></div>
+					</div>
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="NameFilterId">@L("Name")</label>
+									<input type="text" class="form-control" name="nameFilter" id="NameFilterId">
+								</div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="BaseCurrencyCodeFilterId">@L("BaseCurrencyCode")</label>
+									<input type="text" class="form-control" name="baseCurrencyCodeFilter" id="BaseCurrencyCodeFilterId">
+								</div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="TargetCurrencyCodeFilterId">@L("TargetCurrencyCode")</label>
+									<input type="text" class="form-control" name="targetCurrencyCodeFilter" id="TargetCurrencyCodeFilterId">
+								</div>
+                            </div>
+                            <div class="col-md-3">
+                                 <div class="form-group">
+									<label  for="MinExchangeRateFilterId">@L("MinMax") @L("ExchangeRate")</label>
+									<div class="input-group">
+										<input type="number" class="form-control m-input" placeholder="@L("MinValue")" name="minExchangeRateFilter" id="MinExchangeRateFilterId"/>
+                                        <input type="number" class="form-control m-input" placeholder="@L("MaxValue")" name="maxExchangeRateFilter"  id="MaxExchangeRateFilterId"/>
+									</div>
+                                </div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="SymbolFilterId">@L("Symbol")</label>
+									<input type="text" class="form-control" name="symbolFilter" id="SymbolFilterId">
+								</div>
+                            </div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="LogFilterId">@L("Log")</label>
+									<input type="text" class="form-control" name="logFilter" id="LogFilterId">
+								</div>
+                            </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-xl-12">
+                        <span id="ShowAdvancedFiltersSpan" class="text-muted clickable-item"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="text-muted clickable-item" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                </div>
+            <div class="row align-items-center">
+                <table id="CurrencyPairsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            
+                            <th>@L("Actions")</th>
+								<th>@L("Name")</th>
+								<th>@L("BaseCurrencyCode")</th>
+								<th>@L("TargetCurrencyCode")</th>
+								<th>@L("ExchangeRate")</th>
+								<th>@L("Symbol")</th>
+								<th>@L("Log")</th>
+                            
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

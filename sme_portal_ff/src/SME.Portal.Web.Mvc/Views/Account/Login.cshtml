@@ -1,0 +1,387 @@
+@using System.Globalization
+@using Abp.Extensions
+@using Abp.MultiTenancy
+@using SME.Portal.Identity
+@using SME.Portal.Localization
+@using SME.Portal.Web.Security.Recaptcha
+@using Owl.reCAPTCHA
+@addTagHelper *, Owl.reCAPTCHA
+@model SME.Portal.Web.Models.Account.LoginFormViewModel
+@inject SignInManager SignInManager
+
+    @{
+        var fromTenantAlertP1 = "";
+        var fromTenantAlertP2 = "";
+        var fromTenantAlertP3 = "";
+        var helpWindowUrl = "";
+
+        // Finfind.
+        if (AbpSession.TenantId == 2)
+        {
+            helpWindowUrl = "https://www.youtube.com/embed/qJvhDpoWw2c?si=11uDumRfftQq3WEd%22";
+        }
+        // Sefa.
+        if (AbpSession.TenantId == 3)
+        {
+            fromTenantAlertP1 = "Welcome to sefa's new online loan request system.";
+            fromTenantAlertP2 = "If you are here for the first time, please click REGISTER and follow the steps " +
+                                "provided to create a username and password to LOGIN.";
+            fromTenantAlertP3 = "Users from our old system will also need to REGISTER on the new system.";
+            helpWindowUrl = "https://www.youtube.com/embed/HoFEVxM2KPc";
+        }
+        // Ecdc.
+        if (AbpSession.TenantId == 5)
+        {
+            fromTenantAlertP1 = "Welcome to ECDC Online Services.";
+            fromTenantAlertP2 = "If you are here for the first time, please click REGISTER and follow the steps " +
+                                "provided to create a username and password to LOGIN.";
+            fromTenantAlertP3 = "If you have registered before, you can just use your credentials to log in.";
+            helpWindowUrl = "https://www.youtube.com/embed/g8hNU1beplE?si=xl330LIBQpAysSwr%22";
+        }
+        // Company Partners.
+        if (AbpSession.TenantId == 9)
+        {
+            fromTenantAlertP1 = "Welcome to Finfind Online Services.";
+            fromTenantAlertP2 = "If you are here for the first time, please click REGISTER and follow the steps " +
+                                "provided to create a username and password to LOGIN.";
+            fromTenantAlertP3 = "If you have registered before, you can just use your credentials to log in.";
+        }
+        // African Bank.
+        if (AbpSession.TenantId == 10)
+        {
+            fromTenantAlertP1 = "Welcome to African Bank Online Services.";
+            fromTenantAlertP2 = "If you are here for the first time, please click REGISTER and follow the steps " +
+                                "provided to create a username and password to LOGIN.";
+            fromTenantAlertP3 = "If you have registered before, you can just use your credentials to log in.";
+        }
+        // Hloolo.
+        if (AbpSession.TenantId == 12)
+        {
+            fromTenantAlertP1 = "Welcome to Hloolo's Finance Matching Service!";
+            fromTenantAlertP2 = "If you are here for the first time, please click REGISTER and follow the steps " +
+                                "provided to create a username and password to LOGIN.";
+            fromTenantAlertP3 = "If you have registered before, you can just use your credentials to log in.";
+        }
+    }
+
+@section Scripts
+{
+    @if (ViewBag.UseCaptcha)
+    {
+        <recaptcha-script-v3 />
+        <recaptcha-script-v3-js action="login" callback="(function(){$('#@RecaptchaValidator.RecaptchaResponseKey').val(token)})" />
+    }
+    <script abp-src="/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+    @*<script src="/view-resources/Views/Account/Login.js" asp-append-version="true"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            togglePassword.addEventListener('click', function (e) {
+                // toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                // toggle the eye slash icon
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            let loginAlert = document.getElementById('login-alert');
+            if (loginAlert != null) {
+                setTimeout(() => {
+                    $('#login-alert').hide('fast');//500, 'swing', () => {
+                    //});
+                }, 5000);
+            }
+
+            let fromTenantSourceAlert = document.getElementById('fromTenantSourceAlert');
+            if (fromTenantSourceAlert != null) {
+                $('#fromTenantSourceAlert').modal({
+                    backdrop: 'static',
+                    keyboard: false,
+                    show: true
+                });
+            }
+        });
+
+        function openVideoWindow(url) {
+            var windowFeatures = "width=640,height=360,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no";
+            window.open(url, "_blank", windowFeatures);
+        }
+
+    </script>
+
+}
+
+@section Styles{
+
+    <style>
+        .toggle-password-icon-span {
+            height: 10px;
+            width: 15px;
+            text-align: right;
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 12px;
+        }
+
+        .toggle-password-icon {
+            cursor: pointer;
+        }
+
+        #login-alert.alert.alert-secondary {
+            color: white !important;
+            background-color: green !important;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+            #login-alert.alert.alert-secondary > button > span > i {
+                color: white !important;
+            }
+    </style>
+
+    <link href="/metronic/common/css/login-1@(CultureHelper.IsRtl ? ".rtl" : "").css" rel="stylesheet" />
+    @if (AbpSession.TenantId == 10)
+    {
+        <link href="~/tenant-styles/african-bank.css" rel="stylesheet" asp-append-version="true" />
+    }
+    @if (AbpSession.TenantId == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+}
+
+@if (!Model.SuccessMessage.IsNullOrEmpty())
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="login-alert" class="alert alert-secondary" role="alert">
+                @Model.SuccessMessage
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    @*
+        <div class="alert" role="alert">
+            @Model.SuccessMessage
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    *@
+}
+
+<!--begin::Signin-->
+<div class="login-form">
+
+    <div class="pb-13 pt-lg-0 pt-5">
+        <vc:account-logo skin="dark"></vc:account-logo>
+    </div>
+
+    <!--begin::Form-->
+    <form class="login-form form" asp-action="Login" method="post">
+        <div>
+            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">@L("LogIn")</h3>
+        </div>
+
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+        <input type="hidden" name="returnUrlHash" />
+        <input type="hidden" name="ss" value="@ViewBag.SingleSignIn" />
+        @if (ViewBag.UseCaptcha)
+        {
+            <input type="hidden" name="@RecaptchaValidator.RecaptchaResponseKey" id="@RecaptchaValidator.RecaptchaResponseKey" />
+        }
+
+        <div class="form-group">
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="@L("Email")" name="usernameOrEmailAddress" autocomplete="new-password" value="@(Model.UserNameOrEmailAddress ?? "")" required>
+        </div>
+
+        <div class="form-group" style="position:relative">
+            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="@L("Password")" id="password" name="password" autocomplete="new-password">
+            <span class="toggle-password-icon-span">
+                <i class="far fa-eye toggle-password-icon" id="togglePassword"></i>
+            </span>
+        </div>
+
+        <div class="form-group d-flex justify-content-between mt-4">
+            <label class="checkbox checkbox-outline">
+                <input type="checkbox" name="rememberMe" value="true">
+                <span>
+                </span>
+                @L("RememberMe")
+            </label>
+            <a href="@Url.Action("ForgotPassword", "Account")" id="forget-password" class="text-primary font-size-h6 font-weight-bolder text-hover-primary">@L("ForgotPassword")</a>
+        </div>
+
+        <!--begin::Action-->
+        <div class="pb-lg-0 pb-5">
+            <button type="button" id="kt_login_signin_submit" class="btn btn-block btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">@L("LogIn")</button>
+        </div>
+
+        <!--end::Action-->
+    </form>
+
+    <!--end::Form-->
+    <!--begin::Options-->
+    @{
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync())
+            .Where(s => !s.DisplayName.IsNullOrWhiteSpace())
+            .ToList();
+
+        Func<string, string> getSocialIconClass = (provider) =>
+        {
+            provider = provider.ToLower(CultureInfo.InvariantCulture);
+            return provider;
+        };
+    }
+
+    @if ((AbpSession.MultiTenancySide != MultiTenancySides.Host || !ViewBag.IsMultiTenancyEnabled) && loginProviders.Count > 0)
+    {
+        <!--begin::Divider-->
+        <div class="divider">
+            <span>@L("LoginWith")</span>
+        </div>
+
+        <!--end::Divider-->
+        <div class="pb-lg-0 pb-5 external-logins">
+            <form asp-action="ExternalLogin" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                <input type="hidden" name="provider" value="" />
+                <input type="hidden" name="ss" value="@ViewBag.SingleSignIn" />
+
+                @foreach (var p in loginProviders)
+                {
+                    <a
+                        href="javascript:;"
+                        data-provider="@p.DisplayName"
+                        class="btn btn-sm btn-light-primary font-weight-bolder py-2 social-login-icon"
+                        id="a-google"
+                    >
+                        <i class="fab fa-@getSocialIconClass(p.DisplayName)"></i>
+                        @p.DisplayName
+                    </a>
+                }
+            </form>
+        </div>
+    }
+    <!--end::Options-->
+</div>
+
+<div class="mt-5">
+    @if (Model.IsSelfRegistrationEnabled)
+    {
+        <div class="divider mt-10 mb-2">
+
+            @if (AbpSession.TenantId == 2)
+            {
+                <h3>@L("AreYouNewToFinfind") <a href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+                <br/>
+                <br/>
+                @*<h4><a href="javascript:void(0);" onclick="openVideoWindow();">Click here</a> to watch a help video on how to apply for funding using <b>Finfind&rsquo;s</b> new online loan application system.</h4>*@
+            }
+
+            @if (AbpSession.TenantId == 3)
+            {
+                <h3>Are you new to <b>@L("Sefa")</b> <a href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+                <br/>
+                <br/>
+                <h4><a href="javascript:void(0);" onclick="openVideoWindow('@helpWindowUrl');">Click here</a> to watch a help video on how to apply for funding using <b>sefa&rsquo;s</b> new online loan application system.</h4>
+            }
+
+            @if (AbpSession.TenantId == 5)
+            {
+                <h3>Are you new to <b>@L("ECDC")</b> <a href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+                <br/>
+                <br/>
+                <h4><a href="javascript:void(0);" onclick="openVideoWindow('@helpWindowUrl');">Click here</a> to watch a help video on how to apply for funding using <b>ECDC&rsquo;s</b> new online loan application system.</h4>
+            }
+
+            @if (AbpSession.TenantId == 9)
+            {
+                <h3>Are you new to <b>Finfind</b> <a href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+            }
+
+            @if (AbpSession.TenantId == 10)
+            {
+                <h3>Are you new to <b>Finfind</b> <a href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+            }
+            @* TODO(Hloolo) *@
+            @if (AbpSession.TenantId == 12)
+            {
+                <h3>New to Hloolo's finance matching service, <a style="color:green !important;" href="@Url.Action("Register", "Account", new { ss = ViewBag.SingleSignIn, returnUrl = ViewBag.ReturnUrl })" id="register-btn"> @L("RegisterHere")</a></h3>
+
+                <br/>
+                <br/>
+
+                <div class="row">
+                    <div class="col-xl-12" style="font-size:medium;">
+                         Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    @if (Model.IsTenantSelfRegistrationEnabled)
+    {
+        <a href="@Url.Action("SelectEdition", "TenantRegistration")" id="register-btn">@L("NewTenant")</a>
+        <span class="pipe-divider"> | </span>
+    }
+    @*<a href="@Url.Action("EmailActivation", "Account")" id="email-activation-btn">@L("EmailActivation")</a>*@
+</div>
+
+@if (   AbpSession.TenantId == 3 ||
+        AbpSession.TenantId == 5 ||
+        AbpSession.TenantId == 9 ||
+        AbpSession.TenantId == 10 ||
+        AbpSession.TenantId == 12 )
+{
+    <div id="fromTenantSourceAlert" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                @if(AbpSession.TenantId == 12 )
+                {
+                    <div class="modal-body text-center">
+                        <p>
+                            Welcome to Hloolo's finance matching service!
+                        </p>
+                        <p>
+                            You have now been directed to Hloolo's finance matching platform powered by Finfind.
+                        </p>
+                        <p>
+                            Please note that you will be required to use login details, this step ensures that your data remains
+                            secure.
+                        </p>
+                        <p>
+                            If you are here for the first time, please click REGISTER and follow the steps provided to create a
+                            username and password. If you have registered before, you can just use your credentials to log in.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <div class="modal-body text-center">
+                        <p>
+                            @fromTenantAlertP1
+                        </p>
+                        <p>
+                            @fromTenantAlertP2
+                        </p>
+                        <p>
+                            @fromTenantAlertP3
+                        </p>
+                    </div>
+                }
+                <div class="modal-footer">
+                    <button id="id-alert-button-ok" type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

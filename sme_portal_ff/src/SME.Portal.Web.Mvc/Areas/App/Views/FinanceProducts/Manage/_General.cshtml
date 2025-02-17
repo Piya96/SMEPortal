@@ -1,0 +1,258 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using Abp.Authorization.Users
+@model IManageView
+
+<link href="~/view-resources/Areas/App/Views/FinanceProducts/Manage/ManageStyling.css" rel="stylesheet" />
+<script src="~/view-resources/Areas/App/Views/FinanceProducts/Manage/General.js"></script>
+<form id="stepGeneralForm">
+    @if (Model.BaseModelType.Equals("ManageFinanceProductViewModel"))
+    {
+        <div class="step" id="stepGeneral">
+            <h3>General</h3>
+            <div class="card card-info">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-1 card-icon">
+                            <i class="fa fa-info-circle"></i>
+                        </div>
+                        <div class="col">
+                            General information for a finance product should include its name and the associated organization.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="form-group row">
+                <label for="Details" class="col-md-4 col-form-label">Lender</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <button class="btn btn-primary blue" id="CreateNewLenderButton" onclick="createNewLenderinFinance()" type="button"><i class="fa fa-plus" style="text-align:center;"></i></button>
+                        <select class="form-control" name="lenderId" id="LenderInFinance" onchange="populateLenderDetails(value)" onfocusout="userShiftFocus(this.id,'#lenderError')" asp-for="@Model.FinanceProduct.LenderId" asp-items="Model.SelectLenders" required>
+                            <option value="">Select an Lender</option>
+                        </select>
+                        <span asp-validation-for="@Model.FinanceProduct.LenderId" class="text-danger"></span>
+                    </div>
+                    <span id="lenderError" style="color:red; display:none;">Choose a Lender</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.Name" class="col-md-4 col-form-label">Product Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="name" id="nameInput" autofocus onfocusout="userShiftFocus(this.id,'#nameError')" asp-for="@Model.FinanceProduct.Name" required />
+                    <span id="nameError" style="color:red; display:none;">Enter a Product Name</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.FundManager" class="col-md-4 col-form-label">Fund Manager</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="FundManager" autofocus asp-for="@Model.FinanceProduct.FundManager">
+                    <span asp-validation-for="@Model.FinanceProduct.FundManager" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.FundManagerEmail" class="col-md-4 col-form-label">Fund Manager Email</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="FundManagerEmail" pattern="[A-Za-z0-9\._%+\-]+@@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}|^$" asp-for="@Model.FinanceProduct.FundManagerEmail" maxlength="@AbpUserBase.MaxEmailAddressLength">
+                    <span asp-validation-for="@Model.FinanceProduct.FundManagerEmail" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.ContactNumber" class="col-md-4 col-form-label">Contact Number</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="ContactNumber" pattern="\d{10}|^$" autofocus asp-for="@Model.FinanceProduct.ContactNumber" maxlength="10">
+                    <span asp-validation-for="@Model.FinanceProduct.ContactNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineOne" class="col-md-4 col-form-label">Physical Address Line 1</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineOne" id="PhysicalAddressLineOne" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineOne" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineOne" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineTwo" class="col-md-4 col-form-label">Physical Address Line 2</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineTwo" id="PhysicalAddressLineTwo" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineTwo" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineTwo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineThree" class="col-md-4 col-form-label">Physical Address Line 3</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineThree" id="PhysicalAddressLineThree" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineThree" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineThree" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.City" class="col-md-4 col-form-label">City</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="city" id="City" autofocus asp-for="@Model.FinanceProduct.City" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.Province" class="col-md-4 col-form-label">Province</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="province" id="Province" autofocus value="@(String.IsNullOrEmpty(Model.FinanceProduct.Province) ? "" : (Model.ProvinceTypeLists.Any(p=>Model.FinanceProduct.Province.Contains(p.ListId)) ? Model.ProvinceTypeLists.Where(p => Model.FinanceProduct.Province.Contains(p.ListId)).Select(p => p.Name).FirstOrDefault() : ""))" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.Province" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PostalCode" class="col-md-4 col-form-label">Postal Code</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="postalCode" id="PostalCode" autofocus asp-for="@Model.FinanceProduct.PostalCode" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Details" class="col-md-4 col-form-label">Assigned to</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <select class="form-control" name="assignedTo" asp-for="@Model.FinanceProduct.AssignedTo" asp-items="Model.SelectUsersList.OrderBy(p => p.Text)">
+                            <option value="">Select staff member</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.CurrencyPairId" class="col-md-4 col-form-label">Currency Pair</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <select class="form-control" name="currencyPairId" asp-for="@Model.FinanceProduct.CurrencyPairId" asp-items="@Model.SelectCurrencyPairs">
+                            <option value="">Select Currency Pair</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label">Has Contract</label>
+                <div class="col-md-8">
+                    <div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="hasContract" id="HasContract" value="@Model.FinanceProduct.HasContract" disabled="disabled" checked="@(@Model.IsEdit ? @Model.FinanceProduct.HasContract : @Model.IsEdit)">
+                            <label class="custom-control-label" for="HasContract">Yes</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label">Inactive</label>
+                <div class="col-md-8">
+                    <div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" onclick="checkBoxStatus(this.id)" class="custom-control-input" name="enabled" id="Enabled" value=false checked="@(@Model.IsEdit ? @Model.FinanceProduct.Enabled : @Model.IsEdit)">
+                            <label class="custom-control-label" for="Enabled">Yes</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label">Hide on result screen</label>
+                <div class="col-md-8">
+                    <div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" onclick="checkBoxStatus(this.id)" class="custom-control-input" name="HideOnResultScreen" id="HideOnResultScreen" value=false checked="@(@Model.IsEdit ? @Model.FinanceProduct.HideOnResultScreen : @Model.IsEdit)">
+                            <label class="custom-control-label" for="HideOnResultScreen">Yes</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+    {
+            <div class="step" id="stepGeneralFundForm">
+            <h3>General</h3>
+            <div class="card card-info">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-1 card-icon">
+                            <i class="fa fa-info-circle"></i>
+                        </div>
+                        <div class="col">
+                            General information for a finance product should include its name and the associated organization.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.Name" class="col-md-4 col-form-label">Product Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="financeProductName" id="nameInput" autofocus onfocusout="userShiftFocus(this.id,'#nameError')" asp-for="@Model.FinanceProduct.Name" required />
+                    <span id="nameError" style="color:red; display:none;">Enter a Product Name</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.LenderName" class="col-md-4 col-form-label">Lender Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="LenderName" id="LenderName" autofocus  asp-for="@Model.FinanceProduct.LenderName" disabled />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.FundManager" class="col-md-4 col-form-label">Fund Manager</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="FundManager" autofocus asp-for="@Model.FinanceProduct.FundManager">
+                    <span asp-validation-for="@Model.FinanceProduct.FundManager" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.FundManagerEmail" class="col-md-4 col-form-label">Fund Manager Email</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="FundManagerEmail" pattern="[A-Za-z0-9\._%+\-]+@@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}|^$" asp-for="@Model.FinanceProduct.FundManagerEmail" maxlength="@AbpUserBase.MaxEmailAddressLength">
+                    <span asp-validation-for="@Model.FinanceProduct.FundManagerEmail" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.ContactNumber" class="col-md-4 col-form-label">Contact Number</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="ContactNumber" pattern="\d{10}|^$" autofocus asp-for="@Model.FinanceProduct.ContactNumber" maxlength="10">
+                    <span asp-validation-for="@Model.FinanceProduct.ContactNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineOne" class="col-md-4 col-form-label">Physical Address Line 1</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineOne" id="PhysicalAddressLineOne" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineOne" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineOne" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineTwo" class="col-md-4 col-form-label">Physical Address Line 2</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineTwo" id="PhysicalAddressLineTwo" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineTwo" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineTwo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PhysicalAddressLineThree" class="col-md-4 col-form-label">Physical Address Line 3</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="physicalAddressLineThree" id="PhysicalAddressLineThree" autofocus asp-for="@Model.FinanceProduct.PhysicalAddressLineThree" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PhysicalAddressLineThree" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.City" class="col-md-4 col-form-label">City</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="city" id="City" autofocus asp-for="@Model.FinanceProduct.City" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.Province" class="col-md-4 col-form-label">Province</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="province" id="Province" autofocus value="@(String.IsNullOrEmpty(Model.FinanceProduct.Province) ? "" : (Model.ProvinceTypeLists.Any(p=>Model.FinanceProduct.Province.Contains(p.ListId)) ? Model.ProvinceTypeLists.Where(p => Model.FinanceProduct.Province.Contains(p.ListId)).Select(p => p.Name).FirstOrDefault() : ""))" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.Province" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="@Model.FinanceProduct.PostalCode" class="col-md-4 col-form-label">Postal Code</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="postalCode" id="PostalCode" autofocus asp-for="@Model.FinanceProduct.PostalCode" disabled>
+                    <span asp-validation-for="@Model.FinanceProduct.PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+            </div>
+    }
+</form>

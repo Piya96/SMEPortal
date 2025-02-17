@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/tenant-styles/ecdc_business_support_links_templates.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/tenant-styles/ecdc_business_support_main.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Google tag (gtag.js) - Google Analytics ECDC App-->
+    <!---<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWL58CF23C"></script>-->
+    <script src="~/Common/Scripts/googletagmanager-G-PWL58CF23C.js" asp-append-version="true"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PWL58CF23C');
+    </script>
+
+    <title>ECDC - Business Support</title>
+    <link rel="shortcut icon" href="https://static.wixstatic.com/media/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/ee01a9_79fd4decbcd6487594a08e028bbf4170%7Emv2.jpg" type="image/jpeg">
+</head>
+<body id="_bodyBusinessSupport">
+    <div class=" flex-container pb-13 pt-lg-0 pt-5">
+        <a href="https://www.ecdc.co.za/" class="text-center mb-10">
+            <img src="/Common/Images/ECDC_Logo3_icons.png" alt="" class="max-h-70px">
+        </a>
+    </div>
+    <div class="flex-container divPaddingLeft">
+        <h2>BUSINESS SUPPORT MENU</h2>
+        <div class="divBackButton">
+            <button class="btnBusSupport top2rem" id="btnHeading" onclick="location.href='@Url.Action("RedirectToHomePage", "ECDCbusinessSupport")'">
+                <a href="@Url.Action("RedirectToHomePage", "ECDCbusinessSupport")" aria-label="This is a link">BACK TO THE ECDC WEBSITE</a>
+            </button>
+        </div>
+    </div>
+    <div class="divTextField container">
+        <p>
+            “The Business Support Unit uses government grant to assist SMMEs with non-financial support and <br />incentives to overcome structural inadequacies and transformation. 
+            <br />
+            <br />
+            The unit also offers SMME development and support, entailing business development, <br />commercialisation support through mentorship, marketing, market access as well as business and financial management.”
+        </p>
+    </div>
+    <div class="container">
+
+        @*<button id="btnBusinessProfile"  onclick="window.open('@Url.Action("RedirectToLinkTemplates", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-one">
+            <div class="btnContainer">
+                <div class="number">
+                    1
+                </div>
+                <span class="heading">
+                    SPEAK TO A<br /> CONSULTANT
+                </span>
+                <span class="moreInfo">
+                    Our business support team is available to provide you with advice and assistance – contact a consultant to make an appointment.
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToBusinessAdvisor" href="@Url.Action("RedirectToBusinessConsultant", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnHelpLinks" onclick="window.open('@Url.Action("RedirectToBusinessProfile", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-two">
+            <div class="btnContainer">
+                <div class="number">
+                    2                </div>
+                <span class="heading">
+                    BUSINESS <br /> SERVICES APPLICATION
+                </span>
+                <span class="moreInfo">
+                    Complete this online questionnaire to indicate what business service you require from us
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToBusinessProfile" href="@Url.Action("RedirectToBusinessProfile", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnBusinDiag" onclick="window.open('@Url.Action("RedirectToDIAGNOSTIC", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-three">
+            <div class="btnContainer">
+                <div class="number">
+                    3
+                </div>
+                <span class="heading">
+                    UNDERSTANDING<br /> SMME FUNDING
+                </span>
+                <span class="moreInfo">
+                    Challenges to accessing finance, what you need finance for, and types of finance products and funders
+                </span>
+                <span class="learnMore">
+                    <a id="" href="https://knowledge.finfind.co.za/understanding-funding" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnBusinDiag" onclick="window.open('@Url.Action("RedirectToDIAGNOSTIC", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-four">
+            <div class="btnContainer">
+                <div class="number">
+                    4
+                </div>
+                <span class="heading">
+                    HELPFUL LINKS AND<br /> BUSINESS TEMPLATES
+                    
+                </span>
+                <span class="moreInfo">
+                    Helpful information for<br /> startups and small business
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToLinkTemplates" href="@Url.Action("RedirectToLinkTemplates", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnSpeakBA" onclick="window.open('@Url.Action("RedirectToLinkTemplates", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-five">
+            <div class="btnContainer">
+                <div class="number">
+                    5
+                </div>
+                <span class="heading">
+                    SMME<br /> FUNDING READINESS<br /> ASSESSMENT
+                </span>
+                <span class="moreInfo">
+                    After completing and submitting this form, ECDC is able to assess your business finance readiness
+                </span>
+                <span class="learnMore">
+                    <a id="" href="https://www.finfind.co.za/hubfs/baseline-assessment/ecdc-funding-readiness-assessment/index.html" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnFinRec" onclick="window.open('@Url.Action("RedirectToRECORDKEEPING", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-six">
+            <div class="btnContainer">
+                <div class="number">
+                    6
+                </div>
+                <span class="heading">
+                    FINANCE<br /> RECORDKEEPING TRAINING
+                </span>
+                <span class="moreInfo">
+                    Free online training videos<br /> to set up and<br /> maintain your admin system
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToRECORDKEEPING" href="@Url.Action("RedirectToRECORDKEEPING", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+        @*<button id="btnBookKeep" onclick="window.open('@Url.Action("RedirectToBOOKKEEPING", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-seven">
+            <div class="btnContainer">
+                <div class="number">
+                    7
+                </div>
+                <span class="heading">
+                    BOOKKEEPING<br /> AND PAYROLL
+                </span>
+                <span class="moreInfo">
+                    Simple online tool to do your<br /> quotes, invoices,<br /> payroll and financial statements
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToBOOKKEEPING" href="@Url.Action("RedirectToBOOKKEEPING", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+        @*<button id="btnBusinDiag" onclick="window.open('@Url.Action("RedirectToDIAGNOSTIC", "ECDCbusinessSupport")', '_blank')">*@
+            <button id="button-eight">
+            <div class="btnContainer">
+                <div class="number">
+                    8
+                </div>
+                <span class="heading">
+                    BUSINESS<br /> DIAGNOSTIC TOOL
+                </span>
+                <span class="moreInfo">
+                    Online assessment tool that<br /> helps to identify<br /> key areas inhibiting business growth
+                </span>
+                <span class="learnMore">
+                    <a id="btnRedirectToDIAGNOSTIC" href="@Url.Action("RedirectToDIAGNOSTIC", "ECDCbusinessSupport")" target="_blank" aria-label="This is a link">CLICK HERE</a>
+                    @*<a aria-label="This is a link">FIND OUT MORE</a>*@
+                </span>
+            </div>
+        </button>
+
+    </div>
+
+    <script type="text/javascript" id="ecdc-hs-script-loader" async defer src="//js-eu1.hs-scripts.com/139540225.js"></script>
+
+</body>
+
+</html>
+

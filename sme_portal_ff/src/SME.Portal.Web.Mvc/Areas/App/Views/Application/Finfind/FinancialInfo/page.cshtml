@@ -1,0 +1,32 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+
+</style>
+
+@{
+    var LenderName = "Lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        LenderName = "Funder";
+    }
+}
+
+<div class="pb-5" data-wizard-type="step-content" id="div-financial-info">
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Financial Info Needed for @LenderName</h3>
+
+    @{ await Html.RenderPartialAsync("/Areas/App/Views/Application/Common/legal-questions-partial.cshtml"); }
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "made-profit-over-last-6-months",
+            Label = "Did your business make a profit over the last 6 months?"
+        }
+    );}
+
+</div>

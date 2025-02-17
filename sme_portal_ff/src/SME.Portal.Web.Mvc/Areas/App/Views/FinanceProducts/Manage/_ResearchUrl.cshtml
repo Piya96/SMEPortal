@@ -1,0 +1,42 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model ManageFinanceProductViewModel
+
+<script src="~/view-resources/Areas/App/Views/FinanceProducts/Manage/Manage.js"></script>
+<form id="stepResearchURLsForm">
+    <div class="step" id="stepResearchURLs">
+        <h3>Research URLs</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Manage all research URLs for this financial product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group row">
+                <div class="col-md-12" style="padding-left:18px">
+                    <form asp-controller="FinanceProducts">
+                        <div id="researchUrlList">
+                            <partial name="../../FinanceProducts/_ResearchUrlsList.cshtml" model="@Model"></partial>
+                        </div>
+                    </form>
+                    <div class="d-flex mb-10">
+                        <div class="mr-5">
+                            <input type="url" class="form-control" name="researchUrl" id="researchUrl" placeholder="Enter research URL." style="float: left;padding-right: 25px;min-width:300px;"/>
+                        </div>
+                        <div>
+                            <button type="button" onclick="addResearchUrl()" class="btn btn-primary text-nowrap">Add Research URL</button>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

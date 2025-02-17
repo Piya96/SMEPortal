@@ -1,0 +1,338 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<style>
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    background: none;
+    color: grey !important;
+    cursor: default;
+}
+
+.datepicker tbody tr > td.day.old {
+    color: black;
+}
+
+.datepicker tbody tr > td.day {
+    color: black;
+}
+</style>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "company-profile-registered",
+            Label = "Select your Business from the list below",
+            Col = "col-xl-12",
+            SubText = L("AsPerCIPCRegistration")
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-name",
+            Label = "Business Name",
+            Col = "col-xl-6",
+            SubText = L("AsPerCIPCRegistration")
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/date-n-top-no-row.cshtml",
+        new Date_N_Top()
+        {
+            Name = "company-profile-registration-date",
+            Label = "Registration Date",
+            SubText = L("AsPerCIPCRegistration")
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "company-profile-type",
+            Label = "Business Type",
+            Col = "col-xl-6"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-registration-number",
+            Label = "Enter Registration number",
+            Col = "col-xl-6",
+            SubText = L("AsPerCIPCRegistration")
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-vat-registration-number",
+            Label = "VAT Registration Number",
+            Col = "col-xl-6",
+            SubText = "SARS VAT number"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-tax-reference-number",
+            Label = "Tax Reference Number",
+            Col = "col-xl-6",
+            SubText = "SARS tax number"
+        }
+    );}
+</div>
+
+<div>
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+        new Radio_N_Top()
+        {
+            Name = "registered-for-uif",
+            Label = "Are you registered for UIF?",
+            Col = "col-xl-8"
+        }
+    );}
+</div>
+
+<div class="row" id="div-uif-number" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "uif-number",
+            Label = "UIF number",
+            Col = "col-xl-6"
+        }
+    );}
+</div>
+
+<br/>
+
+<div class="row">
+    @{
+        await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-registered-address",
+            Label = "Business Address",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-address-line1",
+            Label = "Address Line 1",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-address-line2",
+            Label = "Address Line 2",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-city",
+            Label = "City/Town",
+            Col = "col-xl-6"
+        }
+    );}
+
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+        new Input_N_LT_RT()
+        {
+            Name = "company-profile-postal-code",
+            Label = "Postal Code",
+            Col = "col-xl-6"
+        }
+    );}
+</div>
+
+<div class="row">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "company-profile-province",
+            Label = "Province",
+            Col = "col-xl-6"
+        }
+    );}
+
+
+    @{
+        await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "regional-office",
+                Label = "Region",
+                Col = "col-xl-6",
+                Show = false
+            }
+        );
+    }
+
+    
+</div>
+
+<br/>
+
+<h4 style="" class="font-weight-bold mb-3">Industry Sector</h4>
+
+<div class="row" id="industry-sector-info-tooltip">
+    <div class="col-xl-4">
+        <span class="option-focus text-align:left"
+              style="text-align:left !important;cursor:pointer;">
+            <i class="fa fa-question-circle"></i> Click for help
+        </span>
+    </div>
+</div>
+
+<div id="div-industry-sector-info" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <div class="alert alert-custom alert-outline-info" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">
+                    <p>
+                        This section assists you to select the right sector for your business.
+                        It is important that you choose the most appropriate options from the drop-down lists provided to ensure you are your business is matched with the right funder/s.
+                        Below you will be required to select one option from a drop-down list. After doing so there will be an additional 4 drop-down lists that require you to select one option from. Each list provides more specific detail of the sector your business is in.
+                        Once you have completed this, you will have selected the correct Sector Industry Code for your business, which will be displayed at the bottom of the section.
+                        We use the latest Industry Sector Codes which is version 7 of the SIC codes (Standard Industrial Codes) version 7) – for a list of the codes click here <a target="_blank" href="https://www.statssa.gov.za/classifications/codelists/Web_SIC7a/SIC_7_Final_Manual_Errata.pdf"><b>HERE</b></a> (look from page 26).
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<p>
+    Please click the option from each dropdown that applies to the primary work you do in your business.
+    <br/>
+    Note that the Industry Sector consists of five areas (Industry Section, Division, Group, Class, and Subclass).
+</p>
+
+
+
+<div class="row" id="div-sic-section">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "sic-section",
+            Label = "Select the Industry Section",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row" id="div-sic-division" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "sic-division",
+            Label = "Select the Industry Division",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row" id="div-sic-group" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "sic-group",
+            Label = "Select the Industry Group",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row" id="div-sic-class" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "sic-class",
+            Label = "Select the Industry Class",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div class="row" id="div-sic-sub-class" style="display:none;">
+    @{ await Html.RenderPartialAsync(
+        "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+        new Select_N_LT_RT()
+        {
+            Name = "sic-sub-class",
+            Label = "Select the Industry Subclass",
+            Col = "col-xl-12"
+        }
+    );}
+</div>
+
+<div id="div-industry-info" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="alert alert-custom alert-outline-info" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text">
+                    <p>Industry sector summary (SIC Code: <span id="p-industry-sector-summary"></span>)</p>
+                    <ul>
+                        <li id="li-industry-section"></li>
+                        <li id="li-industry-division"></li>
+                        <li id="li-industry-group"></li>
+                        <li id="li-industry-class"></li>
+                        <li id="li-industry-sub-class"></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

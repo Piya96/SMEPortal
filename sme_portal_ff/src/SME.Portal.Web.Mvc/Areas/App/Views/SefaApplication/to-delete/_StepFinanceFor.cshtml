@@ -1,0 +1,32 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@model CreateEditFunderSearchViewModel
+
+<!--begin: Wizard Step 1 - Finance For -->
+<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+
+    <input class="form-control" id="smecompanyselector" name="smecompanyselector" value="@Model.SmeCompany.SmeCompany.Id" type="hidden">
+
+    <h4 style="font-size:large;" class="mb-10 font-weight-bold text-dark">@L("FundingRequirement")</h4>
+
+    @*@{ await Html.RenderPartialAsync("_ApplicationReferenceNo.cshtml", Model); }*@
+
+    <!--begin::Input-->
+    @{ await Html.RenderPartialAsync("_FinanceForSelector.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_AssetFinanceTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_FranchiseAcquisitionTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_GrowthFinanceTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_ResearchInnovationFundingTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_WorkingCapitalTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_OtherFundingTypes.cshtml"); }
+
+    @{ await Html.RenderPartialAsync("_FinanceForAmount.cshtml"); }
+    <!--end::Input-->
+</div>
+<!--end: Wizard Step 1-->

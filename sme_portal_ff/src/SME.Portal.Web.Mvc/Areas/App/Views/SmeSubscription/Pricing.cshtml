@@ -1,0 +1,60 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SmeSubscription
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.SubscriptionPricing; }
+
+@model PricingViewModel
+
+@section Scripts
+{
+
+    <link href="~/view-resources/Areas/App/Views/SmeSubscription/style.css" rel="stylesheet" />
+
+    <script>
+        $('#fundermatchhref').on('click', function () {
+            $('#exampleModalCustomScrollable').modal().show();
+        });
+    </script>
+
+    <style>
+        #blur {
+            color: transparent;
+            text-shadow: 0 0 8px #000;
+        }
+    </style>
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+        @if (Model.Company != null)
+        {
+            <div class="alert alert-custom alert-outline-2x alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+                <div class="alert-text"><h4>This is for <u>@Model.Company.Name</u></h4></div>
+                <div class="alert-close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                    </button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                <div class="alert-text"><h3>@Html.ActionLink("Click here to select your Business.", "Index", "SmeSubscription")</h3></div>
+            </div>
+        }
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    @{ await Html.RenderPartialAsync("_PricingPartial.cshtml", Model); }
+                </div>
+            </div>
+        </div>
+
+        @{ await Html.RenderPartialAsync("_ExampleFunderSearchModal.cshtml"); }
+    </div>
+</div>

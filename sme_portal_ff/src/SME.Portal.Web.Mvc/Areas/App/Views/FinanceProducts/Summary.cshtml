@@ -1,0 +1,438 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using System.Globalization
+
+@model FinanceProductSummaryViewModel
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.FinanceProductSummary;
+    var ci = new CultureInfo("en-ZA");
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div><br /></div>
+    <div class="@(await GetContainerClass())">
+
+
+        <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+            <div class="alert-icon"><i class="flaticon-information" aria-label="@L("FinanceProductSummaryAlert_Title")"></i></div>
+            <div class="alert-text">
+                <h6 class="alert-heading">@L("FinanceProductSummaryAlert_Info") - @Model.Lender.Name - @Model.FinanceProductName</h6>
+            </div>
+            <div class="alert-close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="card card-custom gutter-b">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="row" style="min-height: 500px;">
+                        <div class="col-12 learn-content-section pl-4 pt-3">
+                            <div class="pt-4">
+                                <h2>@Model.Lender.Name - @Model.FinanceProductName</h2>
+                                @Html.Raw(Model.ProductSummaryHtml)
+                                <div class="lender-about-spacer">
+                                    <h3>About this funding option</h3>
+                                    <table class="table table-striped mt-4">
+                                        <tbody>
+                                            <tr>
+                                                <td>Funding limits</td>
+                                                <td>
+                                                    <div>
+                                                        Minimum:
+                                                        @if (Model.FinanceProductProperties.MinLoanAmount == null)
+                                                        {
+                                                            @L("InformationNotProvided")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Model.FinanceProductProperties.MinLoanAmount?.ToString("C", ci);
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Maximum:
+                                                        @if (Model.FinanceProductProperties.MaxLoanAmount == null)
+                                                        {
+                                                            @L("InformationNotProvided")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Model.FinanceProductProperties.MaxLoanAmount?.ToString("C", ci);
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Your annual turnover</td>
+                                                <td>
+                                                    <div>
+                                                        Minimum:
+                                                        @if (Model.FinanceProductProperties.MinAverageAnnualTurnover == null)
+                                                        {
+                                                            @L("InformationNotProvided")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Model.FinanceProductProperties.MinAverageAnnualTurnover?.ToString("C", ci);
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        Maximum:
+                                                        @if (Model.FinanceProductProperties.MaxAverageAnnualTurnover == null)
+                                                        {
+                                                            @L("InformationNotProvided")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Model.FinanceProductProperties.MaxAverageAnnualTurnover?.ToString("C", ci);
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Months in business</td>
+                                                <td>
+                                                    <div>
+                                                        Minimum:
+                                                        @if (Model.FinanceProductProperties.MinimumMonthsTrading == null)
+                                                        {
+                                                            @L("InformationNotProvided")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Model.FinanceProductProperties.MinimumMonthsTrading;
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="lender-about-spacer">
+                                    <h3>What you need to provide</h3>
+                                    <table class="table table-striped mt-4">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>Company registration documents</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5aaf6d123a022727ec3b587a"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if ( Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                              Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5aaf6d123a022727ec3b587a"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div>Certified copies of owners IDs</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cdb53efed8141436959b"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if ( Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                              Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cdb53efed8141436959b"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Proof of business address</div>
+                                                </td>
+                                                <td>
+                                                    @if( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                         Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5b2a54ecb958c008605883ff"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if ( Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                              Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5b2a54ecb958c008605883ff"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div>Bank statements</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5aaf6d193a022727ec3b587b"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if ( Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                              Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5aaf6d193a022727ec3b587b"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>12 months' budgeting (incl cashflow projections)</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0ce1d3efed814143695a1"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0ce1d3efed814143695a1"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div>Business plan</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cde13efed8141436959e"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cde13efed8141436959e"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Tax clearance certificate</div>
+                                                </td>
+                                                <td>
+                                                    @if (Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                         Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cdc33efed8141436959c"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cdc33efed8141436959c"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div>Management accounts</div>
+                                                </td>
+                                                <td>
+                                                    @if ( Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                          Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cdfc3efed814143695a0"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cdfc3efed814143695a0"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div>Annual financial statements</div>
+                                                </td>
+                                                <td>
+                                                    @if (Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                         Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cded3efed8141436959f"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cded3efed8141436959f"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div>Statement of assets and liabilities (for all owners)</div>
+                                                </td>
+                                                <td>
+                                                    @if (Model.FinanceProductProperties.RequiredDocumentTypeListIds != null && 
+                                                         Model.FinanceProductProperties.RequiredDocumentTypeListIds.Contains("5ab0cdd73efed8141436959d"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-bold-check"></i>
+                                                    }
+                                                    else if (Model.FinanceProductProperties.NotRequiredDocumentTypeListIds != null &&
+                                                             Model.FinanceProductProperties.NotRequiredDocumentTypeListIds.Contains("5ab0cdd73efed8141436959d"))
+                                                    {
+                                                        <i class="icon-1x text-dark-50 ki ki-close"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" data-toggle="tooltip" title="" data-original-title="The funder has not indicated if this document is required.">
+                                                            <i class="icon-1x text-dark-50 ki ki-outline-info"></i>
+                                                        </a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="lender-about-spacer">
+                                    <h3>Contact details</h3>
+                                    <table class="table mt-4 table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell-div">Website</td>
+                                                <td>
+                                                    @if (!string.IsNullOrEmpty(Model.Lender.WebsiteUrl))
+                                                    {
+                                                        <a href="@Model.Lender.WebsiteUrl" target="_blank">Go to funder website</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                </td>
+                                                <td class="cell-div">Email</td>
+                                                <td>
+                                                    @if (string.IsNullOrEmpty(Model.FinanceProductProperties.FundManagerEmail))
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                    else
+                                                    {
+                                                    <a href="mailto: @Model.FinanceProductProperties.FundManagerEmail" target="_top">Funder Email</a>
+                                                        
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cell-div">Phone</td>
+                                                <td>
+                                                    @if (string.IsNullOrEmpty(Model.FinanceProductProperties.ContactNumber))
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Model.FinanceProductProperties.ContactNumber
+                                                    }
+                                                </td>
+
+                                                <td class="cell-div">FSP Number</td>
+                                                <td>
+                                                    @if (string.IsNullOrEmpty(Model.Lender.FSPRegistrationNumber))
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Model.Lender.FSPRegistrationNumber
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cell-div" style="vertical-align: top">Address</td>
+                                                <td>
+                                                    @if (string.IsNullOrEmpty(Model.FinanceProductProperties.PostalAddressArea) &&
+                                                    string.IsNullOrEmpty(Model.FinanceProductProperties.PostalAddressCity) &&
+                                                    string.IsNullOrEmpty(Model.FinanceProductProperties.PostalAddressCode) &&
+                                                    string.IsNullOrEmpty(Model.FinanceProductProperties.PostalAddressProvince))
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Model.FinanceProductProperties.PostalAddressArea <br />
+                                                        @Model.FinanceProductProperties.PostalAddressCity <br />
+                                                        @Model.FinanceProductProperties.PostalAddressCode <br />
+                                                        @Model.FinanceProductProperties.PostalAddressProvince <br />
+                                                    }
+                                                </td>
+
+                                                <td class="cell-div">NCR Number</td>
+                                                <td>
+                                                    @if (string.IsNullOrEmpty(Model.Lender.NcrNumber))
+                                                    {
+                                                        @L("NotProvided")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Model.Lender.NcrNumber
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

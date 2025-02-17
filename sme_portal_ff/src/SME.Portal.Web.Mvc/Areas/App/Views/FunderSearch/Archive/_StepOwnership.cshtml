@@ -1,0 +1,176 @@
+﻿
+<!--begin: Wizard Step 2 - Ownership -->
+<div class="pb-5" data-wizard-type="step-content">
+
+    @* Total Ownership by South Africans *@
+    <h4 class="mb-10 font-weight-bold text-dark">@L("TotalPercOwnershipBySouthAfricans")</h4>
+
+    <div class="form-group">
+        <label for="ownership-black-coloured-indian" class="col-form-label float-left" style="width:70%;">@L("BlackColouredIndian") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="BlackAllOwnedPercentage" name="blackallownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership Black, Coloured and Indian">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="black-all-owned-percentage-message"></div>
+
+    <div id="black-south-africans-only">
+        <div class="form-group">
+            <label for="ownership-black-coloured-indian" class="col-form-label float-left" style="width:70%;">@L("BlackSouthAfricansOnly") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <input autocomplete="off" id="BlackOwnedPercentage" name="blackownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership Black, Coloured and Indian">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="black-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-white" class="col-form-label float-left" style="width:70%;">@L("White") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="WhiteOwnedPercentage" name="whiteownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership white">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="white-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-disabled-people" class="col-form-label float-left" style="width:70%;">@L("DisabledPeople") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="DisabledOwnedPercentage" name="disabledownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership disabled people">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="disabled-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-youth" class="col-form-label float-left" style="width:70%;">@L("YouthIndividualsUnder35") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="YouthOwnedPercentage" name="youthownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership youth">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="youth-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-woman-any-race" class="col-form-label float-left" style="width:70%;">@L("WomanAnyRace") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="WomenOwnedPercentage" name="womenownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership woman any race">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="women-owned-percentage-message"></div>
+
+    <div id="woman-black-coloured-and-indian-only">
+        <div class="form-group">
+            <label for="ownership-woman-black-coloured-indian-only" class="col-form-label float-left" style="width:70%;">@L("WomanBlackColouredAndIndianOnly") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <input autocomplete="off" id="BlackWomenOwnedPercentage" name="blackwomenownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership woman any race">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="black-women-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-military-veteran" class="col-form-label float-left" style="width:70%;">@L("MilitaryVeteran") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="MilitaryVeteranOwnedPercentage" name="militaryveteranownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership Military Veteran">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="military-veteran-owned-percentage-message"></div>
+    <br />
+    <br />
+
+    @* Other Ownership *@
+    <h4 class="mb-10 font-weight-bold text-dark">@L("OtherOwnership")</h4>
+
+    <div class="form-group">
+        <label for="other-ownership-non-southafricans" class="col-form-label float-left" style="width:70%;">@L("NonSouthAfricanCitizens") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="NonSouthAfricanOwnedPercentage" name="nonsouthafricanownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Other Ownership non South Africans">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="non-south-african-owned-percentage-message"></div>
+
+    <div id="permanent-residency-in-sa">
+        <br />
+        <div class="form-group">
+            <label for="permanent-residency-in-sa" class="col-form-label float-left" style="width:70%;">@L("DoYouHavePermanentResidencyInSA") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="radio-inline">
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="permanentresidency" />
+                        <span></span>
+                        Yes
+                    </label>
+                    <label class="radio radio-outline radio-primary">
+                        <input type="radio" name="permanentresidency" checked="checked" />
+                        <span></span>
+                        No
+                    </label>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="permanent-residency-message"></div>
+
+    <div class="form-group">
+        <label for="other-ownership-companies" class="col-form-label float-left" style="width:70%;">@L("ComapniesOrganisations") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="CompanyOwnedPercentage" name="companyownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Other Ownership Companies Organisations">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="company-owned-percentage-message"></div>
+
+    <div class="form-group">
+        <label for="ownership-total" class="col-form-label float-left" style="width:70%;">@L("TotalNumberOfOwners") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <input autocomplete="off" id="NumberOfOwners" name="numberofowners" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership total">
+        </div>
+        <br />
+    </div>
+    <div id="number-of-owners-message"></div>
+
+</div>
+
+<div class="form-group">
+    <div id="step-2-messages">
+    </div>
+</div>
+
+<!--end: Wizard Step 2-->

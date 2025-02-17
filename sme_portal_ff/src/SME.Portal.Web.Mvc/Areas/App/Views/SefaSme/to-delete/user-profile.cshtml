@@ -1,0 +1,399 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<style>
+
+    .pulse {
+        overflow: visible;
+        position: relative;
+        z-index: 0 !important;
+    }
+
+        .pulse:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: inherit;
+            border-radius: inherit;
+            transition: opacity 0.2s, transform 0.2s;
+            animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+            z-index: 0 !important;
+        }
+
+    @@keyframes pulse-animation {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+    }
+
+    .pulse2 {
+        overflow: visible;
+        position: relative;
+        z-index: 0 !important;
+    }
+
+        .pulse2:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 80%;
+            height: 90%;
+            top: 5%;
+            left: 10%;
+            background-color: #5DA1FF;
+            border-radius: inherit;
+            transition: opacity 0.2s, transform 0.2s;
+            animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+            z-index: 0 !important;
+        }
+
+        .pulse2:hover {
+            animation: none;
+        }
+
+    @@keyframes pulse2-animation {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+    }
+
+
+
+
+</style>
+
+<div id="id-user-basic-screening-fail-alert" style="display:none;">
+    <div class="row">
+        <div class="col-xl-12">
+
+            <div class="alert alert-custom alert-light-danger" role="alert">
+                <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                <div class="alert-text">
+                    <p>Due to the following reasons <b>@L("Sefa")</b> will not allow you to continue with your enquiry.</p>
+                    <ul>
+                        <li>The user is not a South African citizen</li>
+                    </ul>
+                    <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-user-verify-fail-redirect" href="javascript:void(0)">here</a>.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<h4 class="mb-10 font-weight-bold text-dark">User Profile</h4>
+
+
+<div id="id-user-info-message-div" style="display:none;">
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+            </div>
+            <div class="col-xl-7">
+                <div class="alert-text">
+                    <p>
+                        If you’re the business owner, then you’ll only have to tell us who you are.
+                        But if you’re looking for funding on behalf of the business owner, then we also need to know who you are.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <button id="id-user-info-message-button"
+                        class="btn btn-outline-primary btn-sm mr-6"
+                        type="button">
+                    <i class="flaticon-edit"></i>
+                    Click here to fill in your User Profile
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="id-user-profile-div">
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_IdentityNumber")</label>
+                <span class="option-focus text-align:left" data-toggle="tooltip" data-placement="right" data-html="true" title="<div class='text-justify'> The provided identity number will be verified with the Department Of Home Affairs for the following information:<br/>- South African citizen<br/>- Given names <br/>- Marital Status<br/>- Telephone numbers<br/></div>">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                <div class="input-group">
+                    <input id="id-user-profile-id"
+                           type="text"
+                           class="form-control"
+                           name="idno1"
+                           autocomplete="off"
+                           placeholder="Enter a South African identity number and click Verify"
+                           value="@Model.MySettings.IdentityOrPassport">
+
+                    <div class="input-group-append">
+
+                        <button id="id-user-verify-identity-button" class="btn btn-primary font-weight-bold" type="button">
+                            <b class="la la-warning"></b>
+                            <span id="id-user-verify-identity-span">@L("OW_IdentityVerifyButton")</span>
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="form-group fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-user-mobile-verify-input-div">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+
+                <label>@L("OW_Mobile")</label>
+
+                <span class="option-focus text-align:left" data-toggle="tooltip" data-placement="right" data-html="true" title="Verification required via OTP sent by SMS">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+
+                <div class="input-group">
+                    <input value="@Model.MySettings.PhoneNumber"
+                           id="id-user-profile-mobile"
+                           type="text"
+                           name="phone1"
+                           class="form-control"
+                           onwheel="this.blur()"
+                           autocomplete="off"
+                           placeholder="Enter your mobile number and click Verify">
+                    <div class="input-group-append">
+                        <button id="id-user-mobile-verify-input-button" class="btn btn-primary font-weight-bold" type="button">
+                            <b class="la la-warning"></b>
+                            <span id="id-user-profile-span">@L("OW_MobileVerifyButton")</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-user-mobile-verify-select-div" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Mobile")</label>
+                <div class="input-group">
+                    <select value=""
+                            id="id-user-mobile-verify-select"
+                            type="text"
+                            name="name-user-mobile-verify-select"
+                            class="form-control">
+                        <option value="" disabled selected hidden>Select mobile number</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button id="id-user-mobile-verify-button" class="btn btn-primary font-weight-bold" type="button">
+                            <b class="la la-warning"></b>
+                            <span id="id-user-mobile-verify-button-span">@L("OW_MobileVerifyButton")</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_EmailAddr")</label>
+                <input id="id-user-profile-email"
+                       type="email"
+                       class="form-control"
+                       name="email1"
+                       placeholder="Enter email"
+                       value="@Model.MySettings.EmailAddress">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_FirstName")</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select id="id-select-user-profile-title"
+                                name="name-select-user-profile-title"
+                                class="form-control"
+                                value="">
+                            <option value="" disabled selected hidden>Title</option>
+                        </select>
+                    </div>
+                    <input id="id-user-profile-fname"
+                           type="text"
+                           class="form-control"
+                           name="fname1"
+                           placeholder="Enter first name"
+                           value="@Model.MySettings.Name">
+                </div>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_LastName")</label>
+                <input id="id-user-profile-lname"
+                       type="text"
+                       class="form-control"
+                       name="lname1"
+                       placeholder="Enter last name"
+                       value="@Model.MySettings.Surname">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+
+                <label>How did you hear about <b>@L("Sefa")</b>?</label>
+                <select id="id-select-how-did-you-hear-about-sefa"
+                        name="how-did-you-hear-about-sefa"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div id="id-div-message-how-did-you-hear-about-sefa" class="fv-plugins-message-container"></div>
+    </div>
+
+    <div class="row" id="div-user-profile-sefa-origin-other" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_BusinessOwnerCapacityOther")</label>
+                <input
+                    id="input-user-profile-sefa-origin-other"
+                    name="input-user-profile-sefa-origin-other"
+                    type="text"
+                    class="form-control"
+                    placeholder="Please enter how you heard about sefa">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="div-user-profile-sefa-origin-strategic-partner" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+
+                <label>Strategic Partners</label>
+                <select id="select-user-profile-sefa-origin-strategic-partner"
+                        name="select-user-profile-sefa-origin-strategic-partner"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div id="message-user-profile-sefa-origin-strategic-partner" class="fv-plugins-message-container"></div>
+    </div>
+
+
+    <div>
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "is-business-owner",
+                Label = L("OW_IsBusinessOwner"),
+                Col = "col-xl-8"
+            }
+        );}
+    </div>
+
+    <div id="id-user-profile-capacity-div">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="form-group fv-plugins-icon-container">
+
+                    <label>In what capacity are you representing the business?</label>
+                    <select id="id-user-profile-capacity-select"
+                            name="capacity1"
+                            class="form-control"
+                            value="">
+                        <option value="" disabled selected hidden>@L("OW_BusinessOwnerCapacitySelectOption")</option>
+                    </select>
+                    <span class="form-text text-muted"></span>
+                    <div class="fv-plugins-message-container"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-div-user-profile-capacity-other" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_BusinessOwnerCapacityOther")</label>
+                <input id="id-input-user-profile-capacity-other"
+                       name="name-input-user-profile-capacity-other"
+                       type="text"
+                       class="form-control"
+                       placeholder="Please enter your capacity">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-div-user-profile-registered-address">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Physical Address of Authorized Representative</label>
+                <div class="input-group">
+                    <input id="id-input-user-profile-registered-address"
+                           name="name-input-user-profile-registered-address"
+                           type="text"
+                           class="form-control"
+                           autocomplete="nope"
+                           placeholder="Enter registered address"
+                           value="">
+                </div>
+                <div class="form-group fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="step-6-messages">
+    </div>
+
+</div>

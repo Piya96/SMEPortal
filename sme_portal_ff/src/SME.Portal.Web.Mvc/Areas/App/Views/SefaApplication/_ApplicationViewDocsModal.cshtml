@@ -1,0 +1,88 @@
+﻿
+
+<!-- Modal-->
+<div class="modal fade" id="id-div-modal-app-view-goto-docs" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Required Documentation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <p>
+                    The next steps for your finance application to be successfully submitted is to upload the applicable documentation as listed below.
+                </p>
+                <h4>General Documents</h4>
+                <ul>
+                    <li>Business plan (only for term loans/asset finance)</li>
+                    <li>Valid Tax Clearance Certificate</li>
+                    <li><b>@L("Sefa")</b> product application form</li>
+                    <li>Short CV of members/directors/shareholders/trustees etc.</li>
+                    <li>Proof of residence - utility bill/sworn affadavit (not older than 3 months)</li>
+                    <li>Business registration documents e.g. CK2, Business profile</li>
+                    <li>Certified copy of ID and that of spouse (if married ICOP)</li>
+                    <li>Ownership declaration form</li>
+                    <li>PIP Declaration of political exposure (template provided)</li>
+                    <li>Consent part of finance application form</li>
+                </ul>
+                
+                <h4>Product Specific Documents</h4>
+                <ul>
+                    <li>Marriage certificate (where applicable)</li>
+                    <li>Proof of CIPC/CIPRO annual fees</li>
+                    <li>Member's resolution to apply (if applicable)</li>
+                </ul>
+
+                <h4>Financial Documents</h4>
+                <ul>
+                    <li>6 months latest bank statement (business)
+                    <li>6 months latest bank statement (personal)
+                    <li>Up to date management accounts (if applicable)
+                    <li>Historic financial statements (not less than 3 years if applicable)
+                    <li>Cash flow projections (only term loans and asset finance)
+                    <li>Loan Breakdown (no template provided)
+                    <li>Personal income & expenditure schedule
+                    <li>Personal assets and liabilities statement
+                    <li>Copy of Lease Agreement (where applicable for asset finance and term loans)
+                    <li>Copy of Contract/Order (bridging loans)
+                    <li>Proof of contribution and source (if applicable)
+                    <li>Debtors age analysis (if applicable)
+                    <li>Creditors age analysis (if applicable)
+                    <li>Surety form (where applicable)
+                    <li>Franchise agreement (asset finance and term loans)
+                    <li>Supporting quotations (with contact person and banking details of supplier)
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button id="id-button-app-view-go-nowhere" type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancel</button>
+                <button id="id-button-app-view-goto-docs" type="button" class="btn btn-primary font-weight-bold">Go to My Documents</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // NOTE: Not sure when the html with the id's below was removed, but i can't find any reference to the anchor and
+    //       the 2 button id's, which is causing a null reference error here.
+    //document.getElementById('id-a-app-view-goto-docs-modal').onclick = function () {
+    //    $('#id-div-modal-app-view-goto-docs').modal({
+    //        backdrop: 'static',
+    //        keyboard: true,
+    //        show: false
+    //    });
+    //    $('#id-div-modal-app-view-goto-docs').modal('show');
+    //}
+    //document.getElementById('id-button-app-view-goto-docs').onclick = function () {
+    //    $('#id-div-modal-app-view-goto-docs').modal('hide');
+    //    location.href = '@Url.Action("Profiling", "SefaSme")?userMessage=' + 'To complete your finance application please upload the required documentation using My Documents below.';
+    //};
+    //document.getElementById('id-button-app-view-go-nowhere').onclick = function () {
+    //    $('#id-div-modal-app-view-goto-docs').modal('hide');
+    //};
+</script>
+
+
+

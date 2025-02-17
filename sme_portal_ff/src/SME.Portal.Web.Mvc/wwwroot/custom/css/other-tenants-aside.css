@@ -1,0 +1,25 @@
+﻿.login-aside > img {
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 992px) {
+    .login.login-1 .login-aside {
+        width: auto;
+        max-width: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+    .login.login-1 .login-aside {
+        width: auto;
+        max-width: none;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .login.login-1 .login-content .login-form {
+        width: auto;
+        max-width: none;
+    }
+}

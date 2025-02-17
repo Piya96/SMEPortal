@@ -1,0 +1,264 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@* ---------------Franchise Acquisition Partner Funding -- *@
+<div id="div-franchise-acquisition-partner-funding-type" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="franchiseacquisitiontype">Partner Buy-out or Franchise Funding Options</label>
+        <select class="form-control" id="franchiseacquisitiontype" name="franchiseacquisitiontype">
+            <option disabled selected hidden value="">@L("SelectAnOption")</option>
+            <option value="59c2c7087c83b736d463c255">Buying a franchise</option>
+            <option value="59d26a3120070a604097b04f">Funding to bring on a BEE Partner</option>
+            <option value="59d26a1620070a604097b04d">Funding to buy an existing business</option>
+            <option value="59d26a2620070a604097b04e">Partner or management buyout</option>
+            <option value="59c2c7197c83b736d463c256">Starting your own franchise</option>
+        </select>
+        <span class="form-text text-muted"></span>
+    </div>
+</div>
+
+@* Buying a franchise  *@
+<div id="div-franchise-acquisition-buying-a-franchise" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("IsFranchiseAccreditedWithFranchiseAssoc")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="buyingafranchisefranchiseaccredited" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="buyingafranchisefranchiseaccredited" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("IsFranchiseAccreditedWithFranchiseAssocSubtext")</span>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("HaveYouBeenPreapprovedByFranchisor")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="preapprovedbyfranchisor" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="preapprovedbyfranchisor" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("HaveYouBeenPreapprovedByFranchisorSubtext")</span>
+    </div>
+</div>
+
+@* Funding to bring BEE Partner   *@
+<div id="div-franchise-acquisition-funding-to-bring-on-a-bee-partner" style="display:none">
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("WillCompanyHaveMinBEEShareholding")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="beepartnerfranchiseaccredited" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="beepartnerfranchiseaccredited" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("WillCompanyHaveMinBEEShareholdingSubtext")</span>
+    </div>
+</div>
+
+@* Funding to buy an existing business   *@
+<div id="div-franchise-acquisition-funding-to-buy-an-existing-business" style="display:none">
+
+    <h4 style="" class="font-weight-bold mb-3">Industry Sector</h4>
+    
+    <div class="row" id="industry-sector-info-tooltip">
+        <div class="col-xl-4">
+            <span class="option-focus text-align:left"
+                  style="text-align:left !important;cursor:pointer;">
+                <i class="fa fa-question-circle"></i> Click for help
+            </span>
+        </div>
+    </div>
+    
+    <div id="div-industry-sector-info" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+    
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>
+                            This section assists you to select the right sector for your business.
+                            It is important that you choose the most appropriate options from the drop-down lists provided to ensure you are your business is matched with the right funder/s.
+                            Below you will be required to select one option from a drop-down list. After doing so there will be an additional 4 drop-down lists that require you to select one option from. Each list provides more specific detail of the sector your business is in.
+                            Once you have completed this, you will have selected the correct Sector Industry Code for your business, which will be displayed at the bottom of the section.
+                            We use the latest Industry Sector Codes which is version 7 of the SIC codes (Standard Industrial Codes) version 7) – for a list of the codes click here <a target="_blank" href="https://www.statssa.gov.za/classifications/codelists/Web_SIC7a/SIC_7_Final_Manual_Errata.pdf"><b>HERE</b></a> (look from page 26).
+                        </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+    <br/>
+    
+    <p>
+        Note that the Industry Sector consists of five areas (Industry Section, Division, Group, Class, and Subclass).
+        Please click an option from each dropdown that applies to the primary work you do in your business.
+    </p>
+
+    <div class="row" id="div-sic-section" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "sic-section",
+                Label = "Select the industry Section",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-sic-division" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "sic-division",
+                Label = "Select the industry Division",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-sic-group" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "sic-group",
+                Label = "Select the industry Group",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-sic-class" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "sic-class",
+                Label = "Select the industry Class",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-sic-sub-class" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "sic-sub-class",
+                Label = "Select the industry Subclass",
+                Col = "col-xl-12"
+            }
+        );}
+    </div>
+
+    <div id="div-industry-info" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <p>Industry sector summary</p>
+                        <ul>
+                            <li id="li-industry-section"></li>
+                            <li id="li-industry-division"></li>
+                            <li id="li-industry-group"></li>
+                            <li id="li-industry-class"></li>
+                            <li id="li-industry-sub-class"></li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="">@L("WhatTypeOfBusinessIsIt")</label>
+        <select class="form-control" id="fundingtobuyanexistingbusinesstype" name="fundingtobuyanexistingbusinesstype">
+            <option disabled selected hidden value="">@L("SelectAnOption")</option>
+            <option value="59d2edb439b41c2b749a03df">@L("Distributor")</option>
+            <option value="59d2edda39b41c2b749a03e2">@L("Exporter")</option>
+            <option value="59d2edc139b41c2b749a03e0">@L("Manufacturer")</option>
+            <option value="59d2ed9739b41c2b749a03d9">@L("Retailer")</option>
+            <option value="59d2ede939b41c2b749a03e3">@L("ServiceBusiness")</option>
+            <option value="59d2eda439b41c2b749a03de">@L("Wholesaler")</option>
+            <option value="59d2edd139b41c2b749a03e1">@L("Importer")</option>
+        </select>
+        <span class="form-text text-muted">@L("WhatTypeOfBusinessIsItSubtext")</span>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold text-dark" for="" style="width:80%;">@L("IsBusinessLocatedInRuralArea")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesslocatedinruralarea" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="businesslocatedinruralarea" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("IsBusinessLocatedInRuralAreaSubtext")</span>
+    </div>
+</div>
+
+@* Funding Partner or Management Buyout  *@
+<div id="div-franchise-acquisition-funding-partner-or-management-buyout" style="display:none">
+    <div class="form-group">
+        <label for="" class="font-weight-bold text-dark" style="width:80%;">@L("WillCompanyHaveMinBEEShareholding")</label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shareholdinggreaterthanperc" value="Yes" />
+                    <span></span>
+                    @L("Yes")
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="shareholdinggreaterthanperc" value="No" />
+                    <span></span>
+                    @L("No")
+                </label>
+
+            </div>
+        </div>
+        <span class="form-text text-muted">@L("WillCompanyHaveMinBEEShareholdingSubtext")</span>
+    </div>
+</div>

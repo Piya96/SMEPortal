@@ -1,0 +1,40 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+
+@model CreateEditFunderSearchViewModel
+@* ---------------Finance For Loan Amount -----------------*@
+<div class="form-group">
+    <label class="font-weight-bold text-dark" for="loan-amount">Funding Required</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">R</span>
+        </div>
+        <input autocomplete="off" id="loanamount" name="loanamount" type="text" class="form-control" aria-label="loan-amount">
+    </div>
+    <span class="form-text text-muted"></span>
+</div>
+
+
+@* Owners Contribution *@
+<div class="form-group">
+    <label class="font-weight-bold text-dark" for="owners-contribution">Owners Contribution</label>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">R</span>
+        </div>
+        <input autocomplete="off" id="owners-contribution" name="ownerscontribution" type="text" class="form-control" aria-label="owners-contribution">
+    </div>
+    <span class="form-text text-muted"></span>
+</div>
+
+
+@* Source of funds *@
+<div class="form-group">
+    <label class="font-weight-bold text-dark" for="source-of-funds">Source of Funds</label>
+    <select class="form-control" id="source-of-funds" name="sourceoffunds">
+        <option disabled selected value="">Select an option</option>
+        @foreach (var listItem in Model.ListItems.Where(x => x.ParentListId == "616d727f668f1708a6491358").OrderBy(x => x.Priority).ToList())
+        {
+            <option value="@listItem.ListId">@listItem.Name</option>
+        }
+    </select>
+</div>

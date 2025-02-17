@@ -1,0 +1,9 @@
+﻿@model string
+@if (Model == "incomplete")
+{
+    <div><i class="fa fa-exclamation-circle"></i></div>
+}
+@if (Model == "complete")
+{
+    <div><i class="fa fa-check-circle"></i></div>
+}

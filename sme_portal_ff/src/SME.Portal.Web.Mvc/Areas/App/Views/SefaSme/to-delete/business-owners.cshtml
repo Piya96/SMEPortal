@@ -1,0 +1,269 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SME;
+@model SMEOnboardingWizardViewModel
+
+<div class="d-flex justify-content-between border-top mt-5 pt-10"></div>
+
+<h4 class="mb-10 font-weight-bold text-dark">@L("Ownership_BusinessOwners")</h4>
+
+@* Total Ownership by South Africans *@
+<!--
+<h4 class="mb-10 font-weight-bold text-dark">@L("Ownership_TotalMustEqualTotalNumberOfOwners")</h4>
+-->
+
+<div id="id-div-business-owners">
+    <div class="form-group">
+        <label for="id-input-total-number-of-owners" class="text-dark col-form-label float-left" style="width:70%;">@L("Ownership_TotalNumberOfOwners") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-total-number-of-owners" 
+                   name="name-input-total-number-of-owners" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-total-number-of-owners"></div>
+
+    <div class="form-group">
+        <label for="id-input-how-many-are-south-africans" class="col-form-label float-left" style="width:70%;">@L("Ownership_HowManyAreSouthAfricans") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-how-many-are-south-africans" 
+                   name="name-input-how-many-are-south-africans" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control"
+                   aria-label="">
+
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-how-many-are-south-africans"></div>
+
+    <div class="form-group">
+        <label for="id-input-how-many-are-not-south-africans" class="col-form-label float-left" style="width:70%;">@L("Ownership_HowManyAreNotSouthAfricans") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-how-many-are-not-south-africans" 
+                   name="name-input-how-many-are-not-south-africans" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-how-many-are-not-south-africans"></div>
+
+    <div class="form-group">
+        <label for="id-input-how-many-are-companies-organisations" class="col-form-label float-left" style="width:70%;">@L("Ownership_HowManyAreCompaniesOrganisations") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="x" 
+                   id="id-input-how-many-are-companies-organisations" 
+                   name="name-input-how-many-are-companies-organisations" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control"
+                   aria-label="">
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-how-many-are-companies-organisations"></div>
+
+    <div class="form-group" style="display:none;">
+        <input type="text" name="atleastoneormorename" />
+    </div>
+    <div id="atleastoneormoremessage"></div>
+
+    <br />
+
+    @* Other Ownership *@
+    <h4 class="mb-10 font-weight-bold text-dark">@L("Ownership_InfoSouthAfricansOnly")</h4>
+
+    <div class="form-group">
+        <label for="id-input-black-coloured-indian-pdi" class="col-form-label float-left" style="width:70%;">@L("Ownership_BlackColouredIndianPDI") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-black-coloured-indian-pdi" 
+                   name="name-input-black-coloured-indian-pdi" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-black-coloured-indian-pdi"></div>
+
+    <!-- Show if Ownership_BlackColouredIndianPDI(name-input-black-coloured-indian-pdi) set -->
+    <div id="id-div-black-only">
+        <div class="form-group">
+            <label for="id-input-black-only" class="col-form-label float-left" style="width:70%;">@L("Ownership_BlackOnly") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+                <input 
+                       autocomplete="off" 
+                       id="id-input-black-only" 
+                       name="name-input-black-only" 
+                       placeholder="0" 
+                       type="text"
+                       class="form-control"
+                       aria-label="">
+
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="id-div-message-black-only"></div>
+
+    <div class="form-group">
+        <label for="id-input-women-any-race" class="col-form-label float-left" style="width:70%;">@L("Ownership_WomenAnyRace") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-women-any-race" 
+                   name="name-input-women-any-race" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-women-any-race"></div>
+
+    <!-- Show if Ownership_WomanAnyRace (name-input-women-any-race) set -->
+    <!--
+    <div id="id-div-women-pdi">
+        <div class="form-group">
+            <label for="ownership-woman-black-coloured-indian-only" class="col-form-label float-left" style="width:70%;">@L("Ownership_WomenPDI") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <input autocomplete="off" id="id-input-women-pdi" name="name-input-women-pdi" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership woman any race">
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="id-div-message-women-pdi"></div>
+-->
+    <!-- Show if Ownership_WomanAnyRace (name-input-women-any-race) set -->
+    <div id="id-div-women-black-only">
+        <div class="form-group">
+            <label for="id-input-women-black-only" class="col-form-label float-left" style="width:70%;">@L("Ownership_WomenBlackOnly") </label>
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+                <input 
+                       autocomplete="off" 
+                       id="id-input-women-black-only" 
+                       name="name-input-women-black-only" 
+                       placeholder="0" 
+                       type="text"
+                       class="form-control" 
+                       aria-label="">
+
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div id="id-div-message-women-black-only"></div>
+
+    <div class="form-group">
+        <label for="id-input-disabled-any-race" class="col-form-label float-left" style="width:70%;">@L("Ownership_DisabledAnyRace") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-disabled-any-race" 
+                   name="name-input-disabled-any-race" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-disabled-any-race"></div>
+
+    <div class="form-group">
+        <label for="id-input-youth-under-35-any-race" class="col-form-label float-left" style="width:70%;">@L("Ownership_YouthUnder35AnyRace") </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+            <input 
+                   autocomplete="off" 
+                   id="id-input-youth-under-35-any-race" 
+                   name="name-input-youth-under-35-any-race" 
+                   placeholder="0" 
+                   type="text"
+                   class="form-control" 
+                   aria-label="">
+
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div id="id-div-message-youth-under-35-any-race"></div>
+
+    @{
+        if(Model.MySettings.TenantId == 3) // SeEFA
+        {
+            <div id="id-military-veterans-div" class="form-group" style="display:none;">
+                <label for="ownership-military-veteran" class="col-form-label float-left" style="width:70%;">@L("MilitaryVeteran") </label>
+                <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+                    <input autocomplete="off" id="MilitaryVeteranOwnedPercentage" name="militaryveteranownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership Military Veteran">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div id="military-veteran-owned-percentage-message"></div>
+        }
+        else
+        {
+            <div id="id-military-veterans-div" class="form-group" style="display:none;">
+                <label for="MilitaryVeteranOwnedPercentage" class="col-form-label float-left" style="width:70%;">@L("MilitaryVeteran") </label>
+                <div class="input-group mb-2 mb-sm-0 float-right" style="width: 130px;">
+                    <input autocomplete="off" id="MilitaryVeteranOwnedPercentage" name="militaryveteranownedpercentage" placeholder="0" type="text" min="0" max="100" class="form-control" aria-label="Ownership Military Veteran">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div id="military-veteran-owned-percentage-message"></div>
+        }
+    }
+</div>
+
+
+<div class="form-group">
+    <div id="step-2-messages">
+    </div>
+</div>
+
+<br />

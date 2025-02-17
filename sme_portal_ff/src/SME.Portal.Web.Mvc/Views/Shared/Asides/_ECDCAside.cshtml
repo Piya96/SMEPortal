@@ -1,0 +1,30 @@
+﻿
+@{
+    var _LoginReg = ViewBag.IsRegImage;
+    string imagePath = "";
+
+    switch (_LoginReg)
+    {
+        case true:
+            imagePath = "/view-resources/Views/Account/images/asides/ECDC_Aside.png";
+            break;
+        case false:
+            imagePath = "/view-resources/Views/Account/images/asides/ECDC_Aside_Construction_Full_v2.png";
+            break;
+        default:
+            imagePath = "/view-resources/Views/Account/images/asides/ECDC_Aside_Solar.png";
+            break;
+    }
+}
+
+<div class="login-aside d-flex flex-column flex-row-auto">
+    <img src="@imagePath" usemap="#image-map" />
+        <map name="image-map">
+            <area target="_blank"
+                  alt="Eastern Cape Development Corporation"
+                  title="Eastern Cape Development Corporation"
+                  href="https://www.ecdc.co.za/"
+                  coords="99,140,441,43"
+                  shape="rect" />
+        </map>
+</div>

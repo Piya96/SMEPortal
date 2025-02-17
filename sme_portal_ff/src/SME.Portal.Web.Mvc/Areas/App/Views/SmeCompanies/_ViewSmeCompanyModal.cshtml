@@ -1,0 +1,72 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.SmeCompanies
+@model SmeCompanyViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Details")))
+
+<div class="modal-body">
+    <div id="SmeCompanyInformationsTab">
+        
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("Name") :</h6>
+                @Model.SmeCompany.Name
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("RegistrationNumber") :</h6>
+                @Model.SmeCompany.RegistrationNumber
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Type") :</h6>
+                @Model.SmeCompany.Type
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("RegistrationDate") :</h6>
+                @Model.SmeCompany.RegistrationDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("StartedTradingDate") :</h6>
+                @Model.SmeCompany.StartedTradingDate
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("RegisteredAddress") :</h6>
+                @Model.SmeCompany.RegisteredAddress
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("VerificationRecordJson") :</h6>
+                @Model.SmeCompany.VerificationRecordJson
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Customers") :</h6>
+                @Model.SmeCompany.Customers
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("BeeLevel") :</h6>
+                @Model.SmeCompany.BeeLevel
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("Industries") :</h6>
+                @Model.SmeCompany.Industries
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("PropertiesJson") :</h6>
+                @Model.SmeCompany.PropertiesJson
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("WebSite") :</h6>
+                @Model.SmeCompany.WebSite
+            </div>
+
+            <div class="col-6 mb-3">
+                <h6>(@L("User")) @L("Name") :</h6>
+                @Model.UserName
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithClose.cshtml")
+

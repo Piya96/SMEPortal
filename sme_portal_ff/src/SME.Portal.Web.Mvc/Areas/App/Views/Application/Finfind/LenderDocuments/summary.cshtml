@@ -1,0 +1,59 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var SponsorName = "lenders";
+}
+
+@if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+{
+    SponsorName = "funders";
+}
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+    var color = Model.HeaderColor;
+}
+
+<h4 style="color:@Model.HeaderColor !important; font-size:large;" class="font-weight-bold mb-3">Documents for @SponsorName</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody id="tbody-lender-documents-summary-@appId">
+                <tr><td style=@styleWidth>Business registration documents (CIPC)</td><td id="one1-@appId"></td></tr>
+                <tr><td>Certified ID copy of owners and directors</td><td id="one2-@appId"></td></tr>
+                <tr><td>Proof of business address (lease agreement, title deed or permit)</td><td id="one3-@appId"></td></tr>
+                <tr><td>Bank statements for business account (last 6 months)</td><td id="one4-@appId"></td></tr>
+                <tr><td>Proof of bank account</td><td id="one5-@appId"></td></tr>
+                <tr><td>Signed contracts and/or purchase orders</td><td id="one6-@appId"></td></tr>
+                <tr><td>List of outstanding debtors (unpaid invoices for more than 30 days)</td><td id="one7-@appId"></td></tr>
+                <tr><td>Cashflow projections (income and expense budget for 12 months)</td><td id="one8-@appId"></td></tr>
+                <tr><td>Business plan</td><td id="one9-@appId"></td></tr>
+                <tr><td>Statement of assets and liabilities (for all owners)</td><td id="one10-@appId"></td></tr>
+                <tr><td>Tax clearance certificate / Tax PIN</td><td id="one11-@appId"></td></tr>
+                <tr><td>Management accounts (Income statement, Balance Sheet)</td><td id="one12-@appId"></td></tr>
+                <tr><td>Annual financial statements (signed by Accountant)</td><td id="one13-@appId"></td></tr>
+                <tr><td>Share register and/or share certificates</td><td id="one14-@appId"></td></tr>
+                <tr><td>Shareholder agreement</td><td id="one15-@appId"></td></tr>
+                <tr><td>BEE certificate</td><td id="one16-@appId"></td></tr>
+
+                <tr><td>Business Organogram</td><td id="one17-@appId"></td></tr>
+                <tr><td>Beneficial ownership register/compliance - New laws</td><td id="one18-@appId"></td></tr>
+                <tr><td>COIDA letter of good standing</td><td id="one19-@appId"></td></tr>
+                <tr><td>Industry certifications if applicable (e.g. CIBD)</td><td id="one20-@appId"></td></tr>
+                <tr><td>Certified copies of spouse ID (if married in Community of property)</td><td id="one21-@appId"></td></tr>
+                <tr><td>Certified copies of marriage certificate (if married in Community of property)</td><td id="one22-@appId"></td></tr>
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

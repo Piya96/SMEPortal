@@ -1,0 +1,266 @@
+﻿@using SME.Portal.Web.Areas.App.Models.ConsumerCredit;
+@using Abp.Extensions;
+
+@model ConsumerCreditPartialModel
+
+@{
+    var TenantName = "Finfind";
+    var LenderName = "Lender";
+    var lenderName = "lender";
+    if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+    {
+        TenantName = "Hloolo";
+        LenderName = "Funder";
+        lenderName = "funder";
+    }
+}
+
+<style>
+    .cr-responsive {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .sme-score-poor, .sme-score-not-good, .sme-score-good, .sme-score-excellent {
+        border-radius: 5px;
+        color: black;
+        font-size: 16px !important;
+        font-style: italic;
+    }
+
+    .sme-score-poor {
+        background: #EE3850;
+    }
+
+    .sme-score-not-good {
+        background: #F9A262;
+    }
+
+    .sme-score-good {
+        background: #FEC661;
+    }
+
+    .sme-score-excellent {
+        background: #A0C662;
+    }
+
+    .pulse {
+        overflow: visible;
+        position: relative;
+        z-index: 0 !important;
+    }
+
+        .pulse:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: inherit;
+            border-radius: inherit;
+            transition: opacity 0.2s, transform 0.2s;
+            animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+            z-index: 0 !important;
+        }
+
+    @@keyframes pulse-animation {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+    }
+
+    .pulse2 {
+        overflow: visible;
+        position: relative;
+        z-index: 0 !important;
+    }
+
+</style>
+
+@if (AbpSession.TenantId == 12)
+{
+    <style>
+        .pulse2:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 80%;
+            height: 90%;
+            top: 5%;
+            left: 10%;
+            background-color: var(--medium-orange);
+            border-radius: inherit;
+            transition: opacity 0.2s, transform 0.2s;
+            animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+            z-index: 0 !important;
+        }
+    </style>
+}
+else
+{
+    <style>
+        .pulse2:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 80%;
+            height: 90%;
+            top: 5%;
+            left: 10%;
+            background-color: #5DA1FF;
+            border-radius: inherit;
+            transition: opacity 0.2s, transform 0.2s;
+            animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+            z-index: 0 !important;
+        }
+    </style>
+}
+    
+<style>
+    @@keyframes pulse2-animation {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1.4);
+        }
+    }
+</style>
+
+<div class="card-body" id="id-div-consumer-credit">
+
+    <div id="div-identity-validation-fail" style="display:none;">
+        <div class="row">
+            <div class="col-xl-12">
+    
+                <div class="alert alert-custom alert-light-danger" role="alert">
+                    <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                    <div class="alert-text">
+                        @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+                        {
+                            <p>Due to the following reasons <b>Hloolo</b> will not allow you to continue with your enquiry.</p>
+                        }
+                        else
+                        {
+                            <p>Due to the following reasons <b>Finfind</b> will not allow you to continue with your enquiry.</p>
+                        }
+                        <ul>
+                            <li>The user is not a South African citizen</li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="div-cc-identity-input-id">
+        <div class=@Model.InputWidth>
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_IdentityNumber")</label>
+                <div class="input-group">
+                    <input id="cc-identity-input-id"
+                           type="text"
+                           class="form-control"
+                           name="cc-identity-input-name"
+                           autocomplete="off"
+                           placeholder="Enter a South African identity number and click Verify"
+                           value="">
+                    <div class="input-group-append">
+                        <button id="cc-identity-btn-id" class="btn btn-primary font-weight-bold" type="button">
+                            <b class="la la-warning"></b>
+                            <span id="cc-identity-span-id">@L("OW_IdentityVerifyButton")</span>
+                        </button>
+                    </div>
+                </div>
+                <span id="cc-identity-input-error"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="cc-mobile-div-id" class="row" style="display:none;">
+        <div class=@Model.InputWidth>
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Mobile")</label>
+                <div class="input-group">
+                    <input
+                        id="cc-mobile-sel-id"
+                        name="cc-mobile-sel-name"
+                        type="text"
+                        class="form-control"
+                        value=""
+                        
+                        disabled
+                    />
+                    <div class="input-group-append">
+                        <button
+                            id="cc-mobile-btn-id"
+                            class="btn btn-primary font-weight-bold"
+                            type="button"
+                            autocomplete="off"
+                            disabled
+                        >
+                            <b class="la la-warning"></b>
+                            <span id="cc-mobile-span-id">@L("OW_MobileVerifyButton")</span>
+                        </button>
+                    </div>
+                </div>
+                <span id="cc-mobile-sel-error"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cc-retrieve-div-id" class="row" style="display:none;">
+        <div class=@Model.InputWidth>
+            <div class="form-group fv-plugins-icon-container">
+                <div class="fv-plugins-message-container"></div>
+                <span id="cc-retrieve-span-id" class="label label-lg label-inline" style="display:none;"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-xl-4">
+            <p style="font-style: italic;">What is considered to be a 'good' credit score</p>
+            <img class="cr-responsive" src="~/custom/images/FF_CreditScore.png" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-8">
+            @if (AbpSession.TenantId.HasValue && AbpSession.TenantId.Value == 12)
+            {
+                <p>Note: Hloolo’s funding partner, Finfind, uses a credit bureau called the CPB. The image above details’ CPB’s consumer credit score rating.</p>
+            }
+            else
+            {
+                <p>Note: Finfind has partnered with a credit bureau called the CPB. The image above details CPB’s consumer credit score rating. </p>
+            }
+        </div>
+    </div>
+
+</div>

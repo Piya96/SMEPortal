@@ -1,0 +1,22 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:green; font-size:large;" class="font-weight-bold mb-3">CREDIT SCORE</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>Do you want your latest credit score?</td><td><div id="id-latest-credit-score-div-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

@@ -1,0 +1,36 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepProfitabilityForm">
+    <div class="step" id="stepProfitability">
+        <h3>Profitability</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please indicate whether SMME profitability is required for this financial product. If no option is selected, this matching criterion will be excluded.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:18px">
+            <div class="form-group row">
+                <div class="d-flex">
+                    <label class="pr-4">Require Profitability</label>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="RequiresProfitability" id="RequiresProfitability" value="true" checked="@(@Model.IsEdit ? @Model.FinanceProduct.RequiresProfitability : @Model.IsEdit)">
+                        <label class="custom-control-label" for="RequiresProfitability">Yes</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

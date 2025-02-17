@@ -1,0 +1,54 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepIndustrySectorsForm">
+    <div class="step" id="stepIndustrySectors">
+        <h3>Industry Sector</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Select the industry sectors that are suitable for this finance product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group row">
+                <div class="col-md-12" style="padding-left:18px">
+                    @foreach (var list in Model.IndustrySectorLists.OrderBy(p => p.ParentName))
+                    {
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="parent-checkbox custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.IndustrySectorListIds) ? !@Model.IsEdit : @Model.FinanceProduct.IndustrySectorListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="@(list.Id)" name="@(list.Id)">
+                                <label class="custom-control-label" for="@(list.Id)"><b>@(list.Name.Replace("<br>", ""))</b></label>
+                            </div>
+                        </div>
+                        <div id="child-@list.Id">
+                            @foreach (var IndustrySectorSub in Model.IndustrySectorSubLists.Where(a => a.ParentListId == list.ListId).OrderBy(p => p.Name))
+                            {
+
+                                <div class="row">
+                                    <div class="col-md-11 offset-md-1">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="child-checkbox custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.IndustrySectorSubCategoryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.IndustrySectorSubCategoryListIds.Contains(IndustrySectorSub.ListId)) : @Model.IsEdit)" value="@(IndustrySectorSub.ListId)" id="@(IndustrySectorSub.Id)" name="Sub@(IndustrySectorSub.Id)" disabled="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.IndustrySectorListIds) ? true : !@Model.FinanceProduct.IndustrySectorListIds.Contains(list.ListId)) : true)">
+                                            <label class="custom-control-label" for="@(IndustrySectorSub.Id)">@(IndustrySectorSub.Name)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

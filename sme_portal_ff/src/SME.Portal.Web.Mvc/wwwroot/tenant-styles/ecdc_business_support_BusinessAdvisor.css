@@ -1,0 +1,79 @@
+﻿.contact-info {
+    display: grid;
+    grid-template-columns: auto auto; /* First column auto to accommodate icon width */
+    margin-top: 3rem;
+    font-size: 14px;
+    line-height: 2.5rem;
+    justify-items: center;
+    justify-content: center;
+}
+
+.icon {
+    display: inline-block;
+    width: 3.5rem; /* adjust the width to the size of your icon */
+    height: 3.5rem; /* adjust the height to the size of your icon */
+    background-image: url('ecdc-consultant-icon.svg'); /* specify the path to your icon */
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle; /* align the icon vertically with the text */
+    margin-right: 2.5rem; /* add some space between the icon and the text */
+}
+
+
+.divider {
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.paragraphs {
+    width: 100%;
+    display: grid;
+}
+
+.email-link {
+    color: #66A93E;
+}
+
+.nameAndemail {
+    display:flex;
+}
+
+#para4Sara {
+    margin-right: -0.5rem;
+}
+
+#para3OrTambo {
+    margin-right: 0.3rem;
+}
+
+#para2Chris {
+    margin-right: 1rem;
+}
+
+#para1Buffalo {
+    margin-right: 0.2rem;
+}
+
+/*Responsive Mobile version*/
+@media (max-width: 767px) {
+    .contact-info {
+        grid-template-columns: auto;
+    }
+
+    #para4Sara {
+        margin-right: auto;
+    }
+
+    .icon {
+        margin-right:0;
+    }
+
+    .contact-info p {
+        margin-bottom: 4.5rem;
+        margin-top: 0;
+    }
+
+    .d-flex {
+        margin-top: -4rem;
+    }
+}

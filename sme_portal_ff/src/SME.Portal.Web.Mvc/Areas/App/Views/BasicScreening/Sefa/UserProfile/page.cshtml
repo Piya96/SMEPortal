@@ -1,0 +1,64 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-user-profile">
+
+    <h3 class="mb-10 font-weight-bold text-dark">User Profile</h3>
+
+    @{
+        ViewData["string001"] = "Sefa";
+    }
+
+    @{ await Html.RenderPartialAsync("../../Common/UserProfile/page.cshtml"); }
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+
+                <label>How did you hear about <b>@L("Sefa")</b>?</label>
+                <select id="select-how-did-you-hear-about-sefa"
+                        name="select-how-did-you-hear-about-sefa"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div id="message-how-did-you-hear-about-sefa" class="fv-plugins-message-container"></div>
+    </div>
+
+    <div class="row" id="div-user-profile-sefa-origin-other" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_BusinessOwnerCapacityOther")</label>
+                <input
+                    id="input-user-profile-sefa-origin-other"
+                    name="input-user-profile-sefa-origin-other"
+                    type="text"
+                    class="form-control"
+                    placeholder="Please enter how you heard about sefa">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="div-user-profile-sefa-origin-strategic-partner" style="display:none;">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+
+                <label>Strategic Partners</label>
+                <select id="select-user-profile-sefa-origin-strategic-partner"
+                        name="select-user-profile-sefa-origin-strategic-partner"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div id="message-user-profile-sefa-origin-strategic-partner" class="fv-plugins-message-container"></div>
+    </div>
+
+</div>

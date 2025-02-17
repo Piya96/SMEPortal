@@ -1,0 +1,249 @@
+﻿<h4 class="mb-10 font-weight-bold text-dark">@L("OW_OwnerProfile")</h4>
+
+<div id="id-owner-info-message-div" style="display:none;">
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+            </div>
+            <div class="col-xl-7">
+                <div class="alert-text">
+                    <p>
+                        We need the business owner’s details in order to match you to the best funders and funding products.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <button id="id-owner-info-message-button"
+                        class="btn btn-outline-primary btn-sm mr-6"
+                        type="button">
+                    <i class="flaticon-edit"></i>
+                    Click here to fill in the Owner Profile
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="id-owner-profile-div">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_IdentityNumber")</label>
+                <div class="input-group">
+                    <input
+                           id="id-input-owner-profile-identity-verify"
+                           name="name-input-owner-profile-identity-verify"
+                           type="text"
+                           class="form-control"
+                           autocomplete="off"
+                           placeholder="Enter a South African identity number and click Verify">
+
+                    <div class="input-group-append">
+
+                        <button
+                                id="id-input-button-owner-profile-identity-verify"
+                                name="name-input-button-owner-profile-identity-verify"
+                                class="btn btn-primary font-weight-bold"
+                                type="button">
+                            <b class="la la-warning"></b>
+                            <span
+                                  id="id-input-button-span-owner-profile-identity-verify"
+                                  name="name-input-button-span-owner-profile-identity-verify">@L("OW_IdentityVerifyButton")
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+                <span class="form-text text-muted"></span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-div-input-owner-profile-mobile-verify" name="name-div-input-owner-profile-mobile-verify">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Mobile")</label>
+                <div class="input-group">
+                    <input
+                           id="id-input-owner-profile-mobile-verify"
+                           name="name-input-owner-profile-mobile-verify"
+                           type="text"
+                           class="form-control"
+                           autocomplete="off"
+                           placeholder="Enter your mobile number and click Verify">
+                    <div class="input-group-append">
+
+                        <button
+                                id="id-input-button-owner-profile-mobile-verify"
+                                name="name-input-button-owner-profile-mobile-verify"
+                                class="btn btn-primary font-weight-bold"
+                                type="button">
+
+                            <b class="la la-warning"></b>
+                            <span
+                                  id="id-input-button-span-owner-profile-mobile-verify"
+                                  name="name-input-button-span-owner-profile-mobile-verify">@L("OW_MobileVerifyButton")
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="id-div-select-owner-profile-mobile-verify" name="name-div-select-owner-profile-mobile-verify">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Mobile")</label>
+                <div class="input-group">
+                    <select
+                            id="id-select-owner-profile-mobile-verify"
+                            name="name-select-owner-profile-mobile-verify"
+                            value=""
+                            type="text"
+                            class="form-control">
+                        <option value="" disabled selected hidden>Select mobile number</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button
+                                id="id-select-button-owner-profile-mobile-verify"
+                                name="name-select-button-owner-profile-mobile-verify"
+                                class="btn btn-primary font-weight-bold"
+                                type="button">
+                            <b class="la la-warning"></b>
+                            <span
+                                  id="id-select-button-span-owner-profile-mobile-verify"
+                                  name="name-select-button-span-owner-profile-mobile-verify">@L("OW_MobileVerifyButton")
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_EmailAddr")</label>
+                <input id="id-owner-profile-email"
+                       type="email"
+                       class="form-control"
+                       name="email"
+                       placeholder="Enter email address"
+                       autocomplete="off"
+                       value="">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_FirstName")</label>
+                <input id="id-owner-profile-fname"
+                       type="text"
+                       class="form-control"
+                       name="fname"
+                       placeholder=""
+                       value="">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group">
+                <label>@L("OW_LastName")</label>
+                <input id="id-owner-profile-lname"
+                       type="text"
+                       class="form-control"
+                       name="lname"
+                       placeholder=""
+                       value="">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Gender")</label>
+                <div class="d-flex">
+                    <input id="id-owner-profile-gender"
+                           name="validate-owner-profile-gender"
+                           type="text"
+                           class="form-control"
+                           placeholder=""
+                           disabled>
+                </div>
+                <span class="form-text text-muted">@L("OW_SourceFromDHA")</span>
+            </div>
+        </div>
+        <div class="form-group fv-plugins-message-container"></div>
+
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_MaritalStatus")</label>
+                <div class="d-flex">
+                    <input id="id-owner-profile-marital-status"
+                           name="validate-owner-profile-marital-status"
+                           type="text"
+                           class="form-control"
+                           placeholder=""
+                           disabled>
+                </div>
+                <span class="form-text text-muted">@L("OW_SourceFromDHA")</span>
+            </div>
+        </div>
+        <div class="form-group fv-plugins-message-container"></div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Age")</label>
+                <div class="d-flex">
+                    <input id="id-owner-profile-age"
+                           name="validate-owner-profile-age"
+                           type="text"
+                           class="form-control"
+                           placeholder=""
+                           disabled>
+                </div>
+                <span class="form-text text-muted">@L("OW_SourceFromDHA")</span>
+            </div>
+        </div>
+        <div class="form-group fv-plugins-message-container"></div>
+
+
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>@L("OW_Race")</label>
+                <select id="id-owner-profile-race"
+                        name="race"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                    <option value="59e4644e03a7c18ae497e756">Black</option>
+                    <option value="59e4645e03a7c18ae497e757">Indian</option>
+                    <option value="59e4647603a7c18ae497e759">White</option>
+                    <option value="59e4646a03a7c18ae497e758">Coloured</option>
+                    <option value="other">Other</option>
+                </select>
+                <span class="form-text text-muted">@L("OW_SelectOwnerRace")</span>
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+</div>

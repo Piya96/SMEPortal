@@ -1,0 +1,36 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SmeSubscription
+
+@model PricingViewModel
+
+<div class="maxContainer">
+    <div class="pricing__info">
+        <div class="pricing__content">
+            <div class="tagline">PRICING</div>
+            <div class="price">
+                <h2> <span>Once-off payment</span> R @Model.Paid.OnceOffPrice.Value.ToString("N0")<span> incl. VAT </span></h2>
+            </div>
+            <ul>
+                <li class="li_1">Get access to all your funder matches. <br /><a href="#" id="fundermatchhref">CLICK HERE</a> for an example of a funder match.</li>
+                <li class="li_2">You get two additional searches for this company for the next 90 days, at no extra cost.</li>
+                <li class="li_3">You will always have access to the funder searches you have done.</li>
+            </ul>
+        </div>
+
+        @if (Model.Company != null)
+        {
+            <div class="pricing__img_btn">
+                <img src="~/Common/Images/img-man1.png" />
+                <a href="@Url.ActionLink("Adhoc", "SmeSubscription", new { upgradeEditionId = Model.Paid.Id, companyId = Model.Company.Id })" class="upgrade-btn" target="_blank">YES PLEASE</a>
+            </div>
+
+        }
+        else
+        {
+            <div class="pricing__img_btn">
+                <img src="~/Common/Images/img-man1.png" />
+                <a href="" class="upgrade-btn">YES PLEASE</a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.SmeDocuments;
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model CreateEditFunderSearchViewModel
+
+<!--begin: Wizard Step 5 - Personal Credit Score -->
+<div class="pb-5" data-wizard-type="step-content" style="width:100%;">
+    <h4 class="mb-10 font-weight-bold text-dark" style="font-size:large;">Credit Score</h4>
+
+    <p>Your consumer credit score forms part of our assessment for business funding.</p>
+
+    <p style="font-style: italic;"><b>Having your latest personal credit score available will assist <b>@L("Sefa")</b> to quickly process your application.</b></p>
+
+    <p style="font-style: italic;"><b>Accessing your credit score via <b>Sefa’s</b> credit bureau partner is free of charge and WILL NOT negatively affect your score.</b></p>
+
+    @* Do you know what your personal credit score is *@
+    <div id="whats-your-personal-credit-score" class="form-group">
+        <label for="whats-your-personal-credit-score" class="col-form-label" style="width:80%;">Do you want to retrieve your latest credit score now? </label>
+        <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+            <div class="radio-inline">
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="doyouknowyourpersonalcreditscore" value="Yes" />
+                    <span></span>
+                    Yes
+                </label>
+                <label class="radio radio-outline radio-primary">
+                    <input type="radio" name="doyouknowyourpersonalcreditscore" value="No" />
+                    <span></span>
+                    No
+                </label>
+            </div>
+        </div>
+        <span class="form-text text-muted"></span>
+    </div>
+
+
+    <div id="personal-credit-report-link" class="alert alert-secondary form-group" role="alert">
+        <div class="card" id="myTabContent3">
+            @{ await Html.RenderPartialAsync("../ConsumerCredit/_ConsumerCreditPartial.cshtml", new ConsumerCreditPartialModel() { InputWidth = "col-xl-12" });
+            }
+        </div>
+    </div>
+</div>
+
+<!--end: Wizard Step 5-->

@@ -1,0 +1,335 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<h4 class="mb-10 font-weight-bold text-dark">Business Profile</h4>
+
+<div id="id-company-info-message-div" style="display:none;">
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert">
+        <div class="row">
+            <div class="col-xl-1">
+                <div class="alert-icon"><i class="flaticon-information"></i></div>
+            </div>
+            <div class="col-xl-7">
+                <div class="alert-text">
+                    <p>
+                        Lastly, we’ll need to know a little about the company you need to find funding for.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <button id="id-company-info-message-button"
+                        class="btn btn-outline-primary btn-sm mr-6"
+                        type="button">
+                    <i class="flaticon-edit"></i>
+                    Click here to fill in the Business Profile
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="id-company-profile-div">
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Select your Business from the list below</label>
+                <select id="id-company-profile-cipc"
+                        name="cipc-lookup"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted">@L("AsPerCIPCRegistration")</span>
+                <div id="cipc-lookup-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label id="id-company-profile-cname-header-label">Business Name</label>
+                <input id="id-company-profile-cname"
+                       type="text"
+                       class="form-control"
+                       name="cname"
+                       placeholder="Enter Business Name"
+                       value="">
+                <span id="id-company-profile-cname-footer-span" class="form-text text-muted">@L("AsPerCIPCRegistration")</span>
+                <div id="cname-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Company Type</label>
+                <select id="id-company-profile-type"
+                        name="companyType"
+                        class="form-control"
+                        value="1">
+                    <option
+                            value="" disabled selected hidden
+                            style="color:red !important;">@L("SelectAnOption")
+                    </option>
+                </select>
+                <span class="form-text text-muted">@L("AsPerCIPCRegistration")</span>
+                <div id="companyType-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Registration Number</label>
+                <input id="id-company-profile-reg-no"
+                       type="text"
+                       class="form-control"
+                       name="regno"
+                       placeholder="Enter Registration number"
+                       value="">
+                <span class="form-text text-muted">@L("AsPerCIPCRegistration")</span>
+                <div id="regno-message" class="fv-plugins-message-container"></div>
+                <input name="duplicate-registration-number-name" style="display:none;" />
+
+                <div id="duplicate-registration-number-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Registration Date</label>
+                <div class="input-group">
+                    <input id="reg-date"
+                           name="registrationdate"
+                           type="text"
+                           class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="la la-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <span class="form-text text-muted">@L("AsPerCIPCRegistration")</span>
+            </div>
+            <div id="message-registration-date" class="fv-plugins-message-container"></div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Started Trading Date</label>
+                <div class="input-group">
+                    <input type="text"
+                           name="startedtradingdate"
+                           id="trading-date"
+                           class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="la la-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="form-text text-muted"></span>
+            <div id="id-message-started-trading-date-div" class="fv-plugins-message-container"></div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>VAT Registration Number</label>
+                <input id="id-input-company-profile-vat-reg-number"
+                       name="name-input-company-profile-vat-reg-number"
+                       type="text"
+                       autocomplete="nope"
+                       class="form-control"
+                       placeholder="Enter VAT Registration Number"
+                       value="">
+                <span class="form-text text-muted">10 digits as per SARS</span>
+                <div id="id-div-message-company-profile-vat-reg-number" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Tax Reference Number</label>
+                <input autocomplete="nope"
+                       id="id-input-company-profile-tax-ref-number"
+                       name="name-input-company-profile-tax-ref-number"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter Tax Reference Number"
+                       value="">
+                <span class="form-text text-muted">10 digits as per SARS</span>
+                <div id="id-div-message-company-profile-tax-ref-number" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/radio-n-top.cshtml",
+            new Radio_N_Top()
+            {
+                Name = "registered-for-uif",
+                Label = "Are you registered for UIF?",
+                Col = "col-xl-8"
+            }
+        );}
+    </div>
+
+    <div class="row" id="div-uif-number" style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "uif-number",
+                Label = "UIF number",
+                Col = "col-xl-6"
+            }
+        );}
+    </div>
+    <br/>
+
+    <div class="d-flex justify-content-between border-top mt-5 pt-10"></div>
+    <h5 class="mb-8 font-weight-bold text-dark">Registered/Contact Address</h5>
+
+    <!--onfocus="geolocate()"-->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Address</label>
+                <input
+                       autocomplete="nope"
+                       id="id-registered-address"
+                       type="text"
+                       class="form-control"
+                       name="name-registered-address"
+                       placeholder="Registered address"
+                       data-toggle="tooltip"
+                       data-placement="top"
+                       data-html="true"
+                       title="Please start typing your address and then select the correct option from the list of addresses that returns"/>
+                <span class="form-text text-muted"></span>
+                <div id="autocomplete-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Address Line 1</label>
+                <input autocomplete="nope"
+                       id="addr1"
+                       type="text"
+                       class="form-control"
+                       name="regaddr1"
+                       placeholder="Address line1"
+                       value="">
+                <div id="regaddr1-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Address Line 2</label>
+                <input autocomplete="nope"
+                       id="addr2"
+                       type="text"
+                       class="form-control"
+                       name="regaddr2"
+                       placeholder="Address line2"
+                       value="">
+                <div class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>City/Town</label>
+                <input autocomplete="nope"
+                       id="locality"
+                       type="text"
+                       class="form-control"
+                       name="citytown"
+                       placeholder="City/Town"
+                       value="">
+                <span class="form-text text-muted"></span>
+                <div id="citytown-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Postal Code</label>
+                <input autocomplete="nope"
+                       id="postal_code"
+                       type="text"
+                       class="form-control"
+                       name="postalcode"
+                       placeholder="Postal code"
+                       value="">
+                <span class="form-text text-muted"></span>
+                <div id="postalcode-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="form-group fv-plugins-icon-container">
+                <label>Province</label>
+                <select autocomplete="nope"
+                        id="id-company-profile-province-select"
+                        name="companyProfileProvinceSelect"
+                        class="form-control"
+                        value="">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <div id="province-message" class="fv-plugins-message-container"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between border-top mt-5 pt-10"></div>
+
+    @{
+        await Html.RenderPartialAsync("_IndustrySectorsPartial.cshtml");
+    }
+
+    <div class="d-flex justify-content-between border-top mt-5 pt-10"></div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group fv-plugins-icon-container">
+                <div class="col-xl-12">
+                    <h6 class="font-weight-bolder mb-3">Entity Type</h6>
+                </div>
+                <select
+                        id="id-company-profile-entity-type-select"
+                        name="name-company-profile-entity-type-select"
+                        class="form-control">
+                    <option value="" disabled selected hidden>@L("SelectAnOption")</option>
+                </select>
+                <span class="form-text text-muted"></span>
+                <div id="id-div-company-profile-entity-type-message" class="fv-plugins-message-container"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div id="step-2-messages">
+        </div>
+    </div>
+
+</div>

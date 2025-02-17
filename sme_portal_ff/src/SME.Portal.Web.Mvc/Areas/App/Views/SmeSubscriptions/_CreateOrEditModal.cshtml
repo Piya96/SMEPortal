@@ -1,0 +1,51 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.SmeSubscriptions
+@model CreateOrEditSmeSubscriptionModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditSmeSubscription")) : L("CreateNewSmeSubscription")))
+
+<div class="modal-body">
+        <div id="SmeSubscriptionInformationsTab">
+            <form name="SmeSubscriptionInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.SmeSubscription.Id" />
+                }
+
+				
+
+				
+								<div class="form-group">
+									<label for="SmeSubscription_StartDate">@L("StartDate")</label>
+									<input class="form-control m-input date-picker" id="SmeSubscription_StartDate" type="text" name="startDate" value="@Model.SmeSubscription.StartDate"/>
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeSubscription_ExpiryDate">@L("ExpiryDate")</label>
+									<input class="form-control m-input date-picker" id="SmeSubscription_ExpiryDate" type="text" name="expiryDate" value="@Model.SmeSubscription.ExpiryDate"/>
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeSubscription_NextBillingDate">@L("NextBillingDate")</label>
+									<input class="form-control m-input date-picker" id="SmeSubscription_NextBillingDate" type="text" name="nextBillingDate" value="@Model.SmeSubscription.NextBillingDate"/>
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeSubscription_Status">@L("Status")</label>
+									<input class="form-control" id="SmeSubscription_Status" value="@Model.SmeSubscription.Status" type="text" name="status"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="SmeSubscription_OwnerCompanyMapId">@L("OwnerCompanyMapId")</label>
+									<input class="form-control m-input" id="SmeSubscription_OwnerCompanyMapId" value="@Model.SmeSubscription.OwnerCompanyMapId.ToString(CultureInfo.InvariantCulture)" type="number" name="ownerCompanyMapId"  />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

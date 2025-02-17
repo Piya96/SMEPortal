@@ -1,0 +1,18 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@{ ViewBag.CurrentPageName = AppPageNames.Sme.SubscriptionPaymentSuccess; }
+
+<abp-page-subheader title="@L("PaymentSuccessHeader")" description="@L("PaymentSuccessHeaderInfo")"> </abp-page-subheader>
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="alert alert-success mb-5 p-5" role="alert">
+            <h6 class="alert-heading">It's great to have you on board!</h6>
+            <p>We look forward to helping you on your journey to becoming funding ready, and to find the funding that matches your business' needs.</p>
+            <div class="border-bottom border-white opacity-20 mb-5"></div>
+            <p class="mb-0"><a href="@Url.Action("Detail", "FunderSearch")" style="color:white"><b>Click here</b></a> to see your Bank and Private Lender matches.</p>
+        </div>
+
+    </div>
+</div>

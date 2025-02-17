@@ -1,0 +1,49 @@
+﻿
+@{
+    var tenantId = AbpSession.TenantId;
+
+    if (Model == 2)
+    {
+        await Html.RenderPartialAsync("_FinfindAside.cshtml");                     
+    }
+    if (Model == 3)
+    {
+        await Html.RenderPartialAsync("_SefaAside.cshtml");   
+    }
+    
+    if (Model == 4)
+    {
+        await Html.RenderPartialAsync("_WesgroAside.cshtml");  
+    }
+
+    if (Model == 5)
+    {
+        await Html.RenderPartialAsync("_ECDCAside.cshtml");
+    }
+
+    if (Model == 6)
+    {
+        await Html.RenderPartialAsync("_NelsonMBAside.cshtml");  
+    }
+
+    if (Model == 7)
+    {
+        await Html.RenderPartialAsync("_UmhlathuzeAside.cshtml");  
+    }
+
+    if (Model == 9)
+    {
+        await Html.RenderPartialAsync("_CompanyPartnersAside.cshtml");
+    }
+
+    if (Model == 10)
+    {
+        await Html.RenderPartialAsync("_AfricanBankAside.cshtml");
+    }
+
+    // TODO(Hloolo)
+    if (Model == 12)
+    {
+        await Html.RenderPartialAsync("_HlooloAside.cshtml");
+    }
+}

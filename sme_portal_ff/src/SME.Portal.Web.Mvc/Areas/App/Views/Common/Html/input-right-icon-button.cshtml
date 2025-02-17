@@ -1,0 +1,43 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model InputWithRightIconButton;
+
+<div class="row">
+    <div class="@Model.Col">
+        <div class="form-group fv-plugins-icon-container">
+            <label>@Model.Label</label>
+
+            @{
+                if(Model.Info != null) {
+                    var info = Model.Info;
+                    <span
+                    class="option-focus text-align:left"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-html="true"
+                    title="@info">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                }
+            }
+            <div class="input-group">
+                @{
+                    var inputName = "input-" + Model.Name;
+                    var buttonName = "button-" + Model.Name;
+                    var spanName = "span-" + Model.Name;
+                    var iconName = Model.ButtonIcon;
+                    var placeholder = Model.PlaceholderText;
+                }
+                <input id="@inputName" placeholder="@placeholder" name="@inputName" type="text" class="form-control">
+                <div class="input-group-append">
+                    <button id="@buttonName" name="@buttonName" class="btn btn-primary font-weight-bolder text-uppercase" type="button">
+                        <b class="@iconName"></b>
+                        <span id="@spanName"></span>
+                    </button>
+                </div>
+            </div>
+            <span class="form-text text-muted"></span>
+            <div id="message-@Model.Name" class="fv-plugins-message-container"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model CreateEditFunderSearchViewModel
+
+@{ 
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:60%;",
+        StyleCol = "",
+        ApplicationId = Model.Application.Application.Id.Value,
+        TenantId = Model.Application.Application.TenantId
+    };
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_UserProfileSummaryPartial.cshtml", fssVM);
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_OwnerProfileSummaryPartial.cshtml", fssVM);
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_CompanyProfileSummaryPartial.cshtml", fssVM);
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_FinancialInfoSummaryPartial.cshtml", fssVM);
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_FundingRequirementsSummaryPartial.cshtml", fssVM);
+
+    await Html.RenderPartialAsync("../FunderSearchSummary/_FundingEssentialsSummaryPartial.cshtml", fssVM);
+}

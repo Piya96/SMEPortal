@@ -1,0 +1,67 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.ListItems
+@model CreateOrEditListItemModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditListItem")) : L("CreateNewListItem")))
+
+<div class="modal-body">
+        <div id="ListItemInformationsTab">
+            <form name="ListItemInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+            <input type="hidden" name="id" value="@Model.ListItem.Id" />}
+
+                <div class="form-group">
+                    <label for="ListItem_ListId">@L("ListId")</label>
+                    <input class="form-control" id="ListItem_ListId" value="@Model.ListItem.ListId" type="text" name="listId" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_ParentListId">@L("ParentListId")</label>
+                    <input class="form-control" id="ListItem_ParentListId" value="@Model.ListItem.ParentListId" type="text" name="parentListId" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_Name">@L("Name")</label>
+                    <input class="form-control" id="ListItem_Name" value="@Model.ListItem.Name" type="text" name="name" required maxlength="@SME.Portal.List.ListItemConsts.MaxNameLength" minlength="@SME.Portal.List.ListItemConsts.MinNameLength" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_Details">@L("Details")</label>
+                    <input class="form-control" id="ListItem_Details" value="@Model.ListItem.Details" type="text" name="details" />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="ListItem_Priority">@L("Priority")</label>
+                    <input class="form-control m-input" id="ListItem_Priority" value="@Model.ListItem.Priority?.ToString(CultureInfo.InvariantCulture)" type="number" name="priority" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_MetaOne">@L("MetaOne")</label>
+                    <input class="form-control" id="ListItem_MetaOne" value="@Model.ListItem.MetaOne" type="text" name="metaOne" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_MetaTwo">@L("MetaTwo")</label>
+                    <input class="form-control" id="ListItem_MetaTwo" value="@Model.ListItem.MetaTwo" type="text" name="metaTwo" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_MetaThree">@L("MetaThree")</label>
+                    <input class="form-control" id="ListItem_MetaThree" value="@Model.ListItem.MetaThree" type="text" name="metaThree" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ListItem_Slug">@L("Slug")</label>
+                    <input class="form-control" id="ListItem_Slug" value="@Model.ListItem.Slug" type="text" name="slug" />
+                </div>
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

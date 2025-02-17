@@ -1,0 +1,85 @@
+﻿@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Lenders
+@model CommentsLenderModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Comment")))
+<script>
+    $.trumbowyg.svgPath = '/assets/trumbowyg/icons.svg';
+    $('#lender-editor').trumbowyg();
+</script>
+<script src="~/view-resources/Areas/App/Views/Lenders/_CommentsModal.js"></script>
+
+<div class="modal-body">
+    <div id="LenderInformationsTab">
+        <form name="CommentForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="id" value="@Model.Comment.Id" />
+            }
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label">Comment</label>
+                <div class="col-md-9">
+                    <textarea autofocus rows="8" class="form-control" id="lender-editor" name="Text"></textarea>
+                    <span class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <a href="/Organisations" class="btn btn-light-primary font-weight-bold close-button" data-dismiss="modal">Cancel</a>
+                    <button type="submit" class="btn btn-primary save-button">Add Comment</button>
+                    <input type="hidden" name="LenderId" value="@Model?.Comment?.LenderId" />
+                    <input type="hidden" name="UserId" value="@AbpSession.UserId" />
+                </div>
+            </div>
+        </form>
+        <div class="row page-content" style="margin-top: 10px;">
+            <div class="col-md-12 col-sm-12">
+                @if (@Model.Comments.Count != 0)
+                {
+                    foreach (var comment in Model.Comments)
+                    {
+                        <div class="card" style="margin-bottom: 10px;">
+
+                            <div class="card-body">
+                                <h4 class="card-title" style="background-color: #f8f9fa; padding: 10px; margin-left: -10px;">
+                                    From: <b>@(comment.UserName)</b> at <span class="small-text">@comment.Comment.CreationTime.ToString("dd MMMM yyyy HH:mm")</span>
+                                </h4>
+                                <p class="card-text">@Html.Raw(comment.Comment.Text)</p>
+
+                                <a data-commentid="@(comment.Comment.Id)" href="#" class="card-link pull-right deleteComments">Delete</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info">No comments have been added.</div>
+                }
+
+            </div>
+        </div>
+        <!--Delete Modal -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this Comment?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a id="deleteId" class="btn btn-danger">Confirm Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepLoanTypeForm">
+    <div class="step" id="stepLoanType">
+        <h3>Loan Type</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please select the loan types that are applicable to this financial product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:5px">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    @foreach (var loanType in Model.LoanTypeLists.OrderBy(p => p.Priority))
+                    {
+
+                        <div style="padding: 10px 0 10px 0;">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="parent-checkbox custom-control-input" value="@(loanType.ListId)" id="@(loanType.Id)" name="@(loanType.Id)" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.LoanTypeListIds) ? !@Model.IsEdit : @Model.FinanceProduct.LoanTypeListIds.Contains(loanType.ListId)) : @Model.IsEdit)">
+                                <label class="custom-control-label" for="@(loanType.Id)">@(loanType.Name)</label>
+                            </div>
+                        </div>
+                        <div id="child-@loanType.Id">
+                            @foreach (var loanTypeSub in Model.LoanTypeSubLists.Where(a => a.ParentListId == loanType.ListId))
+                            {
+
+                                <div class="row">
+                                    <div class="col-md-11 offset-md-1">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="child-checkbox custom-control-input" value="@(loanTypeSub.ListId)" id="@(loanTypeSub.Id)" name="Sub@(loanTypeSub.Id)" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.LoanTypeSubListIds) ? !@Model.IsEdit : @Model.FinanceProduct.LoanTypeSubListIds.Contains(loanTypeSub.ListId)) : @Model.IsEdit)" disabled="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.LoanTypeListIds) ? true : !@Model.FinanceProduct.LoanTypeListIds.Contains(loanType.ListId)) : true)">
+                                            <label class="custom-control-label" for="@(loanTypeSub.Id)">@(loanTypeSub.Name)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

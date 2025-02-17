@@ -1,0 +1,75 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if(Model.BaseModelType.Equals("ManageFundFormsViewModel")){
+    Model.IsEdit = true;
+}
+<form id="stepFinanceForForm">
+    <div class="step" id="stepFinanceFor">
+        <h3>Finance For</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please select the applicable reasons for financing that correspond with this financial product. Be aware that certain selections will prompt a unique set of questions.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group row">
+                <div class="col-md-12" style="padding-left:18px">
+                    @foreach (var list in Model.FinanceForLists.OrderBy(p => p.ParentName))
+                    {
+                            <div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="parent-checkbox custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubListIds) ? !@Model.IsEdit : @Model.FinanceProduct.FinanceForSubListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="@(list.Id)" name="@(list.Id)">
+                                    <label class="custom-control-label" for="@(list.Id)"><b>@(list.ParentName.Replace("<br>", ""))</b> - @(list.Name)</label>
+                                </div>
+                            </div>
+                            <div id="child-@list.Id">
+                                @foreach (var FinanceForSub in Model.FinanceForSubLists.Where(a => a.ParentListId == list.ListId).OrderBy(p => p.Name))
+                                {
+                                    var subChildList = Model.FinanceForSubChildLists.Where(a => a.ParentListId == FinanceForSub.ListId);
+                                    var nameAttribute = subChildList.Any() ? "ParentId" : "SubId";
+                                    var subChildDataPresent = @Model.IsEdit ? (subChildList.Any() ? String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubCategoryListIds) ? false : subChildList.Any(item => @Model.FinanceProduct.FinanceForSubCategoryListIds.Contains(item.ListId)) : false) : false;
+
+                                    <div class="row">
+                                        <div class="col-md-11 offset-md-1">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="child-checkbox custom-control-input"
+                                                checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubCategoryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.FinanceForSubCategoryListIds.Contains(FinanceForSub.ListId) || subChildDataPresent)  : @Model.IsEdit)"
+                                                value="@(FinanceForSub.ListId)" id="@(FinanceForSub.Id)" name="@($"{nameAttribute}{FinanceForSub.Id}")" 
+                                                disabled="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubListIds) ? true : !@Model.FinanceProduct.FinanceForSubListIds.Contains(list.ListId)) : true)">
+                                                <label class="custom-control-label" for="@(FinanceForSub.Id)">@(FinanceForSub.Name)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="sub-child-@FinanceForSub.Id">
+                                        @foreach (var FinanceForSubChild in subChildList.OrderBy(p => p.Name))
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-11 offset-md-2">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="sub-child-checkbox custom-control-input" 
+                                                                checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubCategoryListIds) ? !@Model.IsEdit : @Model.FinanceProduct.FinanceForSubCategoryListIds.Contains(FinanceForSubChild.ListId)) : @Model.IsEdit)" 
+                                                                value="@(FinanceForSubChild.ListId)" id="@(FinanceForSubChild.Id)" name="Sub-child@(FinanceForSubChild.Id)"
+                                                                disabled="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.FinanceForSubCategoryListIds) ? true : !subChildDataPresent) : true)">
+                                                        <label class="custom-control-label" for="@(FinanceForSubChild.Id)">@(FinanceForSubChild.Name)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

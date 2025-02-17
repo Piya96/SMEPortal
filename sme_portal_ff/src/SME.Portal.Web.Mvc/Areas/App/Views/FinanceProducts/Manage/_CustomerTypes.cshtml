@@ -1,0 +1,40 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+@if (Model.BaseModelType.Equals("ManageFundFormsViewModel"))
+{
+    Model.IsEdit = true;
+}
+<form id="stepCustomerTypesForm">
+    <div class="step" id="stepCustomerTypes">
+        <h3>Customer Types</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please select the customer types that are eligible for this financial product. If no options are selected, this matching criterion will be excluded.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:5px">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    @foreach (var list in Model.CustomerTypeLists.OrderBy(p => p.Name))
+                    {
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked="@(@Model.IsEdit ? (String.IsNullOrEmpty(@Model.FinanceProduct.CustomerTypeListIds) ? !@Model.IsEdit : @Model.FinanceProduct.CustomerTypeListIds.Contains(list.ListId)) : @Model.IsEdit)" value="@(list.ListId)" id="@(list.Id)" name="@(list.Id)">
+                                <label class="custom-control-label" for="@(list.Id)">@(list.Name)</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

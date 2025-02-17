@@ -1,0 +1,420 @@
+﻿:root {
+    --lightest-blue: #F3F6FA;
+    --light-blue: #E7EFFA;
+    --medium-blue: #C6DFFF;
+    --dark-blue: #5F97FC;
+    --darkest-blue: #260CFB;
+    --black: #000000;
+    --grey: #808080;
+
+    --radius-1: 5px;
+    --radius-2: 10px;
+    --radius-3: 15px;
+    --radius-3: 20px;
+}
+
+/* Colors for the top 4 steps in the wizard. Outer wizard if you want. */
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-number {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-number {
+    color: var(--lightest-blue);
+    background-color: var(--dark-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-number {
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=done] {
+    background-color: var(--lightest-blue);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=current] {
+    background-color: var(--medium-blue);
+    border-radius: var(--radius-2);
+}
+
+.wizard-4#kt_wizard .wizard-nav .wizard-steps .wizard-step[data-wizard-state=pending] {
+    background-color: var(--lightest-blue);
+    border-radius: var(--radius-2);
+}
+
+
+/* Colors for the left-side steps in basic screening and funder search wizards. Inner wizards if you want. */
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=current] .wizard-wrapper .wizard-icon {
+    color: var(--darkest-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=pending] .wizard-wrapper .wizard-icon {
+    color: var(--medium-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state=done] .wizard-wrapper .wizard-icon {
+    color: var(--medium-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] {
+    background-color: var(--medium-blue) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: var(--medium-blue) !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"]:after {
+    border-left-color: var(--medium-blue);
+    margin-bottom: var(--radius-1);
+    color: var(--medium-blue);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] {
+    background-color: white !important;
+    border-color: var(--medium-blue);
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: var(--radius-1);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] {
+    background-color: white !important;
+    border-color: var(--medium-blue);
+    border-style: solid !important;
+    border-width: 1px !important;
+    margin-bottom: var(--radius-1);
+}
+
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-title {
+    color: var(--black);
+}
+
+.wizard-steps#div-side-nav-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-label .wizard-desc {
+    color: var(--grey);
+}
+
+.radio.radio-outline.radio-primary > input ~ span {
+    background-color: transparent;
+    border-color: var(--dark-blue) !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: var(--dark-blue) !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span:after {
+    background-color: var(--dark-blue) !important;
+}
+
+.radio.radio-outline.radio-primary > input:disabled ~ span {
+    background-color: transparent;
+    border-color: grey !important;
+}
+
+.radio.radio-outline.radio-primary > input[disabled]:checked ~ span:after {
+    background-color: grey;
+}
+
+/*
+input:disabled {
+    border-color: transparent !important;
+    background-color: lightblue !important;
+}
+
+input {
+    border-color: lightgray !important;
+    background-color: white !important;
+}
+
+input:hover {
+    border-color: var(--blue-8) !important;
+}
+
+input:focus {
+    border-color: var(--blue-8) !important;
+    background-color: var(--blue-1) !important;
+}
+*/
+
+/*
+select {
+    border-color: lightgray !important;
+    background-color: white !important;
+}
+
+select:focus {
+    border-color: var(--blue-8) !important;
+    background-color: var(--blue-1) !important;
+}
+
+select:disabled {
+    border-color: transparent !important;
+    background-color: lightgrey !important;
+}
+
+select:hover:not(:disabled) {
+    border-color: var(--blue-8) !important;
+    background-color: white !important;
+}
+*/
+
+/*
+.radio.radio-outline.radio-primary > span {
+    background-color: transparent;
+    border-color: red !important;
+}
+*/
+
+.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span {
+    background-color: transparent;
+    border-color: #3699FF;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > span {
+    background-color: transparent;
+    border-color: grey;
+}
+
+/*
+.btn.btn-primary {
+    background-color: var(--blue-8) !important;
+    border-color: var(--blue-8) !important;
+}
+
+.btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: #E4EFFF !important;
+    border-color: #487BE1 !important;
+    color: #487BE1 !important;
+}
+
+.btn.btn-primary.disabled, .btn.btn-primary:disabled {
+    background-color: var(--blue-2);
+    border-color: var(--blue-2);
+}
+
+.btn.btn-light-primary {
+    border-color: var(--blue-8);
+    background-color: var(--blue-2);
+    color: var(--blue-8);
+}
+
+.btn .btn-sm .btn-light-primary {
+    background-color: transparent;
+    color: white;
+}
+
+.btn.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-light-primary:focus:not(.btn-text), .btn.btn-light-primary.focus:not(.btn-text) {
+    background-color: var(--blue-8);
+    border-color: var(--blue-8);
+    color: white !important;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn.btn-light-primary i {
+    color: black;
+}
+*/
+
+/* Buttons. */
+/*
+.btn-primary {
+    background-color: #00b4ba !important;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    background-color: white !important;
+    color: #00b4ba !important;
+    border-color: black !important;
+}
+
+.btn-light-primary {
+    background-color: grey !important;
+    color: black !important;
+}
+
+.input:hover {
+    border-color: #00B4BA !important;
+}
+
+.btn.btn-light-primary {
+    border-color: #00B4BA !important;
+    background-color: #B8DEE9 !important;
+    color: #00B4BA !important;
+}
+
+.btn.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled) {
+    background-color: #00B4BA !important;
+    border-color: #00B4BA !important;
+    color: white !important;
+}
+
+.btn.btn-primary {
+    background-color: #00B4BA !important;
+    border-color: #AFEEEE !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: #00B4BA !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+
+.btn.btn-secondary {
+    border-color: #00B4BA !important;
+    background-color: #B8DEE9 !important;
+    color: #00B4BA;
+}
+
+.btn.btn-secondary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-secondary:focus:not(.btn-text), .btn.btn-secondary.focus:not(.btn-text) {
+     color: white;
+     background-color: #00B4BA !important;
+     border-color: #00B4BA !important;
+ }
+
+.btn.btn-light {
+    color: white;
+    background-color: #00B4BA;
+    border-color: #00B4BA;
+}
+*/
+
+/*
+.accordion.accordion-toggle-arrow .card .card-header .card-title:after {
+    color: var(--blue-4) !important;
+}
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title {
+    background-color: var(--blue-2);
+    color: gray !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: var(--blue-8) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+}
+*/
+
+/*
+.header-menu .menu-nav > .menu-item.menu-item-rel {
+    background-color: var(--blue-2);
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-rel:hover:not(.menu-item-active) {
+    background-color: var(--blue-4) !important;
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item:hover > .menu-link .menu-text {
+    color: white !important;
+}
+.header-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: var(--blue-4);
+}
+*/
+
+/*
+.symbol.symbol-light-dark > .symbol-label {
+    background-color: var(--blue-4);
+    color: white;
+}
+
+.btn.btn-secondary:hover .symbol-label {
+    background-color: var(--blue-2) !important;
+    color: var(--blue-4) !important;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text {
+    color: white;
+}
+
+.header-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: var(--blue-8);
+    color: white;
+}
+
+.nav.nav-pills .nav-item {
+    background-color: var(--blue-4) !important;
+    color: var(--blue-8) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active {
+    background-color: var(--blue-8);
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-text {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-icon i {
+    color: var(--blue-8) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:not(.active) .nav-text {
+    color: var(--blue-8) !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) {
+    background-color: var(--blue-8);
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-icon i {
+    color: white !important;
+}
+
+.nav.nav-pills.nav-light-primary .nav-link:hover:not(.active) .nav-text {
+    color: white !important;
+}
+*/

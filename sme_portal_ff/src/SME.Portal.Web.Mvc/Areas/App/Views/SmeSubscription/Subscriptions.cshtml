@@ -1,0 +1,113 @@
+﻿@using SME.Portal.Editions
+@using SME.Portal.MultiTenancy.Payments
+@using SME.Portal.Web.Areas.App.Models.SmeSubscription
+@using SME.Portal.Web.Areas.App.Startup
+@model SmeSubscriptionViewModel
+@{ 
+    ViewBag.CurrentPageName = AppPageNames.Sme.Subscriptions;
+    var edition = Model.CurrentEdition;
+}
+
+@section Scripts
+{
+    <script src="/view-resources/Areas/App/Views/SubscriptionManagement/Index.js" asp-append-version="true"></script>
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="@(await GetContainerClass())">
+
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+
+                <div id="SettingsTabPanel" class="tabbable-line">
+                    <ul class="nav nav-success nav-pills" role="tablist">
+                        <li class="nav-item">
+                            <a href="#SubscriptionManagementInformationTab" class="nav-link active" data-toggle="tab" role="tab">
+                                @L("SubscriptionInformation")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#SubscriptionManagementPaymentHistoryTab" data-toggle="tab" role="tab" class="nav-link">
+                                @L("PaymentHistory")
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content m-5">
+                        <div class="tab-pane active" id="SubscriptionManagementInformationTab">
+                            <form class="form">
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label font-weight-bold text-right">@L("Edition")</label>
+                                    <div class="col-md-8">
+                                        <p class="form-control-static">
+                                            <span class="label label-success label-inline">@edition.DisplayName</span>
+                                    </div>
+                                </div>
+                                @if (!edition.IsFree)
+                                {
+                                    <div class="form-group row">
+                                        <label class="col-md-4 control-label font-weight-bold text-right">@L("SubscriptionStartDate")</label>
+                                        <div class="col-md-8">
+                                            <p class="form-control-static">@Model.SubscriptionStartDate?.ToString("d")</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 control-label font-weight-bold text-right">@L("SubscriptionEndDate")</label>
+                                        <div class="col-md-8">
+                                            <p class="form-control-static">
+                                                <span>@Model.SubscriptionEndDate?.ToString("d")</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                 }
+                                    <div class="form-group row">
+                                        <label class="col-md-4 control-label"></label>
+                                        <div class="col-md-8">
+                                            @if (edition.IsFree && Model.UpgradeEdition != null)
+                                            {
+                                                <a id="btnExtend" href="@Url.Action("Pricing", "SME")" class="btn btn-info">
+                                                    @L("Upgrade")
+                                                </a>
+                                            }
+                                        </div>
+                                    </div>
+                                @if (!edition.IsFree)
+                                {
+                                    <div class="form-group row @(Model.SubscriptionPaymentType == SubscriptionPaymentType.RecurringAutomatic ? "" : "d-none")">
+                                        <label class="col-md-4 control-label"></label>
+                                        <div class="col-md-8">
+                                            <a id="btnCancelSubscription" href="javascript:;" class="btn btn-secondary">
+                                                @L("CancelSubscription")
+                                            </a>
+                                        </div>
+                                    </div>
+                                 }
+                            </form>
+                        </div>
+                        <div id="SubscriptionManagementPaymentHistoryTab" class="tab-pane">
+                            <table id="PaymentHistoryTable" class="display table table-separate table-head-custom no-footer dtr-inline dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>@L("Invoice")</th>
+                                        <th>@L("ProcessTime")</th>
+                                        <th>@L("Edition")</th>
+                                        <th>@L("Gateway")</th>
+                                        <th>@L("Amount")</th>
+                                        <th>@L("Status")</th>
+                                        <th>@L("Period")</th>
+                                        <th>@L("DayCount")</th>
+                                        <th>@L("ExternalPaymentId")</th>
+                                        <th>@L("InvoiceNo")</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

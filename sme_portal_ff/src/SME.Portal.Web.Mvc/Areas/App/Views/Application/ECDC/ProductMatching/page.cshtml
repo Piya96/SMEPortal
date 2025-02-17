@@ -1,0 +1,82 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-product-matching">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">ECDC Matching</h3>
+
+    <div class="alert alert-custom alert-outline-primary fade show mb-5" role="alert" id="div-product-match-pass" style="display:none;">
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+                <div class="alert-text" style="color:black;">
+                    <p><h3 id="p-product-header" style="font-weight:bold;"></h3></p>
+                    <p id="p-product-body"></p>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="alert alert-custom alert-outline-primary fade show mb-5"
+        role="alert"
+        id="div-product-match-fail"
+        style="display:none; font-size:larger;">
+        <div class="row">
+            <div class="col-xl-1">
+            </div>
+            <div class="col-xl-10">
+                <div class="alert-text" style="color:black;">
+                    <p><h3 style="font-weight:bold !important"></h3><b>No Product Match</b></p>
+                    <p>
+                        <p><b>ECDC</b> is currently unable to assist you with funding.</p>
+                        <p>If you would like to be linked with other funders that may match your requirements, please click <a id="a-product-match-fail-redirect" href="javascript:void(0)"><b>here</b></a>.</p>
+                        <p>To understand <b>ECDC</b> qualification criteria, please click <a id="a-product-match-fail-info" target="_blank" href="https://www.ecdc.co.za/development-finance"><b>here</b></a>.</p>
+                    </p>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div-product-match-fail-info" style="display:none;font-size:larger;">
+        <div class="row">
+            <div class="col-xl-12">
+
+                <div class="alert alert-custom alert-outline-info" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information"></i></div>
+                    <div class="alert-text">
+                        <h4></h4>
+                        <ul>
+                            <li> --- </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="div-product-guid" style="display:none;">
+        <h5 class="mb-10">Select product</h5>
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/select-n-lt-rt-no-row.cshtml",
+            new Select_N_LT_RT()
+            {
+                Name = "product-guid",
+                Label = "Select product",
+                Col = "col-xl-6"
+            }
+        );}
+    </div>
+
+    <div style="display:none;">
+        @{ await Html.RenderPartialAsync(
+            "/Areas/App/Views/Common/Html/input-n-lt-rt-no-row.cshtml",
+            new Input_N_LT_RT()
+            {
+                Name = "product-guid",
+                Label = ""
+            }
+        );}
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+    var color = Model.HeaderColor;
+}
+
+<h4 style="color:@color !important;" class="font-weight-bold mb-3">@L("FS_CompanyProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                @{ await Html.RenderPartialAsync("../../Common/CompanyProfile/summary.cshtml", Model); }
+                <tr>
+                    <td>Entity Type</td>
+                    <td id="td-entity-type-@appId"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

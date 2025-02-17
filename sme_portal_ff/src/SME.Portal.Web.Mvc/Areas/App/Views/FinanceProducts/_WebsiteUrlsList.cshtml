@@ -1,0 +1,36 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@model ManageFinanceProductViewModel
+
+@if (Model.WebsiteUrls?.Any() ?? false)
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th style="width: 80px;">Primary</th>
+                <th style="width: 80px;"></th>
+            </tr>
+        </thead>
+        <tbody id="WebUrlBody">
+            @foreach (var websiteUrl in Model.WebsiteUrls)
+            {
+                <tr>
+                    <td><a href='@websiteUrl.Url' target="_blank">@websiteUrl.Url</a></td>
+                    <td class="text-center">
+                        @if (websiteUrl.IsPrimary)
+                        {
+                            <i class="fa fa-check"></i>
+                        }
+                    </td>
+                    <td>
+                        <button type="button" onclick="deleteWebsiteUrl('@websiteUrl.FinanceProductId', '@websiteUrl.Id')" class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mb-5">No website URL's have been added.</div>
+}

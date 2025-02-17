@@ -1,0 +1,163 @@
+﻿@using Abp.Authorization.Users
+@using SME.Portal.Localization
+@using SME.Portal.Authorization.Users;
+
+@model User
+@{
+    ViewBag.DisableTenantChange = true;
+}
+
+@section Scripts
+{
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <script src="~/view-resources/Areas/App/Views/SefaApp/wizard-common.js" asp-append-version="true"></script>
+    <script src="~/metronic/themes/default/js/settings.js" asp-append-version="true"></script>
+    <script src="~/metronic/themes/default/js/components/util.js" asp-append-version="true"></script>
+    <script src="~/metronic/themes/default/js/components/app.js" asp-append-version="true"></script>
+    <script src="~/custom/js/sweetalert2/sweetalert2.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/sme/formvalidation.js" asp-append-version="true"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js" asp-append-version="true"></script>
+
+    <script src="~/view-resources/Areas/App/Views/Common/sme-common.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas//App/Views/SefaSme/helpers.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Common/Modals/_ModalCommon.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/BasicScreening/Common/service-api.js" asp-append-version="true"></script>
+
+    <script>
+        $(document).ready(function () {
+            let json = @Html.Raw(Json.Serialize(Model));
+            if(json.isOnboarded == false) {
+                $('#button-send-sms').hide();
+            }
+
+            $('#div-send-otp').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+
+            $('#button-send-email').on('click', (ev) => {
+                let session = {
+                    loggedIn : false,
+                    tenantId : abp.session.tenantId,
+                    userId : json.id
+                };
+                let args = {
+                    id: 'email',
+                    data: {
+                        addr : json.emailAddress,
+                        subject : 'Subject',
+                        body : 'Body'
+                    }
+                };
+                app.wizard.service.verifyMobileNumber(session, args, (result) => {
+                    if(result.status == app.wizard.Result.Success) {
+                        location.href = '@Url.Action("UserInactiveReactivate", "Account")?userId=' + json.id;
+                    } else {
+                        $('#div-send-otp').modal({
+                            backdrop: 'static',
+                            keyboard: false,
+                            show: true
+                        });
+                    }
+                });
+            });
+
+            $('#button-send-sms').on('click', (ev) => {
+                let session = {
+                    loggedIn : false,
+                    tenantId : abp.session.tenantId,
+                    userId : json.id
+                };
+                let args = {
+                    id: 'mobile',
+                    data: {
+                        number : json.phoneNumber
+                    }
+                };
+                app.wizard.service.verifyMobileNumber(session, args, (result) => {
+                    if(result.status == app.wizard.Result.Success) {
+                        location.href = '@Url.Action("UserInactiveReactivate", "Account")?userId=' + json.id;
+                    } else {
+                        $('#div-send-otp').modal({
+                            backdrop: 'static',
+                            keyboard: false,
+                            show: true
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+@section Styles{
+}
+
+<div>
+    @if(Model.IsOnboarded == true)
+    {
+        <div id="div-send-otp" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p> <b>NOTE </b></p>
+                        <p>
+                            There has been no recent activity on your account.<br/>
+                            Your account has automatically been deactivated by the system for security reasons.<br/>
+                            To reactivate, simply click on ONE of the options below to receive your OTP.<br/>
+                            None of your existing data will be lost.<br/>
+                            Enter the OTP and you can login again.<br/>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="button-send-email" type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Send OTP via Email</button>
+                        <button id="button-send-sms" type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Send OTP via SMS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div id="div-send-otp" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <p> <b>NOTE </b></p>
+                        <p>
+                            There has been no recent activity on your account.<br/>
+                            Your account has automatically been deactivated by the system for security reasons.<br/>
+                            To reactivate, simply click the option below to receive your OTP via email.<br/>
+                            None of your existing data will be lost.<br/>
+                            Enter the OTP and you can login again.<br/>
+                        </p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="button-send-email" type="button" class="btn btn-primary font-weight-bold" data-dismiss="modal">Send OTP via Email</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <br/>
+
+    @if (AbpSession.TenantId == 12)
+    {
+        <div class="row">
+            <div class="col-xl-12" style="font-size:medium;">
+                 Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+            </div>
+        </div>
+    }
+</div>
+
+@{
+    await Html.RenderPartialAsync(
+        "/Areas/App/Views/SME/_VerifySMSModal.cshtml"
+    );
+}

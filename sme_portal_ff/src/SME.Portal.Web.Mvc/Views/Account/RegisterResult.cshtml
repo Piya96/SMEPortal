@@ -1,0 +1,98 @@
+﻿@using SME.Portal.Localization
+@using Abp.Extensions
+
+@model SME.Portal.Web.Models.Account.RegisterResultViewModel
+
+@section Styles{
+    <link href="/metronic/common/css/login-1@(CultureHelper.IsRtl ? ".rtl" : "").css" rel="stylesheet"/>
+}
+
+<style>
+    .alert.alert-custom.alert-outline-info .alert-text {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info .alert-icon i {
+        color: green !important;
+    }
+
+    .alert.alert-custom.alert-outline-info {
+        border-color: green !important;
+    }
+
+    @if (AbpSession.TenantId == 12)
+    {
+        <link href="~/tenant-styles/hloolo.css" rel="stylesheet" asp-append-version="true" />
+    }
+</style>
+
+<div class="login-form">
+    <div class="pb-13 pt-lg-0 pt-5">
+        <a href="#" class="text-center mb-10"><vc:account-logo skin="dark"></vc:account-logo></a>
+    </div>
+    <form class="form">
+        <div>
+            <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">@L("PleaseCheckYourEmailToCompleteRegistration")</h3>
+        </div>
+        <ul>
+            <li>
+                <span class="text-muted">@L("Name"):</span> @Model.NameAndSurname.Split(' ')[0]
+            </li>
+            <li>
+                <span class="text-muted">@L("Surname"):</span> @Model.NameAndSurname.Split(' ')[1]
+            </li>
+            @*<li>
+                <span class="text-muted">@L("TenancyName"):</span> @Model.TenancyName
+            </li>*@
+            @*<li>
+                <span class="text-muted">@L("UserName"):</span> @Model.UserName
+            </li>*@
+            <li>
+                <span class="text-muted">@L("Email"):</span> @Model.EmailAddress
+            </li>
+        </ul>
+        <div>
+            @if(Model.IsEmailConfirmationRequired)
+            {
+                <div>
+                    <p>@L("ConfirmationMailSentPleaseClickLinkInTheEmail", Model.EmailAddress)</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+
+                        <div class="alert alert-custom alert-outline-info" role="alert">
+                            <div style="color:green;" class="alert-icon"><i class="flaticon-information"></i></div>
+                            <div class="alert-text">
+                                <p>
+                                    If you do not receive your confirmation email in your inbox within 2 minutes,
+                                    please check your junkmail/spam box before requesting it to be resent.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <p>If you did not receive a confirmation email link, <b>@Html.ActionLink(@L("ClickHereUpperCase"), "EmailActivation", "Account")</b> to resend.</p>
+
+                    @if (AbpSession.TenantId == 12)
+                    {
+                        <div class="row">
+                            <div class="col-xl-12" style="font-size:medium;">
+                                 Brought to you by Fetola&#160<b style="font-size: large;">&#174;</b>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            @if(!Model.IsActive)
+            {
+                <div>
+                    @L("YourAccountIsWaitingToBeActivatedByAdmin")
+                </div>
+            }
+        </div>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+﻿@using SME.Portal.SmeDocuments;
+
+<!--begin: Wizard Step 4-->
+
+<div class="pb-5" data-wizard-type="step-content">
+    <h4 class="mb-10 font-weight-bold text-dark">@L("Document_Title_SefaDLFinanceApplication")</h4>
+    <div class="form-group fv-plugins-icon-container">
+
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="font-weight-bold text-dark" for="finance-for">@L("CompanyName")</label>
+                <select class="form-control" id="SefaDLFinanceApplication-smecompanyselector">
+                    @{
+                        foreach (var company in Model.SmeCompanies)
+                        {
+                            <option value="@company.SmeCompany.Id">@company.SmeCompany.Name</option>
+                        }
+                    }
+                </select>
+                <span class="form-text text-muted">Please select the desired company.</span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="dropzone dropzone-default dropzone-success dz-clickable" id="SefaDLFinanceApplication-dropzone">
+                        @Html.Hidden("DocumentTypeSefaDLFinanceApplication", DocumentTypes.SefaDLFinanceApplication)
+                        <div class="dropzone-msg dz-message needsclick">
+                            <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                            <span class="dropzone-msg-desc">Only pdf files are allowed for upload</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="SefaDLFinanceApplication-submit" type="submit" class="btn btn-light-primary mr-2">Upload</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--end: Wizard Step 4-->

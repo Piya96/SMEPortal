@@ -1,0 +1,183 @@
+.btn.btn-primary {
+    background-color: #e89843;
+    border-color: #e89843;
+}
+
+    .btn.btn-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-primary:focus:not(.btn-text), .btn.btn-primary.focus:not(.btn-text) {
+        background-color: #EE7B00;
+        border-color: #EE7B00;
+    }
+
+    .btn.btn-primary.disabled, .btn.btn-primary:disabled {
+        background-color: #e89843;
+        border-color: #e89843;
+    }
+
+.btn.btn-light-primary{
+    color: green;
+}
+
+    .btn.btn-light-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-light-primary:focus:not(.btn-text), .btn.btn-light-primary.focus:not(.btn-text) {
+        background-color: #EE7B00;
+        border-color: #EE7B00;
+        color: white !important;
+    }
+
+    .btn.btn-light-primary i {
+        color: green;
+    }
+
+a {
+    color: green !important;
+}
+    a:hover {
+        color: green !important;
+    }
+
+    a.text-hover-primary, .text-hover-primary {
+        color: green !important;
+    }
+    a.text-hover-primary:hover, .text-hover-primary:hover {
+        color: green !important;
+    }
+
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-label .wizard-title {
+    color: white !important;
+}
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-number {
+    color: white !important;
+    background-color: green !important;
+}
+
+.wizard.wizard-4 .wizard-nav .wizard-steps .wizard-step .wizard-wrapper .wizard-number{
+    color: green !important;
+}
+
+.btn.btn-outline-primary {
+    color: green !important;
+    border-color: #e89843;
+}
+
+    .btn.btn-outline-primary:hover:not(.btn-text):not(:disabled):not(.disabled), .btn.btn-outline-primary:focus:not(.btn-text), .btn.btn-outline-primary.focus:not(.btn-text) {
+        border-color: #e89843;
+        background-color: #e89843;
+        color: white !important;
+    }
+
+.btn.btn-outline-primary i{
+    color: green;
+}
+    /*.btn.btn-outline-primary i:hover {
+        color: white !important;
+    }*/
+
+.accordion.accordion-toggle-arrow .card .card-header .card-title{
+    color: green !important;
+}
+.accordion .card .card-header .card-title > i {
+    color: green !important;
+}
+
+table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr-column > tbody > tr > th.control:before{
+    background-color: green;
+}
+
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.active > .page-link{
+    background-color: green;
+    color: white !important;
+}
+
+.alert.alert-custom.alert-outline-primary {
+    border-color: #e89843;
+}
+    .alert.alert-custom.alert-outline-primary .alert-icon i {
+        color: #e89843;
+    }
+
+    .alert.alert-custom.alert-outline-primary .alert-text {
+        color: #e89843;
+    }
+
+    .alert.alert-custom.alert-outline-primary .alert-close i{
+        color: green;
+    }
+
+.nav.nav-pills.nav-light-primary .nav-link.active .nav-text{
+    color: green;
+}
+
+.switch input:checked ~ span:after {
+    background-color: green;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span{
+    border-color: green;
+}
+
+    .radio.radio-outline.radio-primary > input:checked ~ span:after {
+        background-color: green;
+        border-color: green;
+    }
+
+.radio > input:checked ~ span {
+    background-color: green;
+}
+
+.checkbox > input:checked ~ span {
+    background-color: green !important;
+}
+
+.radio.radio-outline.radio-primary > input:checked ~ span {
+    border-color: green !important;
+}
+
+    .radio.radio-outline.radio-primary > input:checked ~ span:after {
+        background-color: green !important;
+        border-color: green !important;
+    }
+
+.finance-for-radio > input:checked ~ span {
+    background-color: green !important;
+}
+
+.checkbox.checkbox-outline.checkbox-primary > input:checked ~ span:after {
+    border-color: white !important;
+}
+
+.wizard.wizard-2 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="done"] .wizard-wrapper .wizard-icon .svg-icon svg g [fill] {
+    fill: green !important;
+}
+
+.wizard.wizard-2 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-wrapper .wizard-icon .svg-icon svg g [fill] {
+    fill: darkgreen !important;
+}
+
+.wizard.wizard-2 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="pending"] .wizard-wrapper .wizard-icon .svg-icon svg g [fill] {
+    fill: green !important;
+}
+
+.wizard-step {
+    background-color: #EDBA8E !important;
+}
+
+.wizard-step[data-wizard-state="current"] {
+    background-color: #E89843 !important;
+}
+
+.wizard-step[data-wizard-state="current"]:after {
+    border-left-color: #E89843 !important;
+}
+
+#error-button {
+    color: white !important;
+    background-color: #EE7B00 !important;
+    background-image: none;
+}
+
+@media (max-width: 600px) {
+    .sefaIconVideo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,172 @@
+﻿@using SME.Portal.Web.Areas.App.Startup
+@using SME.Portal.Web.Areas.App.Models.SmeDocuments;
+
+@model SmeDocumentsManageVm
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Sme.MyDocuments;
+}
+
+@section Styles
+{
+    <link href="~/custom/plugins/dropzonejs/basic.css" rel="stylesheet" />
+    <link href="~/custom/plugins/dropzonejs/dropzone.css" rel="stylesheet" />
+}
+
+@section Scripts
+{
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <link href="~/metronic/themes/default/css/pages/wizard/wizard-2.css" rel="stylesheet" />
+    <link href="~/custom/js/sweetalert2/sweetalert2.css" rel="stylesheet" />
+
+    <script src="~/custom/plugins/dropzonejs/dropzone.js"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
+
+    <script src="~/view-resources/areas/app/views/sme/formvalidation.js"></script>
+    <script src="~/view-resources/areas/app/views/sme/bootstrap.js"></script>
+    <script src="/custom/js/sweetalert2/sweetalert2.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/Manage.js"></script>
+
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/CipcDocumentsUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/CipcAnnualReturnUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/BeeCertificateUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/OwnersCertIdentityUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/BankStatementUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/AnnualFinancialStatementUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/ProofOfBusinessAddressUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/12MonthsBudgetingUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/BusinessPlanUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/TaxClearanceCertUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/ManagementAccountsUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/StatementOfAssetsAndLiabilitiesUpload.js"></script>
+    <script src="~/view-resources/Areas/App/Views/SmeDocuments/SefaDLFinanceApplicationUpload.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#id-div-manage').show();
+        });
+    </script>
+}
+@if (AbpSession.TenantId == 5)
+{
+    <link href="~/tenant-styles/ecdc.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div id="id-div-manage" style="display:none;">
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+        <div>
+            <br />
+        </div>
+
+        <div class="@(await GetContainerClass())">
+
+            @if (!string.IsNullOrEmpty(Model.UserMessage))
+            {
+                <div class="alert alert-custom alert-success" role="alert">
+                    <div class="alert-icon">
+                        <i class="flaticon-info"></i>
+                    </div>
+                    <div class="alert-text">@Model.UserMessage</div>
+                    <div class="alert-close">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="ki ki-close"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            }
+
+
+            <div class="card card-custom">
+                <div class="card-body p-0">
+
+                    <!--begin: Wizard-->
+                    <div class="wizard wizard-2" id="kt_wizard_documents" data-wizard-state="first" data-wizard-clickable="false">
+                        <!--begin: Wizard Nav-->
+                        <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+                            @{ await Html.RenderPartialAsync("_WizardNav.cshtml"); }
+                        </div>
+                        <!--end: Wizard Nav-->
+                        <!--begin: Wizard Body-->
+                        <div id="sme-documents-wizard" class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+                            <!--begin: Wizard Form-->
+                            <div class="row">
+                                <div class="offset-xxl-2 col-xxl-8">
+                                    <form class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form_documents">
+
+                                        @{ await Html.RenderPartialAsync("_CipcAnnualReturn.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_CipcDocuments.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_OwnersCertIdentity.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_ProofOfBusinessAddress.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_BeeCertificate.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_BankStatements.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_12MonthsBudgetingCashflowProjections.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_StatementOfAssetsAndLiabilitiesAllOwners.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_TaxClearanceCertificate.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_BusinessPlan.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_ManagementAccounts.cshtml"); }
+
+                                        @{ await Html.RenderPartialAsync("_AnnualFinancialStatements.cshtml"); }
+
+                                        @if (AbpSession.TenantId == 3)
+                                        {
+                                            await Html.RenderPartialAsync("_SefaDLFinanceApplication.cshtml");
+                                        }
+
+                                        <!--begin: Wizard Actions-->
+                                        <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                            <div class="mr-2">
+                                                <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">@L("Previous")</button>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit" id="btn-submit">@L("ViewDocuments")</button>
+                                                <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">@L("Next")</button>
+                                            </div>
+                                        </div>
+                                        <!--end: Wizard Actions-->
+                                        <div></div><div></div><div></div><div></div><div></div>
+                                    </form>
+                                </div>
+                                <!--end: Wizard-->
+                            </div>
+                            <!--end: Wizard Form-->
+                        </div>
+                        <!--end: Wizard Body-->
+                    </div>
+                    <!--end: Wizard-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="id-alert" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!--<div class="modal-header text-center">
+                <h4 class="modal-title text-center">Loading Onboarding Data...</h4>
+            </div>-->
+            <div class="modal-body text-center">
+                <h4 class="text-center">Uploaded Successfully.</h4>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

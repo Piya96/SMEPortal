@@ -1,0 +1,58 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+
+@model Input_MN_LT_RT_Left
+
+<div class="row" style="padding-top: -15px; margin-top: -15px;">
+    
+                @{
+                    var label = Model.Scope + "label-" + Model.Name;
+                }
+
+    <div class="@Model.ColLeft">
+        <div class="form-group fv-plugins-icon-container" style="padding-top:5px;">
+            <label id="@label" class="col-form-label">@Model.Label</label>
+            <div id="message-@Model.Name"></div>
+        </div>
+    </div>
+
+    <div class="@Model.ColRight">
+        <div class="form-group">
+            <div class="input-group fv-plugins-icon-container">
+
+                @{
+                    if(Model.LeftText != null)
+                    {
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@Model.LeftText</span>
+                        </div>
+                    }
+                    var name = Model.Scope + "input-" + Model.Name;
+                }
+
+                <input id="@name"
+                       name="@name"
+                       type="text"
+                       class="form-control"
+                       placeholder="0"
+                       value="">
+
+                @{
+                    if(Model.RightText != null)
+                    {
+                        <div class="input-group-append">
+                            <span class="input-group-text">@Model.RightText</span>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        let mo = @Html.Raw(Json.Serialize(Model));
+        document.getElementById('label-' + mo.name).innerHTML = mo.label;
+    })();
+</script>

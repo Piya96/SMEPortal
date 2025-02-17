@@ -1,0 +1,39 @@
+﻿
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Documents
+@model DocumentViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("DocumentDetails")))
+
+<div class="modal-body">
+    <div id="DocumentInformationsTab">
+        <input type="hidden" id="documentId" value="@Model.Document.Id" />
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <h6>@L("DocumentType") :</h6>
+                @Model.TypeName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("FileName") :</h6>
+                @Model.Document.FileName
+            </div>
+            <div class="col-6 mb-3">
+                <h6>@L("FileType") :</h6>
+                @Model.Document.FileType
+            </div>
+
+            <div class="col-6 mb-3">
+                <h6>@L("Company") @L("Name") :</h6>
+                @Model.SmeCompanyName
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a id="sme-documents-download-btn" href="#" target="_blank" class="btn btn-light-primary font-weight-bold mr-auto">@L("Download")</a>
+    <button type="button" class="btn btn-light-primary font-weight-bold close-button" data-dismiss="modal">@L("Close")</button>
+</div>

@@ -1,0 +1,100 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Owners
+@model CreateOrEditOwnerModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditOwner")) : L("CreateNewOwner")))
+
+<div class="modal-body">
+        <div id="OwnerInformationsTab">
+            <form name="OwnerInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.Owner.Id" />
+                }
+
+				            
+								<div class="form-group m-form__group">
+										<label for="UserName">@L("User")</label>
+									    <div class="input-group">
+											<input class="form-control" id="UserName" name="userName" value="@Model.UserName" type="text" disabled>
+										<div class="input-group-append">
+											<button class="btn btn-primary blue" id="OpenUserLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+										</div> 
+										<div class="input-group-prepend">
+											<button class="btn btn-danger btn-icon" type="button" id="ClearUserNameButton"><i class="fa fa-times"></i></button>
+										</div>
+									</div>
+								</div>
+
+								@if (Model.IsEditMode)
+								{
+									<input class="form-control" id="Owner_UserId" value="@Model.Owner.UserId" type="text" name="userId" required hidden/>
+								}
+								 else
+								{ 
+									<input class="form-control" id="Owner_UserId" value="" type="text" name="userId" required hidden/>
+								}
+
+
+
+				
+								<div class="form-group">
+									<label for="Owner_Name">@L("Name")</label>
+									<input class="form-control" id="Owner_Name" value="@Model.Owner.Name" type="text" name="name"  required  maxlength="@SME.Portal.Company.OwnerConsts.MaxNameLength"  minlength="@SME.Portal.Company.OwnerConsts.MinNameLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_Surname">@L("Surname")</label>
+									<input class="form-control" id="Owner_Surname" value="@Model.Owner.Surname" type="text" name="surname"  required  maxlength="@SME.Portal.Company.OwnerConsts.MaxSurnameLength"  minlength="@SME.Portal.Company.OwnerConsts.MinSurnameLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_EmailAddress">@L("EmailAddress")</label>
+									<input class="form-control" id="Owner_EmailAddress" value="@Model.Owner.EmailAddress" type="text" name="emailAddress"  required  maxlength="@SME.Portal.Company.OwnerConsts.MaxEmailAddressLength"  minlength="@SME.Portal.Company.OwnerConsts.MinEmailAddressLength"  />
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_PhoneNumber">@L("PhoneNumber")</label>
+									<input class="form-control" id="Owner_PhoneNumber" value="@Model.Owner.PhoneNumber" type="text" name="phoneNumber"  required    />
+								</div>
+					
+								<div class="m-checkbox-list">
+									<label for="Owner_IsPhoneNumberConfirmed" class="kt-checkbox">
+										<input id="Owner_IsPhoneNumberConfirmed" type="checkbox" name="isPhoneNumberConfirmed" value="true" @Html.Raw(Model.Owner.IsPhoneNumberConfirmed ?"checked=\"checked\"":"") />
+										@L("IsPhoneNumberConfirmed")
+										<span></span>
+									</label>
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_IdentityOrPassport">@L("IdentityOrPassport")</label>
+									<input class="form-control" id="Owner_IdentityOrPassport" value="@Model.Owner.IdentityOrPassport" type="text" name="identityOrPassport"  required    />
+								</div>
+					
+								<div class="m-checkbox-list">
+									<label for="Owner_IsIdentityOrPassportConfirmed" class="kt-checkbox">
+										<input id="Owner_IsIdentityOrPassportConfirmed" type="checkbox" name="isIdentityOrPassportConfirmed" value="true" @Html.Raw(Model.Owner.IsIdentityOrPassportConfirmed ?"checked=\"checked\"":"") />
+										@L("IsIdentityOrPassportConfirmed")
+										<span></span>
+									</label>
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_Race">@L("Race")</label>
+									<input class="form-control" id="Owner_Race" value="@Model.Owner.Race" type="text" name="race"  required    />
+								</div>
+					
+								<div class="form-group">
+									<label for="Owner_VerificationRecordJson">@L("VerificationRecordJson")</label>
+									<input class="form-control" id="Owner_VerificationRecordJson" value="@Model.Owner.VerificationRecordJson" type="text" name="verificationRecordJson"  required    />
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

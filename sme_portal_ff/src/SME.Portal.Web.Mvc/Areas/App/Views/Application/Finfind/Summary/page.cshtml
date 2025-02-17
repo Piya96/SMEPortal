@@ -1,0 +1,48 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@*@model CreateEditFunderSearchViewModel*@
+@model FSSViewModel;
+
+<div class="pb-5" data-wizard-type="step-content" id="div-summary">
+
+    <h3 style="font-size:large;" class="mb-10 font-weight-bold text-dark">Summary</h3>
+
+@*
+@{
+    var fssVM = new FSSViewModel()
+    {
+        StyleWidth = "width:55%;",
+        StyleCol = "",
+        ApplicationId = (int) Model.Application.Application.Id,
+        TenantId = 0,
+        HeaderColor = "skyblue"
+    };
+*@
+@{
+    await Html.RenderPartialAsync("summary.cshtml", Model);
+}
+    <div id="parent-summary-declaration">
+        <h6 class="font-weight-bolder mb-3">@L("Declaration")</h6>
+        <div class="form-group">
+            <label for="summary-declaration" class="col-form-label" style="width:80%;">
+                <p>I hereby declare that I have answered these questions accurately and that the information and details are correct to the best of my knowledge.</p>
+            </label>
+
+            <div class="input-group mb-2 mb-sm-0 float-right" style="width: 110px;">
+                <div class="checkbox-inline">
+                    <label class="checkbox checkbox-outline checkbox-primary">
+                        <input
+                            type="checkbox"
+                            id="input-summary-declaration"
+                            name="input-summary-declaration"
+                            value="Yes" />
+                        <span></span>
+                        @L("Yes")
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

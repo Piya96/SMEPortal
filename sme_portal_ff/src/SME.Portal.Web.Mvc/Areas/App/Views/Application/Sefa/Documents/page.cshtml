@@ -1,0 +1,67 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FunderSearch;
+@using SME.Portal.Web.Areas.App.Models.Common.Partial;
+@using SME.Portal.Web.Areas.App.Models.ConsumerCredit
+
+@model CreateEditFunderSearchViewModel
+
+<style>
+    input.doc {
+        padding-top:15px;
+        margin-top:5px;
+    }
+
+    .optionalIcon {
+        color : green !important;
+        text-align : center !important;
+    }
+
+    .requiredIcon {
+        color : red !important;
+        text-align : center !important;
+    }
+
+</style>
+
+@{
+    var buttonWidth = "150px";
+}
+
+<div class="pb-5" data-wizard-type="step-content" id="div-key-things">
+
+    <h3 class="mb-10 font-weight-bold text-dark">Documents Required​</h3>
+
+    @{
+        await Html.RenderPartialAsync("../../../Application/Finfind/MinRequirements/page-common-drop-zone.cshtml");
+    }
+    
+    <p></p>
+    
+    <br/>
+    
+    <div class="flex-column flex-column-fluid">
+
+        <h3>1. Document Uploads​</h3>
+
+        <p>Please <b>check</b> and <b>upload</b> the <b>required</b> documents in the list below.</p>
+        
+        <div class="row">
+            <div class="col-xl-7">
+            </div>
+            <div class="col-xl-1">
+                Required
+            </div>
+            <div class="col-xl-1">
+                Optional
+            </div>
+            <div class="col-xl-1">
+                Uploaded
+            </div>
+            <div class="col-xl-2">
+            </div>
+        </div>
+
+        <div id="div-doc-uploads">
+        </div>
+
+    </div>
+</div>

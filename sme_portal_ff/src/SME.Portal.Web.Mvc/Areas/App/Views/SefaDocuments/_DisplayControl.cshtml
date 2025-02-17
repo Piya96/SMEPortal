@@ -1,0 +1,24 @@
+﻿@using SME.Portal.Web.Areas.App.Models.SefaDocuments;
+
+
+@model DisplayControlVm
+
+<h2>@Model.DocumentQuestion</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="pl-0 font-weight-bold text-muted text-uppercase">#</th>
+            <th class="text-center font-weight-bold text-muted text-uppercase">File Name</th>
+            <th class="text-center font-weight-bold text-muted text-uppercase">Action</th>
+        </tr>
+    </thead>
+    @foreach (var doc in Model.SmeDocumentsManageVm.Documents.Where(a => a.Document.Type == Model.DocumentQuestionListId.ToString()))
+    {
+        <tr>
+            <td class="pl-0 pt-7">1</td>
+            <td class="pl-0 pt-7">@doc.Document.FileName</td>
+            <td class="text-right pl-0 pt-7"><a href="/App/SefaDocuments/Delete/@doc.Document.Id" class="btn btn-primary font-weight-bold">Delete</a> </td>
+        </tr>
+    }
+</table>

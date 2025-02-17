@@ -1,0 +1,80 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.OwnerCompanyMapping
+@model CreateOrEditOwnerCompanyMapModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditOwnerCompanyMap")) : L("CreateNewOwnerCompanyMap")))
+
+<div class="modal-body">
+        <div id="OwnerCompanyMapInformationsTab">
+            <form name="OwnerCompanyMapInformationsForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="id" value="@Model.OwnerCompanyMap.Id" />
+                }
+
+				            
+								<div class="form-group m-form__group">
+										<label for="OwnerIdentityOrPassport">@L("Owner")</label>
+									    <div class="input-group">
+											<input class="form-control" id="OwnerIdentityOrPassport" name="ownerIdentityOrPassport" value="@Model.OwnerIdentityOrPassport" type="text" disabled>
+										<div class="input-group-append">
+											<button class="btn btn-primary blue" id="OpenOwnerLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+										</div> 
+										<div class="input-group-prepend">
+											<button class="btn btn-danger btn-icon" type="button" id="ClearOwnerIdentityOrPassportButton"><i class="fa fa-times"></i></button>
+										</div>
+									</div>
+								</div>
+
+								@if (Model.IsEditMode)
+								{
+									<input class="form-control" id="OwnerCompanyMap_OwnerId" value="@Model.OwnerCompanyMap.OwnerId" type="text" name="ownerId"  hidden/>
+								}
+								 else
+								{ 
+									<input class="form-control" id="OwnerCompanyMap_OwnerId" value="" type="text" name="ownerId"  hidden/>
+								}
+
+            
+								<div class="form-group m-form__group">
+										<label for="SmeCompanyRegistrationNumber">@L("SmeCompany")</label>
+									    <div class="input-group">
+											<input class="form-control" id="SmeCompanyRegistrationNumber" name="smeCompanyRegistrationNumber" value="@Model.SmeCompanyRegistrationNumber" type="text" disabled>
+										<div class="input-group-append">
+											<button class="btn btn-primary blue" id="OpenSmeCompanyLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+										</div> 
+										<div class="input-group-prepend">
+											<button class="btn btn-danger btn-icon" type="button" id="ClearSmeCompanyRegistrationNumberButton"><i class="fa fa-times"></i></button>
+										</div>
+									</div>
+								</div>
+
+								@if (Model.IsEditMode)
+								{
+									<input class="form-control" id="OwnerCompanyMap_SmeCompanyId" value="@Model.OwnerCompanyMap.SmeCompanyId" type="text" name="smeCompanyId"  hidden/>
+								}
+								 else
+								{ 
+									<input class="form-control" id="OwnerCompanyMap_SmeCompanyId" value="" type="text" name="smeCompanyId"  hidden/>
+								}
+
+
+
+				
+								<div class="m-checkbox-list">
+									<label for="OwnerCompanyMap_IsPrimaryOwner" class="kt-checkbox">
+										<input id="OwnerCompanyMap_IsPrimaryOwner" type="checkbox" name="isPrimaryOwner" value="true" @Html.Raw(Model.OwnerCompanyMap.IsPrimaryOwner ?"checked=\"checked\"":"") />
+										@L("IsPrimaryOwner")
+										<span></span>
+									</label>
+								</div>
+					
+
+            </form>
+        </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

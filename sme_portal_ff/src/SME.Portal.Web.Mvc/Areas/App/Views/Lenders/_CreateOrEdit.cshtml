@@ -1,0 +1,159 @@
+﻿@using SME.Portal.Web.Areas.App.Models.Lenders
+@model CreateOrEditLenderModalViewModel
+@using SME.Portal.Web.TagHelpers
+
+@section Scripts{
+    <script>
+        function provinceFunction() {
+            var select = document.getElementById("Lender_Country").value;
+            var province = document.getElementById("province")
+            var hProvince = document.getElementById("hProvince")
+            if (select == "ZA") {
+                province.style.display = "block"
+                hProvince.style.display = "block"
+            }
+            else {
+                province.style.display = "none"
+                hProvince.style.display = "none"
+            }
+        }
+    </script>
+    <script src="~/view-resources/Areas/App/Views/Lenders/_CreateOrEditModal.js"></script>
+}
+
+<div class="content d-flex flex-column flex-column-fluid">
+    <abp-page-subheader title="@(Model.IsEditMode ? (L("EditLender")) : L("CreateNewLender"))">
+        <div class="col text-right">
+            <div class="back-link">
+                <a href="/App/Lenders" class="text-dark" style="font-size:1.25rem;font-weight:500!important;"><i class="fa fa-reply text-danger"></i> Back to lenders</a>
+            </div>
+        </div>
+    </abp-page-subheader>
+    <div class="@(await GetContainerClass())">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div id="LenderInformationsTab">
+                    <form name="LenderInformationsForm" role="form" novalidate class="form-validation" id="LenderInformationsForm">
+
+                        @if (Model.IsEditMode)
+                        {
+                            <input type="hidden" name="id" value="@Model.Lender.Id" />
+                        }
+                        <div class="form-group">
+                            <label for="Lender_Name">@L("Name")</label>
+                            <input class="form-control" id="Lender_Name" value="@Model.Lender.Name" type="text" name="name" required maxlength="@SME.Portal.Lenders.LenderConsts.MaxNameLength" minlength="@SME.Portal.Lenders.LenderConsts.MinNameLength" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_WebsiteUrl">@L("WebsiteUrlChanged")</label>
+                            <input class="form-control" id="Lender_WebsiteUrl" value="@Model.Lender.WebsiteUrl" type="text" name="websiteUrl" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_LenderType">@L("LenderType")</label>
+                            <select class="form-control" id="Lender_LenderType" name="lenderType" asp-for="@Model.Lender.LenderType" asp-items="Model.SelectLenderTypeLists.OrderBy(p => p.Text)">
+                                <option value="">Select Lender Type</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_LenderType">@L("FinanceProductCount")</label>
+                            <input class="form-control" id="FinanceProductCount" value="@Model.FinanceProductCount" type="text" name="physicalAddressLineTwo" disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_PhysicalAddress1">@L("PhysicalAddress1")</label>
+                            <input class="form-control" id="Lender_PhysicalAddress1" value="@Model.Lender.PhysicalAddressLineOne" type="text" name="physicalAddressLineOne" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_PhysicalAddress2">@L("PhysicalAddress2")</label>
+                            <input class="form-control" id="Lender_PhysicalAddress2" value="@Model.Lender.PhysicalAddressLineTwo" type="text" name="physicalAddressLineTwo" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_PhysicalAddress3">@L("PhysicalAddress3")</label>
+                            <input class="form-control" id="Lender_PhysicalAddress3" value="@Model.Lender.PhysicalAddressLineThree" type="text" name="physicalAddressLineThree" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_City">@L("City")</label>
+                            <input class="form-control" id="Lender_City" value="@Model.Lender.City" type="text" name="city" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_Country">@L("FinanceProduct_Search_Country")</label>
+                            <select class="form-control" id="Lender_Country" value="@Model.Lender.Country" name="country" onchange="provinceFunction()">
+                                <option value = null disabled selected="@(!@Model.IsEditMode) || @Model.Lender.Country==null">Select Country</option>
+                                @for (int i = 0; i < @Model.Country.Count; i++)
+                                {
+                                    <option value="@Model.Country[i].CountryCode" selected="@(@Model.IsEditMode ? @Model.Lender.Country == @Model.Country[i].CountryCode : @Model.IsEditMode)">@Model.Country[i].Country</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group" id="province" style="display:none">
+                            <label for="Lender_Province">@L("FinanceProduct_Search_Province")</label>
+                            <select id="Lender_Province" class="form-control" name="province" asp-for="@Model.Lender.Province" asp-items="Model.SelectProvinceTypeLists.OrderBy(p => p.Text)">
+                                <option value="">Select Province</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_PostalCode">@L("FS_CompanyProfile_PostalCode")</label>
+                            <input class="form-control" id="Lender_PostalCode" value="@Model.Lender.PostalCode?.ToString()" type="text" name="postalCode" />
+                        </div>
+                        <div class="form-group" id="hProvince" style="display:none">
+                            <label for="Lender_HeadOfficeProvince">@L("HeadOffice")</label>
+                            <select id="Lender_HeadOfficeProvince" class="form-control" name="headOfficeProvince" asp-for="@Model.Lender.HeadOfficeProvince" asp-items="Model.SelectProvinceTypeLists.OrderBy(p => p.Text)">
+                                <option value="">Select HeadOffice Province</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_FSPRegistrationNumber">@L("FSPRegistrationNumber")</label>
+                            <input class="form-control" id="Lender_FSPRegistrationNumber" value="@Model.Lender.FSPRegistrationNumber" type="text" name="fspRegistrationNumber" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_NcrNumber">@L("NcrNumber")</label>
+                            <input class="form-control" id="Lender_NcrNumber" value="@Model.Lender.NcrNumber" type="text" name="ncrNumber" maxlength="@SME.Portal.Lenders.LenderConsts.MaxNcrNumberLength" minlength="@SME.Portal.Lenders.LenderConsts.MinNcrNumberLength" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Lender_AccountManager">@L("AccountManager")</label>
+                            <select class="form-control" id="Lender_AccountManager" value="@Model.Lender.AccountManager" name="accountManager">
+                                <option value=null disabled selected="@(!@Model.IsEditMode) || @Model.Lender.AccountManager==null">Select Account Manager</option>
+                                <option value="0" selected="@(@Model.IsEditMode ? @Model.Lender.AccountManager == 0 : @Model.IsEditMode)">Hlengiwe Mbatha</option>
+                                <option value="1" selected="@(@Model.IsEditMode ? @Model.Lender.AccountManager == 1 : @Model.IsEditMode)">Mandisa Ngcamu</option>
+                                <option value="2" selected="@(@Model.IsEditMode ? @Model.Lender.AccountManager == 2 : @Model.IsEditMode)">John Sharpe</option>
+                                <option value="3" selected="@(@Model.IsEditMode ? @Model.Lender.AccountManager == 3 : @Model.IsEditMode)">Precious Hwiza</option>
+                            </select>
+                        </div>
+                        <div class="m-checkbox-list">
+                            <label for="Lender_ContractLender" class="kt-checkbox">
+                                <input id="Lender_ContractLender" type="checkbox" name="hasContract" value="true" @Html.Raw(Model.Lender.HasContract ? "checked=\"checked\"" : "") />
+                                @L("ContractThisLender")
+                                <span></span>
+                            </label>
+                        </div>
+                        <div class="d-flex align-items-center" style="padding-top: 2%;gap:1%;">
+                            <button type="button" class="btn btn-light-primary font-weight-bold close-button" onclick="window.location = '/App/Lenders'">@L("Cancel")</button>
+                            <button type="button" class="btn btn-primary save-button" onclick="saveLenderForm()"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+                        </div>
+                    </form>
+                </div>
+                @if (Model.FinanceProducts.Any())
+                {
+                <div class="mt-4">
+                    <table class="table table-bordered table-striped" style="margin-top: 23px;width:50%;height:250px;overflow-y:scroll;display:block">
+                        <thead style="display: table; width: 100%; table-layout: fixed;">
+                            <tr>
+                                <th>Finance Product</th>
+                            </tr>
+                        </thead>
+                        <tbody style="display: table; width: 100%; table-layout: fixed;">
+                        @foreach (var fp in Model.FinanceProducts.Where(a => !a.IsDeleted))
+                        {
+                            <tr>
+                                <td><a href="/App/FinanceProducts/Manage/@fp.Id/?step=stepGeneral">@(fp.Name)</a>  <b>@(fp.Enabled ? " - Inactive" : "")</b></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+﻿
+@using System.Globalization
+@using SME.Portal.Web.Areas.App.Models.Common.Modals
+@using SME.Portal.Web.Areas.App.Models.Applications
+@model CreateOrEditApplicationModalViewModel
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditApplication")) : L("CreateNewApplication")))
+
+<div class="modal-body">
+    <div id="ApplicationInformationsTab">
+        <form name="ApplicationInformationsForm" role="form" novalidate class="form-validation">
+
+            @if (Model.IsEditMode)
+            {
+                <input type="hidden" name="id" value="@Model.Application.Id" />            
+            }
+
+
+            <div class="form-group m-form__group">
+                <label for="UserName">@L("User")</label>
+                <div class="input-group">
+                    <input class="form-control" id="UserName" name="userName" value="@Model.UserName" type="text" disabled>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary blue" id="OpenUserLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+                    </div>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-danger btn-icon" type="button" id="ClearUserNameButton"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.IsEditMode)
+            {
+                <input class="form-control" id="Application_UserId" value="@Model.Application.UserId" type="text" name="userId" required hidden /> }
+            else
+            {
+                <input class="form-control" id="Application_UserId" value="" type="text" name="userId" required hidden />            
+            }
+
+
+            <div class="form-group m-form__group">
+                <label for="SmeCompanyName">@L("SMECompany")</label>
+                <div class="input-group">
+                    <input class="form-control" id="SmeCompanyName" name="smeCompanyName" value="@Model.SmeCompanyName" type="text" disabled>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary blue" id="OpenSmeCompanyLookupTableButton" type="button"><i class="fa fa-search"></i> @L("Pick")</button>
+                    </div>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-danger btn-icon" type="button" id="ClearSmeCompanyNameButton"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.IsEditMode)
+            {
+                <input class="form-control" id="Application_SmeCompanyId" value="@Model.Application.SmeCompanyId" type="text" name="smeCompanyId" required hidden /> }
+            else
+            {
+                <input class="form-control" id="Application_SmeCompanyId" value="" type="text" name="smeCompanyId" required hidden />            
+            }
+
+            <div class="form-group">
+                <label for="Application_MatchCriteriaJson">@L("MatchCriteriaJson")</label>
+                <input class="form-control" id="Application_MatchCriteriaJson" value="@Model.Application.MatchCriteriaJson" type="text" name="matchCriteriaJson" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Application_Status">@L("Status")</label>
+                <input class="form-control" id="Application_Status" value="@Model.Application.Status" type="text" name="status" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Application_Locked">@L("Locked")</label>
+                <input class="form-control m-input date-picker" id="Application_Locked" type="text" name="locked" value="@Model.Application.Locked" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

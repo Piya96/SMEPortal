@@ -1,0 +1,35 @@
+﻿@using SME.Portal.Authorization
+@using SME.Portal.Web.Areas.App.Models.FinanceProducts
+@using SME.Portal.Web.Areas.App.Startup
+@model IManageView
+
+<form id="stepMonthsTradingForm">
+    <div class="step" id="stepMonthsTrading">
+        <h3>Months Trading</h3>
+        <div class="card card-info mb-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1 card-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col">
+                        Please enter the number of months the SMME has been trading.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="padding-left:5px">
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label asp-for="@Model.FinanceProduct.MinimumMonthsTrading" class="col-form-label">Minimum Months Trading</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="small-num-box form-control" id="MinimumMonthsTrading" name="MinimumMonthsTrading" asp-for="FinanceProduct.MinimumMonthsTrading">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

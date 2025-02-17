@@ -1,0 +1,106 @@
+﻿@using SME.Portal.Web.Areas.App.Models.FSS;
+
+@model FSSViewModel
+
+@{
+    var colXL = Model.StyleCol;
+    var styleWidth = Model.StyleWidth;
+    var appId = Model.ApplicationId;
+    var tenantId = Model.TenantId;
+}
+
+<h4 style="color:lightskyblue;" class="font-weight-bold mb-3">@L("FS_CompanyProfile")</h4>
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("OnboardingSummaryCompanyName")</td><td><div id="id-summary-company-profile-cname-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryCompanyRegNumber")</td><td><div id="id-summary-company-profile-reg-no-@appId"></div></td></tr>
+                <tr><td>@L("OnboardingSummaryCompanyType")</td><td><div id="id-summary-company-profile-company-type-@appId"></div></td></tr>
+                <tr><td>@L("FS_CompanyProfile_RegistrationDate")</td><td><div id="id-summary-company-profile-registration-date-@appId"></div></td></tr>
+                <tr><td>@L("FS_CompanyProfile_StartedTradingDate")</td><td><div id="id-summary-company-profile-started-trading-date-@appId"></div></td></tr>
+                <tr>
+                    <td>@L("FS_CompanyProfile_RegisteredAddress")</td>
+                    <td>
+                        <div id="id-summary-company-profile-registered-address-1-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-2-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-3-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-4-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-5-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-6-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-7-@appId"></div>
+                        <div id="id-summary-company-profile-registered-address-8-@appId"></div>
+                    </td>
+                </tr>
+                <tr><td>@L("FS_CompanyProfile_IndustrySector")</td><td><div id="id-summary-company-profile-industry-sector-@appId"></div></td></tr>
+                <tr><td>@L("FS_CompanyProfile_IndustrySubSector")</td><td><div id="id-summary-company-profile-industry-sub-sector-@appId"></div></td></tr>
+                <tr><td>@L("FS_CompanyProfile_BeeLevel")</td><td><div id="id-summary-company-profile-bee-level-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("Ownership_TotalNumberOfOwners")</td><td><div id="id-div-total-number-of-owners-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h5>@L("Ownership_TotalMustEqualTotalNumberOfOwners")</h5>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("Ownership_HowManyAreSouthAfricans")</td><td><div id="id-div-how-many-are-south-africans-@appId"></div></td></tr>
+                <tr><td>@L("Ownership_HowManyAreNotSouthAfricans")</td><td><div id="id-div-how-many-are-not-south-africans-@appId"></div></td></tr>
+                <tr><td>@L("Ownership_HowManyAreCompaniesOrganisations")</td><td><div id="id-div-how-many-are-companies-organisations-@appId"></div></td></tr>
+                @if(tenantId == 3)
+                {
+                    <tr><td>@L("MilitaryVeteransSummary")</td><td><div id="military-veterans-summary-div-@appId"></div></td></tr>
+                }
+                else
+                {
+                    <tr style="display:none;"><td>@L("MilitaryVeteransSummary")</td><td><div id="military-veterans-summary-div-@appId"></div></td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h5>@L("Ownership_InfoSouthAfricansOnly")</h5>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("Ownership_BlackColouredIndianPDI")</td><td><div id="id-div-black-coloured-indian-pdi-@appId"></div></td></tr>
+                <tr id="id-tr-black-only-@appId"><td>@L("Ownership_BlackOnly")</td><td><div id="id-div-black-only-@appId"></div></td></tr>
+                <tr><td>@L("Ownership_WomenAnyRace")</td><td><div id="id-div-women-any-race-@appId"></div></td></tr>
+                <!--<tr id="id-tr-women-pdi-@appId"><td>@L("Ownership_WomenPDI")</td><td><div id="id-div-women-pdi-@appId"></div></td></tr>-->
+                <tr id="id-tr-women-black-only-@appId"><td>@L("Ownership_WomenBlackOnly")</td><td><div id="id-div-women-black-only-@appId"></div></td></tr>
+                <tr><td>@L("Ownership_DisabledAnyRace")</td><td><div id="id-div-disabled-any-race-@appId"></div></td></tr>
+                <tr><td>@L("Ownership_YouthUnder35AnyRace")</td><td><div id="id-div-youth-under-35-any-race-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h5>@L("FS_EmployeesFullTimeSC")</h5>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("NumberOfFullTimeEmployees")</td><td><div id="number-of-full-time-employees-summary-div-@appId"></div></td></tr>
+                <tr><td>@L("NumberOfFullTimeWomenEmployees")</td><td><div id="number-of-full-time-women-employees-summary-div-@appId"></div></td></tr>
+                <tr><td>@L("NumberOfFullTimeEmployeesUnder35")</td><td><div id="how-many-full-time-under35-summary-div-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h5>@L("FS_EmployeesPartTimeSC")</h5>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover">
+            <tbody>
+                <tr><td style=@styleWidth>@L("NumberOfPartTimeEmployees")</td><td><div id="number-of-part-time-employees-summary-div-@appId"></div></td></tr>
+                <tr><td>@L("NumberOfPartTimeWomenEmployees")</td><td><div id="number-of-part-time-women-employees-summary-div-@appId"></div></td></tr>
+                <tr><td>@L("NumberOfPartTimeEmployeesUnder35")</td><td><div id="how-many-part-time-under35-summary-div-@appId"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

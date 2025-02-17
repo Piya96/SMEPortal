@@ -1,0 +1,46 @@
+﻿.login.login-1 .login-aside {
+    position: relative;
+}
+
+.login-aside {
+    background-image: linear-gradient(to right,#209fd6,#21c4ae);
+}
+
+.flange-right {
+    position: absolute;
+    right: 0;
+    max-height: 100%;
+}
+
+.hero-man {
+    position: absolute;
+    bottom: 0;
+    max-width: 500px;
+}
+
+/*X-Small devices (portrait phones less than 576px)*/
+@media (max-width: 575.98px) {
+    .hero-man {
+        position: static;
+        bottom: 0;
+        max-width: 100%;
+    }
+}
+
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .hero-man {
+        position: static;
+        bottom: 0;
+        max-width: 100%;
+    }
+}
+
+/*Medium devices (tablets, less than 992px)*/
+@media (max-width: 991.98px) {
+    .hero-man {
+        position: static;
+        bottom: 0;
+        max-width: 100%;
+    }
+}
